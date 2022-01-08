@@ -44,6 +44,7 @@ library ieee;
   use ieee.numeric_std.all;
 
   use work.Replay_Pack.all;
+  use work.all;
 
 library UNISIM;
   use UNISIM.Vcomponents.all;
@@ -97,18 +98,27 @@ begin
     end if;
   end process;
 
-  u_rams : for i in 0 to 1 generate
-    u_ram : RAMB16_S4
-    port map (
-      DO   => ram_data(3+i*4 downto i*4),
-      ADDR => ram_addr(11 downto 0),
-      CLK  => i_clk,
-      DI   => i_data(3+i*4 downto i*4),
-      EN   => i_ena,
-      SSR  => '0',
-      WE   => ram_we
-      );
-  end generate;
+ u_rams : entity work.pacman_ram
+ port map (
+    a => ram_addr(11 downto 0),
+    d => i_data,
+    clk => i_clk,
+    we => ram_we,
+    spo => ram_data
+ );
+
+-- u_rams : for i in 0 to 1 generate
+--   u_ram : RAMB16_S4
+--     port map (
+--       DO   => ram_data(3+i*4 downto i*4),
+--       ADDR => ram_addr(11 downto 0),
+--       CLK  => i_clk,
+--       DI   => i_data(3+i*4 downto i*4),
+--       EN   => i_ena,
+--       SSR  => '0',
+--       WE   => ram_we
+--       );
+--   end generate;
 
   p_output : process(i_cfg_hw_pengo, ram_addr, ram_data)
   begin

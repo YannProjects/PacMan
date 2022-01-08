@@ -121,7 +121,6 @@ architecture RTL of Pacman_Top is
   signal comp_sync_l            : bit1;
 
   -- cpu
-  signal cpu_ena                : bit1;
   signal cpu_m1_l               : bit1;
   signal cpu_mreq_l             : bit1;
   signal cpu_iorq_l             : bit1;
@@ -137,9 +136,6 @@ architecture RTL of Pacman_Top is
   signal cpu_addr               : word(15 downto 0);
   signal cpu_data_out           : word( 7 downto 0);
   signal cpu_data_in            : word( 7 downto 0);
-
-  signal memio_program_rom      : r_Memio_fm_core;
-  signal memio_video            : r_Memio_fm_core;
 
   signal program_rom_addr       : word(15 downto 0);
   signal program_rom_data_dec   : word( 7 downto 0); -- to cpu
@@ -226,20 +222,20 @@ begin
         in0_reg(7) <= '1';              -- credit
         in0_reg(6) <= '1';              -- coin2
         in0_reg(5) <= not i_button(2);  -- coin1
-        in0_reg(4) <= not cfg.dip_test; -- test_l dipswitch (rack advance)
-        in0_reg(3) <= not i_joy_a(1);   -- p1 down
-        in0_reg(2) <= not i_joy_a(3);   -- p1 right
-        in0_reg(1) <= not i_joy_a(2);   -- p1 left
-        in0_reg(0) <= not i_joy_a(0);   -- p1 up
+        in0_reg(4) <= cfg.dip_test; -- test_l dipswitch (rack advance)
+        in0_reg(3) <= i_joy_a(1);   -- p1 down
+        in0_reg(2) <= i_joy_a(3);   -- p1 right
+        in0_reg(1) <= i_joy_a(2);   -- p1 left
+        in0_reg(0) <= i_joy_a(0);   -- p1 up
 
-        in1_reg(7) <= not cfg.table;
-        in1_reg(6) <= not i_button(1);  -- start 2
-        in1_reg(5) <= not i_button(0);  -- start 1
-        in1_reg(4) <= not cfg.test;     -- test
-        in1_reg(3) <= not i_joy_b(1);   -- p2 down
-        in1_reg(2) <= not i_joy_b(3);   -- p2 right
-        in1_reg(1) <= not i_joy_b(2);   -- p2 left
-        in1_reg(0) <= not i_joy_b(0);   -- p2 up
+        in1_reg(7) <= cfg.table;
+        in1_reg(6) <= i_button(1);  -- start 2
+        in1_reg(5) <= i_button(0);  -- start 1
+        in1_reg(4) <= cfg.test;     -- test
+        in1_reg(3) <= i_joy_b(1);   -- p2 down
+        in1_reg(2) <= i_joy_b(3);   -- p2 right
+        in1_reg(1) <= i_joy_b(2);   -- p2 left
+        in1_reg(0) <= i_joy_b(0);   -- p2 up
 
         -- modifications for Mr TNT
         if (cfg.hw_type_is_mrtnt = '1') then
@@ -393,20 +389,10 @@ begin
   cpu_nmi_l   <= '1';
   h1_inv      <= not hcnt(0);
 
-  p_cpu_ena : process(hcnt, i_ena_sys)
-  begin
-    cpu_ena <= '0';
-    if (i_ena_sys = '1') then
-      cpu_ena <= hcnt(0);
-    end if;
-  end process;
-
   u_cpu : entity work.T80se
           port map (
               RESET_n => watchdog_reset_l,
-              -- CLK_n   => i_clk_sys,
-              CLK_n   => cpu_ena,
-              -- CLKEN   => cpu_ena,
+              CLK_n   => hcnt(0),
               CLKEN   => '1',
               WAIT_n  => cpu_wait_l,
               INT_n   => cpu_int_l,
@@ -445,7 +431,7 @@ begin
         end if;
       else
         -- Pacman
-        -- syncbus 0x4000 - 0x7FFF
+        -- syncbus 0x4000 - 0x7FFF (RAM + vidéo +  I/Os)
         if (cpu_addr(14) = '1') then
           sync_bus_cs_l <= '0';
         end if;
@@ -470,6 +456,7 @@ begin
       program_rom_addr(15) <= '0'; -- alias
     end if;
   end process;
+  
   --
   -- sync bus custom ic
   --
@@ -491,12 +478,14 @@ begin
 
   p_sync_bus_comb : process(cpu_rd_l, sync_bus_cs_l, hcnt)
   begin
-    -- sync_bus_stb is now an active low clock enable signal
+    -- sync_bus_stb is now an active low clock enable signal (= 5D pin 12)
     sync_bus_stb <= '1';
     sync_bus_r_w_l <= '1';
 
+    -- Le CPU à l'accès au bus "ab" si hcnt(1) = '0'
     if (sync_bus_cs_l = '0') and (hcnt(1) = '0') then
       if (cpu_rd_l = '1') then
+        -- sync_bus_r_w_l = 1 => Read ; sync_bus_r_w_l = 0 => Write
         sync_bus_r_w_l <= '0';
       end if;
       sync_bus_stb <= '0';
@@ -504,9 +493,11 @@ begin
 
     sync_bus_wreq_l <= '1';
     if (sync_bus_cs_l = '0') and (hcnt(1) = '1') and (cpu_rd_l = '0') then
+      -- sync_bus_wreq_l == cpu_wait_l (sync_bus_wreq_l = Sync Bus WAIT request)
       sync_bus_wreq_l <= '0';
     end if;
   end process;
+  
   --
   -- vram addr custom ic
   --
@@ -528,8 +519,11 @@ begin
     end if;
   end process;
 
+  -- 7H / 7L (sync_bus_stb = ping 12 5D
   p_vram_comb : process(hcnt, cpu_addr, sync_bus_stb)
   begin
+    -- RAM = 0x4000 - 0x4FEF => A12 = 0. vram_l = 0 si cpu_addr(12) = 0 et sync_bus_stb = 0
+    -- hcnt(1) and hcnt(0) => Lecture en RAM tous les 4 pixels ?
     vram_l <= ( (cpu_addr(12) or sync_bus_stb) and not (hcnt(1) and hcnt(0)) );
   end process;
 
@@ -566,9 +560,9 @@ begin
       if (sync_bus_r_w_l ='0') then -- writes
         if (cfg.hw_pengo = '0') then
           -- Pacman
-          if (ab(7 downto 4) = "0100") then wr0_l          <= '0'; end if;
-          if (ab(7 downto 4) = "0101") then wr1_l          <= '0'; end if;
-          if (ab(7 downto 4) = "0110") then wr2_l          <= '0'; end if;
+          if (ab(7 downto 4) = "0100") then wr0_l          <= '0'; end if; -- Audio
+          if (ab(7 downto 4) = "0101") then wr1_l          <= '0'; end if; -- Audio
+          if (ab(7 downto 4) = "0110") then wr2_l          <= '0'; end if; -- Sprite RAM
           if (ab(7 downto 6) = "00"  ) then iodec_out_l    <= '0'; end if;
           if (ab(7 downto 6) = "11"  ) then iodec_wdr_l    <= '0'; end if;
         else

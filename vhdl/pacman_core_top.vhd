@@ -157,8 +157,8 @@ begin
     i_halt                => i_ctrl.halt,
 
     --
-    i_joy_a               => joy_a,
-    i_joy_b               => joy_b,
+    i_joy_a               => i_kb_ms_joy.joy_a_l,
+    i_joy_b               => i_kb_ms_joy.joy_b_l,
 
     --
     i_button              => i_kbut,
