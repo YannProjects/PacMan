@@ -201,6 +201,7 @@ begin
   sprite_xy_ram : for i in 0 to 7 generate
   -- should be a latch, but we are using a clock
   -- ops are disabled when ME_L is high or WE_L is low
+  -- YHE => Chips 3F, 3H 
   begin
     inst: RAM16X1D
       port map (
@@ -219,6 +220,7 @@ begin
         );
   end generate;
 
+  
   p_char_regs : process
     variable inc : std_logic;
     variable sum : std_logic_vector(8 downto 0);
@@ -226,9 +228,13 @@ begin
   begin
     wait until rising_edge(i_clk);
     if (i_ena = '1') then
+      -- Tous les 4 pixels (4 pixels = 8 bits avec 2 bits par pixel)
+      -- Composant 1H 74LS174 
       if (i_hcnt(2 downto 0) = "011") then -- rising 4h
         inc := (not i_hblank);
         -- 1f, 2f
+        -- Dans ce cas (i_hcnt(2 downto 0) = "011"), la valeur positionnée sur le bus AB
+        -- correspond aux adresses paires des registres de sprite (X-location)
         sum := (i_vcnt(7 downto 0) & '1') + (dr & inc);
         -- 3e
         match := '0';
@@ -239,7 +245,7 @@ begin
         char_sum_reg     <= sum(4 downto 1);
         char_match_reg   <= match;
         char_hblank_reg  <= i_hblank;
-        -- 4d
+        -- 4d 74LS373
         db_reg <= i_db; -- character reg
       end if;
     end if;
@@ -251,6 +257,7 @@ begin
       xflip <= i_flip;
       yflip <= i_flip;
     else
+      -- Pour les sprites (hblanc = 1 => On lit les registres de sprites
       xflip <= db_reg(1);
       yflip <= db_reg(0);
     end if;
@@ -285,7 +292,7 @@ begin
     end if;
   end process;
 
-  -- char roms
+  -- Tile (= char) roms
   u_rom_5E : entity work.rom_pacman_5e
   port map (
     -- YHE avant c'était juste "ca" mais la taille n'était pas bonne
@@ -295,9 +302,10 @@ begin
     spo => char_rom_5e_0_dout
   );
 
+  -- Sprite ROM
   u_rom_5F : entity work.rom_pacman_5f
   port map (
-    -- YHE avant c'était juste "ca" mais la taille n'était pas bonne
+    -- YHE avant c'était juste "CA" mais la taille n'était pas bonne
     -- apparemment ca(11) est utilisée comme CE de la ROM sur le schéma original
     a => ca(10 downto 0),
     clk => i_clk_sys,
@@ -310,6 +318,7 @@ begin
     -- 5e 1
     -- 5f 3
 
+    -- ps(2) = 1 est seulement utilisé dans le cas de Pengo
     if (i_ps(2) = '1') then
       if (char_hblank_reg = '0') then
         cd_dout <= char_rom_5e_1_dout;
@@ -317,9 +326,12 @@ begin
         cd_dout <= char_rom_5f_1_dout;
       end if;
     else
+      -- pacman.5e Tile ROM (256 8x8 pixel tile image)
+      -- pacman.5f Sprite ROM (64 16x16 sprite images)
       if (char_hblank_reg = '0') then
         cd_dout <= char_rom_5e_0_dout;
       else
+        -- hblank = 1 => On lit la ROM des sprites
         cd_dout <= char_rom_5f_0_dout;
       end if;
     end if;
@@ -328,6 +340,7 @@ begin
   -- swap D4 and D6 for Mr TNT
   cd <= cd_dout(7) & cd_dout(4) & cd_dout(5) & cd_dout(6) & cd_dout(3 downto 0) when (i_hw_type_is_mrtnt = '1') else cd_dout;
 
+  -- 5B/5C 74LS194
   p_char_shift : process
   begin
     -- 4 bit shift req
@@ -349,6 +362,7 @@ begin
     end if;
   end process;
 
+  -- 5A
   p_char_shift_comb : process(i_hcnt, vout_yflip, shift_regu, shift_regl)
     variable ip : std_logic;
   begin
@@ -381,6 +395,7 @@ begin
     end if;
   end process;
 
+  -- LUT de conversion permettant de retrouver l'index de couleurs 
   p_lut_4a_comb : process(i_ps, vout_db, shift_op)
   begin
     col_rom_addr(10 downto 9) <= (others => '0'); --
@@ -402,6 +417,7 @@ begin
     variable ena : std_ulogic;
   begin
     ena := '0';
+    -- 8H
     if (i_hcnt(3 downto 0) = "0111") then
       ena := '1';
     end if;
@@ -476,6 +492,9 @@ begin
     if (vout_hblank_t1 = '0') then
       sprite_ram_ip <= (others => '0');
     else
+      -- Cette partie permet soit de lire la donnée contenue dans le latch sprite (sprite_ram_ip <= sprite_ram_reg) pour l'affichage du sprite
+      -- soit d'écrire la valeur de la couleur dans la RAM des sprites (sprite_ram_ip <= lut_4a_t1(3 downto 0))
+      -- Mais, je ne comprends pas à quel moment les données de sprites sont écrites dans la RAM sprite (par le CPU ???)
       if (video_op_sel = '1') then
         sprite_ram_ip <= sprite_ram_reg;
       else
@@ -484,6 +503,8 @@ begin
     end if;
   end process;
 
+  -- Multiplexeur sélectionnant soit les données de la ROM couleur, soit du latch de sprite (3C)
+  -- qui contient les valeurs de couleurs du sprite
   p_video_op_comb : process(i_ps, vout_hblank, i_vblank, video_op_sel, sprite_ram_reg, lut_4a)
   begin
       -- 3b
@@ -500,6 +521,7 @@ begin
   end process;
 
   -- 0x10 Pacman, 0x20 Pengo
+  -- ROM de conversion index couleur (16 valeurs) vers valeurs RGB (8 bits)
   u_rom_7f : entity work.rom_pacman_7f
   port map (
     a => final_col,

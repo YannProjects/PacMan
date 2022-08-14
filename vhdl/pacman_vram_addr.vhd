@@ -6,6 +6,9 @@ library ieee;
 
   use work.Replay_Pack.all;
 
+-- Custom IC 5 S VRAM addresser
+-- Converti les coordonnées horizontales / verticales en adresses RAM
+
 entity Pacman_VRAM_Addr is
   port (
     i_h       : in    word ( 8 downto 0); -- H256_L H128 H64 H32 H16 H8 H4 H2 H1

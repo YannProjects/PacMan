@@ -458,7 +458,7 @@ begin
   end process;
   
   --
-  -- sync bus custom ic
+  -- sync bus custom ic (6D)
   --
   p_sync_bus_reg : process
   begin
@@ -511,9 +511,13 @@ begin
 
   p_ab_mux_comb : process(hcnt, cpu_addr, vram_addr_ab)
   begin
-    --When 2H is low, the CPU controls the bus.
+    -- When 2H is low, the CPU controls the bus.
+    -- Le bus (ab) utilise pour adresser la RAM est partage entre le CPU.
+    -- Le signal vram_addr_ab est l'adresse generee par le custom IC VRAM adresser (5S)
+    -- Cycle utilise par le CPU pour acceder à la RAM
     if (hcnt(1) = '0') then
       ab <= cpu_addr(11 downto 0);
+    -- Cycle utilise par la partie VRAM adresser pour la generation de la video
     else
       ab <= vram_addr_ab;
     end if;
@@ -523,7 +527,6 @@ begin
   p_vram_comb : process(hcnt, cpu_addr, sync_bus_stb)
   begin
     -- RAM = 0x4000 - 0x4FEF => A12 = 0. vram_l = 0 si cpu_addr(12) = 0 et sync_bus_stb = 0
-    -- hcnt(1) and hcnt(0) => Lecture en RAM tous les 4 pixels ?
     vram_l <= ( (cpu_addr(12) or sync_bus_stb) and not (hcnt(1) and hcnt(0)) );
   end process;
 

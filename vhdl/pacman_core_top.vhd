@@ -64,15 +64,7 @@ entity Core_Top is
     i_ctrl                : in    r_Ctrl_to_core;
     -- Config
     o_cfg                 : out   r_Cfg_fm_core;
-    -- Une partie cfg_static et cfg_dynamic => A configurer dans la partie simulation
-    -- cfg_static:
-    -- cfg_static(0) : 1 for pengo, 0 for name
-    -- cfg_static(3 downto 1) : "001" for Mr TNT
-    -- cfg_dynamic:
-    -- cfg_dynamic(15) : Freeze (active low)
-    -- cfg_dynamic(10) : Test (active HIGH)
-    -- cfg_dynamic(11) : Test (active HIGH)
-    i_cfg                 : in    r_Cfg_to_core;
+
     -- Keyboard, Mouse and Joystick
     o_kb_ms_joy           : out   r_KbMsJoy_fm_core;
     -- Conserver les entrées joy_a et joy_b:
@@ -89,9 +81,11 @@ end;
 
 architecture RTL of Core_Top is
 
-  signal clk_sys                : bit1;
-  signal ena_sys                : bit1;
-  signal rst_sys                : bit1;
+  signal i_clk_52m, i_clk_6m, i_vga_clock                 : bit1;
+  signal i_pll_locked : bit1;
+  signal i_ena_sys                : bit1;
+  signal i_rst_sys                : bit1;
+  signal i_vga_control_init_done : bit1;
 
   signal cfg_dblscan            : bit1;
 
@@ -118,37 +112,54 @@ architecture RTL of Core_Top is
   signal ddr_addr               : word( 15 downto 0);
   signal ddr_data               : word( 7 downto 0);
 
+  signal i_cfg : r_Cfg_to_core;
+  signal i_kb_ms_joy_stub : r_KbMsJoy_to_core;
+
+
 begin
+
+   -- Une partie cfg_static et cfg_dynamic => A configurer dans la partie simulation
+   -- cfg_static:
+   -- cfg_static(0) : 1 for pengo, 0 for name
+   -- cfg_static(3 downto 1) : "001" for Mr TNT
+   -- cfg_dynamic:
+   -- cfg_dynamic(15) : Freeze (active low)
+   -- cfg_dynamic(10) : Test (active HIGH)
+   -- cfg_dynamic(11) : Test (active HIGH)    
+  i_cfg.cfg_static <= B"00000000000000000000000000000000";
+  i_cfg.cfg_dynamic <= B"00000000000000000000001111111111";
+  
+  -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
+  i_kb_ms_joy_stub.joy_a_l <= (others => '1');
+  i_kb_ms_joy_stub.joy_b_l <= (others => '1');
+
   --
   -- Single clock domain used for system / video and audio
   --
-  -- ~24 MHZ
-  clk_sys <= i_ctrl.clk_sys;
-  rst_sys <= i_ctrl.rst_sys;
-  ena_sys <= i_ctrl.ena_sys;
 
-  o_ctrl.clk_aud <= clk_sys;
-  o_ctrl.ena_aud <= ena_sys;
-  o_ctrl.rst_aud <= rst_sys;
-  --
-  -- video clock is sys_clock (set as generic)
-  --
-  o_ctrl.ena_vid <= '1';
-  --
-  -- CONFIG
-  --
-  o_ctrl.rst_soft   <= '0';
-
-
+  clk_gen_0 : entity work.Clocks_gen
+  port map (
+      -- 12 MHz CMOD S7
+      main_clk => i_ctrl.clk_sys,
+      clk_52m => i_clk_52m,
+      clk_sys => i_clk_6m,
+      vga_clk => i_vga_clock,
+      rst => i_ctrl.rst_sys,
+      pll_locked => i_pll_locked
+  );
+ 
+ i_ena_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
+ i_rst_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
+    
   --
   -- The Core
   --
   u_Core : entity work.Pacman_Top
   port map (
     --
-    i_clk_sys             => clk_sys,
-    i_ena_sys             => ena_sys,
-    i_rst_sys             => rst_sys,
+    i_clk_sys             => i_clk_6m,
+    i_ena_sys             => i_ena_sys,
+    i_rst_sys             => i_rst_sys,
 
     --
     i_cfg_static          => i_cfg.cfg_static,
@@ -157,8 +168,8 @@ begin
     i_halt                => i_ctrl.halt,
 
     --
-    i_joy_a               => i_kb_ms_joy.joy_a_l,
-    i_joy_b               => i_kb_ms_joy.joy_b_l,
+    i_joy_a               => i_kb_ms_joy_stub.joy_a_l,
+    i_joy_b               => i_kb_ms_joy_stub.joy_b_l,
 
     --
     i_button              => i_kbut,
@@ -182,11 +193,28 @@ begin
   
   u_prom_pacman : entity work.Pacman_Program_ROM
   port map (
-    i_clk => clk_sys,
-    i_ena => ena_sys,
+    i_clk => i_clk_6m,
+    i_ena => i_ena_sys,
     -- Taille ROM = 2048 octets. Il y a 3 bits de plus sur l'interface
     i_addr => ddr_addr(13 downto 0),
     o_data => ddr_data
+  );
+  
+  u_vga_ctrl : entity work.vga_control_top
+  port map ( 
+      RESET => RESET,
+      CLK_52M => i_clk_52m,
+      VGA_CLK => i_vga_clock,
+      VIDEO_ADDR => i_vga_addr,
+      VIDEO_DATA => i_vga_data,
+      WR_CYC => i_vga_wr_cyc,
+      VGA_CONTROL_INIT_DONE => i_vga_control_init_done,
+      HSYNC => i_hsync,
+      VSYNC => i_vsync,
+      BLANK => BLANK_VGA,
+      R => R_VGA,
+      G => G_VGA,
+      B => B_VGA
   );
 
 end RTL;
