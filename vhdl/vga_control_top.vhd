@@ -158,16 +158,15 @@ architecture Behavioral of vga_control_top is
     -- wishbone host
 	signal s_cyc_o, s_we_o : std_logic;
 	signal s_adr_o                  : std_logic_vector(31 downto 0);
-	signal s_dat_o, s_dat_i         : std_logic_vector(31 downto 0);
+	signal s_dat_o                  : std_logic_vector(31 downto 0);
 	signal s_sel_o                  : std_logic_vector(3 downto 0);
-	signal s_ack_i, s_err_i         : std_logic;
+	signal s_ack_i                  : std_logic;
 	signal s_stb_vga_o : std_logic;
 	
     -- vga master
 	signal vga_adr_o                       : std_logic_vector(31 downto 0);
 	signal vga_dat_i                       : std_logic_vector(31 downto 0);
 	signal vga_stb_o, vga_cyc_o, vga_ack_i : std_logic;
-	signal vga_sel_o                       : std_logic_vector(3 downto 0);
 	signal vga_we_o                        : std_logic;
 	
 	signal i_video_addr_0 : std_logic_vector(19 downto 0);
@@ -298,7 +297,7 @@ begin
         clkb => i_clk_52m,
         web(0) => '0',
         addrb => video_mem_vga_core_addr,
-        dinb => "0000000000000000",
+        dinb => "0x0000",
         doutb => video_mem_vga_core_data
     );
         
@@ -338,11 +337,11 @@ begin
 	u2: vga_enh_top port map (
         wb_clk_i => i_clk_52m, wb_rst_i => '0', rst_i => not i_reset,
         
-        wbs_adr_i => s_adr_o(11 downto 0), wbs_dat_i => s_dat_o, wbs_dat_o => s_dat_i, 
+        wbs_adr_i => s_adr_o(11 downto 0), wbs_dat_i => s_dat_o, 
         wbs_sel_i => s_sel_o, wbs_we_i => s_we_o, wbs_stb_i => s_stb_vga_o,
-		wbs_cyc_i => s_cyc_o, wbs_ack_o => s_ack_i, wbs_err_o => s_err_i,
+		wbs_cyc_i => s_cyc_o, wbs_ack_o => s_ack_i,
 		
-		wbm_adr_o => vga_adr_o, wbm_dat_i => vga_dat_i, wbm_sel_o => vga_sel_o, wbm_stb_o => vga_stb_o,
+		wbm_adr_o => vga_adr_o, wbm_dat_i => vga_dat_i, wbm_stb_o => vga_stb_o,
 		wbm_cyc_o => vga_cyc_o, wbm_ack_i => vga_ack_i, wbm_err_i => '0',
 		
 		clk_p_i => i_vga_clk, hsync_pad_o => o_hsync, vsync_pad_o => o_vsync, csync_pad_o => o_csync, blank_pad_o => o_blank,
