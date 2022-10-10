@@ -45,6 +45,8 @@ constant VBARb_REG_ADDR : std_logic_vector(31 downto 0) := X"00000018";
 constant CLUT_REG_ADDR_1 : std_logic_vector(31 downto 0) := X"00000800";
 constant CLUT_REG_ADDR_2 : std_logic_vector(31 downto 0) := X"00000804";
 
+constant NUM_OF_PIXELS_PER_VGA_LINE : integer := 2*288;
+
 end VGA_control_pack;
 
 package body VGA_control_pack is

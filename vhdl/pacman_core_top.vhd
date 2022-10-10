@@ -43,12 +43,15 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
+use ieee.std_logic_textio.all;
 
 library UNISIM;
 use UNISIM.Vcomponents.all;
 
 use work.replay_pack.all;
 use work.replay_lib_wrap_pack.all;
+
+use std.textio.all;
 
 entity Core_Top is
   port (
@@ -63,7 +66,7 @@ entity Core_Top is
     -- l'horloge sera configurée à part
     i_ctrl                : in    r_Ctrl_to_core;
     -- Config
-    o_cfg                 : out   r_Cfg_fm_core;
+    i_cfg                 : in    r_Cfg_to_core;
 
     -- Keyboard, Mouse and Joystick
     o_kb_ms_joy           : out   r_KbMsJoy_fm_core;
@@ -112,22 +115,10 @@ architecture RTL of Core_Top is
   signal ddr_addr               : word( 15 downto 0);
   signal ddr_data               : word( 7 downto 0);
 
-  signal i_cfg : r_Cfg_to_core;
   signal i_kb_ms_joy_stub : r_KbMsJoy_to_core;
 
 
 begin
-
-   -- Une partie cfg_static et cfg_dynamic => A configurer dans la partie simulation
-   -- cfg_static:
-   -- cfg_static(0) : 1 for pengo, 0 for name
-   -- cfg_static(3 downto 1) : "001" for Mr TNT
-   -- cfg_dynamic:
-   -- cfg_dynamic(15) : Freeze (active low)
-   -- cfg_dynamic(10) : Test (active HIGH)
-   -- cfg_dynamic(11) : Test (active HIGH)    
-  i_cfg.cfg_static <= B"00000000000000000000000000000000";
-  i_cfg.cfg_dynamic <= B"00000000000000000000001111111111";
   
   -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
   i_kb_ms_joy_stub.joy_a_l <= (others => '1');
@@ -140,16 +131,18 @@ begin
   clk_gen_0 : entity work.Clocks_gen
   port map (
       -- 12 MHz CMOD S7
-      main_clk => i_ctrl.clk_sys,
-      clk_52m => i_clk_52m,
-      clk_sys => i_clk_6m,
-      vga_clk => i_vga_clock,
-      rst => i_ctrl.rst_sys,
-      pll_locked => i_pll_locked
+      i_clk_main => i_ctrl.clk_sys,
+      o_clk_52m => i_clk_52m,
+      o_clk_sys => i_clk_6m,
+      o_clk_vga => i_vga_clock,
+      i_rst => i_ctrl.rst_sys,
+      o_pll_locked => i_pll_locked
   );
  
- i_ena_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
- i_rst_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
+ -- i_ena_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
+ -- i_rst_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
+ i_ena_sys <= '1' when i_ctrl.rst_sys = '0' else '0';
+ i_rst_sys <= '1' when i_ctrl.rst_sys = '0' else '0';
     
   --
   -- The Core
@@ -200,21 +193,49 @@ begin
     o_data => ddr_data
   );
   
-  u_vga_ctrl : entity work.vga_control_top
-  port map ( 
-      RESET => RESET,
-      CLK_52M => i_clk_52m,
-      VGA_CLK => i_vga_clock,
-      VIDEO_ADDR => i_vga_addr,
-      VIDEO_DATA => i_vga_data,
-      WR_CYC => i_vga_wr_cyc,
-      VGA_CONTROL_INIT_DONE => i_vga_control_init_done,
-      HSYNC => i_hsync,
-      VSYNC => i_vsync,
-      BLANK => BLANK_VGA,
-      R => R_VGA,
-      G => G_VGA,
-      B => B_VGA
-  );
+  p_gen_testbench : process(i_clk_6m)
+  
+  variable file_line : line;
+  file fptr : text;
+  constant C_FILE_NAME : string  := "VGA_Controller_Test_Vectors";
+  variable start_simu_time : time := now;
+  variable fstatus: FILE_OPEN_STATUS := STATUS_ERROR; 
+  
+  begin
+      if fstatus /= OPEN_OK then
+        file_open(fstatus, fptr, C_FILE_NAME, WRITE_MODE);
+        writeline(fptr, file_line);
+      elsif rising_edge(i_clk_6m) then
+          if (now - start_simu_time > 50 ms) then
+              if (now - start_simu_time < 100 ms) then
+                  hwrite(file_line, video_rgb, right, 4);
+                  write(file_line, hsync_l, right, 4);
+                  write(file_line, vsync_l, right, 4);
+                  write(file_line, csync_l, right, 4);
+                  write(file_line, blank, right, 4);
+                  writeline(fptr, file_line);
+              else
+                  file_close(fptr);
+              end if;
+          end if;
+      end if;
+  end process;
+  
+  -- u_vga_ctrl : entity work.vga_control_top
+  -- port map ( 
+  --     RESET => RESET,
+  --     CLK_52M => i_clk_52m,
+  --     VGA_CLK => i_vga_clock,
+  --     VIDEO_ADDR => i_vga_addr,
+  --     VIDEO_DATA => i_vga_data,
+  --     WR_CYC => i_vga_wr_cyc,
+  --     VGA_CONTROL_INIT_DONE => i_vga_control_init_done,
+  --     HSYNC => i_hsync,
+  --     VSYNC => i_vsync,
+  --     BLANK => BLANK_VGA,
+  --     R => R_VGA,
+  --     G => G_VGA,
+  --     B => B_VGA
+  -- );
 
 end RTL;

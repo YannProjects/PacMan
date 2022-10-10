@@ -80,7 +80,7 @@ begin
             end if;
         end if;
     end process;
-    
+       
     -- cfg_static:
     -- cfg_static(0) : 1 for pengo, 0 for name
     -- cfg_static(3 downto 1) : "001" for Mr TNT

@@ -33,12 +33,12 @@ use unisim.vcomponents.all;
 --use UNISIM.VComponents.all;
 
 entity Clocks_gen is
-    Port ( main_clk : in STD_LOGIC;
-           clk_52m : out STD_LOGIC;
-           vga_clk : out STD_LOGIC;
-           clk_sys : out STD_LOGIC;
-           rst : in std_logic;
-           pll_locked : out std_logic);
+    Port ( i_clk_main : in STD_LOGIC;
+           o_clk_52m : out STD_LOGIC;
+           o_clk_vga : out STD_LOGIC;
+           o_clk_sys : out STD_LOGIC;
+           i_rst : in std_logic;
+           o_pll_locked : out std_logic);
 end Clocks_gen;
 
 architecture Based_on_IP of Clocks_gen is
@@ -52,18 +52,15 @@ begin
     -- 6,5 MHz: ULA
     -- 3,25 MHz: Z80    
      
-    clk_gen : entity work.clk_wiz_2
+    clk_gen : entity work.clk_wiz_0
     port map (
-        reset => rst,
-        locked => pll_locked,
-        clk_in1 => main_clk,
-        clk_52m => i_clk_52m,
-        clk_vga => vga_clk,
-        clk_sys => i_sys_clk
+        reset => i_rst,
+        locked => o_pll_locked,
+        clk_main => i_clk_main,
+        clk_52m => o_clk_52m,
+        clk_vga => o_clk_vga,
+        clk_sys => o_clk_sys
     );
-
-    clk_sys <= i_sys_clk;
-    clk_52m <= i_clk_52m;
 
 end Based_on_IP;
 

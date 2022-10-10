@@ -27,11 +27,13 @@
 -- Les bits sont dupliqués pour doubler la longueur de ligne pour (288 * 2 =  576 pixels < 640)
 -- A chaque Hsync controller VGA, on revient au début de la ligne 1 fois sur 2 pour doubler l'affichage vertical (224 * 2 = 448 lignes < 480)
 
-library IEEE;
+library ieee;
 library work;
-use IEEE.STD_LOGIC_1164.ALL;
-use ieee.std_logic_arith.all;
+use ieee.std_logic_1164.ALL;
+-- use ieee.std_logic_arith.all;
+-- use ieee.std_logic_unsigned.all;
 -- use ieee.numeric_std.shift_left;
+use ieee.numeric_std.all;
 use work.VGA_control_pack.all;
 
 library UNISIM;
@@ -59,13 +61,13 @@ entity vga_control_top is
         i_blank : in std_logic; -- Video BLANK Pacman core
         i_rgb : in std_logic_vector(23 downto 0); -- RGB PacMan core
         
-        o_hsync : in std_logic; -- HSYNC output from controller VGA (vers connecteur VGA)
-        o_vsync : in std_logic; -- VSYNC output from controller VGA (vers connecteur VGA)
-        o_csync : in std_logic; -- CSYNC output from controller VGA (vers connecteur VGA)
-        o_blank : in std_logic; -- BLANK output from controller VGA (vers connecteur VGA)
+        o_hsync : out std_logic; -- HSYNC output from controller VGA (vers connecteur VGA)
+        o_vsync : out std_logic; -- VSYNC output from controller VGA (vers connecteur VGA)
+        o_csync : out std_logic; -- CSYNC output from controller VGA (vers connecteur VGA)
+        o_blank : out std_logic; -- BLANK output from controller VGA (vers connecteur VGA)
         o_r : out std_logic_vector(7 downto 0); -- R controller VGA
-        o_g : in std_logic_vector(7 downto 0); -- G controller VGA
-        o_b : in std_logic_vector(7 downto 0); -- B controller VGA                
+        o_g : out std_logic_vector(7 downto 0); -- G controller VGA
+        o_b : out std_logic_vector(7 downto 0); -- B controller VGA                
 
         o_vga_control_init_done : out std_logic
     );
@@ -147,13 +149,12 @@ architecture Behavioral of vga_control_top is
 	signal state : states;
 	signal icnt, init_timer : natural := 0;
 	signal vga_controller_ok : std_logic;
-	signal vga_even_line : std_logic;
 	signal video_mem_addr_pacman : unsigned(15 downto 0);
-	signal video_mem_vga_core_addr : std_logic_vector(14 downto 0);
+	signal video_dpram_vga_core_addr_l : std_logic_vector(31 downto 0);
+	signal video_dpram_vga_core_addr : std_logic_vector(14 downto 0);
 	signal video_mem_pacman_data : std_logic_vector(7 downto 0);
 	signal video_mem_vga_core_data : std_logic_vector(15 downto 0);
-	signal hsync_0, hsync_1 : std_logic;
-	signal i_vga_even_line : std_logic;
+	signal offset_to_previous_line : unsigned(14 downto 0);
 	
     -- wishbone host
 	signal s_cyc_o, s_we_o : std_logic;
@@ -165,6 +166,9 @@ architecture Behavioral of vga_control_top is
 	
     -- vga master
 	signal vga_adr_o                       : std_logic_vector(31 downto 0);
+	signal vga_addr_even_line_start        : unsigned(31 downto 0);
+	signal vga_frame_offset                : unsigned(31 downto 0);
+	signal vga_odd_line : std_logic;
 	signal vga_dat_i                       : std_logic_vector(31 downto 0);
 	signal vga_stb_o, vga_cyc_o, vga_ack_i : std_logic;
 	signal vga_we_o                        : std_logic;
@@ -172,6 +176,10 @@ architecture Behavioral of vga_control_top is
 	signal i_video_addr_0 : std_logic_vector(19 downto 0);
     signal i_video_data_0 : std_logic_vector(1 downto 0);
     signal i_wr_cyc_0 : std_logic;
+    signal hsync_vga, vsync_vga : std_logic;
+    
+    signal mem_vga_core_offset : integer;
+    signal mem_vga_core_offset_every_two_pixels : std_logic_vector(31 downto 0);
         
     attribute ASYNC_REG : string;
     attribute ASYNC_REG of i_video_addr_0 : signal is "TRUE";
@@ -183,28 +191,36 @@ architecture Behavioral of vga_control_top is
         -- Mode Resolution Refresh Pulse Back porch Active time Front porch Line Total
         --              rate  MHz       usec    pix     pix     pix     pix     pix
         -- QVGA 320x240 60 Hz
-        -- VGA 640x480  60 Hz 25.175    3.81    96      45      646     13      800
+        -- VGA 640x480  60 Hz 25.175    3.81    96      45      646     13      800        <<<===
         -- VGA 640x480  72 Hz 31.5      1.27    40      125     646     21      832
         -- SVGA 800x600 56 Hz 36        2       72      125     806     21      1024
-        -- SVGA 800x600 60 Hz 40        3.2     128     85      806     37      1056        <<<===
+        -- SVGA 800x600 60 Hz 40        3.2     128     85      806     37      1056
         -- SVGA 800x600 72 Hz 50        2.4     120     61      806     53      1040
 
         -- program vga controller
         (VBARa_REG_ADDR,x"00000000", '0'), --   program video base address 0 register (VBARa)
         (VBARb_REG_ADDR,x"00100000", '0'), --   program video base address 0 register (VBARb). Pas utilisé
-        -- Pour le cas du ZX81, le mode choisit et une résolution de 640 x 480 avec un affichage de:
+        -- Pour le cas du PacMan, le mode choisit et une résolution de 576 x 448 avec un affichage de:
         -- Thsync : 96 pixels
-        -- Thgdel (back porch) : 240 pixels
-        -- Thgate : 384 pixels
-        -- Front porch = 800 - (96+240+384) = 80 pixels
-        -- (HTIM_REG_ADDR,x"5F9F017F", '0'), -- program horizontal timing register (384*480)
-        (HTIM_REG_ADDR,x"5F32027F", '0'), -- program horizontal timing register (640*480)
-        -- Pour les lignes, il y a en tout 525 lignes
+        -- Thgdel (back porch) : 50 pixels
+        -- Thgate : 576 pixels
+        -- Front porch = 800 - (96+50+576) = 78 pixels
+        (HTIM_REG_ADDR,x"5F32023F", '0'), -- program horizontal timing register ((288*2)*(224*2))
+        
+        -- Vertical timings
+        -- QVGA 320x240 60 Hz
+        -- VGA 640x480 60 Hz 31.78 63 2 953 30 15382 484 285 9 16683 525        <<<===
+        -- VGA 640x480 72 Hz 26.41 79 3 686 26 12782 484 184 7 13735 520
+        -- SVGA 800x600 56 Hz 28.44 56 1 568 20 17177 604 -1* 17775 625
+        -- SVGA 800x600 60 Hz 26.40 106 4 554 21 15945 604 -1* 16579 628
+        -- SVGA 800x600 72 Hz 20.80 125 6 436 21 12563 604 728 35 13853 AIE_NOC_M_AXI
+        --
+        -- Pour les lignes, il y a en tout 600 lignes
         -- => Sync pulse = 2 lignes
-        -- => active time = 479 lignes (il faut une ligne de moins car sinon, on dépasse la mémoire ???)
+        -- => active time = 448 lignes
         -- => back porch = 30
-        -- => front porch = 600 - (2+30+479) = 89 lignes
-        (VTIM_REG_ADDR,x"011D01DE", '0'), --   program vertical timing register
+        -- => front porch = 600 - (2+30+448) = 120 lignes
+        (VTIM_REG_ADDR,x"011D01BF", '0'), --   program vertical timing register
         (HVLEN_REG_ADDR,x"031F020C", '0'), --   program horizontal/vertical length register (800 x 525).
         
         -- On n'utilise que 2 couleurs: la première en index 0 et la dernière en index 255 sur la CLUT 0 (CLUT 1 pas utilisée)
@@ -290,23 +306,23 @@ begin
     -- PortA : Côté écriture (8 bits)
     -- PortB : Côté lecture (16 bits)
     u1: blk_mem_gen_video_ram port map (
-        clka => i_sys_clk,
+        clka => i_sys_clk, -- Write side 6,144 MHz
         wea(0) => '1',
         addra => std_logic_vector(video_mem_addr_pacman),
         dina => video_mem_pacman_data,
-        clkb => i_clk_52m,
+        clkb => i_clk_52m, -- Read side 52 MHz
         web(0) => '0',
-        addrb => video_mem_vga_core_addr,
-        dinb => "0x0000",
+        addrb => video_dpram_vga_core_addr,
+        dinb => (others => '0'),
         doutb => video_mem_vga_core_data
     );
         
     process(i_sys_clk)
     begin
         -- Reset ou top trame
-        if ((i_reset = '1') or (i_vsync = '1' and i_blank = '1')) then
+        if ((i_reset = '1') or (i_vsync = '0')) then
             video_mem_addr_pacman <= (others => '0');
-        elsif rising_edge(i_sys_clk) then
+        elsif rising_edge(i_sys_clk) and i_blank = '0' then
             video_mem_addr_pacman <= video_mem_addr_pacman + 1;
         end if;
     end process;
@@ -314,20 +330,56 @@ begin
     video_mem_pacman_data <= i_rgb(18 downto 16) & i_rgb(10 downto 8) & i_rgb(1 downto 0);
 	
     -- Détection ligne paires/impaires pour le doublement des lignes
-	process(i_clk_52m, i_reset, o_vsync)
+    -- L'image VGA est configurée en 288*2 horizontaelemtn et 224*2 verticalement.
+    -- Le controlleur VGA lit 4 pixels par 4 pixels. On lit 2 pixels dans la DPRAM et ils sont dupliqués pour retourner 4 pixels
+    -- Principe:
+    -- Les adresses controlleur VGA vont de N à N + 575
+    -- Les adresses DPRAM VGA vont de M à M + 143 (144 * 4 = 576)
+    -- L'adresse RAM controlleur VGA est divisée par 4 et on soustrait 0x90 un ligne sur deux pour revenir au debut de la ligne
+    -- precedente pour dupliquer les lignes.
+    -- vga_adr_o: Adresse côté controlleur VGA
+    -- vga_odd_line: indique les lignes paires ou impaires par rapport à l'adresse controlleur VGA
+    -- vga_addr_even_line_start: Adresse de debut de la ligne controlleur VGA / 4
+    -- Exemples:
+    -- Adresse controlleur VGA: (les adresses sont incrementees 4 par 4 et retournent 32 bits)
+    -- Ligne 0: 0x000 ... 0x23F
+    -- Ligne 1: 0x240 ... 0x47F
+    -- Ligne 2: 0x480 ... 0x6BF
+    -- Ligne 3: 0x6C0 ... 0x8FF
+    -- Ligne 4: 0x900 ... 0xB3F
+    -- Ligne 5: 0xB40 ... 0xD7F
+    -- ...
+    -- Adresse DPRAM : (les adresses sont incrementees 1 par 1 et retournent 16 bits)
+    -- Ligne 0: 0x000 ... 0x08F ([0x0..0x23F] / 4 - vga_frame_offset (0x00)
+    -- Ligne 1: 0x000 ... 0x08F ([0x240..0x47F] / 4 - vga_frame_offset (0x90))
+    -- Ligne 2: 0x090 ... 0x11F  ([0x480..0x6BF] / 4  - vga_frame_offset (0x90))
+    -- Ligne 3: 0x090 ... 0x11F  ([0x6C0..0x8FF] / 4  - vga_frame_offset (0x120))
+    -- Ligne 4: 0x120 ... 0x1AF  ([0x900..0xB3F] / 4  - vga_frame_offset (0x120))
+    -- Ligne 4: 0x120 ... 0x1AF  ([0xB40..0xD7F] / 4  - vga_frame_offset (0x1B0))
+    -- ...
+	process(i_clk_52m, i_reset)
     begin
-        if (i_reset = '1' or o_vsync = '1') then
-            vga_even_line <= '1';
+        if (i_reset = '1' or vga_adr_o = X"00000000") then
+            vga_frame_offset <= (others => '0');
+            vga_addr_even_line_start <= (others => '0');
+            vga_odd_line <= '0';
         elsif rising_edge(i_clk_52m) then
-            hsync_0 <= o_hsync;
-            hsync_1 <= hsync_0;
-            -- Front montant hsync controlleur VGA
-            if hsync_0 = '1' and hsync_1 = '0' then
-                vga_even_line <= not vga_even_line;
+            if unsigned("00" & vga_adr_o(31 downto 2)) - vga_addr_even_line_start = X"0000090" then
+                -- A remplacer par un type std_logic comme on ne regarde qu'un bit ?
+                vga_odd_line <= not vga_odd_line;
+                vga_addr_even_line_start <= unsigned("00" & vga_adr_o(31 downto 2));
+                if vga_odd_line = '0' then
+                    vga_frame_offset <= vga_frame_offset + X"0090";
+                end if;
             end if;
         end if;
     end process;
     
+    video_dpram_vga_core_addr_l <= std_logic_vector(unsigned('0' & vga_adr_o(31 downto 2)) - vga_frame_offset);
+    video_dpram_vga_core_addr <= video_dpram_vga_core_addr_l(14 downto 0);
+    -- La DPRAM retourne 2 pixels sur 8 bits qui sont dupliqués retournes au controlleur VGA.
+    vga_dat_i <= video_mem_vga_core_data(15 downto 8) & video_mem_vga_core_data(15 downto 8) & video_mem_vga_core_data(7downto 0) & video_mem_vga_core_data(7 downto 0);
+
     o_vga_control_init_done <= vga_controller_ok;
 
 	--
@@ -344,14 +396,14 @@ begin
 		wbm_adr_o => vga_adr_o, wbm_dat_i => vga_dat_i, wbm_stb_o => vga_stb_o,
 		wbm_cyc_o => vga_cyc_o, wbm_ack_i => vga_ack_i, wbm_err_i => '0',
 		
-		clk_p_i => i_vga_clk, hsync_pad_o => o_hsync, vsync_pad_o => o_vsync, csync_pad_o => o_csync, blank_pad_o => o_blank,
+		clk_p_i => i_vga_clk, hsync_pad_o => hsync_vga, vsync_pad_o => vsync_vga, csync_pad_o => o_csync, blank_pad_o => o_blank,
 		r_pad_o => o_r, g_pad_o => o_g, b_pad_o => o_b	
-	);
-                
-    video_mem_vga_core_addr <= unsigned(vga_adr_o(15 downto 1)) - PACMAN_LINE_RESOLUTION when i_vga_even_line <= '0' else vga_adr_o(15 downto 1);
-    vga_dat_i <= video_mem_vga_core_data & video_mem_vga_core_data;
+	);    
     
     -- Acquittement immédiat
-    vga_ack_i <= '1' when (vga_cyc_o = '1') and (vga_stb_o = '1') else '0';                
-
+    vga_ack_i <= '1' when (vga_cyc_o = '1') and (vga_stb_o = '1') else '0'; 
+ 
+    o_hsync <= hsync_vga;
+    o_vsync <= vsync_vga;
+    
 end architecture Behavioral;
