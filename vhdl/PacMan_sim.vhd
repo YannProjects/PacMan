@@ -57,15 +57,15 @@ begin
    port map (
         -- Paramètres de gestion du core:
         -- garder ena_sys, rst_sys, halt, sys_clk => A configurer dans la partie simulation
-        i_ctrl        =>    sim_ctrl,
-        i_cfg         =>    sim_config,
+        i_ctrl        =>    sim_ctrl
+        -- i_cfg         =>    sim_config,
         -- Keyboard, Mouse and Joystick
         -- Conserver les entrées joy_a et joy_b:
         -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
-        i_kb_ms_joy   =>    sim_joystick,
+        -- i_kb_ms_joy   =>    sim_joystick,
         
         -- Boutons start1 / start2 / credit (active low)
-        i_kbut        =>    sim_start_credit_buttons
+        -- i_kbut        =>    sim_start_credit_buttons
     
         -- Audio/Video
         -- o_av                  : out   r_AV_fm_core
@@ -95,7 +95,8 @@ begin
     -- cfg_dynamic(7-0) : dipsw1 (active low)
     
     sim_config.cfg_static <= B"00000000000000000000000000000000";
-    sim_config.cfg_dynamic <= B"00000000000000000000001111111111";
+    -- sim_config.cfg_dynamic <= B"00000000000000000000001111111111";
+    sim_config.cfg_dynamic <= B"00000000000000000000000000000000";
     
     sim_ctrl.clk_sys <= i_main_clk;
     -- sim_ctrl.ena_sys <= '1' when i_ena_sys_cntr = 0 else '0';

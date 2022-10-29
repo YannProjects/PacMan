@@ -93,7 +93,6 @@ architecture RTL of PACMAN_VIDEO is
   signal sprite_xy_ram_do   : word( 7 downto 0);
   signal dr                 : word( 7 downto 0);
 
-  signal char_reg           : word( 7 downto 0);
   signal char_sum_reg       : word( 3 downto 0);
   signal char_match_reg     : bit1;
   signal char_hblank_reg    : bit1;
@@ -234,7 +233,7 @@ begin
         inc := (not i_hblank);
         -- 1f, 2f
         -- Dans ce cas (i_hcnt(2 downto 0) = "011"), la valeur positionnée sur le bus AB
-        -- correspond aux adresses paires des registres de sprite (X-location)
+        -- correspond aux adresses impaires des registres de sprite (Y-location)
         sum := (i_vcnt(7 downto 0) & '1') + (dr & inc);
         -- 3e
         match := '0';
@@ -257,7 +256,7 @@ begin
       xflip <= i_flip;
       yflip <= i_flip;
     else
-      -- Pour les sprites (hblanc = 1 => On lit les registres de sprites
+      -- Pour les sprites (hblank = 1 => On lit les registres de sprites
       xflip <= db_reg(1);
       yflip <= db_reg(0);
     end if;

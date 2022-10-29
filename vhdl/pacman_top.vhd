@@ -66,6 +66,9 @@ entity Pacman_Top is
     -- Buttons (active HIGH)
     i_button              : in  word( 2 downto 0);
 
+    -- Coins (active HIGH)
+    i_coins              : in  word( 2 downto 0);
+
     -- ROM interface
     o_rom_read            : out bit1;
     o_rom_addr            : out word(15 downto 0);
@@ -211,17 +214,17 @@ begin
     if (i_ena_sys = '1') then
 
       freeze <= cfg.freeze;
-      dipsw1_reg <= not cfg.dipsw1;
-      dipsw2_reg <= not cfg.dipsw2; -- Pengo only
+      dipsw1_reg <= cfg.dipsw1;
+      dipsw2_reg <= cfg.dipsw2; -- Pengo only
 
       --dipsw2_reg <= "00110011"; -- 1 coin 1 play
 
       -- active low inputs
       if (cfg.hw_pengo = '0') then
         -- Pacman
-        in0_reg(7) <= '1';              -- credit
-        in0_reg(6) <= '1';              -- coin2
-        in0_reg(5) <= not i_button(2);  -- coin1
+        in0_reg(7) <= '1';          -- credit
+        in0_reg(6) <= i_coins(1);   -- coin2
+        in0_reg(5) <= i_coins(0);   -- coin1
         in0_reg(4) <= cfg.dip_test; -- test_l dipswitch (rack advance)
         in0_reg(3) <= i_joy_a(1);   -- p1 down
         in0_reg(2) <= i_joy_a(3);   -- p1 right
@@ -465,11 +468,14 @@ begin
     wait until rising_edge(i_clk_sys);
     if (i_ena_sys = '1') then
       -- register on sync bus module that is used to store interrupt vector
+      -- Implementation du circuit U7 du SYNC BUS. Utilise pour memoriser le vecteur
+      -- d'interruption dans un registre (U7)
       if (cpu_iorq_l = '0') and (cpu_m1_l = '1') then
         cpu_vec_reg <= cpu_data_out;
       end if;
 
       -- read holding reg
+      -- Circuit U6 du SYNC BUS. Utilise pour lire le registre U6 
       if (hcnt(1 downto 0) = "01") then
         sync_bus_reg <= cpu_data_in;
       end if;
@@ -662,6 +668,7 @@ begin
     if (cpu_iorq_l = '0') and (cpu_m1_l = '0') then
       cpu_data_in <= cpu_vec_reg;
     elsif (sync_bus_wreq_l = '0') then
+      -- Cas de la lecture du registre de sync_bus_req.
       cpu_data_in <= sync_bus_reg;
     else
       if (program_rom_cs_l = '0') then
