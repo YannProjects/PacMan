@@ -224,6 +224,7 @@ architecture Behavioral of vga_control_top is
         -- Rouge:  0x00E00000
         -- Violet: 0x00800080
         -- Jaune:  0x00e0e000
+        -- Seulement 13 couleurs differentes sont utilisees dans PacMan
         (X"00000800", x"00000000", '0'),
         (X"00000B80", x"00E00000", '0'),
         (X"00000870", x"0000E000", '0'),
@@ -242,7 +243,7 @@ architecture Behavioral of vga_control_top is
         (x"00000000",x"00000000", '1')  --38 stop testbench
     );
     
-    constant PACMAN_LINE_RESOLUTION : integer := 288;
+    constant PACMAN_LINE_RESOLUTION : unsigned := X"0000090";
 
 begin
     -- Partie destinée à configurer le controlleur VGA
@@ -366,12 +367,11 @@ begin
             vga_addr_even_line_start <= (others => '0');
             vga_odd_line <= '0';
         elsif rising_edge(i_clk_52m) then
-            if unsigned("00" & vga_adr_o(31 downto 2)) - vga_addr_even_line_start = X"0000090" then
-                -- A remplacer par un type std_logic comme on ne regarde qu'un bit ?
+            if unsigned("00" & vga_adr_o(31 downto 2)) - vga_addr_even_line_start = PACMAN_LINE_RESOLUTION then
                 vga_odd_line <= not vga_odd_line;
                 vga_addr_even_line_start <= unsigned("00" & vga_adr_o(31 downto 2));
                 if vga_odd_line = '0' then
-                    vga_frame_offset <= vga_frame_offset + X"0090";
+                    vga_frame_offset <= vga_frame_offset + PACMAN_LINE_RESOLUTION;
                 end if;
             end if;
         end if;
@@ -409,6 +409,6 @@ begin
     o_vsync <= vsync_vga;
     o_r <= r_vgac(7 downto 5); 
     o_g <= g_vgac(7 downto 5);
-    o_b <= "0" & b_vgac(7 downto 6);
+    o_b <= b_vgac(7 downto 6) & "0";
     
 end architecture Behavioral;

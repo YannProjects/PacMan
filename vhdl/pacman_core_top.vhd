@@ -246,61 +246,33 @@ begin
     i_addr => ddr_addr(13 downto 0),
     o_data => ddr_data
   );
+
   
-  -- p_gen_testbench : process(i_clk_6m)
-  -- 
-  -- variable file_line : line;
-  -- file fptr : text;
-  -- constant C_FILE_NAME : string  := "VGA_Controller_Test_Vectors";
-  -- variable start_simu_time : time := now;
-  -- variable fstatus: FILE_OPEN_STATUS := STATUS_ERROR; 
-  -- 
-  -- begin
-  --       if fstatus /= OPEN_OK then
-  --       file_open(fstatus, fptr, C_FILE_NAME, WRITE_MODE);
-  --       writeline(fptr, file_line);
-  --       elsif rising_edge(i_clk_6m) then
-  --          if (now - start_simu_time > 50 ms) then
-  --              if (now - start_simu_time < 100 ms) then
-  --                  hwrite(file_line, video_rgb, right, 4);
-  --                  write(file_line, hsync_l, right, 4);
-  --                  write(file_line, vsync_l, right, 4);
-  --                  write(file_line, csync_l, right, 4);
-  --                  write(file_line, blank, right, 4);
-  --                  writeline(fptr, file_line);
-  --              else
-  --                  file_close(fptr);
-  --              end if;
-  --          end if;
-  --      end if;
-  --  end process;
-  
-  
-    u_vga_ctrl : entity work.vga_control_top
-    port map ( 
-        i_reset => i_ctrl.rst_sys,
-        i_clk_52m => i_clk_52m,
-        i_vga_clk => i_vga_clock,
-        i_sys_clk => i_clk_6m,
+  u_vga_ctrl : entity work.vga_control_top
+  port map ( 
+     i_reset => i_ctrl.rst_sys,
+     i_clk_52m => i_clk_52m,
+     i_vga_clk => i_vga_clock,
+     i_sys_clk => i_clk_6m,
     
-        i_hsync => hsync_l,
-        i_vsync => vsync_l,
-        i_csync => csync_l,
-        i_blank => blank,
-        i_rgb => video_rgb,
+     i_hsync => hsync_l,
+     i_vsync => vsync_l,
+     i_csync => csync_l,
+     i_blank => blank,
+     i_rgb => video_rgb,
         
-        o_hsync => o_hsync,
-        o_vsync => o_vsync,
-        o_blank => blank_vga,
-        o_r => o_r,
-        o_g => o_g,
-        o_b => o_b,             
+     o_hsync => o_hsync,
+     o_vsync => o_vsync,
+     o_blank => blank_vga,
+     o_r => o_r,
+     o_g => o_g,
+     o_b => o_b,             
     
-        o_vga_control_init_done => vga_control_init_done
-    );
+     o_vga_control_init_done => vga_control_init_done
+  );
     
-    o_r_vga <= o_r when blank_vga = '0' else "000";
-    o_g_vga <= o_g when blank_vga = '0' else "000";
-    o_b_vga <= o_b when blank_vga = '0' else "000";
+  o_r_vga <= o_r when blank_vga = '0' else "000";
+  o_g_vga <= o_g when blank_vga = '0' else "000";
+  o_b_vga <= o_b when blank_vga = '0' else "000";
 
 end RTL;
