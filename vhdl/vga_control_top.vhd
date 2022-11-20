@@ -328,7 +328,7 @@ begin
         end if;
     end process;
 
-    -- Rouge : 3 bits, Vert : 3 bits, Bleu : 2 bits => 8 bits dans la DPRAM
+    -- Rouge : 3 bits, Vert : 3 bits, Bleu : 3 bits avec le bit de poids fort à 0 => 8 bits dans la DPRAM
     video_mem_pacman_data <= i_rgb(23 downto 21) & i_rgb(15 downto 13) & i_rgb(7 downto 6);
 	
     -- Détection ligne paires/impaires pour le doublement des lignes
