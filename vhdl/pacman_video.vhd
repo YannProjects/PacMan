@@ -228,12 +228,22 @@ begin
     wait until rising_edge(i_clk);
     if (i_ena = '1') then
       -- Tous les 4 pixels (4 pixels = 8 bits avec 2 bits par pixel)
-      -- Composant 1H 74LS174 
+      -- Composants 1H 74LS174, 1F et 2F (74LS283), la somme est latchée
+      -- sur le front montant 4H 
       if (i_hcnt(2 downto 0) = "011") then -- rising 4h
+        -- Quand hblank = 0 => inc = 1 et dr = "11111111" => on a toujours dr & inc = 111111111
+        -- donc:
+        -- (i_vcnt(7 downto 0) & '1') + (dr & inc):
+        --  xxxxxxxx1
+        -- +
+        --  111111111
+        --  ---------
+        --  xxxxxxxx => on aura toujours char_match_reg = '0' si i_hblank = '0'
         inc := (not i_hblank);
         -- 1f, 2f
         -- Dans ce cas (i_hcnt(2 downto 0) = "011"), la valeur positionnée sur le bus AB
-        -- correspond aux adresses impaires des registres de sprite (Y-location)
+        -- correspond aux adresses paires des registres de sprites (X-location)
+        -- mais l'image est orientée horizontalement et coordonnée X = n° de ligne sur l'ecran ?
         sum := (i_vcnt(7 downto 0) & '1') + (dr & inc);
         -- 3e
         match := '0';
@@ -257,6 +267,9 @@ begin
       yflip <= i_flip;
     else
       -- Pour les sprites (hblank = 1 => On lit les registres de sprites
+      -- bits 7-2 : n° sprite
+      -- bits 1 : flip X
+      -- bits 0 : flip Y
       xflip <= db_reg(1);
       yflip <= db_reg(0);
     end if;
@@ -294,20 +307,14 @@ begin
   -- Tile (= char) roms
   u_rom_5E : entity work.rom_pacman_5e
   port map (
-    -- YHE avant c'était juste "ca" mais la taille n'était pas bonne
-    -- apparemment ca(11) est utilisée comme CE de la ROM sur le schéma original
-    a => ca(10 downto 0),
-    clk => i_clk_sys,
+    a => ca,
     spo => char_rom_5e_0_dout
   );
 
   -- Sprite ROM
   u_rom_5F : entity work.rom_pacman_5f
   port map (
-    -- YHE avant c'était juste "CA" mais la taille n'était pas bonne
-    -- apparemment ca(11) est utilisée comme CE de la ROM sur le schéma original
-    a => ca(10 downto 0),
-    clk => i_clk_sys,
+    a => ca,
     spo => char_rom_5f_0_dout
   );
 
@@ -408,8 +415,7 @@ begin
   port map (
     -- Juste besoin de 256 octets
     a => col_rom_addr(7 downto 0),
-    spo => lut_4a,
-    clk => i_clk_sys
+    spo => lut_4a
   );
 
   p_cntr_ld : process(i_hcnt, vout_obj_on, vout_hblank)
@@ -494,6 +500,8 @@ begin
       -- Cette partie permet soit de lire la donnée contenue dans le latch sprite (sprite_ram_ip <= sprite_ram_reg) pour l'affichage du sprite
       -- soit d'écrire la valeur de la couleur dans la RAM des sprites (sprite_ram_ip <= lut_4a_t1(3 downto 0))
       -- Mais, je ne comprends pas à quel moment les données de sprites sont écrites dans la RAM sprite (par le CPU ???)
+      -- A priori, le sonnées sont écrite durant top line avec hsync = 1, elles sont effacées juste après la lecture
+      -- grâce au décalage d'un cyle entre la lecture (en premier) et l'ecriture (en second via vout_hblank_t1). A confirmer quand même.
       if (video_op_sel = '1') then
         sprite_ram_ip <= sprite_ram_reg;
       else
@@ -524,8 +532,7 @@ begin
   u_rom_7f : entity work.rom_pacman_7f
   port map (
     a => final_col,
-    spo => lut_7f,
-    clk => i_clk_sys
+    spo => lut_7f
   );
   
   p_final_reg : process

@@ -52,7 +52,6 @@ entity Pacman_Program_ROM is
     i_addr                      : in  word(13 downto 0);
     o_data                      : out word( 7 downto 0);
     --
-    i_clk                       : in  bit1;
     i_ena                       : in  bit1
     );
 end;
@@ -77,28 +76,24 @@ begin
   u_rom_6E : entity work.rom_pacman_6e
   port map (
     a => i_addr(11 downto 0),
-    clk => i_clk,
     spo => rom_data_0
   );    
 
   u_rom_6F : entity work.rom_pacman_6f
   port map (
     a => i_addr(11 downto 0),
-    clk => i_clk,
     spo => rom_data_1
   );    
 
   u_rom_6H : entity work.rom_pacman_6h
   port map (
     a => i_addr(11 downto 0),
-    clk => i_clk,
     spo => rom_data_2
   );    
 
   u_rom_6J : entity work.rom_pacman_6j
   port map (
     a => i_addr(11 downto 0),
-    clk => i_clk,
     spo => rom_data_3
   );
   

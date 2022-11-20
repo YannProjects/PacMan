@@ -15,17 +15,42 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="68,804,130.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="68,804,565.001 ns"></ZoomEndTime>
-      <Cursor1Time time="68,804,304.780 ns"></Cursor1Time>
+      <ZoomStartTime time="296,783,875.980 ns"></ZoomStartTime>
+      <ZoomEndTime time="296,784,444.481 ns"></ZoomEndTime>
+      <Cursor1Time time="296,784,061.980 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="312"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="1" />
    <wave_markers>
-      <marker time="68804268220" label="" />
+      <marker time="9661063976280" label="" />
+      <marker time="9661077908213" label="" />
+      <marker time="9661246357947" label="" />
+      <marker time="9661260289880" label="" />
+      <marker time="9664851245586" label="" />
+      <marker time="9661932189008" label="" />
+      <marker time="270923467955" label="" />
+      <marker time="291892604862" label="" />
+      <marker time="291893876688" label="" />
+      <marker time="291896409767" label="" />
+      <marker time="291897676306" label="" />
+      <marker time="292106655300" label="" />
+      <marker time="980784600165" label="" />
+      <marker time="966343181421" label="" />
+      <marker time="966310884667" label="" />
+      <marker time="966221277008" label="" />
+      <marker time="966221527008" label="" />
+      <marker time="965978734721" label="" />
+      <marker time="965981267800" label="" />
+      <marker time="965983800879" label="" />
+      <marker time="965986333958" label="" />
+      <marker time="966062326319" label="" />
+      <marker time="966067392476" label="" />
+      <marker time="966064859398" label="" />
+      <marker time="966069925555" label="" />
+      <marker time="262845163315" label="" />
    </wave_markers>
    <wvobject fp_name="group396" type="group">
       <obj_property name="label">core_top</obj_property>
@@ -112,8 +137,8 @@
             <obj_property name="ObjectShortName">o_g[2:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/o_b" type="array">
-            <obj_property name="ElementShortName">o_b[1:0]</obj_property>
-            <obj_property name="ObjectShortName">o_b[1:0]</obj_property>
+            <obj_property name="ElementShortName">o_b[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_b[2:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/video_r" type="array">
             <obj_property name="ElementShortName">video_r[2:0]</obj_property>
@@ -207,6 +232,8 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_data_out" type="array">
             <obj_property name="ElementShortName">cpu_data_out[7:0]</obj_property>
             <obj_property name="ObjectShortName">cpu_data_out[7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#800080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_data_in" type="array">
             <obj_property name="ElementShortName">cpu_data_in[7:0]</obj_property>
@@ -231,6 +258,8 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_wr_l" type="logic">
             <obj_property name="ElementShortName">cpu_wr_l</obj_property>
             <obj_property name="ObjectShortName">cpu_wr_l</obj_property>
+            <obj_property name="CustomSignalColor">#800080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_rfsh_l" type="logic">
             <obj_property name="ElementShortName">cpu_rfsh_l</obj_property>
@@ -527,6 +556,7 @@
          <wvobject fp_name="group216" type="group">
             <obj_property name="label">u_rams</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams/i_cfg_hw_pengo" type="logic">
                <obj_property name="ElementShortName">i_cfg_hw_pengo</obj_property>
                <obj_property name="ObjectShortName">i_cfg_hw_pengo</obj_property>
@@ -575,7 +605,6 @@
          <wvobject fp_name="group215" type="group">
             <obj_property name="label">u_vram_addresser</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_vram_addr/i_h" type="array">
                <obj_property name="ElementShortName">i_h[8:0]</obj_property>
                <obj_property name="ObjectShortName">i_h[8:0]</obj_property>
@@ -713,7 +742,7 @@
                <obj_property name="ObjectShortName">[8]</obj_property>
                <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
                <obj_property name="UseCustomSignalColor">true</obj_property>
-               <obj_property name="label">256H_i_hcnt_8</obj_property>
+               <obj_property name="label">256H_L _(hcnt(8))</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_ab" type="array">
                <obj_property name="ElementShortName">i_ab[11:0]</obj_property>
@@ -826,6 +855,8 @@
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/db_reg" type="array">
                <obj_property name="ElementShortName">db_reg[7:0]</obj_property>
                <obj_property name="ObjectShortName">db_reg[7:0]</obj_property>
+               <obj_property name="CustomSignalColor">#FFD700</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/xflip" type="logic">
                <obj_property name="ElementShortName">xflip</obj_property>
@@ -881,6 +912,10 @@
                <obj_property name="ElementShortName">vout_obj_on</obj_property>
                <obj_property name="ObjectShortName">vout_obj_on</obj_property>
             </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_obj_on_t1" type="logic">
+               <obj_property name="ElementShortName">vout_obj_on_t1</obj_property>
+               <obj_property name="ObjectShortName">vout_obj_on_t1</obj_property>
+            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_yflip" type="logic">
                <obj_property name="ElementShortName">vout_yflip</obj_property>
                <obj_property name="ObjectShortName">vout_yflip</obj_property>
@@ -889,9 +924,15 @@
                <obj_property name="ElementShortName">vout_hblank</obj_property>
                <obj_property name="ObjectShortName">vout_hblank</obj_property>
             </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_hblank_t1" type="logic">
+               <obj_property name="ElementShortName">vout_hblank_t1</obj_property>
+               <obj_property name="ObjectShortName">vout_hblank_t1</obj_property>
+            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_db" type="array">
                <obj_property name="ElementShortName">vout_db[4:0]</obj_property>
                <obj_property name="ObjectShortName">vout_db[4:0]</obj_property>
+               <obj_property name="CustomSignalColor">#FFD700</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/cntr_ld" type="logic">
                <obj_property name="ElementShortName">cntr_ld</obj_property>
@@ -921,13 +962,17 @@
                <obj_property name="ElementShortName">sprite_ram_reg[3:0]</obj_property>
                <obj_property name="ObjectShortName">sprite_ram_reg[3:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_obj_on_t1" type="logic">
-               <obj_property name="ElementShortName">vout_obj_on_t1</obj_property>
-               <obj_property name="ObjectShortName">vout_obj_on_t1</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/col_rom_addr" type="array">
                <obj_property name="ElementShortName">col_rom_addr[10:0]</obj_property>
                <obj_property name="ObjectShortName">col_rom_addr[10:0]</obj_property>
+               <obj_property name="CustomSignalColor">#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/final_col" type="array">
+               <obj_property name="ElementShortName">final_col[4:0]</obj_property>
+               <obj_property name="ObjectShortName">final_col[4:0]</obj_property>
+               <obj_property name="CustomSignalColor">#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/lut_4a" type="array">
                <obj_property name="ElementShortName">lut_4a[7:0]</obj_property>
@@ -937,10 +982,6 @@
                <obj_property name="ElementShortName">lut_4a_t1[7:0]</obj_property>
                <obj_property name="ObjectShortName">lut_4a_t1[7:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/vout_hblank_t1" type="logic">
-               <obj_property name="ElementShortName">vout_hblank_t1</obj_property>
-               <obj_property name="ObjectShortName">vout_hblank_t1</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/video_out" type="array">
                <obj_property name="ElementShortName">video_out[7:0]</obj_property>
                <obj_property name="ObjectShortName">video_out[7:0]</obj_property>
@@ -949,13 +990,11 @@
                <obj_property name="ElementShortName">video_op_sel</obj_property>
                <obj_property name="ObjectShortName">video_op_sel</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/final_col" type="array">
-               <obj_property name="ElementShortName">final_col[4:0]</obj_property>
-               <obj_property name="ObjectShortName">final_col[4:0]</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/lut_7f" type="array">
                <obj_property name="ElementShortName">lut_7f[7:0]</obj_property>
                <obj_property name="ObjectShortName">lut_7f[7:0]</obj_property>
+               <obj_property name="CustomSignalColor">#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
          </wvobject>
          <wvobject fp_name="group219" type="group">
@@ -1110,10 +1149,6 @@
             <obj_property name="ElementShortName">o_data[7:0]</obj_property>
             <obj_property name="ObjectShortName">o_data[7:0]</obj_property>
          </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_prom_pacman/i_clk" type="logic">
-            <obj_property name="ElementShortName">i_clk</obj_property>
-            <obj_property name="ObjectShortName">i_clk</obj_property>
-         </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_prom_pacman/i_ena" type="logic">
             <obj_property name="ElementShortName">i_ena</obj_property>
             <obj_property name="ObjectShortName">i_ena</obj_property>
@@ -1220,8 +1255,8 @@
             <obj_property name="ObjectShortName">o_g[2:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/o_b" type="array">
-            <obj_property name="ElementShortName">o_b[1:0]</obj_property>
-            <obj_property name="ObjectShortName">o_b[1:0]</obj_property>
+            <obj_property name="ElementShortName">o_b[2:0]</obj_property>
+            <obj_property name="ObjectShortName">o_b[2:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/o_vga_control_init_done" type="logic">
             <obj_property name="ElementShortName">o_vga_control_init_done</obj_property>
@@ -1319,10 +1354,6 @@
             <obj_property name="ElementShortName">vga_ack_i</obj_property>
             <obj_property name="ObjectShortName">vga_ack_i</obj_property>
          </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_we_o" type="logic">
-            <obj_property name="ElementShortName">vga_we_o</obj_property>
-            <obj_property name="ObjectShortName">vga_we_o</obj_property>
-         </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/hsync_vga" type="logic">
             <obj_property name="ElementShortName">hsync_vga</obj_property>
             <obj_property name="ObjectShortName">hsync_vga</obj_property>
@@ -1373,8 +1404,8 @@
          <obj_property name="ObjectShortName">o_g[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/o_b" type="array">
-         <obj_property name="ElementShortName">o_b[1:0]</obj_property>
-         <obj_property name="ObjectShortName">o_b[1:0]</obj_property>
+         <obj_property name="ElementShortName">o_b[2:0]</obj_property>
+         <obj_property name="ObjectShortName">o_b[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/i_clk_52m" type="logic">
          <obj_property name="ElementShortName">i_clk_52m</obj_property>

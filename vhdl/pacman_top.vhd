@@ -763,9 +763,9 @@ begin
       i_ena           => i_ena_sys
       );
 
-  o_video_rgb(23 downto 16) <= video_r & video_r & video_r(2 downto 1);
-  o_video_rgb(15 downto  8) <= video_g & video_g & video_g(2 downto 1);
-  o_video_rgb( 7 downto  0) <= video_b & video_b & video_b & video_b;
+  o_video_rgb(23 downto 16) <= video_r & "00000";
+  o_video_rgb(15 downto  8) <= video_g & "00000";
+  o_video_rgb( 7 downto  0) <= video_b & "000000";
 
   o_hsync_l <= not hsync;
   o_vsync_l <= not vsync;

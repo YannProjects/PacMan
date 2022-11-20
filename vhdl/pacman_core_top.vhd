@@ -50,6 +50,7 @@ use UNISIM.Vcomponents.all;
 
 use work.replay_pack.all;
 use work.replay_lib_wrap_pack.all;
+-- use work.pacman_core_pack.all;
 
 use std.textio.all;
 
@@ -84,7 +85,7 @@ entity Core_Top is
     o_vsync               : out std_logic;
     o_r_vga               : out std_logic_vector (2 downto 0);
     o_g_vga               : out std_logic_vector (2 downto 0);
-    o_b_vga               : out std_logic_vector (1 downto 0)
+    o_b_vga               : out std_logic_vector (2 downto 0)
     );
 end;
 
@@ -129,14 +130,45 @@ architecture RTL of Core_Top is
   signal o_av_stub : r_AV_fm_core;
   
   signal blank_vga : std_logic;
-  signal o_r, o_g : std_logic_vector(2 downto 0);
-  signal o_b : std_logic_vector(1 downto 0);
-
+  signal o_r, o_g, o_b : std_logic_vector(2 downto 0);
 
 begin
 
   i_cfg.cfg_static <= B"00000000000000000000000000000000";
-  i_cfg.cfg_dynamic <= B"00000000000000000000111111111111";  
+  -- cfg_dynamic:
+  -- cfg_dynamic(7..0): DIP switch 1 (ON = 0, OFF = 1) (https://www.arcade-museum.com/manuals-videogames/S/SuperABC.pdf)
+  --                         SW1   SW2   SW3   SW4   SW5   SW6   SW7   SW8
+  -- Free Play               ON    ON
+  -- 1 Coin 1 Credit *       OFF   ON
+  -- 1 Coin 2 Credits        ON    OFF
+  -- 2 Coins 1 Credit        OFF   OFF
+  ------------------------------------------------------------------------
+  -- 1 Pacman Per Game                   ON    ON
+  -- 2 Pacman Per Game                   OFF   ON
+  -- 3 Pacman Per Game *                 ON    OFF
+  -- 5 Pacman Per Game                   OFF   OFF
+  ------------------------------------------------------------------------
+  -- Bonus Player @ 10000 Pts *                      ON    ON
+  -- Bonus Player @ 15000 Pts                        OFF   ON
+  -- Bonus Player @ 20000 Pts                        ON    OFF
+  -- No Bonus Players                                OFF   OFF
+  ------------------------------------------------------------------------
+  -- Free Game in ULTRA PAC / Buy-in ON *                  ON
+  -- Free Life in ULTRA PAC / Buy-in OFF                   OFF
+  ------------------------------------------------------------------------
+  -- Auto. Rack Advance (Skip)                                   ON
+  -- Normal- Must be off for game play *                         OFF
+  ------------------------------------------------------------------------
+  -- Freeze Video (Pause)                                              ON
+  -- Normal- Must be off for game play *                               OFF
+  ------------------------------------------------------------------------
+  -- cfg_dynamic(11): Mode "service", seulement utilise dans le cas de Pengo
+  -- cfg_dynamic(10) : Utilise pour lire un switch (le 7) qui doit être lu à 1 (OFF)
+  -- cfg_dynamic(9) : Mode cocktail (0 = ON)
+  -- cfg_dynamic(8) : Mode test (0 = ON)
+  i_cfg.cfg_dynamic <= B"00000000000000000000111111111111";
+  -- i_cfg.cfg_dynamic <= c_2_coins_1_credit | c_5_pacman | c_no_bonus | c_normal_rack | c_normal_video;
+ 
   
   -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
   i_kb_ms_joy_stub.joy_a_l <= (others => '1');
@@ -209,7 +241,6 @@ begin
   
   u_prom_pacman : entity work.Pacman_Program_ROM
   port map (
-    i_clk => i_clk_6m,
     i_ena => i_ena_sys,
     -- Taille ROM = 2048 octets. Il y a 3 bits de plus sur l'interface
     i_addr => ddr_addr(13 downto 0),
@@ -270,6 +301,6 @@ begin
     
     o_r_vga <= o_r when blank_vga = '0' else "000";
     o_g_vga <= o_g when blank_vga = '0' else "000";
-    o_b_vga <= o_b when blank_vga = '0' else "00";
+    o_b_vga <= o_b when blank_vga = '0' else "000";
 
 end RTL;

@@ -291,7 +291,6 @@ begin
   u_rom_1M : entity work.rom_pacman_1m
   port map (
     a => rom1m_addr(7 downto 0),
-    clk => i_clk,
     spo => rom1m_data
   );
     

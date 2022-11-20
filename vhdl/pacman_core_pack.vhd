@@ -54,6 +54,25 @@ Package Core_Pack is
   constant c_cfg_static           : word(31 downto 0) := x"00000000";
   constant c_cfg_dynamic          : word(31 downto 0) := x"00000000";
   constant c_version              : word(15 downto 0) := x"8010"; -- top bit must be set to enable DRAM
+  
+  constant c_free_play            : word(15 downto 0) := b"00000000";
+  constant c_1_coin_1_credit      : word(15 downto 0) := b"00000010";
+  constant c_1_coin_2_credits     : word(15 downto 0) := b"00000001";
+  constant c_2_coins_1_credit     : word(15 downto 0) := b"00000011";
+  constant c_1_pacman             : word(15 downto 0) := b"00000000";
+  constant c_2_pacman             : word(15 downto 0) := b"00001000";
+  constant c_3_pacman             : word(15 downto 0) := b"00000100";
+  constant c_5_pacman             : word(15 downto 0) := b"00001100";
+  constant c_bonus_10000          : word(15 downto 0) := b"00000000";
+  constant c_bonus_15000          : word(15 downto 0) := b"00100000";
+  constant c_bonus_20000          : word(15 downto 0) := b"00010000";
+  constant c_no_bonus             : word(15 downto 0) := b"00110000";
+  constant c_free_game            : word(15 downto 0) := b"00000000";
+  constant c_free_life            : word(15 downto 0) := b"00100000";
+  constant c_auto_rack_advance    : word(15 downto 0) := b"00000000";
+  constant c_normal_rack          : word(15 downto 0) := b"01000000";
+  constant c_freeze_video         : word(15 downto 0) := b"00000000";
+  constant c_normal_video         : word(15 downto 0) := b"10000000";
 
 end;
 
