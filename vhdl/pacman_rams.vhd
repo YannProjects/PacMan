@@ -51,16 +51,13 @@ library UNISIM;
 
 entity Pacman_RAMs is
   port (
-    i_cfg_hw_pengo    : in    bit1;
-    --
     i_addr            : in    word(11 downto 0);
     i_data            : in    word( 7 downto 0);
     o_data            : out   word( 7 downto 0);
     i_r_w_l           : in    bit1;
     i_vram_l          : in    bit1;
     --
-    i_clk             : in    bit1;
-    i_ena             : in    bit1
+    i_clk             : in    bit1
     );
 end;
 
@@ -98,7 +95,7 @@ begin
     end if;
   end process;
 
- u_rams : entity work.pacman_ram
+ u_rams : entity work.pacman_ram_v2
  port map (
     a => ram_addr(11 downto 0),
     d => i_data,
@@ -107,26 +104,11 @@ begin
     spo => ram_data
  );
 
--- u_rams : for i in 0 to 1 generate
---   u_ram : RAMB16_S4
---     port map (
---       DO   => ram_data(3+i*4 downto i*4),
---       ADDR => ram_addr(11 downto 0),
---       CLK  => i_clk,
---       DI   => i_data(3+i*4 downto i*4),
---       EN   => i_ena,
---       SSR  => '0',
---       WE   => ram_we
---       );
---   end generate;
-
-  p_output : process(i_cfg_hw_pengo, ram_addr, ram_data)
+  p_output : process(ram_addr, ram_data)
   begin
     o_data <= ram_data;
-    if (i_cfg_hw_pengo = '0') then
-      if (ram_addr(11 downto 10) = "10") then -- no memory here for Pacman
-        o_data <= (others => '0');
-      end if;
+    if (ram_addr(11 downto 10) = "10") then -- no memory here for Pacman
+      o_data <= (others => '0');
     end if;
   end process;
 

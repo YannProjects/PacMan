@@ -53,10 +53,7 @@ use UNISIM.Vcomponents.all;
 
 entity Pacman_Video is
   port (
-    i_clk_sys                   : in  bit1 := '0';
-    i_ena_sys                   : in  bit1 := '0';
-    --
-    i_hw_type_is_mrtnt          : in  bit1;
+    i_clk                       : in  bit1;
     --
     i_hcnt                      : in  word(8 downto 0);
     i_vcnt                      : in  word(8 downto 0);
@@ -67,27 +64,16 @@ entity Pacman_Video is
     i_hblank                    : in  bit1;
     i_vblank                    : in  bit1;
     i_flip                      : in  bit1;
-    i_ps                        : in  worD( 2 downto 0); -- Pengo only
     i_wr2_l                     : in  bit1;
     --
     o_red                       : out word( 2 downto 0);
     o_green                     : out word( 2 downto 0);
     o_blue                      : out word( 1 downto 0);
-    o_blank                     : out bit1;
-    --
-    i_clk                       : in  bit1;
-    i_ena                       : in  bit1
+    o_blank                     : out bit1
     );
 end;
 
 architecture RTL of PACMAN_VIDEO is
-
-  signal memio_ram_0        : r_Memio_fm_core;
-  signal memio_ram_1        : r_Memio_fm_core;
-  signal memio_ram_2        : r_Memio_fm_core;
-  signal memio_ram_3        : r_Memio_fm_core;
-  signal memio_ram_4        : r_Memio_fm_core;
-  signal memio_ram_5        : r_Memio_fm_core;
 
   signal sprite_xy_ram_wen  : bit1;
   signal sprite_xy_ram_do   : word( 7 downto 0);
@@ -96,7 +82,6 @@ architecture RTL of PACMAN_VIDEO is
   signal char_sum_reg       : word( 3 downto 0);
   signal char_match_reg     : bit1;
   signal char_hblank_reg    : bit1;
-  signal char_hblank_reg_t1 : bit1;
   signal db_reg             : word( 7 downto 0);
 
   signal xflip              : bit1;
@@ -106,9 +91,6 @@ architecture RTL of PACMAN_VIDEO is
   signal ca                 : word(11 downto 0);
   signal char_rom_5e_0_dout : word( 7 downto 0);
   signal char_rom_5f_0_dout : word( 7 downto 0);
-  signal char_rom_5e_1_dout : word( 7 downto 0);
-  signal char_rom_5f_1_dout : word( 7 downto 0);
-  signal cd_dout            : word( 7 downto 0);
   signal cd                 : word( 7 downto 0);
 
   signal shift_regl         : word( 3 downto 0);
@@ -179,14 +161,14 @@ architecture RTL of PACMAN_VIDEO is
 
 begin
 
-  p_sprite_ram_comb : process(i_ena, i_hblank, i_hcnt, i_wr2_l, sprite_xy_ram_do)
+  p_sprite_ram_comb : process(i_hblank, i_hcnt, i_wr2_l, sprite_xy_ram_do)
   begin
     -- ram enable is low when HBLANK_L is 0 (for sprite access) or
     -- 2H is low (for cpu writes)
     -- we can simplify this
 
     sprite_xy_ram_wen <= '0';
-    if (i_wr2_l = '0') and (i_ena = '1') then
+    if (i_wr2_l = '0') then
       sprite_xy_ram_wen <= '1';
     end if;
 
@@ -225,8 +207,7 @@ begin
     variable sum : std_logic_vector(8 downto 0);
     variable match : std_logic;
   begin
-    wait until rising_edge(i_clk);
-    if (i_ena = '1') then
+      wait until rising_edge(i_clk);
       -- Tous les 4 pixels (4 pixels = 8 bits avec 2 bits par pixel)
       -- Composants 1H 74LS174, 1F et 2F (74LS283), la somme est latchée
       -- sur le front montant 4H 
@@ -257,7 +238,6 @@ begin
         -- 4d 74LS373
         db_reg <= i_db; -- character reg
       end if;
-    end if;
   end process;
 
   p_flip_comb : process(char_hblank_reg, i_flip, db_reg)
@@ -297,13 +277,8 @@ begin
     ca(1) <= char_sum_reg(1) xor xflip;
     ca(0) <= char_sum_reg(0) xor xflip;
 
-    -- swap address lines 0/2 for Mr TNT
-    if (i_hw_type_is_mrtnt = '1') then
-      ca(2) <= char_sum_reg(0) xor xflip;
-      ca(0) <= char_sum_reg(2) xor xflip;
-    end if;
   end process;
-
+  
   -- Tile (= char) roms
   u_rom_5E : entity work.rom_pacman_5e
   port map (
@@ -318,40 +293,27 @@ begin
     spo => char_rom_5f_0_dout
   );
 
-  p_char_data_mux : process(char_hblank_reg, i_ps, char_rom_5e_0_dout, char_rom_5f_0_dout, char_rom_5e_1_dout, char_rom_5f_1_dout)
+  p_char_data_mux : process(char_hblank_reg, char_rom_5e_0_dout, char_rom_5f_0_dout)
   begin
     -- 5l
     -- 5e 1
     -- 5f 3
 
-    -- ps(2) = 1 est seulement utilisé dans le cas de Pengo
-    if (i_ps(2) = '1') then
-      if (char_hblank_reg = '0') then
-        cd_dout <= char_rom_5e_1_dout;
-      else
-        cd_dout <= char_rom_5f_1_dout;
-      end if;
+    -- pacman.5e Tile ROM (256 8x8 pixel tile image)
+    -- pacman.5f Sprite ROM (64 16x16 sprite images)
+    if (char_hblank_reg = '0') then
+      cd <= char_rom_5e_0_dout;
     else
-      -- pacman.5e Tile ROM (256 8x8 pixel tile image)
-      -- pacman.5f Sprite ROM (64 16x16 sprite images)
-      if (char_hblank_reg = '0') then
-        cd_dout <= char_rom_5e_0_dout;
-      else
-        -- hblank = 1 => On lit la ROM des sprites
-        cd_dout <= char_rom_5f_0_dout;
-      end if;
+      -- hblank = 1 => On lit la ROM des sprites
+      cd <= char_rom_5f_0_dout;
     end if;
   end process;
-
-  -- swap D4 and D6 for Mr TNT
-  cd <= cd_dout(7) & cd_dout(4) & cd_dout(5) & cd_dout(6) & cd_dout(3 downto 0) when (i_hw_type_is_mrtnt = '1') else cd_dout;
 
   -- 5B/5C 74LS194
   p_char_shift : process
   begin
     -- 4 bit shift req
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       case shift_sel is
         when "00" => null;
 
@@ -365,7 +327,6 @@ begin
                      shift_regl <= cd(3 downto 0);
         when others => null;
       end case;
-    end if;
   end process;
 
   -- 5A
@@ -391,25 +352,22 @@ begin
   p_video_out_reg : process
   begin
     wait until rising_edge (i_clk);
-    if (i_ena = '1') then
       if (i_hcnt(2 downto 0) = "111") then
         vout_obj_on   <= obj_on;
         vout_yflip    <= yflip;
         vout_hblank   <= i_hblank;
         vout_db(4 downto 0) <= i_db(4 downto 0); -- colour reg
       end if;
-    end if;
   end process;
 
   -- LUT de conversion permettant de retrouver l'index de couleurs 
-  p_lut_4a_comb : process(i_ps, vout_db, shift_op)
+  p_lut_4a_comb : process(vout_db, shift_op)
   begin
-    col_rom_addr(10 downto 9) <= (others => '0'); --
-    col_rom_addr(          8) <= i_ps(1);
+    col_rom_addr(10 downto 8) <= (others => '0'); --
     col_rom_addr(          7) <= '0';  -- Pengo PCB option
     col_rom_addr( 6 downto 0) <= vout_db(4 downto 0) & shift_op(1 downto 0);
   end process;
-
+  
   -- 0x80 Pacman, 0x400 Pengo
   u_rom_4a : entity work.rom_pacman_4a
   port map (
@@ -432,13 +390,11 @@ begin
   p_ra_cnt : process
   begin
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       if (cntr_ld = '1') then
         ra <= dr;
       else
         ra <= ra + "1";
       end if;
-    end if;
   end process;
 
   sprite_ram_addr <= "0000" & ra;
@@ -450,7 +406,7 @@ begin
       DIA   => sprite_ram_ip,
       ADDRA => sprite_ram_addr_t1,
       WEA   => vout_obj_on_t1,
-      ENA   => i_ena,
+      ENA   => '1',
       SSRA  => '0',
       CLKA  => i_clk,
       -- read side
@@ -458,7 +414,7 @@ begin
       DIB   => "0000",
       ADDRB => sprite_ram_addr,
       WEB   => '0',
-      ENB   => i_ena,
+      ENB   => '1',
       SSRB  => '0',
       CLKB  => i_clk
       );
@@ -483,12 +439,10 @@ begin
   p_sprite_ram_ip_reg : process
   begin
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       sprite_ram_addr_t1 <= sprite_ram_addr;
       vout_obj_on_t1 <= vout_obj_on;
       vout_hblank_t1 <= vout_hblank;
       lut_4a_t1 <= lut_4a;
-    end if;
   end process;
 
   p_sprite_ram_ip_comb : process(vout_hblank_t1, video_op_sel, sprite_ram_reg, lut_4a_t1)
@@ -512,10 +466,10 @@ begin
 
   -- Multiplexeur sélectionnant soit les données de la ROM couleur, soit du latch de sprite (3C)
   -- qui contient les valeurs de couleurs du sprite
-  p_video_op_comb : process(i_ps, vout_hblank, i_vblank, video_op_sel, sprite_ram_reg, lut_4a)
+  p_video_op_comb : process(vout_hblank, i_vblank, video_op_sel, sprite_ram_reg, lut_4a)
   begin
       -- 3b
-    final_col(4) <= i_ps(0);
+    final_col(4) <= '0';
     if (vout_hblank = '1') or (i_vblank = '1') then
       final_col(3 downto 0) <= (others => '0');
     else
@@ -527,8 +481,6 @@ begin
     end if;
   end process;
 
-  -- 0x10 Pacman, 0x20 Pengo
-  -- ROM de conversion index couleur (16 valeurs) vers valeurs RGB (8 bits)
   u_rom_7f : entity work.rom_pacman_7f
   port map (
     a => final_col,
@@ -539,10 +491,8 @@ begin
   begin
     wait until rising_edge(i_clk);
     -- not really registered
-    if (i_ena = '1') then
-      video_out <= lut_7f;
-      o_blank   <= vout_hblank or i_vblank;
-    end if;
+    video_out <= lut_7f;
+    o_blank   <= vout_hblank or i_vblank;
   end process;
 
   --  assign outputs

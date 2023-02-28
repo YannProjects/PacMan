@@ -132,7 +132,7 @@ architecture Behavioral of vga_control_top is
         dinb : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         doutb : OUT STD_LOGIC_VECTOR(15 DOWNTO 0) -- VGA core read side
     );
-    end component;    
+    end component; 
 
 	type states is (wait_init, chk_stop, gen_cycle, wait_for_ack, idle);
 	type vector_type is 
