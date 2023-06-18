@@ -16,21 +16,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="203,931.349 ns"></ZoomStartTime>
-      <ZoomEndTime time="204,610.850 ns"></ZoomEndTime>
-      <Cursor1Time time="204,044.599 ns"></Cursor1Time>
+      <ZoomStartTime time="30,584,169.862 ns"></ZoomStartTime>
+      <ZoomEndTime time="30,590,914.863 ns"></ZoomEndTime>
+      <Cursor1Time time="30,584,610.935 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="9" />
-   <wave_markers>
-      <marker time="33139148117" label="" />
-      <marker time="15267961186" label="" />
-      <marker time="33138198213" label="" />
-      <marker time="15268911090" label="" />
-   </wave_markers>
    <wvobject fp_name="/PacMan_sim/z80_a" type="array">
       <obj_property name="ElementShortName">z80_a[15:0]</obj_property>
       <obj_property name="ObjectShortName">z80_a[15:0]</obj_property>
@@ -112,10 +106,6 @@
          <obj_property name="label">u_core</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_rst_sys" type="logic">
-            <obj_property name="ElementShortName">i_rst_sys</obj_property>
-            <obj_property name="ObjectShortName">i_rst_sys</obj_property>
-         </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_video_rgb" type="array">
             <obj_property name="ElementShortName">o_video_rgb[23:0]</obj_property>
             <obj_property name="ObjectShortName">o_video_rgb[23:0]</obj_property>
@@ -161,10 +151,6 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vcnt" type="array">
             <obj_property name="ElementShortName">vcnt[8:0]</obj_property>
             <obj_property name="ObjectShortName">vcnt[8:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_clk_sys" type="logic">
-            <obj_property name="ElementShortName">i_clk_sys</obj_property>
-            <obj_property name="ObjectShortName">i_clk_sys</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_cpu_clk" type="logic">
             <obj_property name="ElementShortName">o_cpu_clk</obj_property>
@@ -498,10 +484,6 @@
          <wvobject fp_name="group735" type="group">
             <obj_property name="label">u_video</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_clk_sys" type="logic">
-               <obj_property name="ElementShortName">i_clk_sys</obj_property>
-               <obj_property name="ObjectShortName">i_clk_sys</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_hcnt" type="array">
                <obj_property name="ElementShortName">i_hcnt[8:0]</obj_property>
                <obj_property name="ObjectShortName">i_hcnt[8:0]</obj_property>
