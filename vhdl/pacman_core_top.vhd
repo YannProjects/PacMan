@@ -93,7 +93,6 @@ architecture RTL of Core_Top is
 
   signal i_clk_52m, i_clk_6m, i_vga_clock                 : bit1;
   signal i_pll_locked : bit1;
-  signal i_ena_sys                : bit1;
   signal i_rst_sys                : bit1;
   signal vga_control_init_done    : bit1;
 
@@ -118,7 +117,6 @@ architecture RTL of Core_Top is
   signal blank                  : bit1;
   signal video_rgb              : word(23 downto 0);  
   
-  signal ddr_valid              : bit1;
   signal ddr_addr               : word( 15 downto 0);
   signal ddr_data               : word( 7 downto 0);
 
@@ -179,7 +177,6 @@ begin
   --
   -- Single clock domain used for system / video and audio
   --
-
   clk_gen_0 : entity work.Clocks_gen
   port map (
       -- 12 MHz CMOD S7
@@ -191,9 +188,6 @@ begin
       o_pll_locked => i_pll_locked
   );
  
- -- i_ena_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
- -- i_rst_sys <= '1' when (i_vga_control_init_done = '1' and i_ctrl.rst_sys = '0') else '0';
- i_ena_sys <= '1' when i_ctrl.rst_sys = '0' else '0';
  i_rst_sys <= '0' when i_ctrl.rst_sys = '0' and  vga_control_init_done = '1' else '1';
     
   --
@@ -203,8 +197,6 @@ begin
   port map (
     --
     i_clk_sys             => i_clk_6m,
-    -- i_ena_sys             => i_ena_sys,
-    i_ena_sys             => '1',
     i_rst_sys             => i_rst_sys,
 
     --
@@ -223,11 +215,10 @@ begin
     i_coins               => i_kcoins,
 
     --
-    o_rom_read            => ddr_valid,
     o_rom_addr            => ddr_addr,
     i_rom_data            => ddr_data,
 
-    --
+    -- Signaux video PacMan core
     o_video_rgb           => video_rgb,
     o_hsync_l             => hsync_l,
     o_vsync_l             => vsync_l,
@@ -241,13 +232,13 @@ begin
   
   u_prom_pacman : entity work.Pacman_Program_ROM
   port map (
-    i_ena => i_ena_sys,
-    -- Taille ROM = 2048 octets. Il y a 3 bits de plus sur l'interface
+    -- Taille ROM = 4096 octets. Il y a 4 ROM propgrammes (6e, 6f, 6h, -J) => 14 bits
     i_addr => ddr_addr(13 downto 0),
     o_data => ddr_data
   );
-
   
+  
+  -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
      i_reset => i_ctrl.rst_sys,
@@ -255,12 +246,14 @@ begin
      i_vga_clk => i_vga_clock,
      i_sys_clk => i_clk_6m,
     
+     -- Siganux video core Pacman
      i_hsync => hsync_l,
      i_vsync => vsync_l,
      i_csync => csync_l,
      i_blank => blank,
      i_rgb => video_rgb,
         
+     -- Signaux video VGA
      o_hsync => o_hsync,
      o_vsync => o_vsync,
      o_blank => blank_vga,

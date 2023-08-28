@@ -54,7 +54,6 @@ use UNISIM.Vcomponents.all;
 entity Pacman_Video is
   port (
     i_clk_sys                   : in  bit1 := '0';
-    i_ena_sys                   : in  bit1 := '0';
     --
     i_hw_type_is_mrtnt          : in  bit1;
     --
@@ -75,8 +74,7 @@ entity Pacman_Video is
     o_blue                      : out word( 1 downto 0);
     o_blank                     : out bit1;
     --
-    i_clk                       : in  bit1;
-    i_ena                       : in  bit1
+    i_clk                       : in  bit1
     );
 end;
 
@@ -179,14 +177,14 @@ architecture RTL of PACMAN_VIDEO is
 
 begin
 
-  p_sprite_ram_comb : process(i_ena, i_hblank, i_hcnt, i_wr2_l, sprite_xy_ram_do)
+  p_sprite_ram_comb : process(i_hblank, i_hcnt, i_wr2_l, sprite_xy_ram_do)
   begin
     -- ram enable is low when HBLANK_L is 0 (for sprite access) or
     -- 2H is low (for cpu writes)
     -- we can simplify this
 
     sprite_xy_ram_wen <= '0';
-    if (i_wr2_l = '0') and (i_ena = '1') then
+    if (i_wr2_l = '0') then
       sprite_xy_ram_wen <= '1';
     end if;
 
@@ -225,8 +223,7 @@ begin
     variable sum : std_logic_vector(8 downto 0);
     variable match : std_logic;
   begin
-    wait until rising_edge(i_clk);
-    if (i_ena = '1') then
+      wait until rising_edge(i_clk);
       -- Tous les 4 pixels (4 pixels = 8 bits avec 2 bits par pixel)
       -- Composants 1H 74LS174, 1F et 2F (74LS283), la somme est latchée
       -- sur le front montant 4H 
@@ -257,7 +254,6 @@ begin
         -- 4d 74LS373
         db_reg <= i_db; -- character reg
       end if;
-    end if;
   end process;
 
   p_flip_comb : process(char_hblank_reg, i_flip, db_reg)
@@ -277,7 +273,7 @@ begin
 
   p_char_addr_comb : process(db_reg, i_hcnt,
                              char_match_reg, char_sum_reg, char_hblank_reg,
-                             xflip, yflip)
+                             xflip, yflip, i_hw_type_is_mrtnt)
   begin
     -- 2h, 4e
     obj_on <= char_match_reg or i_hcnt(8); -- 256h not 256h_l
@@ -351,7 +347,6 @@ begin
   begin
     -- 4 bit shift req
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       case shift_sel is
         when "00" => null;
 
@@ -365,7 +360,6 @@ begin
                      shift_regl <= cd(3 downto 0);
         when others => null;
       end case;
-    end if;
   end process;
 
   -- 5A
@@ -391,14 +385,12 @@ begin
   p_video_out_reg : process
   begin
     wait until rising_edge (i_clk);
-    if (i_ena = '1') then
       if (i_hcnt(2 downto 0) = "111") then
         vout_obj_on   <= obj_on;
         vout_yflip    <= yflip;
         vout_hblank   <= i_hblank;
         vout_db(4 downto 0) <= i_db(4 downto 0); -- colour reg
       end if;
-    end if;
   end process;
 
   -- LUT de conversion permettant de retrouver l'index de couleurs 
@@ -432,13 +424,11 @@ begin
   p_ra_cnt : process
   begin
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       if (cntr_ld = '1') then
         ra <= dr;
       else
         ra <= ra + "1";
       end if;
-    end if;
   end process;
 
   sprite_ram_addr <= "0000" & ra;
@@ -450,7 +440,7 @@ begin
       DIA   => sprite_ram_ip,
       ADDRA => sprite_ram_addr_t1,
       WEA   => vout_obj_on_t1,
-      ENA   => i_ena,
+      ENA   => '1',
       SSRA  => '0',
       CLKA  => i_clk,
       -- read side
@@ -458,7 +448,7 @@ begin
       DIB   => "0000",
       ADDRB => sprite_ram_addr,
       WEB   => '0',
-      ENB   => i_ena,
+      ENB   => '1',
       SSRB  => '0',
       CLKB  => i_clk
       );
@@ -483,12 +473,10 @@ begin
   p_sprite_ram_ip_reg : process
   begin
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       sprite_ram_addr_t1 <= sprite_ram_addr;
       vout_obj_on_t1 <= vout_obj_on;
       vout_hblank_t1 <= vout_hblank;
       lut_4a_t1 <= lut_4a;
-    end if;
   end process;
 
   p_sprite_ram_ip_comb : process(vout_hblank_t1, video_op_sel, sprite_ram_reg, lut_4a_t1)
@@ -539,10 +527,8 @@ begin
   begin
     wait until rising_edge(i_clk);
     -- not really registered
-    if (i_ena = '1') then
-      video_out <= lut_7f;
-      o_blank   <= vout_hblank or i_vblank;
-    end if;
+    video_out <= lut_7f;
+    o_blank   <= vout_hblank or i_vblank;
   end process;
 
   --  assign outputs

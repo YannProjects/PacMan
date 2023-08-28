@@ -54,15 +54,6 @@ library UNISIM;
 
 entity Pacman_Audio is
   port (
-    -- ARM interface
-    i_memio_to_core             : in  r_Memio_to_core := z_Memio_to_core;
-    --
-    i_memio_fm_core             : in  r_Memio_fm_core := z_Memio_fm_core; -- cascade input. Must be z_Memio_fm_core on first memory
-    o_memio_fm_core             : out r_Memio_fm_core; -- output back to LIB, or cascade into i_memio_fm_core on next memory
-    --
-    i_clk_sys                   : in  bit1 := '0';
-    i_ena_sys                   : in  bit1 := '0';
-    --
     i_hcnt                      : in  word( 8 downto 0);
     --
     i_ab                        : in  word(11 downto 0);
@@ -74,8 +65,7 @@ entity Pacman_Audio is
     --
     o_audio                     : out word(15 downto 0);
     --
-    i_clk                       : in  bit1;
-    i_ena                       : in  bit1
+    i_clk                       : in  bit1
     );
 end;
 
@@ -172,15 +162,15 @@ begin
     end if;
   end process;
 
-  p_ram_comb : process(i_wr1_l, rom3m, i_ena)
+  p_ram_comb : process(i_wr1_l, rom3m)
   begin
     vol_ram_wen <= '0';
-    if (I_WR1_L = '0') and (i_ena = '1') then
+    if (I_WR1_L = '0') then
       vol_ram_wen <= '1';
     end if;
 
     frq_ram_wen <= '0';
-    if (rom3m(1) = '1') and (i_ena = '1') then
+    if (rom3m(1) = '1') then
       frq_ram_wen <= '1';
     end if;
   end process;
@@ -271,12 +261,10 @@ begin
   begin
     -- 1L
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
-      if (rom3m(3) = '1') then -- clear
+    if (rom3m(3) = '1') then -- clear
         accum_reg <= "000000";
-      elsif (rom3m(0) = '1') then -- rising edge clk
+    elsif (rom3m(0) = '1') then -- rising edge clk
         accum_reg <= sum(5 downto 1) & accum_reg(4);
-      end if;
     end if;
   end process;
 
@@ -298,7 +286,6 @@ begin
   begin
     -- 2m used to use async clear
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
       if (i_sound_on = '0') then
         audio_vol_out <= "0000";
         audio_wav_out <= "0000";
@@ -306,7 +293,6 @@ begin
         audio_vol_out <= vol_ram_dout(3 downto 0);
         audio_wav_out <= rom1m_data(3 downto 0);
       end if;
-    end if;
   end process;
 
   p_wave_volume_dac : process(audio_wav_out, audio_vol_out)
@@ -328,9 +314,7 @@ begin
   p_output_reg : process
   begin
     wait until rising_edge(i_clk);
-    if (i_ena = '1') then
-      o_audio(15 downto 0) <= filter_out;
-    end if;
+    o_audio(15 downto 0) <= filter_out;
   end process;
 
 end architecture RTL;

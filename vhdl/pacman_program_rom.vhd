@@ -50,9 +50,7 @@ entity Pacman_Program_ROM is
   port (
     -- Core interface
     i_addr                      : in  word(13 downto 0);
-    o_data                      : out word( 7 downto 0);
-    --
-    i_ena                       : in  bit1
+    o_data                      : out word( 7 downto 0)
     );
 end;
 

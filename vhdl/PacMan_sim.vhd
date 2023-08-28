@@ -37,9 +37,7 @@ signal sim_joystick : r_KbMsJoy_to_core;
 signal sim_start_credit_buttons : word( 2 downto 0);
 signal i_main_clk : std_logic;
 
-signal i_ena_sys_cntr : natural range 0 to 3 := 0;
-
-constant clk_period : time := 162760 ps; -- 6 MHz
+constant clk_period : time := 81380 ps; -- 6 MHz
 -- constant clk_period : time := 40690 ps; -- 24 MHz
 
 begin
@@ -70,16 +68,6 @@ begin
         -- Audio/Video
         -- o_av                  : out   r_AV_fm_core
     );
-    
-    p_ena_sys : process(i_main_clk)
-    begin
-        if rising_edge(i_main_clk) then
-            i_ena_sys_cntr <= i_ena_sys_cntr + 1;
-            if i_ena_sys_cntr = 3 then
-                i_ena_sys_cntr <= 0;
-            end if;
-        end if;
-    end process;
        
     -- cfg_static:
     -- cfg_static(0) : 1 for pengo, 0 for name
@@ -99,8 +87,6 @@ begin
     sim_config.cfg_dynamic <= B"00000000000000000000000000000000";
     
     sim_ctrl.clk_sys <= i_main_clk;
-    -- sim_ctrl.ena_sys <= '1' when i_ena_sys_cntr = 0 else '0';
-    -- sim_ctrl.ena_sys <= '1' when i_ena_sys_cntr = 0 else '0';
     sim_ctrl.ena_sys <= '1';
     sim_ctrl.rst_sys <= '1', '0' after 100 us;
     sim_ctrl.halt <= '0';

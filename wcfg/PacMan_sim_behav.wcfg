@@ -15,42 +15,26 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="296,783,875.980 ns"></ZoomStartTime>
-      <ZoomEndTime time="296,784,444.481 ns"></ZoomEndTime>
-      <Cursor1Time time="296,784,061.980 ns"></Cursor1Time>
+      <ZoomStartTime time="1,323,387.746 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,326,363.747 ns"></ZoomEndTime>
+      <Cursor1Time time="1,323,996.159 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="312"></NameColumnWidth>
-      <ValueColumnWidth column_width="68"></ValueColumnWidth>
+      <NameColumnWidth column_width="282"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="1" />
    <wave_markers>
-      <marker time="9661063976280" label="" />
-      <marker time="9661077908213" label="" />
-      <marker time="9661246357947" label="" />
-      <marker time="9661260289880" label="" />
-      <marker time="9664851245586" label="" />
-      <marker time="9661932189008" label="" />
-      <marker time="270923467955" label="" />
-      <marker time="291892604862" label="" />
-      <marker time="291893876688" label="" />
-      <marker time="291896409767" label="" />
-      <marker time="291897676306" label="" />
-      <marker time="292106655300" label="" />
-      <marker time="980784600165" label="" />
-      <marker time="966343181421" label="" />
-      <marker time="966310884667" label="" />
-      <marker time="966221277008" label="" />
-      <marker time="966221527008" label="" />
-      <marker time="965978734721" label="" />
-      <marker time="965981267800" label="" />
-      <marker time="965983800879" label="" />
-      <marker time="965986333958" label="" />
-      <marker time="966062326319" label="" />
-      <marker time="966067392476" label="" />
-      <marker time="966064859398" label="" />
-      <marker time="966069925555" label="" />
-      <marker time="262845163315" label="" />
+      <marker time="232646485418" label="" />
+      <marker time="232647751957" label="" />
+      <marker time="232649018497" label="" />
+      <marker time="1257661160" label="" />
+      <marker time="1258611064" label="" />
+      <marker time="1275709346" label="" />
+      <marker time="1276975885" label="" />
+      <marker time="1325104380" label="" />
+      <marker time="1323837841" label="" />
+      <marker time="1324312793" label="" />
    </wave_markers>
    <wvobject fp_name="group396" type="group">
       <obj_property name="label">core_top</obj_property>
@@ -63,10 +47,6 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_clk_sys" type="logic">
             <obj_property name="ElementShortName">i_clk_sys</obj_property>
             <obj_property name="ObjectShortName">i_clk_sys</obj_property>
-         </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_ena_sys" type="logic">
-            <obj_property name="ElementShortName">i_ena_sys</obj_property>
-            <obj_property name="ObjectShortName">i_ena_sys</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_rst_sys" type="logic">
             <obj_property name="ElementShortName">i_rst_sys</obj_property>
@@ -95,10 +75,6 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_button" type="array">
             <obj_property name="ElementShortName">i_button[2:0]</obj_property>
             <obj_property name="ObjectShortName">i_button[2:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_rom_read" type="logic">
-            <obj_property name="ElementShortName">o_rom_read</obj_property>
-            <obj_property name="ObjectShortName">o_rom_read</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_rom_addr" type="array">
             <obj_property name="ElementShortName">o_rom_addr[15:0]</obj_property>
@@ -196,13 +172,18 @@
             <obj_property name="label">hcnt_0_1</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="Radix">BINARYRADIX</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/hcnt[0]" type="logic">
                <obj_property name="ElementShortName">[0]</obj_property>
                <obj_property name="ObjectShortName">[0]</obj_property>
+               <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/hcnt[1]" type="logic">
                <obj_property name="ElementShortName">[1]</obj_property>
                <obj_property name="ObjectShortName">[1]</obj_property>
+               <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/h1_inv" type="logic">
@@ -292,10 +273,6 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/program_rom_addr" type="array">
             <obj_property name="ElementShortName">program_rom_addr[15:0]</obj_property>
             <obj_property name="ObjectShortName">program_rom_addr[15:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/program_rom_data_dec" type="array">
-            <obj_property name="ElementShortName">program_rom_data_dec[7:0]</obj_property>
-            <obj_property name="ObjectShortName">program_rom_data_dec[7:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/program_rom_cs_l" type="logic">
             <obj_property name="ElementShortName">program_rom_cs_l</obj_property>
@@ -585,10 +562,6 @@
                <obj_property name="ElementShortName">i_clk</obj_property>
                <obj_property name="ObjectShortName">i_clk</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams/i_ena" type="logic">
-               <obj_property name="ElementShortName">i_ena</obj_property>
-               <obj_property name="ObjectShortName">i_ena</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams/ram_addr" type="array">
                <obj_property name="ElementShortName">ram_addr[11:0]</obj_property>
                <obj_property name="ObjectShortName">ram_addr[11:0]</obj_property>
@@ -645,54 +618,13 @@
          <wvobject fp_name="group217" type="group">
             <obj_property name="label">u_descram</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_clk" type="logic">
-               <obj_property name="ElementShortName">i_clk</obj_property>
-               <obj_property name="ObjectShortName">i_clk</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_ena" type="logic">
-               <obj_property name="ElementShortName">i_ena</obj_property>
-               <obj_property name="ObjectShortName">i_ena</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_hw_pengo" type="logic">
-               <obj_property name="ElementShortName">i_hw_pengo</obj_property>
-               <obj_property name="ObjectShortName">i_hw_pengo</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_hw_type_is_mrtnt" type="logic">
-               <obj_property name="ElementShortName">i_hw_type_is_mrtnt</obj_property>
-               <obj_property name="ObjectShortName">i_hw_type_is_mrtnt</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_cpu_m1_l" type="logic">
-               <obj_property name="ElementShortName">i_cpu_m1_l</obj_property>
-               <obj_property name="ObjectShortName">i_cpu_m1_l</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_addr" type="array">
-               <obj_property name="ElementShortName">i_addr[15:0]</obj_property>
-               <obj_property name="ObjectShortName">i_addr[15:0]</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/i_rom_data" type="array">
-               <obj_property name="ElementShortName">i_rom_data[7:0]</obj_property>
-               <obj_property name="ObjectShortName">i_rom_data[7:0]</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/o_rom_data" type="array">
-               <obj_property name="ElementShortName">o_rom_data[7:0]</obj_property>
-               <obj_property name="ObjectShortName">o_rom_data[7:0]</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_descram/sega_dec" type="array">
-               <obj_property name="ElementShortName">sega_dec[7:0]</obj_property>
-               <obj_property name="ObjectShortName">sega_dec[7:0]</obj_property>
-            </wvobject>
          </wvobject>
          <wvobject fp_name="group218" type="group">
             <obj_property name="label">u_video</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_clk_sys" type="logic">
                <obj_property name="ElementShortName">i_clk_sys</obj_property>
                <obj_property name="ObjectShortName">i_clk_sys</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_ena_sys" type="logic">
-               <obj_property name="ElementShortName">i_ena_sys</obj_property>
-               <obj_property name="ObjectShortName">i_ena_sys</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_hw_type_is_mrtnt" type="logic">
                <obj_property name="ElementShortName">i_hw_type_is_mrtnt</obj_property>
@@ -799,10 +731,6 @@
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_clk" type="logic">
                <obj_property name="ElementShortName">i_clk</obj_property>
                <obj_property name="ObjectShortName">i_clk</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_ena" type="logic">
-               <obj_property name="ElementShortName">i_ena</obj_property>
-               <obj_property name="ObjectShortName">i_ena</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/memio_ram_0" type="array">
                <obj_property name="ElementShortName">memio_ram_0</obj_property>
@@ -1000,29 +928,34 @@
          <wvobject fp_name="group219" type="group">
             <obj_property name="label">u_audio</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_memio_to_core" type="array">
-               <obj_property name="ElementShortName">i_memio_to_core</obj_property>
-               <obj_property name="ObjectShortName">i_memio_to_core</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_memio_fm_core" type="array">
-               <obj_property name="ElementShortName">i_memio_fm_core</obj_property>
-               <obj_property name="ObjectShortName">i_memio_fm_core</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/o_memio_fm_core" type="array">
-               <obj_property name="ElementShortName">o_memio_fm_core</obj_property>
-               <obj_property name="ObjectShortName">o_memio_fm_core</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_clk_sys" type="logic">
-               <obj_property name="ElementShortName">i_clk_sys</obj_property>
-               <obj_property name="ObjectShortName">i_clk_sys</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_ena_sys" type="logic">
-               <obj_property name="ElementShortName">i_ena_sys</obj_property>
-               <obj_property name="ObjectShortName">i_ena_sys</obj_property>
-            </wvobject>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_hcnt" type="array">
                <obj_property name="ElementShortName">i_hcnt[8:0]</obj_property>
                <obj_property name="ObjectShortName">i_hcnt[8:0]</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_hcnt[0]" type="logic">
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="ElementShortName">[0]</obj_property>
+               <obj_property name="ObjectShortName">[0]</obj_property>
+               <obj_property name="label">hcnt_0</obj_property>
+               <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_hcnt[1]" type="logic">
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="ElementShortName">[1]</obj_property>
+               <obj_property name="ObjectShortName">[1]</obj_property>
+               <obj_property name="label">hcnt_1</obj_property>
+               <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_hcnt[5]" type="logic">
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="ElementShortName">[5]</obj_property>
+               <obj_property name="ObjectShortName">[5]</obj_property>
+               <obj_property name="label">hcnt_5</obj_property>
+               <obj_property name="CustomSignalColor">#FF0080</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_ab" type="array">
                <obj_property name="ElementShortName">i_ab[11:0]</obj_property>
@@ -1043,6 +976,8 @@
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_sound_on" type="logic">
                <obj_property name="ElementShortName">i_sound_on</obj_property>
                <obj_property name="ObjectShortName">i_sound_on</obj_property>
+               <obj_property name="CustomSignalColor">#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/o_audio" type="array">
                <obj_property name="ElementShortName">o_audio[15:0]</obj_property>
@@ -1051,10 +986,6 @@
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_clk" type="logic">
                <obj_property name="ElementShortName">i_clk</obj_property>
                <obj_property name="ObjectShortName">i_clk</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/i_ena" type="logic">
-               <obj_property name="ElementShortName">i_ena</obj_property>
-               <obj_property name="ObjectShortName">i_ena</obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/addr" type="array">
                <obj_property name="ElementShortName">addr[3:0]</obj_property>
@@ -1088,17 +1019,10 @@
                <obj_property name="ElementShortName">accum_reg[5:0]</obj_property>
                <obj_property name="ObjectShortName">accum_reg[5:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/rom3m_n" type="array">
-               <obj_property name="ElementShortName">rom3m_n[15:0]</obj_property>
-               <obj_property name="ObjectShortName">rom3m_n[15:0]</obj_property>
-            </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/rom3m_w" type="array">
-               <obj_property name="ElementShortName">rom3m_w[3:0]</obj_property>
-               <obj_property name="ObjectShortName">rom3m_w[3:0]</obj_property>
-            </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/rom3m" type="array">
                <obj_property name="ElementShortName">rom3m[3:0]</obj_property>
                <obj_property name="ObjectShortName">rom3m[3:0]</obj_property>
+               <obj_property name="isExpanded"></obj_property>
             </wvobject>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/rom1m_addr" type="array">
                <obj_property name="ElementShortName">rom1m_addr[10:0]</obj_property>
@@ -1132,10 +1056,6 @@
                <obj_property name="ElementShortName">filter_out[15:0]</obj_property>
                <obj_property name="ObjectShortName">filter_out[15:0]</obj_property>
             </wvobject>
-            <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio/ROM" type="array">
-               <obj_property name="ElementShortName">ROM[0:255][15:0]</obj_property>
-               <obj_property name="ObjectShortName">ROM[0:255][15:0]</obj_property>
-            </wvobject>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group220" type="group">
@@ -1148,10 +1068,6 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_prom_pacman/o_data" type="array">
             <obj_property name="ElementShortName">o_data[7:0]</obj_property>
             <obj_property name="ObjectShortName">o_data[7:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/PacMan_sim/core_top_0/u_prom_pacman/i_ena" type="logic">
-            <obj_property name="ElementShortName">i_ena</obj_property>
-            <obj_property name="ObjectShortName">i_ena</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_prom_pacman/memio_ram_0" type="array">
             <obj_property name="ElementShortName">memio_ram_0</obj_property>
@@ -1193,7 +1109,6 @@
       <wvobject fp_name="group395" type="group">
          <obj_property name="label">vga_ctrl</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/i_reset" type="logic">
             <obj_property name="ElementShortName">i_reset</obj_property>
             <obj_property name="ObjectShortName">i_reset</obj_property>
@@ -1423,10 +1338,6 @@
          <obj_property name="ElementShortName">i_pll_locked</obj_property>
          <obj_property name="ObjectShortName">i_pll_locked</obj_property>
       </wvobject>
-      <wvobject fp_name="/PacMan_sim/core_top_0/i_ena_sys" type="logic">
-         <obj_property name="ElementShortName">i_ena_sys</obj_property>
-         <obj_property name="ObjectShortName">i_ena_sys</obj_property>
-      </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/i_rst_sys" type="logic">
          <obj_property name="ElementShortName">i_rst_sys</obj_property>
          <obj_property name="ObjectShortName">i_rst_sys</obj_property>
@@ -1490,10 +1401,6 @@
       <wvobject fp_name="/PacMan_sim/core_top_0/video_rgb" type="array">
          <obj_property name="ElementShortName">video_rgb[23:0]</obj_property>
          <obj_property name="ObjectShortName">video_rgb[23:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/PacMan_sim/core_top_0/ddr_valid" type="logic">
-         <obj_property name="ElementShortName">ddr_valid</obj_property>
-         <obj_property name="ObjectShortName">ddr_valid</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/ddr_addr" type="array">
          <obj_property name="ElementShortName">ddr_addr[15:0]</obj_property>

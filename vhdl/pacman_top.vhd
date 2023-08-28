@@ -50,7 +50,6 @@ entity Pacman_Top is
   port (
     -- System clock
     i_clk_sys             : in  bit1;
-    i_ena_sys             : in  bit1;
     i_rst_sys             : in  bit1;
 
     -- Config/Control
@@ -70,7 +69,6 @@ entity Pacman_Top is
     i_coins              : in  word( 2 downto 0);
 
     -- ROM interface
-    o_rom_read            : out bit1;
     o_rom_addr            : out word(15 downto 0);
     i_rom_data            : in  word( 7 downto 0);
 
@@ -141,7 +139,6 @@ architecture RTL of Pacman_Top is
   signal cpu_data_in            : word( 7 downto 0);
 
   signal program_rom_addr       : word(15 downto 0);
-  signal program_rom_data_dec   : word( 7 downto 0); -- to cpu
 
   signal program_rom_cs_l       : bit1;
   signal sync_bus_cs_l          : bit1;
@@ -211,68 +208,66 @@ begin
   p_input_registers : process
   begin
     wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
 
-      freeze <= cfg.freeze;
-      dipsw1_reg <= cfg.dipsw1;
-      dipsw2_reg <= cfg.dipsw2; -- Pengo only
+  freeze <= cfg.freeze;
+  dipsw1_reg <= cfg.dipsw1;
+  dipsw2_reg <= cfg.dipsw2; -- Pengo only
 
-      --dipsw2_reg <= "00110011"; -- 1 coin 1 play
+  --dipsw2_reg <= "00110011"; -- 1 coin 1 play
 
-      -- active low inputs
-      if (cfg.hw_pengo = '0') then
-        -- Pacman
-        in0_reg(7) <= '1';          -- credit
-        in0_reg(6) <= i_coins(1);   -- coin2
-        in0_reg(5) <= i_coins(0);   -- coin1
-        in0_reg(4) <= cfg.dip_test; -- test_l dipswitch (rack advance)
-        in0_reg(3) <= i_joy_a(1);   -- p1 down
-        in0_reg(2) <= i_joy_a(3);   -- p1 right
-        in0_reg(1) <= i_joy_a(2);   -- p1 left
-        in0_reg(0) <= i_joy_a(0);   -- p1 up
+  -- active low inputs
+  if (cfg.hw_pengo = '0') then
+    -- Pacman
+    in0_reg(7) <= '1';          -- credit
+    in0_reg(6) <= i_coins(1);   -- coin2
+    in0_reg(5) <= i_coins(0);   -- coin1
+    in0_reg(4) <= cfg.dip_test; -- test_l dipswitch (rack advance)
+    in0_reg(3) <= i_joy_a(1);   -- p1 down
+    in0_reg(2) <= i_joy_a(3);   -- p1 right
+    in0_reg(1) <= i_joy_a(2);   -- p1 left
+    in0_reg(0) <= i_joy_a(0);   -- p1 up
 
-        in1_reg(7) <= cfg.table;
-        in1_reg(6) <= i_button(1);  -- start 2
-        in1_reg(5) <= i_button(0);  -- start 1
-        in1_reg(4) <= cfg.test;     -- test
-        in1_reg(3) <= i_joy_b(1);   -- p2 down
-        in1_reg(2) <= i_joy_b(3);   -- p2 right
-        in1_reg(1) <= i_joy_b(2);   -- p2 left
-        in1_reg(0) <= i_joy_b(0);   -- p2 up
+    in1_reg(7) <= cfg.table;
+    in1_reg(6) <= i_button(1);  -- start 2
+    in1_reg(5) <= i_button(0);  -- start 1
+    in1_reg(4) <= cfg.test;     -- test
+    in1_reg(3) <= i_joy_b(1);   -- p2 down
+    in1_reg(2) <= i_joy_b(3);   -- p2 right
+    in1_reg(1) <= i_joy_b(2);   -- p2 left
+    in1_reg(0) <= i_joy_b(0);   -- p2 up
 
-        -- modifications for Mr TNT
-        if (cfg.hw_type_is_mrtnt = '1') then
-          in0_reg(7) <= '1';              -- coin2
-          in0_reg(6) <= '1';              -- tilt
-          in0_reg(5) <= not i_button(2);  -- coin1
-          in0_reg(4) <= not cfg.test;     -- test
+    -- modifications for Mr TNT
+    if (cfg.hw_type_is_mrtnt = '1') then
+      in0_reg(7) <= '1';              -- coin2
+      in0_reg(6) <= '1';              -- tilt
+      in0_reg(5) <= not i_button(2);  -- coin1
+      in0_reg(4) <= not cfg.test;     -- test
 
-          in1_reg(7) <= not i_joy_b(4);   -- p2 button
-          in1_reg(4) <= not i_joy_a(4);   -- p1 button
-        end if;
-
-      else
-        -- Pengo
-        in0_reg(7) <= not i_joy_a(4);   -- p1 fire
-        in0_reg(6) <= not cfg.service;  -- service
-        in0_reg(5) <= '1';              -- coin2
-        in0_reg(4) <= not i_button(2);  -- coin1
-        in0_reg(3) <= not i_joy_a(3);   -- p1 right
-        in0_reg(2) <= not i_joy_a(2);   -- p1 left
-        in0_reg(1) <= not i_joy_a(1);   -- p1 down
-        in0_reg(0) <= not i_joy_a(0);   -- p1 up
-
-        in1_reg(7) <= not i_joy_b(4);   -- p2 fire
-        in1_reg(6) <= not i_button(1);  -- start 2
-        in1_reg(5) <= not i_button(0);  -- start 1
-        in1_reg(4) <= not cfg.test;     -- test
-        in1_reg(3) <= not i_joy_b(3);   -- p2 down
-        in1_reg(2) <= not i_joy_b(2);   -- p2 right
-        in1_reg(1) <= not i_joy_b(1);   -- p2 left
-        in1_reg(0) <= not i_joy_b(0);   -- p2 up
-      end if;
-
+      in1_reg(7) <= not i_joy_b(4);   -- p2 button
+      in1_reg(4) <= not i_joy_a(4);   -- p1 button
     end if;
+
+  else
+    -- Pengo
+    in0_reg(7) <= not i_joy_a(4);   -- p1 fire
+    in0_reg(6) <= not cfg.service;  -- service
+    in0_reg(5) <= '1';              -- coin2
+    in0_reg(4) <= not i_button(2);  -- coin1
+    in0_reg(3) <= not i_joy_a(3);   -- p1 right
+    in0_reg(2) <= not i_joy_a(2);   -- p1 left
+    in0_reg(1) <= not i_joy_a(1);   -- p1 down
+    in0_reg(0) <= not i_joy_a(0);   -- p1 up
+
+    in1_reg(7) <= not i_joy_b(4);   -- p2 fire
+    in1_reg(6) <= not i_button(1);  -- start 2
+    in1_reg(5) <= not i_button(0);  -- start 1
+    in1_reg(4) <= not cfg.test;     -- test
+    in1_reg(3) <= not i_joy_b(3);   -- p2 down
+    in1_reg(2) <= not i_joy_b(2);   -- p2 right
+    in1_reg(1) <= not i_joy_b(1);   -- p2 left
+    in1_reg(0) <= not i_joy_b(0);   -- p2 up
+  end if;
+
   end process;
 
   --
@@ -281,8 +276,7 @@ begin
   p_hvcnt : process
     variable hcarry,vcarry : boolean;
   begin
-    wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
+      wait until rising_edge(i_clk_sys);
       hcarry := (hcnt = "111111111");
       if hcarry then
         hcnt <= "010000000"; -- 080
@@ -298,7 +292,6 @@ begin
           vcnt <= vcnt +"1";
         end if;
       end if;
-    end if;
   end process;
 
   p_sync_comb : process(hcnt, vcnt)
@@ -309,23 +302,22 @@ begin
 
   p_sync : process
   begin
-    wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
+      wait until rising_edge(i_clk_sys);
       -- Timing hardware is coded differently to the real hw
       -- to avoid the use of multiple clocks. Result is identical.
-
+    
       if (hcnt = "010001111") then -- 08F
         hblank <= '1';
       elsif (hcnt = "011101111") then
         hblank <= '0'; -- 0EF
       end if;
-
+    
       if do_hsync then
         hsync <= '1';
       elsif (hcnt = "011001111") then -- 0CF
         hsync <= '0';
       end if;
-
+    
       if do_hsync then
         if (vcnt = "111101111") then -- 1EF
           vblank <= '1';
@@ -333,7 +325,6 @@ begin
           vblank <= '0';
         end if;
       end if;
-    end if;
   end process;
 
   p_comp_sync : process(hsync, vsync)
@@ -354,17 +345,16 @@ begin
   p_irq_req_watchdog : process
     variable rising_vblank : boolean;
   begin
-    wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
+      wait until rising_edge(i_clk_sys);
       rising_vblank := do_hsync and (vcnt = "111101111"); -- 1EF
       -- interrupt 8c
-
+    
       if (control_reg(0) = '0') then
         cpu_int_l <= '1';
       elsif rising_vblank then -- 1EF
         cpu_int_l <= '0';
       end if;
-
+    
       -- watchdog 8c
       -- note sync reset
       if (i_rst_sys = '1') then
@@ -374,17 +364,16 @@ begin
       elsif rising_vblank and (freeze = '0') then
         watchdog_cnt <= watchdog_cnt + "1";
       end if;
-
+    
       watchdog_reset_l <= '1';
       if (watchdog_cnt = "1111") then
         watchdog_reset_l <= '0';
       end if;
-
+    
       -- simulation
       -- pragma translate_off
       watchdog_reset_l <= not i_rst_sys; -- watchdog disable
       -- pragma translate_on
-    end if;
   end process;
 
   -- other cpu signals
@@ -465,21 +454,19 @@ begin
   --
   p_sync_bus_reg : process
   begin
-    wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
+      wait until rising_edge(i_clk_sys);
       -- register on sync bus module that is used to store interrupt vector
       -- Implementation du circuit U7 du SYNC BUS. Utilise pour memoriser le vecteur
       -- d'interruption dans un registre (U7)
       if (cpu_iorq_l = '0') and (cpu_m1_l = '1') then
         cpu_vec_reg <= cpu_data_out;
       end if;
-
+    
       -- read holding reg
       -- Circuit U6 du SYNC BUS. Utilise pour lire le registre U6 
       if (hcnt(1 downto 0) = "01") then
         sync_bus_reg <= cpu_data_in;
       end if;
-    end if;
   end process;
 
   p_sync_bus_comb : process(cpu_rd_l, sync_bus_cs_l, hcnt)
@@ -617,8 +604,7 @@ begin
     -- 6 coin lockout                   ps(2)
     -- 7 coin counter                   ps(3)
 
-    wait until rising_edge(i_clk_sys);
-    if (i_ena_sys = '1') then
+      wait until rising_edge(i_clk_sys);
       ena := "00000000";
       if (iodec_out_l = '0') then
         case ab(2 downto 0) is
@@ -633,7 +619,7 @@ begin
           when others => null;
         end case;
       end if;
-
+    
       if (watchdog_reset_l = '0') then
         control_reg <= (others => '0');
       else
@@ -643,7 +629,6 @@ begin
           end if;
         end loop;
       end if;
-    end if;
   end process;
   ps_reg <= (control_reg(7) & control_reg(6) & control_reg(2)) when (cfg.hw_pengo = '1') else "000";
 
@@ -660,7 +645,7 @@ begin
 
   p_cpu_data_in_mux_comb : process(program_rom_cs_l, cpu_iorq_l, cpu_m1_l, cpu_vec_reg,
                                    sync_bus_wreq_l, sync_bus_reg,
-                                   program_rom_data_dec, rams_data_out,
+                                   i_rom_data, rams_data_out,
                                    iodec_in0_l, iodec_in1_l, iodec_dipsw1_l, iodec_dipsw2_l,
                                    in0_reg, in1_reg, dipsw1_reg, dipsw2_reg)
   begin
@@ -672,7 +657,7 @@ begin
       cpu_data_in <= sync_bus_reg;
     else
       if (program_rom_cs_l = '0') then
-        cpu_data_in <= program_rom_data_dec;
+        cpu_data_in <= i_rom_data;
       else
         cpu_data_in <= rams_data_out;
         if (iodec_in0_l = '0')    then cpu_data_in <= in0_reg; end if;
@@ -692,45 +677,14 @@ begin
       o_data         => rams_data_out,
       i_r_w_l        => sync_bus_r_w_l,
       i_vram_l       => vram_l,
-
-      i_clk          => i_clk_sys,
-      i_ena          => i_ena_sys
+      i_clk          => i_clk_sys
       );
+      
   --
   -- Program ROMs in external DRAM
   -- it's important we don't fully use the bus before the RAM is loaded, or the LP port cannot access the memory
   -- valid is sampled the clock after ena
-
-  --     __              __              __
-  --  __/  \____________/  \____________/  \__                 ena_sys
-  --
-  --    <P3><P0><P1><P2><P3><P0><P1><P2><P3>                   cph_sys
-  --
-  -- GENERIC FAST = TRUE on DDR controller must be used (default)
-  --
-  --     ---<A0>---- << address and valid sampled here
-  --
-  --                    <R0>  << result here.
-  -- The CPU is clocked every other cycle, so we will register the response from the memory
-  -- we also have four clocks to do any descrambling required on the ROM read.
-
-  o_rom_read <= (not hcnt(0)) and (not program_rom_cs_l); -- any access
   o_rom_addr <= program_rom_addr;
-
-  u_descram : entity work.Pacman_ROM_Descrambler
-  port map (
-    i_clk                 => i_clk_sys,
-    i_ena                 => i_ena_sys,
-    --
-    i_hw_pengo            => cfg.hw_pengo,
-    i_hw_type_is_mrtnt    => cfg.hw_type_is_mrtnt,
-    --
-    i_cpu_m1_l            => cpu_m1_l,
-    i_addr                => program_rom_addr,
-    --
-    i_rom_data            => i_rom_data,
-    o_rom_data            => program_rom_data_dec
-  );
 
   --
   -- video subsystem
@@ -738,7 +692,6 @@ begin
   u_video : entity work.Pacman_Video
     port map (
       i_clk_sys       => i_clk_sys,
-      i_ena_sys       => i_ena_sys,
       --
       i_hw_type_is_mrtnt => cfg.hw_type_is_mrtnt,
       --
@@ -759,8 +712,7 @@ begin
       o_blue          => video_b,
       o_blank         => blank,
       --
-      i_clk           => i_clk_sys,
-      i_ena           => i_ena_sys
+      i_clk           => i_clk_sys
       );
 
   o_video_rgb(23 downto 16) <= video_r & "00000";
@@ -776,9 +728,6 @@ begin
   --
   u_audio : entity work.Pacman_Audio
     port map (
-      i_clk_sys        => i_clk_sys,
-      i_ena_sys        => i_ena_sys,
-      --
       i_hcnt           => hcnt,
       --
       i_ab             => ab,
@@ -790,8 +739,7 @@ begin
       --
       o_audio          => audio,
       --
-      i_clk            => i_clk_sys,
-      i_ena            => i_ena_sys
+      i_clk            => i_clk_sys
       );
 
   o_audio_l <= audio & x"00";
