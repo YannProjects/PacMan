@@ -17,7 +17,9 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
+--
+-- 18 Juin 2023         |         Ajout de la ROM dans le FPGA pour simplifier dans un premier temps
+--                      |         et eviter d'avoir  a faire le programmateur de flash
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -32,25 +34,23 @@ end PacMan_sim;
 
 architecture Behavioral of PacMan_sim is
 
-signal main_clk, rst_sys : bit1;
+signal main_clk, rst_sys_n : bit1;
 
 signal pacman_rom_addr : word(13 downto 0);
 signal pacman_rom_data : word(7 downto 0);
 
-constant clk_period : time := 81380 ps; -- 6 MHz
--- constant clk_period : time := 40690 ps; -- 24 MHz
-constant z80_delay : time := 70 ns;
+constant clk_period : time := 10000 ps; -- component MHz
 
 signal z80_a : word(15 downto 0);
 signal z80_di, z80_do, D_bidir : word(7 downto 0);
-signal z80_rst, z80_clk, z80_wait_l, z80_int_l, z80_nmi_l : bit1;
-signal z80_busrq_l, z80_busack_l, z80_m1_l : bit1;
+signal z80_rst, z80_clk, z80_wait_l, z80_int_l : bit1;
+signal z80_busrq_l, z80_m1_l : bit1;
 signal z80_mreq_l, z80_iorq_l, z80_rd_l, z80_wr_l: bit1;
-signal z80_rfrsh_l, z80_halt_l, crom_cs : bit1;
+signal z80_rfrsh_l, crom_cs : bit1;
 signal in0_cs, in1_cs, dip_sw_cs : bit1;
 
 signal z80_mreq_delay_l, z80_iorq_delay_l, z80_rd_delay_l, z80_wr_delay_l: bit1;
-signal z80_rfrsh_delay_l, z80_m1_delay_l, z80_halt_delay_l: bit1;
+signal z80_rfrsh_delay_l, z80_m1_delay_l: bit1;
 
 signal cfg_dip_sw, in0_reg, in1_reg, config_reg : word(7 downto 0);
 
@@ -68,7 +68,7 @@ begin
    table <= '1';
    test <= '1';
 
-   -- 24.576 MHz CLK
+   -- 12 MHz CLK
    clk_process :process
    begin
         main_clk <= '0';
@@ -80,9 +80,9 @@ begin
    core_top_0 : entity work.Core_Top
    port map (
         -- Paramètres de gestion du core:
-        -- garder ena_sys, rst_sys, halt, sys_clk => A configurer dans la partie simulation
-        i_clk_sys           =>    main_clk,
-        i_rst_sys           =>    rst_sys,
+        -- garder ena_sys, rst_sys_n, halt, sys_clk => A configurer dans la partie simulation
+        i_clk_main          =>    main_clk,
+        i_rst_sys_n         =>    rst_sys_n,
         -- i_cfg         =>    sim_config,
         -- Keyboard, Mouse and Joystick
         -- Conserver les entrées joy_a et joy_b:
@@ -100,22 +100,21 @@ begin
         o_cpu_di_core       => z80_di, -- Relative à la virtual clock CPU (z80_clk) *
         i_cpu_do_core       => z80_do, -- sync i_clk_sys *
     
-        o_cpu_rst_core      => z80_rst,
+        o_cpu_rst_core      => z80_rst, -- 3 MHz generated clock
         o_cpu_clk_core      => z80_clk,
         o_cpu_wait_l_core   => z80_wait_l, -- Relative à la virtual clock CPU (z80_clk). Mais sur front descendant... *
         o_cpu_int_l_core    => z80_int_l, -- Relative à la virtual clock CPU (z80_clk) *
-        i_cpu_m1_l_core     => z80_m1_l, -- sync i_clk_sys *
-        i_cpu_mreq_l_core   => z80_mreq_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_iorq_l_core   => z80_iorq_l, -- sync i_clk_sys *
-        i_cpu_rd_l_core     => z80_rd_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_wr_l_core     => z80_wr_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_rfrsh_l_core  => z80_rfrsh_l, -- Asynchrone ??? => i_clk_sys ? *
+        i_cpu_m1_l_core     => z80_m1_delay_l, -- sync i_clk_sys *
+        i_cpu_mreq_l_core   => z80_mreq_delay_l, -- Asynchrone ??? => i_clk_sys ? *
+        i_cpu_iorq_l_core   => z80_iorq_delay_l, -- sync i_clk_sys *
+        i_cpu_rd_l_core     => z80_rd_delay_l, -- Asynchrone ??? => i_clk_sys ? *
+        i_cpu_wr_l_core     => z80_wr_delay_l, -- Asynchrone ??? => i_clk_sys ? *
+        i_cpu_rfrsh_l_core  => z80_rfrsh_delay_l, -- Asynchrone ??? => i_clk_sys ? *
         
         -- Registres de configuration (IN0, IN1, DIP SW)
         i_config_reg        => config_reg,
     
         -- Z80 code ROM
-        o_rom_cs_l_core     => crom_cs, -- Asynchrone ???
         o_in0_l_cs          => in0_cs,   -- Asynchrone ???
         o_in1_l_cs          => in1_cs, -- Asynchrone ???
         o_dip_l_cs          => dip_sw_cs -- Asynchrone ???
@@ -128,42 +127,32 @@ begin
 		CLK_n => z80_clk,
 		WAIT_n => z80_wait_l,
 		INT_n => z80_int_l,
-		NMI_n => z80_nmi_l,
-		BUSRQ_n => z80_busrq_l,
-		M1_n => z80_m1_delay_l,
-		MREQ_n => z80_mreq_delay_l,
-		IORQ_n => z80_iorq_delay_l,
-		RD_n => z80_rd_delay_l,
-		WR_n => z80_wr_delay_l,
-		RFSH_n => z80_rfrsh_delay_l,
-		BUSAK_n => z80_busack_l,
-		HALT_n => z80_halt_delay_l,
+		NMI_n => '1',
+		BUSRQ_n => '1',
+		M1_n => z80_m1_l,
+		MREQ_n => z80_mreq_l,
+		IORQ_n => z80_iorq_l,
+		RD_n => z80_rd_l,
+		WR_n => z80_wr_l,
+		RFSH_n => z80_rfrsh_l,
 		A => z80_a,
 		D => D_bidir
 	);    
     
-    D_bidir <= z80_di after z80_delay;
-    z80_m1_delay_l  <= z80_m1_l after z80_delay;
-    z80_mreq_delay_l <= z80_mreq_l after z80_delay;
-    z80_iorq_delay_l <= z80_iorq_l after z80_delay;
-    z80_rd_delay_l <= z80_rd_l after z80_delay;
-    z80_wr_delay_l <= z80_wr_l after z80_delay;
-    z80_rfrsh_delay_l <= z80_rfrsh_l after z80_delay;
-    z80_halt_delay_l <= z80_halt_l after z80_delay;
+    D_bidir <= z80_di;
+    z80_m1_delay_l  <= z80_m1_l;
+    z80_mreq_delay_l <= z80_mreq_l;
+    z80_iorq_delay_l <= z80_iorq_l;    
+    z80_rd_delay_l <= z80_rd_l;
+    
+    z80_wr_delay_l <= z80_wr_l;
+    z80_rfrsh_delay_l <= z80_rfrsh_l;
     
     config_reg <= in0_reg when in0_cs = '0' else (others => 'Z');
     config_reg <= in1_reg when in1_cs = '0' else (others => 'Z');
     config_reg <= cfg_dip_sw when dip_sw_cs = '0' else (others => 'Z');
     
     z80_do <= D_bidir;
-    
-    u_crom : entity work.ROM
-    port map (
-      A => z80_a(13 downto 0),
-      D => D_bidir,
-      OEn => '0',
-      CSn => crom_cs
-    );
     
     --
     -- DIP switch 1 (ON = 0, OFF = 1) (https://www.arcade-museum.com/manuals-videogames/S/SuperABC.pdf)
@@ -220,6 +209,6 @@ begin
     in1_reg(1) <= joy_b(2);   -- p2 left
     in1_reg(0) <= joy_b(0);   -- p2 up
   
-    rst_sys <= '1', '0' after 100 us;
+    rst_sys_n <= '0', '1' after 100 us;
     
 end Behavioral;

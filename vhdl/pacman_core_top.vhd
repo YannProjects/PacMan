@@ -39,6 +39,8 @@
 --
 -- Email support@fpgaarcade.com
 --
+-- 18 Juin 2023         |         Ajout de la ROM dans le FPGA pour simplifier dans un premier temps
+--                      |         et eviter d'avoir  a faire le programmateur de flash
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
@@ -58,9 +60,9 @@ entity Core_Top is
   port (
 
     -- System clock
-    i_clk_sys                : in  bit1;
+    i_clk_main               : in  bit1;
     -- Core reset
-    i_rst_sys                : in  bit1;
+    i_rst_sys_n              : in  bit1; -- actif niveau bas
 
     -- Keyboard, Mouse and Joystick
     -- o_kb_ms_joy           : out   r_KbMsJoy_fm_core;
@@ -94,9 +96,6 @@ entity Core_Top is
     -- Registres I/O
     i_config_reg          : in word(7 downto 0);
     
-    -- Z80 code ROM
-    o_rom_cs_l_core       : out bit1; -- ROM CS
-    
     -- Dip switch, crédits, joystick
     o_in0_l_cs       : out bit1; -- Read IN1
     o_in1_l_cs       : out bit1; -- Read IN2
@@ -111,7 +110,7 @@ end;
 
 architecture RTL of Core_Top is
 
-  signal i_clk_52m, clk_6m, i_vga_clock                 : bit1;
+  signal i_clk_52m, clk_6m, vga_clock                 : bit1;
   signal i_pll_locked : bit1;
   signal vga_control_init_done : bit1;
   signal clk_6m_star, clk_6m_star_n : bit1;
@@ -146,7 +145,7 @@ architecture RTL of Core_Top is
   
   signal blank_vga : std_logic;
   signal o_r, o_g, o_b : word(2 downto 0);
-  signal cpu_data_in : word(7 downto 0);
+  signal regs_data, cpu_data, rom_data : word(7 downto 0);
   
   signal rom_cs_l, cpu_rd_regs : bit1;
   
@@ -161,16 +160,17 @@ begin
   clk_gen_0 : entity work.Clocks_gen
   port map (
       -- 12 MHz CMOD S7
-      i_clk_main => i_clk_sys,
+      i_clk_main => i_clk_main,
       o_clk_52m => i_clk_52m,
+      o_clk_vga => vga_clock,
       o_clk_6M => clk_6m,
       o_clk_6M_star => clk_6m_star,
       o_clk_6M_star_n => clk_6m_star_n,
-      i_rst => i_rst_sys,
+      i_rst => not i_rst_sys_n,
       o_pll_locked => i_pll_locked
   );
  
- core_rst <= '0' when i_rst_sys = '0' and  vga_control_init_done = '1' else '1';
+ core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
     
   --
   -- The Core
@@ -181,7 +181,7 @@ begin
     i_clk_pacman_core     => clk_6m,
     i_clk_6M_star         => clk_6m_star,
     i_clk_6M_star_n       => clk_6m_star_n,
-    i_rst_sys             => core_rst,  
+    i_core_reset          => core_rst,  
 
     -- Signaux video PacMan core
     o_video_rgb           => video_rgb,
@@ -196,7 +196,7 @@ begin
     
     i_cpu_a               => i_cpu_a_core,
     
-    o_cpu_di              => cpu_data_in,
+    o_cpu_di              => regs_data,
     i_cpu_do              => i_cpu_do_core,  
     
     o_cpu_rst             => o_cpu_rst_core,
@@ -222,17 +222,24 @@ begin
     o_dip_sw_cs_l         => o_dip_l_cs
   );
   
-  -- Lecture par le CPU du registre tampon ou registre d'interruption 
-  o_cpu_di_core <= cpu_data_in when cpu_rd_regs = '0' else (others => 'Z');
-  -- Lecture par le CPU du code de la ROM
-  o_rom_cs_l_core <= rom_cs_l;
+  u_crom : entity work.ROM
+  port map (
+     A => i_cpu_a_core(13 downto 0),
+     D => rom_data,
+     OEn => '0',
+     CSn => rom_cs_l
+  );  
+  
+  -- Lecture par le CPU du registre tampon ou registre d'interruption
+  cpu_data <= regs_data when cpu_rd_regs = '0' else rom_data;
+  o_cpu_di_core <= cpu_data when (cpu_rd_regs = '0' or rom_cs_l = '0') else (others => 'Z');
  
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
-     i_reset => i_rst_sys,
+     i_reset => not i_rst_sys_n,
      i_clk_52m => i_clk_52m,
-     i_vga_clk => i_vga_clock,
+     i_vga_clk => vga_clock,
      i_sys_clk => clk_6m,
     
      -- Siganux video core Pacman

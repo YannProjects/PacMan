@@ -125,11 +125,8 @@ architecture Behavioral of vga_control_top is
         wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
         addra : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         dina : IN STD_LOGIC_VECTOR(7 DOWNTO 0); -- PacMan core write side
-        douta : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
         clkb : IN STD_LOGIC;
-        web : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
         addrb : IN STD_LOGIC_VECTOR(14 DOWNTO 0);
-        dinb : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
         doutb : OUT STD_LOGIC_VECTOR(15 DOWNTO 0) -- VGA core read side
     );
     end component; 
@@ -313,9 +310,7 @@ begin
         addra => std_logic_vector(video_mem_addr_pacman),
         dina => video_mem_pacman_data,
         clkb => not i_clk_52m, -- Read side 52 MHz
-        web(0) => '0',
         addrb => video_dpram_vga_core_addr,
-        dinb => (others => '0'),
         doutb => video_mem_vga_core_data
     );
         

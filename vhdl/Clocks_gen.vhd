@@ -45,7 +45,7 @@ end Clocks_gen;
 
 architecture Based_on_IP of Clocks_gen is
 
-  signal i_clk_6_5m, i_sys_clk, clk_sys : std_logic;
+  signal clk_sys : std_logic;
   signal J, K, Q, Qn : std_logic_vector(1 downto 0);
   
   component jkff is

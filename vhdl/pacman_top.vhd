@@ -52,7 +52,7 @@ entity Pacman_Top is
     i_clk_pacman_core     : in  bit1;
     i_clk_6M_star         : in  bit1;
     i_clk_6M_star_n       : in  bit1;
-    i_rst_sys             : in  bit1;
+    i_core_reset          : in  bit1; -- actif niveau haut
 
     -- Video
     o_video_rgb           : out word(23 downto 0); -- 23..16 RED 15..8 GREEN 7..0 BLUE
@@ -118,11 +118,8 @@ architecture RTL of Pacman_Top is
   signal comp_sync_l            : bit1;
 
   -- cpu
-  signal cpu_halt_l             : bit1;
   signal cpu_wait_l             : bit1;
   signal cpu_int_l              : bit1;
-  signal cpu_nmi_l              : bit1;
-  signal cpu_busrq_l            : bit1;
 
   signal program_rom_cs_l       : bit1;
   signal sync_bus_cs_l          : bit1;
@@ -156,7 +153,6 @@ architecture RTL of Pacman_Top is
   -- watchdog
   signal watchdog_cnt           : word( 3 downto 0);
   signal watchdog_reset_l       : bit1;
-  signal freeze                 : bit1;
 
   signal blank                  : bit1;
   signal video_r                : word( 2 downto 0);
@@ -239,10 +235,10 @@ begin
   --
   -- cpu
   --
-  p_cpu_wait_comb : process(freeze, sync_bus_wreq_l)
+  p_cpu_wait_comb : process(sync_bus_wreq_l)
   begin
     cpu_wait_l  <= '1';
-    if (freeze = '1') or (sync_bus_wreq_l = '0') then
+    if (sync_bus_wreq_l = '0') then
       cpu_wait_l  <= '0';
     end if;
   end process;
@@ -262,11 +258,11 @@ begin
     
       -- watchdog 8c
       -- note sync reset
-      if (i_rst_sys = '1') then
+      if (i_core_reset = '1') then
         watchdog_cnt <= "1111";
       elsif (iodec_wdr_l = '0') then
         watchdog_cnt <= "0000";
-      elsif rising_vblank and (freeze = '0') then
+      elsif rising_vblank then
         watchdog_cnt <= watchdog_cnt + "1";
       end if;
     
@@ -276,8 +272,7 @@ begin
       end if;
     
       -- simulation
-      
-      watchdog_reset_l <= not i_rst_sys; -- watchdog disable
+      -- watchdog_reset_l <= not i_core_reset; -- watchdog disable
       
   end process;
 
@@ -292,28 +287,6 @@ begin
   o_in0_cs_l <= iodec_in0_l;
   o_in1_cs_l <= iodec_in1_l;
   o_dip_sw_cs_l <= iodec_dipsw1_l;
-
-  -- u_cpu : entity work.T80se
-  --         port map (
-  --             RESET_n => watchdog_reset_l,
-  --             CLK_n   => hcnt(0),
-  --             CLKEN   => '1',
-  --             WAIT_n  => cpu_wait_l,
-  --             INT_n   => cpu_int_l,
-  --             NMI_n   => cpu_nmi_l,
-  --             BUSRQ_n => cpu_busrq_l,
-  --             M1_n    => cpu_m1_l,
-  --             MREQ_n  => cpu_mreq_l,
-  --             IORQ_n  => cpu_iorq_l,
-  --             RD_n    => cpu_rd_l,
-  --             WR_n    => cpu_wr_l,
-  --             RFSH_n  => cpu_rfsh_l,
-  --             HALT_n  => cpu_halt_l,
-  --             BUSAK_n => cpu_busak_l,
-  --             A       => cpu_addr,
-  --             DI      => cpu_data_in,
-  --             DO      => cpu_data_out
-  -- );
   
   o_rom_cs_l <= program_rom_cs_l;
   
@@ -387,21 +360,16 @@ begin
     sync_bus_wreq_l <= '1';
 
     -- Le CPU à l'accès au bus "ab" si hcnt(1) = '0'
-    -- if (sync_bus_cs_l = '0') and (hcnt(1) = '0') then
     if (sync_bus_cs_l = '0') then
-      if (i_cpu_rd_l = '0') and (hcnt(1) = '1') then
+      if (i_cpu_rd_l = '0') and (hcnt(1) = '0') then
+        sync_bus_stb_U0 <= '0'; -- Pin 12 74LS139
+      elsif (i_cpu_rd_l = '0') and (hcnt(1) = '1') then
         -- Wait request
         sync_bus_wreq_l <= '0'; -- Pin 11 74LS139
-      elsif (i_cpu_rd_l = '1') and (hcnt(1) = '1') then
-        sync_bus_stb_U0 <= '0'; -- Pin 12 74LS139
       elsif (i_cpu_rd_l = '1') and (hcnt(1) = '0') then
         -- sync_bus_r_w_l = 1 => Read ; sync_bus_r_w_l = 0 => Write
-        sync_bus_r_w_U0_l <= '0'; -- Pin 10 
+        sync_bus_r_w_U0_l <= '0'; -- Pin 10
       end if;
-    end if;
-
-    if (sync_bus_cs_l = '0') and (hcnt(1) = '1') and (i_cpu_rd_l = '0') then
-      -- sync_bus_wreq_l == cpu_wait_l (sync_bus_wreq_l = Sync Bus WAIT request)
     end if;
   end process;
   
@@ -446,10 +414,15 @@ begin
   
   p_db_mux_comb : process(hcnt, rams_data_out, i_config_reg)
   begin
-    if (iodec_in0_l = '0' or iodec_in1_l = '0' or iodec_dipsw1_l = '0') then
-        sync_bus_db <= i_config_reg;
+    -- simplified data source for video subsystem
+    -- only cpu or ram are sources of interest
+    if (sync_bus_r_w_l = '0') then
+        sync_bus_db <= i_cpu_do;
     else
         sync_bus_db <= rams_data_out;
+        if (iodec_in0_l = '0' or iodec_in1_l = '0' or iodec_dipsw1_l = '0') then
+            sync_bus_db <= i_config_reg;
+        end if;
     end if;
   end process;
 
@@ -478,7 +451,7 @@ begin
   
   -- Lecture registre synchro bus ou
   -- vect_reg ou
-  -- RAM, IN0, IN1, DIP switch
+  -- IN0, IN1, DIP switch
   o_rd_regs_l <= '0' when (sync_bus_wreq_l = '0') or (i_cpu_iorq_l = '0' and i_cpu_m1_l = '0') else '1';
   
   --

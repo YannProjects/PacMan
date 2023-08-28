@@ -39,4 +39,6 @@ set_false_path -to [get_ports *o_audio*]
 set_false_path -to [get_ports *o_dip*]
 set_false_path -to [get_ports *o_in*]
 
-set_property PACKAGE_PIN N15 [get_ports i_clk_sys]
+set_property PACKAGE_PIN P17 [get_ports i_clk_sys]
+
+

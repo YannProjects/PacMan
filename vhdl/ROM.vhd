@@ -40,30 +40,29 @@ architecture Behavioral of rom is
     signal rom_data_1             : word(7 downto 0);
     signal rom_data_2             : word(7 downto 0);
     signal rom_data_3             : word(7 downto 0);
-    signal rom_data               : word(7 downto 0);
     signal o_data                 : word(7 downto 0);
 
     begin
     
-      u_rom_6E : entity rom_pacman_6e_v2
+      u_rom_6E : entity work.rom_pacman_6e_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_0
       );    
     
-      u_rom_6F : entity rom_pacman_6f_v2
+      u_rom_6F : entity work.rom_pacman_6f_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_1
       );    
     
-      u_rom_6H : entity rom_pacman_6h_v2
+      u_rom_6H : entity work.rom_pacman_6h_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_2
       );    
     
-      u_rom_6J : entity rom_pacman_6j_v2
+      u_rom_6J : entity work.rom_pacman_6j_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_3
