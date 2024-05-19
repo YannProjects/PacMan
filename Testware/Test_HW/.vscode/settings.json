@@ -1,0 +1,9 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "initializer_list": "c",
+        "type_traits": "c",
+        "limits": "c",
+        "xuartns550.h": "c"
+    }
+}
