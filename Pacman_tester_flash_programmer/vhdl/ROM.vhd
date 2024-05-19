@@ -23,6 +23,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.std_logic_arith.all;
 
+use work.Replay_Pack.all;
+
 entity rom is
 port(
     A: in std_logic_vector(13 downto 0);
@@ -34,34 +36,33 @@ end rom;
  
 architecture Behavioral of rom is
     
-    signal rom_data_0             : std_logic_vector(7 downto 0);
-    signal rom_data_1             : std_logic_vector(7 downto 0);
-    signal rom_data_2             : std_logic_vector(7 downto 0);
-    signal rom_data_3             : std_logic_vector(7 downto 0);
-    signal rom_data               : std_logic_vector(7 downto 0);
-    signal o_data                 : std_logic_vector(7 downto 0);
+    signal rom_data_0             : word(7 downto 0);
+    signal rom_data_1             : word(7 downto 0);
+    signal rom_data_2             : word(7 downto 0);
+    signal rom_data_3             : word(7 downto 0);
+    signal o_data                 : word(7 downto 0);
 
     begin
     
-      u_rom_6E : entity work.pacman_rom_6e
+      u_rom_6E : entity work.rom_pacman_6e_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_0
       );    
     
-      u_rom_6F : entity work.pacman_rom_6f
+      u_rom_6F : entity work.rom_pacman_6f_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_1
       );    
     
-      u_rom_6H : entity work.pacman_rom_6h
+      u_rom_6H : entity work.rom_pacman_6h_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_2
-      );
+      );    
     
-      u_rom_6J : entity work.pacman_rom_6j
+      u_rom_6J : entity work.rom_pacman_6j_v2
       port map (
         a => A(11 downto 0),
         spo => rom_data_3

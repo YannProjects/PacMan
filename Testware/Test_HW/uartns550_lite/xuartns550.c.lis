@@ -1,4 +1,4 @@
-C:/cygwin64/tmp/zcc00002C8C2AED2.asm:
+C:/cygwin64/tmp/zcc00000DA84D202.asm:
      1                          MODULE xuartns550_c
      2                          LINE 0, "uartns550_lite/xuartns550.c"
 uartns550_lite/xuartns550.c:
@@ -8,7 +8,7 @@ uartns550_lite/xuartns550.c:
      3                          ;
      4                          ;	Reconstructed for z80 Module Assembler
      5                          ;
-     6                          ;	Module compile time: Sun May 19 17:38:05 2024
+     6                          ;	Module compile time: Sun May 19 20:04:00 2024
      7                          
      8                          
      9                          	C_LINE	0,"uartns550_lite/xuartns550.c"
