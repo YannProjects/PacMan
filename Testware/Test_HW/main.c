@@ -32,6 +32,9 @@
 #define FLASH_MEMORY_BASE				0x8000
 #define PACMAN_ROM_MEMORY_BASE			0xC000
 
+#define IN0_REG_ADDR					0x5000
+#define IN1_REG_ADDR					0x5040
+
 #define EMPTY_TILE	64
 
 const unsigned long frequency_table[][10] = {
@@ -527,10 +530,10 @@ void MemoryDump()
 	sscanf(hexbuffer, "%x", &memory_address);
 	memory_ptr = (char *)memory_address;
 	for (i = 0; i < DUMP_LINES_NB; i++) {
-		sprintf(SendBuffer, "0x%04x : ", (unsigned int)memory_ptr);
+		sprintf(SendBuffer, "0x%04X : ", (int)memory_ptr);
 		for (j=0; j < 16; j++) {
 			valeur = memory_ptr[j];
-			sprintf(hexbuffer, "%02x ", valeur);
+			sprintf(hexbuffer, "%02X ", (int)valeur);
 			strcat(SendBuffer, hexbuffer);
 		}
 		strcat(SendBuffer, "\n\r");
@@ -538,6 +541,129 @@ void MemoryDump()
 		memory_ptr += 16;
 	}
 }
+
+
+#define BUTTON_COIN1_MASK		0x20
+#define BUTTON_START1_MASK		0x20
+#define BUTTON_CREDIT_MASK		0x80
+
+void ButtonTest()
+{
+	char in0, in0_change, in0_old;
+	char in1, in1_change, in1_old;
+
+	in0_old = *(volatile char *)(IN0_REG_ADDR);
+	in1_old = *(volatile char *)(IN1_REG_ADDR);
+
+	while(1)
+	{
+		in0 = *(volatile char *)(IN0_REG_ADDR);
+		in1 = *(volatile char *)(IN1_REG_ADDR);
+
+		in0_change = in0 ^ in0_old;
+		// COIN1
+		if ((in0_change & BUTTON_COIN1_MASK) == BUTTON_COIN1_MASK) {
+			if ((in0 & BUTTON_COIN1_MASK) == BUTTON_COIN1_MASK) {
+				sprintf(SendBuffer, "\rBouton COIN1 relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rBouton COIN1 appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		// START1
+		if ((in1_change & BUTTON_START1_MASK) == BUTTON_START1_MASK) {
+			if ((in1 & BUTTON_START1_MASK) == BUTTON_START1_MASK) {
+				sprintf(SendBuffer, "\rBouton START1 relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rBouton START1 appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		// CREDIT
+		if ((in0_change & BUTTON_CREDIT_MASK) == BUTTON_CREDIT_MASK) {
+			if ((in0 & BUTTON_CREDIT_MASK) == BUTTON_CREDIT_MASK) {
+				sprintf(SendBuffer, "\rBouton CREDIT relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rBouton CREDIT appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		in0_old = in0;
+		in1_old = in1;
+	}
+}
+
+
+#define JOSTICK_DOWN_MASK		0x01
+#define JOSTICK_RIGHT_MASK		0x02
+#define JOSTICK_LEFT_MASK		0x04
+#define JOSTICK_UP_MASK			0x08
+
+void JoystickTest()
+{
+	char in0, in0_change, in0_old;
+
+	in0_old = *(volatile char *)(IN0_REG_ADDR);
+
+	while(1)
+	{
+		in0 = *(volatile char *)(IN0_REG_ADDR);
+
+		in0_change = in0 ^ in0_old;
+		// UP1
+		if ((in0_change & JOSTICK_UP_MASK) == JOSTICK_UP_MASK) {
+			if ((in0 & JOSTICK_UP_MASK) == JOSTICK_UP_MASK) {
+				sprintf(SendBuffer, "\rJoystick UP relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rJoystick UP appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		// RIGHT1
+		if ((in0_change & JOSTICK_RIGHT_MASK) == JOSTICK_RIGHT_MASK) {
+			if ((in0 & JOSTICK_RIGHT_MASK) == JOSTICK_RIGHT_MASK) {
+				sprintf(SendBuffer, "\rJoystick RIGHT relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rJoystick RIGHT appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		// DOWN1
+		if ((in0_change & JOSTICK_DOWN_MASK) == JOSTICK_DOWN_MASK) {
+			if ((in0 & JOSTICK_DOWN_MASK) == JOSTICK_DOWN_MASK) {
+				sprintf(SendBuffer, "\rJoystick DOWN relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rJoystick DOWN appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		// LEFT1
+		if ((in0_change & JOSTICK_LEFT_MASK) == JOSTICK_LEFT_MASK) {
+			if ((in0 & JOSTICK_LEFT_MASK) == JOSTICK_LEFT_MASK) {
+				sprintf(SendBuffer, "\rJoystick LEFT relaché\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			} else {
+				sprintf(SendBuffer, "\rJoystick LEFT appuyé\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+			}
+		}
+
+		in0_old = in0;
+	}
+}
+
 
 int main(int a, char **arg) {
 
@@ -582,10 +708,12 @@ int main(int a, char **arg) {
 			case 6:
 				sprintf(SendBuffer, "\rDemarrage du test des boutons\n\r");
 				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+				ButtonTest();
 				break;
 			case 7:
 				sprintf(SendBuffer, "\rDemarrage du test du joystick\n\r");
 				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+				JoystickTest();
 				break;
 			case 8:
 				sprintf(SendBuffer, "\rDemarrage effacement memoire flash\n\r");
