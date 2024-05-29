@@ -1,5 +1,7 @@
 Docs
 PacMan_Spartan7/
+PacMan_v2/
+PacMan_v2_AIO/
 Pacman.docx
 Ref_FPGA_Arcade/
 roms/
@@ -15,6 +17,14 @@ Ref
 Testware/.vscode/tasks.json
 Testware/cmakeQuickStart/
 Testware/embeddedsw-master/
+Testware/Essai_Multithreads/
+Testware/Flash_programmer/
+Testware/Test_IO/
+Testware/Test_RAM/
+Testware/Test_audio/
+Testware/Test_lecture_RAM/
+Testware/Test_sprites/
+Testware/Test_tiles/
 Pacman_tester_flash_programmer/Pacman_flash_programmer.cache
 Pacman_tester_flash_programmer/Pacman_flash_programmer.hw
 Pacman_tester_flash_programmer/Pacman_flash_programmer.ip_user_files
