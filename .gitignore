@@ -12,6 +12,7 @@ Pspice/
 PCB
 Ref
 Testware/.vscode/tasks.json
+Testware/Test_HW/build/
 Testware/cmakeQuickStart/
 Testware/embeddedsw-master/
 Testware/Essai_Multithreads/
@@ -27,6 +28,10 @@ Pacman_tester_flash_programmer/Pacman_flash_programmer.hw
 Pacman_tester_flash_programmer/Pacman_flash_programmer.ip_user_files
 Pacman_tester_flash_programmer/Pacman_flash_programmer.runs
 Pacman_tester_flash_programmer/Pacman_flash_programmer.sim
+Pacman_tester_flash_programmer/Pacman_flash_programmer.gen/
+Pacman_tester_flash_programmer/Pacman_flash_programmer.srcs/sources_1
+Pacman_tester_flash_programmer/Pacman_flash_programmer.srcs/utils_1
+Pacman_tester_flash_programmer/S29al008j.exe
 Pacman_tester_flash_programmer/Pacman_flash_programmer.srcs/utils_1/imports/synth_1/flash_programmer.dcp
 Pacman_tester_flash_programmer/S29al008j
 Pacman_tester_flash_programmer/Pacman_flash_programmer.xpr
