@@ -1,0 +1,745 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sat Mar 16 18:13:02 2024
+# Process ID: 7252
+# Current directory: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1
+# Command line: vivado.exe -log Core_Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Core_Top.tcl
+# Log file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/Core_Top.vds
+# Journal file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1\vivado.jou
+# Running On: DESKTOP-SK95JA6, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 12, Host memory: 17123 MB
+#-----------------------------------------------------------
+source Core_Top.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Core_Top -part xc7a15tcsg324-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
+INFO: [Device 21-403] Loading part xc7a15tcsg324-2
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17756
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1284.969 ; gain = 0.000
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-9112] actual for formal port 'clrn' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd:75]
+WARNING: [Synth 8-9112] actual for formal port 'clkb' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:312]
+WARNING: [Synth 8-9112] actual for formal port 'rst_i' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:387]
+WARNING: [Synth 8-9112] actual for formal port 'i_rst' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_core_top.vhd:170]
+WARNING: [Synth 8-9112] actual for formal port 'i_reset' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_core_top.vhd:243]
+INFO: [Synth 8-638] synthesizing module 'Core_Top' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_core_top.vhd:111]
+INFO: [Synth 8-638] synthesizing module 'Clocks_gen' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd:46]
+INFO: [Synth 8-3491] module 'jkff' declared at 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ff.vhd:34' bound to instance 'inst' of component 'jkff' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'jkff' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ff.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'jkff' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ff.vhd:43]
+INFO: [Synth 8-3491] module 'jkff' declared at 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ff.vhd:34' bound to instance 'inst' of component 'jkff' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_1' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/clk_wiz_1_stub.vhdl:16]
+INFO: [Synth 8-256] done synthesizing module 'Clocks_gen' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'Pacman_Top' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:102]
+WARNING: [Synth 8-614] signal 'i_cpu_rd_l' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:296]
+WARNING: [Synth 8-614] signal 'sync_bus_r_w_l' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:423]
+WARNING: [Synth 8-614] signal 'i_cpu_do' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:423]
+WARNING: [Synth 8-614] signal 'iodec_in0_l' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:423]
+WARNING: [Synth 8-614] signal 'iodec_in1_l' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:423]
+WARNING: [Synth 8-614] signal 'iodec_dipsw1_l' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:423]
+INFO: [Synth 8-638] synthesizing module 'Pacman_VRAM_Addr' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_vram_addr.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'Pacman_VRAM_Addr' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_vram_addr.vhd:21]
+INFO: [Synth 8-226] default block is never used [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:563]
+INFO: [Synth 8-638] synthesizing module 'Pacman_RAMs' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_rams.vhd:64]
+INFO: [Synth 8-638] synthesizing module 'pacman_ram_v2' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/pacman_ram_v2_stub.vhdl:16]
+INFO: [Synth 8-256] done synthesizing module 'Pacman_RAMs' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_rams.vhd:64]
+INFO: [Synth 8-638] synthesizing module 'Pacman_Video' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:76]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-6157] synthesizing module 'RAM16X1D' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869]
+INFO: [Synth 8-6155] done synthesizing module 'RAM16X1D' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:187]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_5e' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_5e_stub.vhdl:13]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_5f' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_5f_stub.vhdl:13]
+INFO: [Synth 8-226] default block is never used [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:323]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_4a' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_4a_stub.vhdl:13]
+INFO: [Synth 8-3491] module 'RAMB16_S4_S4' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:102074' bound to instance 'u_sprite_ram' of component 'RAMB16_S4_S4' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:418]
+INFO: [Synth 8-6157] synthesizing module 'RAMB16_S4_S4' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:102074]
+INFO: [Synth 8-6155] done synthesizing module 'RAMB16_S4_S4' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:102074]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_7f' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_7f_stub.vhdl:13]
+INFO: [Synth 8-256] done synthesizing module 'Pacman_Video' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:76]
+INFO: [Synth 8-638] synthesizing module 'Pacman_Audio' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:73]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:160]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:160]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:160]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:160]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:180]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:180]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:180]
+INFO: [Synth 8-3491] module 'RAM16X1D' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:97869' bound to instance 'inst' of component 'RAM16X1D' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:180]
+INFO: [Synth 8-3491] module 'rom_pacman_3m' declared at 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_3m_stub.vhdl:5' bound to instance 'u_rom_3M' of component 'rom_pacman_3m' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:204]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_3m' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_3m_stub.vhdl:13]
+INFO: [Synth 8-3491] module 'rom_pacman_1m' declared at 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_1m_stub.vhdl:5' bound to instance 'u_rom_1M' of component 'rom_pacman_1m' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:239]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_1m' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_1m_stub.vhdl:13]
+INFO: [Synth 8-256] done synthesizing module 'Pacman_Audio' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:73]
+INFO: [Synth 8-256] done synthesizing module 'Pacman_Top' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:102]
+INFO: [Synth 8-638] synthesizing module 'rom' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ROM.vhd:37]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_6e_v2' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_6e_v2_stub.vhdl:13]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_6f_v2' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_6f_v2_stub.vhdl:13]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_6h_v2' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_6h_v2_stub.vhdl:13]
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_6j_v2' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/rom_pacman_6j_v2_stub.vhdl:13]
+INFO: [Synth 8-226] default block is never used [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ROM.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'rom' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ROM.vhd:37]
+INFO: [Synth 8-638] synthesizing module 'vga_control_top' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:76]
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:176]
+INFO: [Synth 8-3491] module 'blk_mem_gen_video_ram' declared at 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/blk_mem_gen_video_ram_stub.vhdl:5' bound to instance 'u1' of component 'blk_mem_gen_video_ram' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:307]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_video_ram' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/.Xil/Vivado-7252-DESKTOP-SK95JA6/realtime/blk_mem_gen_video_ram_stub.vhdl:18]
+WARNING: [Synth 8-614] signal 'i_reset' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:317]
+WARNING: [Synth 8-614] signal 'i_vsync' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:317]
+WARNING: [Synth 8-614] signal 'i_blank' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:317]
+WARNING: [Synth 8-614] signal 'vga_adr_o' is read in the process but is not in the sensitivity list [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:358]
+INFO: [Synth 8-3491] module 'vga_enh_top' declared at 'C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_enh_top.v:76' bound to instance 'u2' of component 'vga_enh_top' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:386]
+INFO: [Synth 8-6157] synthesizing module 'vga_enh_top' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_enh_top.v:76]
+INFO: [Synth 8-6157] synthesizing module 'vga_wb_slave' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_slave.v:81]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_slave.v:273]
+INFO: [Synth 8-6155] done synthesizing module 'vga_wb_slave' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_slave.v:81]
+INFO: [Synth 8-6157] synthesizing module 'vga_wb_master' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_master.v:92]
+INFO: [Synth 8-6157] synthesizing module 'vga_fifo' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+	Parameter aw bound to: 4 - type: integer 
+	Parameter dw bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'vga_fifo' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+INFO: [Synth 8-6157] synthesizing module 'vga_fifo__parameterized0' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+	Parameter aw bound to: 4 - type: integer 
+	Parameter dw bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'vga_fifo__parameterized0' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+INFO: [Synth 8-6155] done synthesizing module 'vga_wb_master' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_master.v:92]
+INFO: [Synth 8-6157] synthesizing module 'vga_csm_pb' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_csm_pb.v:61]
+	Parameter DWIDTH bound to: 24 - type: integer 
+	Parameter AWIDTH bound to: 9 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'generic_spram' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_spram.v:79]
+	Parameter aw bound to: 9 - type: integer 
+	Parameter dw bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'generic_spram' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_spram.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'vga_csm_pb' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_csm_pb.v:61]
+INFO: [Synth 8-6157] synthesizing module 'vga_pgen' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_pgen.v:70]
+INFO: [Synth 8-6157] synthesizing module 'vga_clkgen' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_clkgen.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'vga_clkgen' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_clkgen.v:70]
+INFO: [Synth 8-6157] synthesizing module 'vga_tgen' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_tgen.v:60]
+INFO: [Synth 8-6157] synthesizing module 'vga_vtim' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_vtim.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'vga_vtim' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_vtim.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'vga_tgen' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_tgen.v:60]
+INFO: [Synth 8-6157] synthesizing module 'vga_colproc' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_colproc.v:64]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_colproc.v:138]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_colproc.v:260]
+INFO: [Synth 8-6155] done synthesizing module 'vga_colproc' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_colproc.v:64]
+INFO: [Synth 8-6157] synthesizing module 'vga_fifo__parameterized1' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+	Parameter aw bound to: 4 - type: integer 
+	Parameter dw bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'vga_fifo__parameterized1' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo.v:73]
+INFO: [Synth 8-6155] done synthesizing module 'vga_pgen' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_pgen.v:70]
+INFO: [Synth 8-6157] synthesizing module 'vga_fifo_dc' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo_dc.v:82]
+	Parameter AWIDTH bound to: 7 - type: integer 
+	Parameter DWIDTH bound to: 24 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'generic_dpram' [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_dpram.v:108]
+	Parameter aw bound to: 7 - type: integer 
+	Parameter dw bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'generic_dpram' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_dpram.v:108]
+INFO: [Synth 8-6155] done synthesizing module 'vga_fifo_dc' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_fifo_dc.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'vga_enh_top' (0#1) [C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_enh_top.v:76]
+INFO: [Synth 8-256] done synthesizing module 'vga_control_top' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd:76]
+INFO: [Synth 8-256] done synthesizing module 'Core_Top' (0#1) [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_core_top.vhd:111]
+WARNING: [Synth 8-3936] Found unconnected internal register 'lut_4a_t1_reg' and it is trimmed from '8' to '4' bits. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:461]
+WARNING: [Synth 8-3936] Found unconnected internal register 'col_rom_addr_reg' and it is trimmed from '11' to '8' bits. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:372]
+WARNING: [Synth 8-3848] Net o_cpu_nmi_l in module/entity Pacman_Top does not have driver. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:77]
+WARNING: [Synth 8-3848] Net o_cpu_busrq_l in module/entity Pacman_Top does not have driver. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:78]
+WARNING: [Synth 8-3848] Net o_busak_l in module/entity Pacman_Top does not have driver. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:84]
+WARNING: [Synth 8-7129] Port rrst in module generic_dpram is either unconnected or has no load
+WARNING: [Synth 8-7129] Port oe in module generic_dpram is either unconnected or has no load
+WARNING: [Synth 8-7129] Port wrst in module generic_dpram is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ctrl_dvi_odf[1] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ctrl_dvi_odf[0] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[8] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[7] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[6] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[5] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[4] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[3] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[2] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[1] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor_adr[0] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_en in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_res in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[31] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[30] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[29] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[28] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[27] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[26] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[25] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[24] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[23] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[22] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[21] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[20] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[19] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[18] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[17] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[16] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[15] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[14] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[13] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[12] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[11] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[10] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[9] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[8] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[7] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[6] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[5] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[4] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[3] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[2] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[1] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor0_xy[0] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[15] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[14] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[13] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[12] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[11] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[10] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[9] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[8] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[7] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[6] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[5] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[4] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[3] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[2] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[1] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc0_dat_i[0] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_en in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_res in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[31] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[30] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[29] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[28] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[27] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[26] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[25] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[24] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[23] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[22] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[21] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[20] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[19] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[18] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[17] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[16] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[15] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[14] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[13] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[12] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[11] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[10] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[9] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[8] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[7] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[6] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[5] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[4] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[3] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[2] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[1] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cursor1_xy[0] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc1_dat_i[15] in module vga_pgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cc1_dat_i[14] in module vga_pgen is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.969 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.969 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.969 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1284.969 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 17 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/rom_pacman_6f_v2/rom_pacman_6f_v2_in_context.xdc] for cell 'u_crom/u_rom_6F'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/rom_pacman_6f_v2/rom_pacman_6f_v2_in_context.xdc] for cell 'u_crom/u_rom_6F'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/rom_pacman_6h_v2/rom_pacman_6h_v2_in_context.xdc] for cell 'u_crom/u_rom_6H'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/rom_pacman_6h_v2/rom_pacman_6h_v2_in_context.xdc] for cell 'u_crom/u_rom_6H'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/rom_pacman_6j_v2/rom_pacman_6j_v2_in_context.xdc] for cell 'u_crom/u_rom_6J'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/rom_pacman_6j_v2/rom_pacman_6j_v2_in_context.xdc] for cell 'u_crom/u_rom_6J'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc] for cell 'clk_gen_0/clk_gen'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc] for cell 'clk_gen_0/clk_gen'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5e/rom_pacman_5e/rom_pacman_5e_in_context.xdc] for cell 'u_Core/u_video/u_rom_5E'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5e/rom_pacman_5e/rom_pacman_5e_in_context.xdc] for cell 'u_Core/u_video/u_rom_5E'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5f/rom_pacman_5f/rom_pacman_5f_in_context.xdc] for cell 'u_Core/u_video/u_rom_5F'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5f/rom_pacman_5f/rom_pacman_5f_in_context.xdc] for cell 'u_Core/u_video/u_rom_5F'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_4a/rom_pacman_4a/rom_pacman_4a_in_context.xdc] for cell 'u_Core/u_video/u_rom_4a'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_4a/rom_pacman_4a/rom_pacman_4a_in_context.xdc] for cell 'u_Core/u_video/u_rom_4a'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_7f/rom_pacman_7f/rom_pacman_7f_in_context.xdc] for cell 'u_Core/u_video/u_rom_7f'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_7f/rom_pacman_7f/rom_pacman_7f_in_context.xdc] for cell 'u_Core/u_video/u_rom_7f'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/rom_pacman_3m/rom_pacman_3m_in_context.xdc] for cell 'u_Core/u_audio/u_rom_3M'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/rom_pacman_3m/rom_pacman_3m_in_context.xdc] for cell 'u_Core/u_audio/u_rom_3M'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_1m/rom_pacman_1m/rom_pacman_1m_in_context.xdc] for cell 'u_Core/u_audio/u_rom_1M'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_1m/rom_pacman_1m/rom_pacman_1m_in_context.xdc] for cell 'u_Core/u_audio/u_rom_1M'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/blk_mem_gen_video_ram/blk_mem_gen_video_ram_in_context.xdc] for cell 'u_vga_ctrl/u1'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/blk_mem_gen_video_ram/blk_mem_gen_video_ram_in_context.xdc] for cell 'u_vga_ctrl/u1'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/pacman_ram_v2/pacman_ram_v2_in_context.xdc] for cell 'u_Core/u_rams/u_rams'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/pacman_ram_v2/pacman_ram_v2_in_context.xdc] for cell 'u_Core/u_rams/u_rams'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2/rom_pacman_6e_v2_in_context.xdc] for cell 'u_crom/u_rom_6E'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2/rom_pacman_6e_v2_in_context.xdc] for cell 'u_crom/u_rom_6E'
+Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc]
+WARNING: [Vivado 12-508] No pins matched 'clk_gen_0/clk_52m'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:16]
+WARNING: [Vivado 12-627] No clocks matched 'clk_52M'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:21]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:21]
+CRITICAL WARNING: [Vivado 12-4739] set_clock_groups:No valid object(s) found for '-group [get_clocks clk_52M]'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:21]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+CRITICAL WARNING: [Vivado 12-4739] set_clock_groups:No valid object(s) found for '-group '. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:21]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+CRITICAL WARNING: [Constraints 18-1056] Clock 'VGA_CLK' completely overrides clock 'clk_gen_0/clk_gen/clk_vga'.
+New: create_clock -period 39.700 -name VGA_CLK -waveform {0.000 19.850} [get_pins clk_gen_0/clk_gen/clk_vga], [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:73]
+Previous: create_generated_clock -source [get_pins clk_gen_0/clk_gen/clk_main] -edges {1 2 3} -edge_shift {0.000 14.851 29.702} [get_pins clk_gen_0/clk_gen/clk_vga], [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc:4]
+Resolution: Review the constraint files and remove the redundant clock definition(s). If the clock constraints are not saved in a file, you can first save the constraints to an XDC file and reload the design once the constraints have been corrected.
+CRITICAL WARNING: [Constraints 18-1056] Clock 'SYS_CLK' completely overrides clock 'clk_gen_0/clk_gen/clk_sys'.
+New: create_clock -period 54.600 -name SYS_CLK -waveform {0.000 27.300} [get_pins clk_gen_0/clk_gen/clk_sys], [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:74]
+Previous: create_generated_clock -source [get_pins clk_gen_0/clk_gen/clk_main] -edges {1 2 3} -edge_shift {0.000 22.295 44.591} [get_pins clk_gen_0/clk_gen/clk_sys], [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc:2]
+Resolution: Review the constraint files and remove the redundant clock definition(s). If the clock constraints are not saved in a file, you can first save the constraints to an XDC file and reload the design once the constraints have been corrected.
+WARNING: [Vivado 12-508] No pins matched 'u_Core/o_cpu_clk_core_OBUF'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:84]
+WARNING: [Vivado 12-627] No clocks matched '.*CLK_Z80.*'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:85]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:85]
+WARNING: [Vivado 12-627] No clocks matched '.*CLK_Z80.*'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:86]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:86]
+WARNING: [Vivado 12-627] No clocks matched '.*CLK_Z80.*'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:87]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:87]
+WARNING: [Vivado 12-627] No clocks matched '.*CLK_Z80.*'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:88]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:88]
+WARNING: [Vivado 12-627] No clocks matched '.*CLK_Z80.*'. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:89]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc:89]
+Finished Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/Core_Top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Core_Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Core_Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/pinout.xdc]
+Finished Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/pinout.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/pinout.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Core_Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Core_Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1353.570 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 17 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 16 instances
+  RAMB16_S4_S4 => RAMB18E1: 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1353.570 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'u_vga_ctrl/u1' at clock pin 'clkb' is different from the actual clock period '19.231', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a15tcsg324-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for i_clk_main. (constraint file  c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for i_clk_main. (constraint file  c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc, line 6).
+Applied set_property KEEP_HIERARCHY = SOFT for u_crom/u_rom_6F. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_crom/u_rom_6H. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_crom/u_rom_6J. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for clk_gen_0/clk_gen. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_video/u_rom_5E. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_video/u_rom_5F. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_video/u_rom_4a. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_video/u_rom_7f. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_audio/u_rom_3M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_audio/u_rom_1M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_vga_ctrl/u1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_Core/u_rams/u_rams. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for u_crom/u_rom_6E. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'vga_vtim'
+INFO: [Synth 8-802] inferred FSM for state register 'c_state_reg' in module 'vga_colproc'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'vga_control_top'
+WARNING: [Synth 8-327] inferring latch for variable 'o_cpu_di_reg' [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:444]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+              idle_state |                            00001 |                            00001
+              sync_state |                            00010 |                            00010
+              gdel_state |                            00100 |                            00100
+              gate_state |                            01000 |                            01000
+               len_state |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'state_reg' in module 'vga_vtim'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                          0000000
+                fill_buf |                              001 |                          0000001
+                col_8bpp |                              010 |                          0000100
+                 bw_8bpp |                              011 |                          0000010
+             col_16bpp_a |                              100 |                          0001000
+             col_16bpp_b |                              101 |                          0010000
+               col_24bpp |                              110 |                          0100000
+               col_32bpp |                              111 |                          1000000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c_state_reg' using encoding 'sequential' in module 'vga_colproc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               wait_init |                            00001 |                              000
+                chk_stop |                            00010 |                              001
+               gen_cycle |                            00100 |                              010
+            wait_for_ack |                            01000 |                              011
+                    idle |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'vga_control_top'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 6     
+	   3 Input   15 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 3     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 5     
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
+	   3 Input    1 Bit       Adders := 6     
++---XORs : 
+	   2 Input      5 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 44    
++---Registers : 
+	               32 Bit    Registers := 12    
+	               30 Bit    Registers := 2     
+	               21 Bit    Registers := 3     
+	               16 Bit    Registers := 6     
+	                9 Bit    Registers := 4     
+	                8 Bit    Registers := 16    
+	                7 Bit    Registers := 9     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 12    
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 91    
++---RAMs : 
+	              12K Bit	(512 X 24 bit)          RAMs := 1     
+	               3K Bit	(128 X 24 bit)          RAMs := 1     
++---Muxes : 
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 6     
+	  14 Input   32 Bit        Muxes := 1     
+	   2 Input   30 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 1     
+	   2 Input   21 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 2     
+	   4 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 11    
+	   6 Input   16 Bit        Muxes := 4     
+	   2 Input   12 Bit        Muxes := 3     
+	   2 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 9     
+	   8 Input    8 Bit        Muxes := 7     
+	   4 Input    8 Bit        Muxes := 9     
+	   2 Input    5 Bit        Muxes := 4     
+	   6 Input    5 Bit        Muxes := 2     
+	   5 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 12    
+	   4 Input    4 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 12    
+	   4 Input    3 Bit        Muxes := 2     
+	   6 Input    3 Bit        Muxes := 1     
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 7     
+	   2 Input    1 Bit        Muxes := 76    
+	   4 Input    1 Bit        Muxes := 1     
+	  10 Input    1 Bit        Muxes := 9     
+	   6 Input    1 Bit        Muxes := 12    
+	   8 Input    1 Bit        Muxes := 4     
+	  20 Input    1 Bit        Muxes := 1     
+	   5 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 45 (col length:60)
+BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+RAM Pipeline Warning: Read Address Register Found For RAM u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg. We will not be able to pipeline it. This may degrade performance. 
+WARNING: [Synth 8-3332] Sequential element (u_vga_ctrl/FSM_onehot_state_reg[0]) is unused and will be removed from module Core_Top.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++----------------+----------------------------+---------------+----------------+
+|Module Name     | RTL Object                 | Depth x Width | Implemented As | 
++----------------+----------------------------+---------------+----------------+
+|vga_control_top | vectors[0][adr]            | 32x12         | LUT            | 
+|Core_Top        | u_vga_ctrl/vectors[0][adr] | 32x12         | LUT            | 
++----------------+----------------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object                                  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Core_Top    | u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg     | 512 x 24(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Core_Top    | u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg | 128 x 24(NO_CHANGE)    | W |   | 128 x 24(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+------------------------------------------------+-----------+----------------------+---------------+
+|Module Name | RTL Object                                     | Inference | Size (Depth x Width) | Primitives    | 
++------------+------------------------------------------------+-----------+----------------------+---------------+
+|Core_Top    | u_vga_ctrl/u2/wbm/clut_sw_fifo/mem_reg         | Implied   | 16 x 1               | RAM16X1D x 1  | 
+|Core_Top    | u_vga_ctrl/u2/pixel_generator/rgb_fifo/mem_reg | Implied   | 16 x 24              | RAM32M x 4    | 
+|Core_Top    | u_vga_ctrl/u2/wbm/data_fifo/mem_reg            | Implied   | 16 x 32              | RAM32M x 6    | 
++------------+------------------------------------------------+-----------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1353.625 ; gain = 68.656
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object                                  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Core_Top    | u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg     | 512 x 24(WRITE_FIRST)  | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Core_Top    | u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg | 128 x 24(NO_CHANGE)    | W |   | 128 x 24(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++------------+---------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++------------+------------------------------------------------+-----------+----------------------+---------------+
+|Module Name | RTL Object                                     | Inference | Size (Depth x Width) | Primitives    | 
++------------+------------------------------------------------+-----------+----------------------+---------------+
+|Core_Top    | u_vga_ctrl/u2/wbm/clut_sw_fifo/mem_reg         | Implied   | 16 x 1               | RAM16X1D x 1  | 
+|Core_Top    | u_vga_ctrl/u2/pixel_generator/rgb_fifo/mem_reg | Implied   | 16 x 24              | RAM32M x 4    | 
++------------+------------------------------------------------+-----------+----------------------+---------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd:362]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd:225]
+WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd:345]
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------------+----------+
+|      |BlackBox name         |Instances |
++------+----------------------+----------+
+|1     |clk_wiz_1             |         1|
+|2     |rom_pacman_3m         |         1|
+|3     |rom_pacman_1m         |         1|
+|4     |pacman_ram_v2         |         1|
+|5     |rom_pacman_5e         |         1|
+|6     |rom_pacman_5f         |         1|
+|7     |rom_pacman_4a         |         1|
+|8     |rom_pacman_7f         |         1|
+|9     |rom_pacman_6e_v2      |         1|
+|10    |rom_pacman_6f_v2      |         1|
+|11    |rom_pacman_6h_v2      |         1|
+|12    |rom_pacman_6j_v2      |         1|
+|13    |blk_mem_gen_video_ram |         1|
++------+----------------------+----------+
+
+Report Cell Usage: 
++------+---------------------------+------+
+|      |Cell                       |Count |
++------+---------------------------+------+
+|1     |blk_mem_gen_video_ram_bbox |     1|
+|2     |clk_wiz                    |     1|
+|3     |pacman_ram_v2              |     1|
+|4     |rom_pacman_1m_bbox         |     1|
+|5     |rom_pacman_3m_bbox         |     1|
+|6     |rom_pacman_4a              |     1|
+|7     |rom_pacman_5e              |     1|
+|8     |rom_pacman_5f              |     1|
+|9     |rom_pacman_6e_v2           |     1|
+|10    |rom_pacman_6f_v2           |     1|
+|11    |rom_pacman_6h_v2           |     1|
+|12    |rom_pacman_6j_v2           |     1|
+|13    |rom_pacman_7f              |     1|
+|14    |CARRY4                     |    55|
+|15    |LUT1                       |   113|
+|16    |LUT2                       |    89|
+|17    |LUT3                       |   209|
+|18    |LUT4                       |   122|
+|19    |LUT5                       |   157|
+|20    |LUT6                       |   266|
+|21    |RAM16X1D                   |    17|
+|22    |RAM32M                     |     9|
+|23    |RAM32X1D                   |     2|
+|24    |RAMB16_S4_S4               |     1|
+|25    |RAMB18E1                   |     2|
+|27    |FDCE                       |   195|
+|28    |FDPE                       |    11|
+|29    |FDRE                       |   487|
+|30    |FDSE                       |    20|
+|31    |LD                         |     8|
+|32    |IBUF                       |    36|
+|33    |OBUF                       |    26|
+|34    |OBUFT                      |     8|
++------+---------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 130 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:28 . Memory (MB): peak = 1384.559 ; gain = 30.934
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1384.559 ; gain = 99.590
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1384.559 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 94 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 18 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1384.559 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 37 instances were transformed.
+  LD => LDCE: 8 instances
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM16X1D => RAM32X1D (inverted pins: WCLK) (RAMD32(x2)): 16 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 9 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 2 instances
+  RAMB16_S4_S4 => RAMB18E1 (inverted pins: CLKARDCLK, CLKBWRCLK): 1 instance 
+
+Synth Design complete, checksum: d565748
+INFO: [Common 17-83] Releasing license: Synthesis
+135 Infos, 137 Warnings, 4 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 1384.559 ; gain = 99.590
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/Core_Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Core_Top_utilization_synth.rpt -pb Core_Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Mar 16 18:13:43 2024...

@@ -1,0 +1,2 @@
+blk_mem_gen_video_ram.v,verilog,xil_defaultlib,../../../../Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/sim/blk_mem_gen_video_ram.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

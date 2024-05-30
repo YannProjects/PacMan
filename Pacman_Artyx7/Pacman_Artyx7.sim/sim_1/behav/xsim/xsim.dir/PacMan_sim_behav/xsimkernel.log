@@ -1,0 +1,7 @@
+Running: xsim.dir/PacMan_sim_behav/xsimk.exe -simmode gui -wdb PacMan_sim_behav.wdb -simrunnum 0 -socket 53923
+Design successfully loaded
+Design Loading Memory Usage: 10320 KB (Peak: 10320 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 12740 KB (Peak: 12740 KB)
+Simulation CPU Usage: 15 ms
