@@ -74,23 +74,17 @@ entity Pacman_Top is
     o_cpu_clk             : out bit1; -- Z80 clk
     o_cpu_wait_l          : out bit1; -- Z80 wait
     o_cpu_int_l           : out bit1; -- Z80 INT
-    o_cpu_nmi_l           : out bit1; -- Z80 NMI
-    o_cpu_busrq_l         : out bit1; -- Z80 BUSRQ
     i_cpu_m1_l            : in bit1; -- Z80 M1
     i_cpu_mreq_l          : in bit1; -- Z80 MREQ
     i_cpu_iorq_l          : in bit1; -- Z80 IORQ
     i_cpu_rd_l            : in bit1; -- Z80 RD
     i_cpu_rfsh_l          : in bit1; -- Z80 RFRSH
-    o_busak_l             : out bit1; -- Z80 BUS acknowledge
-
-    i_halt                : in bit1;
     
     -- Registres de configuration (IN0, IN1, DIP SW)
     i_config_reg          : in word(7 downto 0);
     
     -- Z80 code ROM
     o_rom_cs_l           : out bit1; -- ROM CS
-    o_rd_regs_l          : out bit1; -- CPU read interrupt reg or hold register
     
     -- IN0, IN1, DPI switches
     o_in0_cs_l           : out bit1;
@@ -139,6 +133,7 @@ architecture RTL of Pacman_Top is
 
   signal vram_l                 : bit1;
   signal rams_data_out          : word( 7 downto 0);
+  signal cpu_data_in            : word( 7 downto 0);
 
   signal wr0_l                  : bit1;
   signal wr1_l                  : bit1;
@@ -279,15 +274,19 @@ begin
   -- other cpu signals
   h1_inv      <= not hcnt(0);
   
-  -- Z80 externe
-  o_cpu_clk <= not hcnt(0);
+  -- Z80:
+  -- Dans le cas du Z80 externe, il faut inverser hcnt(0) pour avoir des timings qui correspondent à ceux du Z80 (comme sur le schéma original de Pacman)
+  -- o_cpu_clk <= not hcnt(0);
+  -- Dans le cas du Z80 interne, si on inverse hcnt(0) les timings ne sont pas compatibles avec ceux du bus controller. Par contre, sans inversion c'est ok
+  -- (c'est aussi comme ça dans le code du PacMan sur FPGA MiSTER)
+  o_cpu_clk <= hcnt(0);
+  
   o_cpu_rst <= watchdog_reset_l;
   o_cpu_wait_l <= cpu_wait_l;
   o_cpu_int_l <= cpu_int_l;
   o_in0_cs_l <= iodec_in0_l;
   o_in1_cs_l <= iodec_in1_l;
   o_dip_sw_cs_l <= iodec_dipsw1_l;
-  
   o_rom_cs_l <= program_rom_cs_l;
   
   --
@@ -319,17 +318,12 @@ begin
     end if;
   end process;
   
-  ---------------------------------------------------------------
-  ---------------------------------------------------------------
-  -- BEGIN
+  --
   -- sync bus custom ic (6D)
-  -- BEGIN
-  ---------------------------------------------------------------
-  ---------------------------------------------------------------
-  -- 74LS374 U6 & U7
+  --
   p_sync_bus_reg : process
   begin
-      wait until rising_edge(i_clk_6M_star);
+      wait until rising_edge(i_clk_pacman_core);
       -- register on sync bus module that is used to store interrupt vector
       -- Implementation du circuit U7 du SYNC BUS. Utilise pour memoriser le vecteur
       -- d'interruption dans un registre (U7)
@@ -338,121 +332,33 @@ begin
       end if;
     
       -- read holding reg
-      -- Circuit U6 du SYNC BUS. 
+      -- Circuit U6 du SYNC BUS. Utilise pour lire le registre U6 
       if (hcnt(1 downto 0) = "01") then
-        -- 74LS244 U5 du SYNC BUS
-        if sync_bus_r_w_l = '0' then
-            sync_bus_reg <= i_cpu_do;
-        else
-            sync_bus_reg <= sync_bus_db;
-        end if;
+        sync_bus_reg <= cpu_data_in;
       end if;
   end process;
 
-  -- 74LS139 (U0) SYNC BUS controller
-  -- A => hcnt(1)
-  -- B => RDn
   p_sync_bus_comb : process(i_cpu_rd_l, sync_bus_cs_l, hcnt)
   begin
-    -- sync_bus_stb is now an active low clock enable signal (= 5D pin 12 "CLK")
-    sync_bus_stb_U0 <= '1';
-    sync_bus_r_w_U0_l <= '1';
-    sync_bus_wreq_l <= '1';
+    -- sync_bus_stb is now an active low clock enable signal (= 5D pin 12)
+    sync_bus_stb <= '1';
+    sync_bus_r_w_l <= '1';
 
     -- Le CPU à l'accès au bus "ab" si hcnt(1) = '0'
-    if (sync_bus_cs_l = '0') then
-      if (i_cpu_rd_l = '0') and (hcnt(1) = '0') then
-        sync_bus_stb_U0 <= '0'; -- Pin 12 74LS139
-      elsif (i_cpu_rd_l = '0') and (hcnt(1) = '1') then
-        -- Wait request
-        sync_bus_wreq_l <= '0'; -- Pin 11 74LS139
-      elsif (i_cpu_rd_l = '1') and (hcnt(1) = '0') then
+    if (sync_bus_cs_l = '0') and (hcnt(1) = '0') then
+      if (i_cpu_rd_l = '1') then
         -- sync_bus_r_w_l = 1 => Read ; sync_bus_r_w_l = 0 => Write
-        sync_bus_r_w_U0_l <= '0'; -- Pin 10
+        sync_bus_r_w_l <= '0';
       end if;
+      sync_bus_stb <= '0';
     end if;
-  end process;
-  
-  -- 74LS74 U2 pin 5
-  p_sync_bus_stb_U2 : process
-  begin
-    wait until rising_edge(i_clk_6M_star);
-    if hcnt(0) = '0' then
-        sync_bus_stb_U2 <= sync_bus_stb_U0;
-    end if;
-  end process;  
-  
-  -- 74LS74 U2 pin 9
-  p_sync_bus_rw_U2 : process
-  begin
-    wait until rising_edge(i_clk_6M_star);
-    if hcnt(0) = '0' then
-        sync_bus_r_w_l <= sync_bus_r_w_U0_l;
-    end if;
-  end process;
-  
-  -- 74LS74 U4 pin 6
-  p_sync_bus_U4_1 : process
-  begin
-    wait until rising_edge(i_clk_6M_star);
-    -- R/W IN0, IN1, RAM,...
-    sync_bus_rp_U4_1 <= not hcnt(0);
-  end process;
- 
-  -- 74LS74 U4 pin 8
-  p_sync_bus_U4_2 : process
-  begin
-    wait until falling_edge(i_clk_pacman_core);
-    sync_bus_wp_U4_1 <= not hcnt(0);
-  end process;
-  
-  sync_bus_rp_l <= not (sync_bus_rp_U4_1 or hcnt(0));
-  sync_bus_wp_l <= not (sync_bus_wp_U4_1 or hcnt(0));
-  
-  -- Chip select IN0, IN1, RAM,...
-  sync_bus_stb <= not(not(sync_bus_stb_U2 or sync_bus_rp_l) or not(sync_bus_r_w_l or sync_bus_wp_l));
-  
-  p_db_mux_comb : process(hcnt, rams_data_out, i_config_reg)
-  begin
-    -- simplified data source for video subsystem
-    -- only cpu or ram are sources of interest
-    if (sync_bus_r_w_l = '0') then
-        sync_bus_db <= i_cpu_do;
-    else
-        sync_bus_db <= rams_data_out;
-        if (iodec_in0_l = '0' or iodec_in1_l = '0' or iodec_dipsw1_l = '0') then
-            sync_bus_db <= i_config_reg;
-        end if;
-    end if;
-  end process;
 
-  p_cpu_data_in_mux_comb : process(program_rom_cs_l, i_cpu_iorq_l, i_cpu_m1_l, cpu_vec_reg,
-                                   sync_bus_wreq_l, sync_bus_reg,
-                                   rams_data_out,
-                                   iodec_in0_l, iodec_in1_l, iodec_dipsw1_l, iodec_dipsw2_l)
-  begin
-    -- simplified again
-    if (i_cpu_iorq_l = '0') and (i_cpu_m1_l = '0') then
-      o_cpu_di <= cpu_vec_reg;
-    elsif (sync_bus_wreq_l = '0') then
-      -- Cas de la lecture du registre de sync_bus_req.
-      o_cpu_di <= sync_bus_reg;
+    sync_bus_wreq_l <= '1';
+    if (sync_bus_cs_l = '0') and (hcnt(1) = '1') and (i_cpu_rd_l = '0') then
+      -- sync_bus_wreq_l == cpu_wait_l (sync_bus_wreq_l = Sync Bus WAIT request)
+      sync_bus_wreq_l <= '0';
     end if;
   end process;
-
-  ---------------------------------------------------------------
-  ---------------------------------------------------------------
-  -- END
-  -- sync bus custom ic (6D)
-  -- END
-  ---------------------------------------------------------------
-  ---------------------------------------------------------------
-
-  
-  -- Lecture registre synchro bus ou
-  -- vect_reg ou
-  -- IN0, IN1, DIP switch
-  o_rd_regs_l <= '0' when (sync_bus_wreq_l = '0') or (i_cpu_iorq_l = '0' and i_cpu_m1_l = '0') else '1';
   
   --
   -- vram addr custom ic
@@ -575,6 +481,36 @@ begin
         end loop;
       end if;
   end process;
+  
+  p_db_mux_comb : process(sync_bus_r_w_l, i_cpu_do, i_config_reg, rams_data_out, iodec_in0_l, iodec_in1_l, iodec_dipsw1_l)
+  begin
+    -- simplified data source for video subsystem
+    -- only cpu or ram are sources of interest
+    if (hcnt(1) = '0') then
+        sync_bus_db <= i_cpu_do;
+    else
+        sync_bus_db <= rams_data_out;
+    end if;
+  end process;
+  
+  p_cpu_data_in_mux_comb : process(i_cpu_iorq_l, i_cpu_m1_l, sync_bus_reg, cpu_vec_reg,
+                                   sync_bus_wreq_l, rams_data_out, i_config_reg,
+                                   iodec_in0_l, iodec_in1_l, iodec_dipsw1_l, iodec_dipsw2_l)
+  begin
+    -- simplified again
+    if (i_cpu_iorq_l = '0') and (i_cpu_m1_l = '0') then
+      cpu_data_in <= cpu_vec_reg;
+    elsif (sync_bus_wreq_l = '0') then
+      -- Cas de la lecture du registre de sync_bus_req.
+      cpu_data_in <= sync_bus_reg;
+    else
+      cpu_data_in <= rams_data_out;
+        if (iodec_in0_l = '0')    then cpu_data_in <= i_config_reg; end if;
+        if (iodec_in1_l = '0')    then cpu_data_in <= i_config_reg; end if;
+        if (iodec_dipsw1_l = '0') then cpu_data_in <= i_config_reg; end if;
+        if (iodec_dipsw2_l = '0') then cpu_data_in <= i_config_reg; end if;														 
+    end if;
+  end process;
 
   u_rams : entity work.Pacman_RAMs
     port map (
@@ -619,6 +555,7 @@ begin
   o_vsync_l <= not vsync;
   o_csync_l <= comp_sync_l;
   o_blank   <= blank;
+  o_cpu_di <= cpu_data_in;
   --
   -- audio subsystem
   --

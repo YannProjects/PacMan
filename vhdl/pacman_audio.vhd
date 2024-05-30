@@ -83,7 +83,7 @@ architecture RTL of Pacman_Audio is
   signal accum_reg     : word( 5 downto 0);
   
   signal rom3m_addr    : word( 6 downto 0);
-  signal rom3m_data    : word( 3 downto 0);
+  signal rom3m_data    : word( 3 downto 0);										   
   signal rom3m         : word( 3 downto 0);
 
   signal rom1m_addr    : word( 7 downto 0);
@@ -117,14 +117,14 @@ architecture RTL of Pacman_Audio is
             a : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
             spo : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
-  end component;  
+  end component;
 
   component rom_pacman_3m
 		port(
             a : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
             spo : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
-  end component;  
+  end component;
 
 
 begin
@@ -134,26 +134,16 @@ begin
   begin
     if (i_hcnt(1) = '0') then -- 2h,
       addr <= i_ab(3 downto 0);
+      -- La memoire 74LS89 inverse les donnees en sortie. 
+      -- Mais, le circuit 3K 74LS158) inverse aussi les donnees, du
+      -- coup il n'y a rien a faire. On peut prendre i_db tel quel.
       data <= i_db(3 downto 0); -- removed invert
     else
       addr <= i_hcnt(5 downto 2);
       data <= accum_reg(4 downto 1);
     end if;
   end process;
-
-  p_ram_comb : process(i_wr1_l, rom3m)
-  begin
-    vol_ram_wen <= '0';
-    if (I_WR1_L = '0') then
-      vol_ram_wen <= '1';
-    end if;
-
-    frq_ram_wen <= '0';
-    if (rom3m(1) = '1') then
-      frq_ram_wen <= '1';
-    end if;
-  end process;
-
+  
   -- 2L
   vol_ram : for i in 0 to 3 generate
   begin
@@ -194,19 +184,19 @@ begin
         );
   end generate;
 
-  p_rom_3m_addr_comb : process(i_hcnt, i_wr0_l)
-  begin
-    rom3m_addr( 6 ) <= i_wr0_l;
-    rom3m_addr( 5 downto 0) <= i_hcnt(5 downto 0);
-  end process;
-  
+  frq_ram_wen <= not rom3m(1);
+  vol_ram_wen <= not I_WR1_L;
+    
   -- ROM 3M
+  -- larger than we need, only 256 x 8 needed
   u_rom_3M : rom_pacman_3m
   port map (
     a => rom3m_addr(6 downto 0),
     spo => rom3m_data
   );
-  
+
+  rom3m_addr( 6 ) <= i_wr0_l;
+  rom3m_addr( 5 downto 0) <= i_hcnt(5 downto 0) when i_wr0_l = '1' else i_hcnt(5 downto 0) + 1;
   rom3m <= rom3m_data;
 
   -- 74LS283 1K
@@ -217,14 +207,15 @@ begin
   end process;
 
   -- 72LS174 1L
-  p_accum_reg : process
+  p_accum_reg : process(i_clk, rom3m)
   begin
     -- 1L
-    wait until rising_edge(i_clk);
-    if (rom3m(3) = '1') then -- clear
+    if (rom3m(3) = '0') then -- clear
         accum_reg <= "000000";
-    elsif (rom3m(0) = '1') then -- rising edge clk
-        accum_reg <= sum(5 downto 1) & accum_reg(4);
+    elsif rising_edge(i_clk) then
+        if (rom3m(0) = '0') then -- rising edge clk
+            accum_reg <= sum(5 downto 1) & accum_reg(4);
+        end if;
     end if;
   end process;
 
@@ -243,17 +234,19 @@ begin
   );
   
   -- 72LS273 2M
-  p_original_output_reg : process
+  p_original_output_reg : process(i_clk, i_sound_on)
   begin
     -- 2m used to use async clear
-    wait until rising_edge(i_clk);
-      if (i_sound_on = '0') then
-        audio_vol_out <= "0000";
-        audio_wav_out <= "0000";
-      elsif (rom3m(2) = '1') then
+								  
+    if (i_sound_on = '0') then
+      audio_vol_out <= "0000";
+      audio_wav_out <= "0000";
+    elsif rising_edge(i_clk) then
+      if (rom3m(2) = '0') then
         audio_vol_out <= vol_ram_dout(3 downto 0);
         audio_wav_out <= rom1m_data(3 downto 0);
       end if;
+    end if;
   end process;
   
   o_audio_vol_out <= audio_vol_out;

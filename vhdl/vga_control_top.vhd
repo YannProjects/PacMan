@@ -55,9 +55,7 @@ entity vga_control_top is
         i_vga_clk : in std_logic; -- 25.18750 Mhz
         i_sys_clk : in std_logic; -- 6.144 Mhz (18.432 MHz / 3)
 
-        i_hsync : in std_logic; -- HSYNC Pacman core
         i_vsync : in std_logic; -- VSYNC Pacman core
-        i_csync : in std_logic; -- CSYNC Pacman core
         i_blank : in std_logic; -- Video BLANK Pacman core
         i_rgb : in std_logic_vector(23 downto 0); -- RGB PacMan core
         
@@ -237,7 +235,7 @@ architecture Behavioral of vga_control_top is
         (X"0000087C", x"0000E0C0", '0'),
         (CTRL_REG_ADDR,x"00000901", '0'), --   program control register (VEN=1 (video enabled), PC=1 (pseudo-color), CD=11 (32 bits))                                                
         -- end list
-        (x"00000000",x"00000000", '1')  --38 stop testbench
+        (x"00000000",x"00000000", '1')  -- 38 stop testbench
     );
     
     constant PACMAN_LINE_RESOLUTION : unsigned := X"0000090";
@@ -309,6 +307,7 @@ begin
         wea(0) => '1',
         addra => std_logic_vector(video_mem_addr_pacman),
         dina => video_mem_pacman_data,
+
         clkb => not i_clk_52m, -- Read side 52 MHz
         addrb => video_dpram_vga_core_addr,
         doutb => video_mem_vga_core_data
