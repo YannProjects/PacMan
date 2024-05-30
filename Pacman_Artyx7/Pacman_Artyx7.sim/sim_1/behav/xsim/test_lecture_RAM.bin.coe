@@ -1,6 +1,0 @@
-memory_initialization_radix=16;
-<<<<<<< HEAD
-memory_initialization_vector=11 ef 07 21 00 48 19 7e 1b af ba 20 f6 bb 20 f3 18 ee ;
-=======
-memory_initialization_vector=21 00 00 7e 21 00 10 7e 21 00 20 7e 21 00 30 7e 21 00 48 7e 21 01 48 7e 21 02 48 7e 21 03 48 7e 21 00 50 7e 3e fa d3 00 18 d6 ;
->>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
