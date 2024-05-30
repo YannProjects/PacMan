@@ -8,4 +8,6 @@ Pspice/
 Testware/
 ip/
 wdb/
-
+*.o
+*.lis
+*.coe
