@@ -1,0 +1,1688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="PacMan_sim_func_synth.wdb" id="1">
+         <top_modules>
+            <top_module name="PacMan_sim" />
+            <top_module name="core_pack" />
+            <top_module name="glbl" />
+            <top_module name="replay_lib_wrap_pack" />
+            <top_module name="replay_pack" />
+            <top_module name="t80_pack" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="10.360000001 ms"></ZoomEndTime>
+      <Cursor1Time time="0.000000000 ms"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="196"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wave_markers>
+      <marker time="3672476757" label="" />
+      <marker time="3673110027" label="" />
+      <marker time="1222673010" label="" />
+      <marker time="1223306280" label="" />
+      <marker time="5529856721" label="" />
+      <marker time="5530806626" label="" />
+   </wave_markers>
+   <wvobject fp_name="/PacMan_sim/z80_a" type="array">
+      <obj_property name="ElementShortName">z80_a[15:0]</obj_property>
+      <obj_property name="ObjectShortName">z80_a[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_di" type="array">
+      <obj_property name="ElementShortName">z80_di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">z80_di[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_do" type="array">
+      <obj_property name="ElementShortName">z80_do[7:0]</obj_property>
+      <obj_property name="ObjectShortName">z80_do[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/D_bidir" type="array">
+      <obj_property name="ElementShortName">D_bidir[7:0]</obj_property>
+      <obj_property name="ObjectShortName">D_bidir[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/crom_cs" type="logic">
+      <obj_property name="ElementShortName">crom_cs</obj_property>
+      <obj_property name="ObjectShortName">crom_cs</obj_property>
+   </wvobject>
+   <wvobject fp_name="group396" type="group">
+      <obj_property name="label">core_top</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_clk_sys" type="logic">
+         <obj_property name="ElementShortName">i_clk_sys</obj_property>
+         <obj_property name="ObjectShortName">i_clk_sys</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_rst_sys" type="logic">
+         <obj_property name="ElementShortName">i_rst_sys</obj_property>
+         <obj_property name="ObjectShortName">i_rst_sys</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[hsync]\" type="logic">
+         <obj_property name="ElementShortName">\o_vga[hsync]\</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[hsync]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[vsync]\" type="logic">
+         <obj_property name="ElementShortName">\o_vga[vsync]\</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[vsync]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[r_vga]\" type="array">
+         <obj_property name="ElementShortName">\o_vga[r_vga]\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[r_vga]\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[g_vga]\" type="array">
+         <obj_property name="ElementShortName">\o_vga[g_vga]\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[g_vga]\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[b_vga]\" type="array">
+         <obj_property name="ElementShortName">\o_vga[b_vga]\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[b_vga]\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_a_core" type="array">
+         <obj_property name="ElementShortName">i_cpu_a_core[15:0]</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_a_core[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_di_core" type="array">
+         <obj_property name="ElementShortName">o_cpu_di_core[7:0]</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_di_core[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_do_core" type="array">
+         <obj_property name="ElementShortName">i_cpu_do_core[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_do_core[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_rst_core" type="logic">
+         <obj_property name="ElementShortName">o_cpu_rst_core</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_rst_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_clk_core" type="logic">
+         <obj_property name="ElementShortName">o_cpu_clk_core</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_clk_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_wait_l_core" type="logic">
+         <obj_property name="ElementShortName">o_cpu_wait_l_core</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_wait_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_int_l_core" type="logic">
+         <obj_property name="ElementShortName">o_cpu_int_l_core</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_int_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_m1_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_m1_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_m1_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_mreq_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_mreq_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_mreq_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_iorq_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_iorq_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_iorq_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_rd_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rd_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rd_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_wr_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_wr_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_wr_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_rfrsh_l_core" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rfrsh_l_core</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rfrsh_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_config_reg" type="array">
+         <obj_property name="ElementShortName">i_config_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_config_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_rom_cs_l_core" type="logic">
+         <obj_property name="ElementShortName">o_rom_cs_l_core</obj_property>
+         <obj_property name="ObjectShortName">o_rom_cs_l_core</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_in0_l_cs" type="logic">
+         <obj_property name="ElementShortName">o_in0_l_cs</obj_property>
+         <obj_property name="ObjectShortName">o_in0_l_cs</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_in1_l_cs" type="logic">
+         <obj_property name="ElementShortName">o_in1_l_cs</obj_property>
+         <obj_property name="ObjectShortName">o_in1_l_cs</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_dip_l_cs" type="logic">
+         <obj_property name="ElementShortName">o_dip_l_cs</obj_property>
+         <obj_property name="ObjectShortName">o_dip_l_cs</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_audio_vol_out" type="array">
+         <obj_property name="ElementShortName">o_audio_vol_out[3:0]</obj_property>
+         <obj_property name="ObjectShortName">o_audio_vol_out[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_audio_wav_out" type="array">
+         <obj_property name="ElementShortName">o_audio_wav_out[3:0]</obj_property>
+         <obj_property name="ObjectShortName">o_audio_wav_out[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/clkb" type="logic">
+         <obj_property name="ElementShortName">clkb</obj_property>
+         <obj_property name="ObjectShortName">clkb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_clk_52m" type="logic">
+         <obj_property name="ElementShortName">i_clk_52m</obj_property>
+         <obj_property name="ObjectShortName">i_clk_52m</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_clk_6m" type="logic">
+         <obj_property name="ElementShortName">i_clk_6m</obj_property>
+         <obj_property name="ObjectShortName">i_clk_6m</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_config_reg_IBUF" type="array">
+         <obj_property name="ElementShortName">i_config_reg_IBUF[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_config_reg_IBUF[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_a_core_IBUF" type="array">
+         <obj_property name="ElementShortName">i_cpu_a_core_IBUF[14:0]</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_a_core_IBUF[14:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_do_core_IBUF" type="array">
+         <obj_property name="ElementShortName">i_cpu_do_core_IBUF[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_do_core_IBUF[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_iorq_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_iorq_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_iorq_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_m1_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_m1_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_m1_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_mreq_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_mreq_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_mreq_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_rd_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rd_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rd_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_cpu_rfrsh_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rfrsh_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rfrsh_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_rst_sys_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_rst_sys_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_rst_sys_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/i_vga_clock" type="logic">
+         <obj_property name="ElementShortName">i_vga_clock</obj_property>
+         <obj_property name="ObjectShortName">i_vga_clock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/lopt" type="logic">
+         <obj_property name="ElementShortName">lopt</obj_property>
+         <obj_property name="ObjectShortName">lopt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_audio_vol_out_OBUF" type="array">
+         <obj_property name="ElementShortName">o_audio_vol_out_OBUF[3:0]</obj_property>
+         <obj_property name="ObjectShortName">o_audio_vol_out_OBUF[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_audio_wav_out_OBUF" type="array">
+         <obj_property name="ElementShortName">o_audio_wav_out_OBUF[3:0]</obj_property>
+         <obj_property name="ObjectShortName">o_audio_wav_out_OBUF[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_clk_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_clk_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_clk_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_di_core_OBUF" type="array">
+         <obj_property name="ElementShortName">o_cpu_di_core_OBUF[7:0]</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_di_core_OBUF[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_cpu_di_core_TRI[0]\" type="logic">
+         <obj_property name="ElementShortName">\o_cpu_di_core_TRI[0]\</obj_property>
+         <obj_property name="ObjectShortName">\o_cpu_di_core_TRI[0]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_int_l_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_int_l_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_int_l_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_rst_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_rst_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_rst_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_cpu_wait_l_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_wait_l_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_wait_l_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_dip_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_dip_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_dip_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_in0_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_in0_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_in0_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_in1_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_in1_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_in1_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/o_rom_cs_l_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_rom_cs_l_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_rom_cs_l_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[b_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[b_vga]_OBUF\[2:1]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[b_vga]_OBUF\[2:1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[g_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[g_vga]_OBUF\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[g_vga]_OBUF\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/\o_vga[r_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[r_vga]_OBUF\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[r_vga]_OBUF\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/sel" type="logic">
+         <obj_property name="ElementShortName">sel</obj_property>
+         <obj_property name="ObjectShortName">sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl_n_0" type="logic">
+         <obj_property name="ElementShortName">u_vga_ctrl_n_0</obj_property>
+         <obj_property name="ObjectShortName">u_vga_ctrl_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl_n_1" type="logic">
+         <obj_property name="ElementShortName">u_vga_ctrl_n_1</obj_property>
+         <obj_property name="ObjectShortName">u_vga_ctrl_n_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl_n_2" type="logic">
+         <obj_property name="ElementShortName">u_vga_ctrl_n_2</obj_property>
+         <obj_property name="ObjectShortName">u_vga_ctrl_n_2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/video_mem_addr_pacman0" type="logic">
+         <obj_property name="ElementShortName">video_mem_addr_pacman0</obj_property>
+         <obj_property name="ObjectShortName">video_mem_addr_pacman0</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group682" type="group">
+      <obj_property name="label">u_z80</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PacMan_sim/u_z80/RESET_n" type="logic">
+         <obj_property name="ElementShortName">RESET_n</obj_property>
+         <obj_property name="ObjectShortName">RESET_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/CLK_n" type="logic">
+         <obj_property name="ElementShortName">CLK_n</obj_property>
+         <obj_property name="ObjectShortName">CLK_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/WAIT_n" type="logic">
+         <obj_property name="ElementShortName">WAIT_n</obj_property>
+         <obj_property name="ObjectShortName">WAIT_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/INT_n" type="logic">
+         <obj_property name="ElementShortName">INT_n</obj_property>
+         <obj_property name="ObjectShortName">INT_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/NMI_n" type="logic">
+         <obj_property name="ElementShortName">NMI_n</obj_property>
+         <obj_property name="ObjectShortName">NMI_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/BUSRQ_n" type="logic">
+         <obj_property name="ElementShortName">BUSRQ_n</obj_property>
+         <obj_property name="ObjectShortName">BUSRQ_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/M1_n" type="logic">
+         <obj_property name="ElementShortName">M1_n</obj_property>
+         <obj_property name="ObjectShortName">M1_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/MREQ_n" type="logic">
+         <obj_property name="ElementShortName">MREQ_n</obj_property>
+         <obj_property name="ObjectShortName">MREQ_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/IORQ_n" type="logic">
+         <obj_property name="ElementShortName">IORQ_n</obj_property>
+         <obj_property name="ObjectShortName">IORQ_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/RD_n" type="logic">
+         <obj_property name="ElementShortName">RD_n</obj_property>
+         <obj_property name="ObjectShortName">RD_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/WR_n" type="logic">
+         <obj_property name="ElementShortName">WR_n</obj_property>
+         <obj_property name="ObjectShortName">WR_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/RFSH_n" type="logic">
+         <obj_property name="ElementShortName">RFSH_n</obj_property>
+         <obj_property name="ObjectShortName">RFSH_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/HALT_n" type="logic">
+         <obj_property name="ElementShortName">HALT_n</obj_property>
+         <obj_property name="ObjectShortName">HALT_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/BUSAK_n" type="logic">
+         <obj_property name="ElementShortName">BUSAK_n</obj_property>
+         <obj_property name="ObjectShortName">BUSAK_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/A" type="array">
+         <obj_property name="ElementShortName">A[15:0]</obj_property>
+         <obj_property name="ObjectShortName">A[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/D" type="array">
+         <obj_property name="ElementShortName">D[7:0]</obj_property>
+         <obj_property name="ObjectShortName">D[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/CEN" type="logic">
+         <obj_property name="ElementShortName">CEN</obj_property>
+         <obj_property name="ObjectShortName">CEN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/Reset_s" type="logic">
+         <obj_property name="ElementShortName">Reset_s</obj_property>
+         <obj_property name="ObjectShortName">Reset_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/IntCycle_n" type="logic">
+         <obj_property name="ElementShortName">IntCycle_n</obj_property>
+         <obj_property name="ObjectShortName">IntCycle_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/IORQ" type="logic">
+         <obj_property name="ElementShortName">IORQ</obj_property>
+         <obj_property name="ObjectShortName">IORQ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/Wait_s" type="logic">
+         <obj_property name="ElementShortName">Wait_s</obj_property>
+         <obj_property name="ObjectShortName">Wait_s</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/NoRead" type="logic">
+         <obj_property name="ElementShortName">NoRead</obj_property>
+         <obj_property name="ObjectShortName">NoRead</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/Write" type="logic">
+         <obj_property name="ElementShortName">Write</obj_property>
+         <obj_property name="ObjectShortName">Write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/MREQ" type="logic">
+         <obj_property name="ElementShortName">MREQ</obj_property>
+         <obj_property name="ObjectShortName">MREQ</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/MReq_Inhibit" type="logic">
+         <obj_property name="ElementShortName">MReq_Inhibit</obj_property>
+         <obj_property name="ObjectShortName">MReq_Inhibit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/Req_Inhibit" type="logic">
+         <obj_property name="ElementShortName">Req_Inhibit</obj_property>
+         <obj_property name="ObjectShortName">Req_Inhibit</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/RD" type="logic">
+         <obj_property name="ElementShortName">RD</obj_property>
+         <obj_property name="ObjectShortName">RD</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/MREQ_n_i" type="logic">
+         <obj_property name="ElementShortName">MREQ_n_i</obj_property>
+         <obj_property name="ObjectShortName">MREQ_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/IORQ_n_i" type="logic">
+         <obj_property name="ElementShortName">IORQ_n_i</obj_property>
+         <obj_property name="ObjectShortName">IORQ_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/RD_n_i" type="logic">
+         <obj_property name="ElementShortName">RD_n_i</obj_property>
+         <obj_property name="ObjectShortName">RD_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/WR_n_i" type="logic">
+         <obj_property name="ElementShortName">WR_n_i</obj_property>
+         <obj_property name="ObjectShortName">WR_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/RFSH_n_i" type="logic">
+         <obj_property name="ElementShortName">RFSH_n_i</obj_property>
+         <obj_property name="ObjectShortName">RFSH_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/BUSAK_n_i" type="logic">
+         <obj_property name="ElementShortName">BUSAK_n_i</obj_property>
+         <obj_property name="ObjectShortName">BUSAK_n_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/A_i" type="array">
+         <obj_property name="ElementShortName">A_i[15:0]</obj_property>
+         <obj_property name="ObjectShortName">A_i[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/DO" type="array">
+         <obj_property name="ElementShortName">DO[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DO[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/DI_Reg" type="array">
+         <obj_property name="ElementShortName">DI_Reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DI_Reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/MCycle" type="array">
+         <obj_property name="ElementShortName">MCycle[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MCycle[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/TState" type="array">
+         <obj_property name="ElementShortName">TState[2:0]</obj_property>
+         <obj_property name="ObjectShortName">TState[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/Mode" type="other">
+         <obj_property name="ElementShortName">Mode</obj_property>
+         <obj_property name="ObjectShortName">Mode</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group683" type="group">
+      <obj_property name="label">u_crom</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PacMan_sim/u_crom/A" type="array">
+         <obj_property name="ElementShortName">A[13:0]</obj_property>
+         <obj_property name="ObjectShortName">A[13:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_crom/D" type="array">
+         <obj_property name="ElementShortName">D[7:0]</obj_property>
+         <obj_property name="ObjectShortName">D[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_crom/OEn" type="logic">
+         <obj_property name="ElementShortName">OEn</obj_property>
+         <obj_property name="ObjectShortName">OEn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_crom/CSn" type="logic">
+         <obj_property name="ElementShortName">CSn</obj_property>
+         <obj_property name="ObjectShortName">CSn</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2806" type="group">
+      <obj_property name="label">u_core</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_cpu_clk_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_clk_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_clk_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_cpu_int_l_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_int_l_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_int_l_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sel" type="logic">
+         <obj_property name="ElementShortName">sel</obj_property>
+         <obj_property name="ObjectShortName">sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_cpu_rst_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_rst_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_rst_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/video_mem_addr_pacman0" type="logic">
+         <obj_property name="ElementShortName">video_mem_addr_pacman0</obj_property>
+         <obj_property name="ObjectShortName">video_mem_addr_pacman0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_cpu_wait_l_core_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_cpu_wait_l_core_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_cpu_wait_l_core_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_in1_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_in1_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_in1_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_in0_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_in0_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_in0_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_dip_l_cs_OBUF" type="logic">
+         <obj_property name="ElementShortName">o_dip_l_cs_OBUF</obj_property>
+         <obj_property name="ObjectShortName">o_dip_l_cs_OBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\o_cpu_di_core_TRI[0]\" type="logic">
+         <obj_property name="ElementShortName">\o_cpu_di_core_TRI[0]\</obj_property>
+         <obj_property name="ObjectShortName">\o_cpu_di_core_TRI[0]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/Q" type="array">
+         <obj_property name="ElementShortName">Q[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Q[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\audio_vol_out_reg[3]\" type="array">
+         <obj_property name="ElementShortName">\audio_vol_out_reg[3]\[3:0]</obj_property>
+         <obj_property name="ObjectShortName">\audio_vol_out_reg[3]\[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\audio_wav_out_reg[3]\" type="array">
+         <obj_property name="ElementShortName">\audio_wav_out_reg[3]\[3:0]</obj_property>
+         <obj_property name="ObjectShortName">\audio_wav_out_reg[3]\[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/D" type="array">
+         <obj_property name="ElementShortName">D[7:0]</obj_property>
+         <obj_property name="ObjectShortName">D[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/clk_sys" type="logic">
+         <obj_property name="ElementShortName">clk_sys</obj_property>
+         <obj_property name="ObjectShortName">clk_sys</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_config_reg_IBUF" type="array">
+         <obj_property name="ElementShortName">i_config_reg_IBUF[7:0]</obj_property>
+         <obj_property name="ObjectShortName">i_config_reg_IBUF[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_a_core_IBUF" type="array">
+         <obj_property name="ElementShortName">i_cpu_a_core_IBUF[13:0]</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_a_core_IBUF[13:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_m1_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_m1_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_m1_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_iorq_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_iorq_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_iorq_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_rst_sys_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_rst_sys_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_rst_sys_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_rd_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rd_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rd_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_mreq_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_mreq_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_mreq_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_cpu_rfrsh_l_core_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_cpu_rfrsh_l_core_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_cpu_rfrsh_l_core_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/SS" type="array">
+         <obj_property name="ElementShortName">SS[0:0]</obj_property>
+         <obj_property name="ObjectShortName">SS[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/L" type="array">
+         <obj_property name="ElementShortName">L[7:4]</obj_property>
+         <obj_property name="ObjectShortName">L[7:4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/control_reg" type="array">
+         <obj_property name="ElementShortName">control_reg[3:3]</obj_property>
+         <obj_property name="ObjectShortName">control_reg[3:3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\control_reg[1]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\control_reg[1]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\control_reg[1]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\control_reg[3]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\control_reg[3]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\control_reg[3]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\control_reg_reg_n_0_[0]\" type="logic">
+         <obj_property name="ElementShortName">\control_reg_reg_n_0_[0]\</obj_property>
+         <obj_property name="ObjectShortName">\control_reg_reg_n_0_[0]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\control_reg_reg_n_0_[1]\" type="logic">
+         <obj_property name="ElementShortName">\control_reg_reg_n_0_[1]\</obj_property>
+         <obj_property name="ObjectShortName">\control_reg_reg_n_0_[1]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[0]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[0]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[0]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[1]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[1]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[1]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[2]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[2]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[2]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[3]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[3]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[3]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[4]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[4]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[4]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[5]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[5]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[5]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[6]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[6]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[6]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[7]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[7]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[7]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[7]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[7]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[7]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\cpu_data_in_reg[7]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\cpu_data_in_reg[7]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\cpu_data_in_reg[7]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_int_l_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">cpu_int_l_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">cpu_int_l_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_int_l_i_3_n_0" type="logic">
+         <obj_property name="ElementShortName">cpu_int_l_i_3_n_0</obj_property>
+         <obj_property name="ObjectShortName">cpu_int_l_i_3_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_vec_reg" type="array">
+         <obj_property name="ElementShortName">cpu_vec_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cpu_vec_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/cpu_vec_reg0" type="logic">
+         <obj_property name="ElementShortName">cpu_vec_reg0</obj_property>
+         <obj_property name="ObjectShortName">cpu_vec_reg0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/ena" type="array">
+         <obj_property name="ElementShortName">ena[3:0]</obj_property>
+         <obj_property name="ObjectShortName">ena[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/eqOp0_in" type="logic">
+         <obj_property name="ElementShortName">eqOp0_in</obj_property>
+         <obj_property name="ObjectShortName">eqOp0_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/hblank" type="logic">
+         <obj_property name="ElementShortName">hblank</obj_property>
+         <obj_property name="ObjectShortName">hblank</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/hblank_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">hblank_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">hblank_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/hblank_i_2_n_0" type="logic">
+         <obj_property name="ElementShortName">hblank_i_2_n_0</obj_property>
+         <obj_property name="ObjectShortName">hblank_i_2_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt[8]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\hcnt[8]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt[8]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt[8]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\hcnt[8]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt[8]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[0]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[0]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[0]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[2]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[2]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[2]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[3]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[3]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[3]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[4]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[4]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[4]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[5]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[5]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[5]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[6]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[6]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[6]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[7]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[7]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[7]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\hcnt_reg_n_0_[8]\" type="logic">
+         <obj_property name="ElementShortName">\hcnt_reg_n_0_[8]\</obj_property>
+         <obj_property name="ObjectShortName">\hcnt_reg_n_0_[8]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\^o_cpu_clk_core_obuf\" type="logic">
+         <obj_property name="ElementShortName">\^o_cpu_clk_core_obuf\</obj_property>
+         <obj_property name="ObjectShortName">\^o_cpu_clk_core_obuf\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\^o_cpu_rst_core_obuf\" type="logic">
+         <obj_property name="ElementShortName">\^o_cpu_rst_core_obuf\</obj_property>
+         <obj_property name="ObjectShortName">\^o_cpu_rst_core_obuf\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/p_0_in" type="logic">
+         <obj_property name="ElementShortName">p_0_in</obj_property>
+         <obj_property name="ObjectShortName">p_0_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/plusOp" type="array">
+         <obj_property name="ElementShortName">plusOp[8:1]</obj_property>
+         <obj_property name="ObjectShortName">plusOp[8:1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\plusOp__0\" type="array">
+         <obj_property name="ElementShortName">\plusOp__0\[5:2]</obj_property>
+         <obj_property name="ObjectShortName">\plusOp__0\[5:2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/ram_data" type="array">
+         <obj_property name="ElementShortName">ram_data[3:0]</obj_property>
+         <obj_property name="ObjectShortName">ram_data[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_r_w_l_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">sync_bus_r_w_l_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_r_w_l_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_r_w_l_i_2_n_0" type="logic">
+         <obj_property name="ElementShortName">sync_bus_r_w_l_i_2_n_0</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_r_w_l_i_2_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_r_w_l_reg_n_0" type="logic">
+         <obj_property name="ElementShortName">sync_bus_r_w_l_reg_n_0</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_r_w_l_reg_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_reg" type="array">
+         <obj_property name="ElementShortName">sync_bus_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\sync_bus_reg[7]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\sync_bus_reg[7]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\sync_bus_reg[7]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_rp_U4_1" type="logic">
+         <obj_property name="ElementShortName">sync_bus_rp_U4_1</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_rp_U4_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_stb_U2_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">sync_bus_stb_U2_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_stb_U2_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_stb_U2_reg_n_0" type="logic">
+         <obj_property name="ElementShortName">sync_bus_stb_U2_reg_n_0</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_stb_U2_reg_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/sync_bus_wp_U4_1" type="logic">
+         <obj_property name="ElementShortName">sync_bus_wp_U4_1</obj_property>
+         <obj_property name="ObjectShortName">sync_bus_wp_U4_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio_n_0" type="logic">
+         <obj_property name="ElementShortName">u_audio_n_0</obj_property>
+         <obj_property name="ObjectShortName">u_audio_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio_n_1" type="logic">
+         <obj_property name="ElementShortName">u_audio_n_1</obj_property>
+         <obj_property name="ObjectShortName">u_audio_n_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio_n_2" type="logic">
+         <obj_property name="ElementShortName">u_audio_n_2</obj_property>
+         <obj_property name="ObjectShortName">u_audio_n_2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio_n_3" type="logic">
+         <obj_property name="ElementShortName">u_audio_n_3</obj_property>
+         <obj_property name="ObjectShortName">u_audio_n_3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_audio_n_7" type="logic">
+         <obj_property name="ElementShortName">u_audio_n_7</obj_property>
+         <obj_property name="ObjectShortName">u_audio_n_7</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_10" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_10</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_10</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_11" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_11</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_11</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_12" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_12</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_12</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_13" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_13</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_13</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_14" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_14</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_14</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_15" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_15</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_15</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_4" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_4</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_4</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_5" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_5</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_5</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_6" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_6</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_6</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_7" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_7</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_7</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_8" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_8</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_8</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_rams_n_9" type="logic">
+         <obj_property name="ElementShortName">u_rams_n_9</obj_property>
+         <obj_property name="ObjectShortName">u_rams_n_9</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vblank6_out" type="logic">
+         <obj_property name="ElementShortName">vblank6_out</obj_property>
+         <obj_property name="ObjectShortName">vblank6_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vblank_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">vblank_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">vblank_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vblank_i_2_n_0" type="logic">
+         <obj_property name="ElementShortName">vblank_i_2_n_0</obj_property>
+         <obj_property name="ObjectShortName">vblank_i_2_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vblank_i_3_n_0" type="logic">
+         <obj_property name="ElementShortName">vblank_i_3_n_0</obj_property>
+         <obj_property name="ObjectShortName">vblank_i_3_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vblank_reg_n_0" type="logic">
+         <obj_property name="ElementShortName">vblank_reg_n_0</obj_property>
+         <obj_property name="ObjectShortName">vblank_reg_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vcnt" type="logic">
+         <obj_property name="ElementShortName">vcnt</obj_property>
+         <obj_property name="ObjectShortName">vcnt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[0]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[0]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[0]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[1]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[1]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[1]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[3]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[3]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[3]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[4]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[4]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[4]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[6]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[6]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[6]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[7]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[7]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[7]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[8]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[8]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[8]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\vcnt[8]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vcnt[8]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vcnt[8]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vcnt_reg" type="array">
+         <obj_property name="ElementShortName">vcnt_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">vcnt_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/vsync_l" type="logic">
+         <obj_property name="ElementShortName">vsync_l</obj_property>
+         <obj_property name="ObjectShortName">vsync_l</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/watchdog_cnt" type="array">
+         <obj_property name="ElementShortName">watchdog_cnt[3:0]</obj_property>
+         <obj_property name="ObjectShortName">watchdog_cnt[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[0]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[0]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[0]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[1]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[1]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[1]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[2]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[2]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[2]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[3]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[3]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[3]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[3]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[3]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[3]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/\watchdog_cnt[3]_i_4_n_0\" type="logic">
+         <obj_property name="ElementShortName">\watchdog_cnt[3]_i_4_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\watchdog_cnt[3]_i_4_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/watchdog_reset_l_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">watchdog_reset_l_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">watchdog_reset_l_i_1_n_0</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2922" type="group">
+      <obj_property name="label">u_vga_ctrl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/hsync_o_reg" type="logic">
+         <obj_property name="ElementShortName">hsync_o_reg</obj_property>
+         <obj_property name="ObjectShortName">hsync_o_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vsync_o_reg" type="logic">
+         <obj_property name="ElementShortName">vsync_o_reg</obj_property>
+         <obj_property name="ObjectShortName">vsync_o_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/SS" type="array">
+         <obj_property name="ElementShortName">SS[0:0]</obj_property>
+         <obj_property name="ObjectShortName">SS[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\o_vga[r_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[r_vga]_OBUF\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[r_vga]_OBUF\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\o_vga[g_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[g_vga]_OBUF\[2:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[g_vga]_OBUF\[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\o_vga[b_vga]_OBUF\" type="array">
+         <obj_property name="ElementShortName">\o_vga[b_vga]_OBUF\[1:0]</obj_property>
+         <obj_property name="ObjectShortName">\o_vga[b_vga]_OBUF\[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/clk_52m" type="logic">
+         <obj_property name="ElementShortName">clk_52m</obj_property>
+         <obj_property name="ObjectShortName">clk_52m</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/i_rst_sys_IBUF" type="logic">
+         <obj_property name="ElementShortName">i_rst_sys_IBUF</obj_property>
+         <obj_property name="ObjectShortName">i_rst_sys_IBUF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/clk_vga" type="logic">
+         <obj_property name="ElementShortName">clk_vga</obj_property>
+         <obj_property name="ObjectShortName">clk_vga</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/clk_sys" type="logic">
+         <obj_property name="ElementShortName">clk_sys</obj_property>
+         <obj_property name="ObjectShortName">clk_sys</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/clkb" type="logic">
+         <obj_property name="ElementShortName">clkb</obj_property>
+         <obj_property name="ObjectShortName">clkb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/sel" type="logic">
+         <obj_property name="ElementShortName">sel</obj_property>
+         <obj_property name="ObjectShortName">sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_mem_addr_pacman0" type="logic">
+         <obj_property name="ElementShortName">video_mem_addr_pacman0</obj_property>
+         <obj_property name="ObjectShortName">video_mem_addr_pacman0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/lopt" type="logic">
+         <obj_property name="ElementShortName">lopt</obj_property>
+         <obj_property name="ObjectShortName">lopt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\FSM_onehot_state[2]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\FSM_onehot_state[2]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\FSM_onehot_state[2]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\FSM_onehot_state[4]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\FSM_onehot_state[4]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\FSM_onehot_state[4]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\FSM_onehot_state_reg_n_0_[1]\" type="logic">
+         <obj_property name="ElementShortName">\FSM_onehot_state_reg_n_0_[1]\</obj_property>
+         <obj_property name="ObjectShortName">\FSM_onehot_state_reg_n_0_[1]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\FSM_onehot_state_reg_n_0_[3]\" type="logic">
+         <obj_property name="ElementShortName">\FSM_onehot_state_reg_n_0_[3]\</obj_property>
+         <obj_property name="ObjectShortName">\FSM_onehot_state_reg_n_0_[3]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/addrb" type="array">
+         <obj_property name="ElementShortName">addrb[14:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[14:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt[0]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\icnt[0]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\icnt[0]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/icnt_reg" type="array">
+         <obj_property name="ElementShortName">icnt_reg[4:0]</obj_property>
+         <obj_property name="ObjectShortName">icnt_reg[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_1\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_2\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_3\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_4\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_5\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_6\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[0]_i_2_n_7\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[0]_i_2_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[0]_i_2_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\icnt_reg[4]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\icnt_reg[4]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\icnt_reg[4]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/p_0_in_0" type="array">
+         <obj_property name="ElementShortName">p_0_in_0[29:0]</obj_property>
+         <obj_property name="ObjectShortName">p_0_in_0[29:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[11]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[11]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[11]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[2]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[2]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[2]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[3]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[3]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[3]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[4]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[4]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[4]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[5]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[5]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[5]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[6]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[6]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[6]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[7]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[7]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[7]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[8]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[8]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[8]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o[9]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o[9]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o[9]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[10]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[10]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[10]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[11]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[11]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[11]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[2]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[2]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[2]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[3]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[3]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[3]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[4]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[4]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[4]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[5]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[5]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[5]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[6]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[6]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[6]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[7]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[7]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[7]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[8]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[8]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[8]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_adr_o_reg_n_0_[9]\" type="logic">
+         <obj_property name="ElementShortName">\s_adr_o_reg_n_0_[9]\</obj_property>
+         <obj_property name="ObjectShortName">\s_adr_o_reg_n_0_[9]\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_cyc_o" type="logic">
+         <obj_property name="ElementShortName">s_cyc_o</obj_property>
+         <obj_property name="ObjectShortName">s_cyc_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_cyc_o_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">s_cyc_o_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">s_cyc_o_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_cyc_o_reg_n_0" type="logic">
+         <obj_property name="ElementShortName">s_cyc_o_reg_n_0</obj_property>
+         <obj_property name="ObjectShortName">s_cyc_o_reg_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_dat_o" type="array">
+         <obj_property name="ElementShortName">s_dat_o[30:0]</obj_property>
+         <obj_property name="ObjectShortName">s_dat_o[30:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_dat_o[11]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_dat_o[11]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_dat_o[11]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_dat_o[17]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_dat_o[17]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_dat_o[17]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_dat_o[20]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_dat_o[20]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_dat_o[20]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_dat_o[21]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_dat_o[21]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_dat_o[21]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\s_dat_o[25]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\s_dat_o[25]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\s_dat_o[25]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_stb_vga_o_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">s_stb_vga_o_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">s_stb_vga_o_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_stb_vga_o_reg_n_0" type="logic">
+         <obj_property name="ElementShortName">s_stb_vga_o_reg_n_0</obj_property>
+         <obj_property name="ObjectShortName">s_stb_vga_o_reg_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_we_o" type="logic">
+         <obj_property name="ElementShortName">s_we_o</obj_property>
+         <obj_property name="ObjectShortName">s_we_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/s_we_o_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">s_we_o_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">s_we_o_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_3" type="logic">
+         <obj_property name="ElementShortName">u2_n_3</obj_property>
+         <obj_property name="ObjectShortName">u2_n_3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_35" type="logic">
+         <obj_property name="ElementShortName">u2_n_35</obj_property>
+         <obj_property name="ObjectShortName">u2_n_35</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_36" type="logic">
+         <obj_property name="ElementShortName">u2_n_36</obj_property>
+         <obj_property name="ObjectShortName">u2_n_36</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_37" type="logic">
+         <obj_property name="ElementShortName">u2_n_37</obj_property>
+         <obj_property name="ObjectShortName">u2_n_37</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_38" type="logic">
+         <obj_property name="ElementShortName">u2_n_38</obj_property>
+         <obj_property name="ObjectShortName">u2_n_38</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_39" type="logic">
+         <obj_property name="ElementShortName">u2_n_39</obj_property>
+         <obj_property name="ObjectShortName">u2_n_39</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_40" type="logic">
+         <obj_property name="ElementShortName">u2_n_40</obj_property>
+         <obj_property name="ObjectShortName">u2_n_40</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_41" type="logic">
+         <obj_property name="ElementShortName">u2_n_41</obj_property>
+         <obj_property name="ObjectShortName">u2_n_41</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_42" type="logic">
+         <obj_property name="ElementShortName">u2_n_42</obj_property>
+         <obj_property name="ObjectShortName">u2_n_42</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_43" type="logic">
+         <obj_property name="ElementShortName">u2_n_43</obj_property>
+         <obj_property name="ObjectShortName">u2_n_43</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_44" type="logic">
+         <obj_property name="ElementShortName">u2_n_44</obj_property>
+         <obj_property name="ObjectShortName">u2_n_44</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_45" type="logic">
+         <obj_property name="ElementShortName">u2_n_45</obj_property>
+         <obj_property name="ObjectShortName">u2_n_45</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_46" type="logic">
+         <obj_property name="ElementShortName">u2_n_46</obj_property>
+         <obj_property name="ObjectShortName">u2_n_46</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_47" type="logic">
+         <obj_property name="ElementShortName">u2_n_47</obj_property>
+         <obj_property name="ObjectShortName">u2_n_47</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_48" type="logic">
+         <obj_property name="ElementShortName">u2_n_48</obj_property>
+         <obj_property name="ObjectShortName">u2_n_48</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_49" type="logic">
+         <obj_property name="ElementShortName">u2_n_49</obj_property>
+         <obj_property name="ObjectShortName">u2_n_49</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_50" type="logic">
+         <obj_property name="ElementShortName">u2_n_50</obj_property>
+         <obj_property name="ObjectShortName">u2_n_50</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_51" type="logic">
+         <obj_property name="ElementShortName">u2_n_51</obj_property>
+         <obj_property name="ObjectShortName">u2_n_51</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_52" type="logic">
+         <obj_property name="ElementShortName">u2_n_52</obj_property>
+         <obj_property name="ObjectShortName">u2_n_52</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_53" type="logic">
+         <obj_property name="ElementShortName">u2_n_53</obj_property>
+         <obj_property name="ObjectShortName">u2_n_53</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_54" type="logic">
+         <obj_property name="ElementShortName">u2_n_54</obj_property>
+         <obj_property name="ObjectShortName">u2_n_54</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_55" type="logic">
+         <obj_property name="ElementShortName">u2_n_55</obj_property>
+         <obj_property name="ObjectShortName">u2_n_55</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_56" type="logic">
+         <obj_property name="ElementShortName">u2_n_56</obj_property>
+         <obj_property name="ObjectShortName">u2_n_56</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_57" type="logic">
+         <obj_property name="ElementShortName">u2_n_57</obj_property>
+         <obj_property name="ObjectShortName">u2_n_57</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_58" type="logic">
+         <obj_property name="ElementShortName">u2_n_58</obj_property>
+         <obj_property name="ObjectShortName">u2_n_58</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_59" type="logic">
+         <obj_property name="ElementShortName">u2_n_59</obj_property>
+         <obj_property name="ObjectShortName">u2_n_59</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_60" type="logic">
+         <obj_property name="ElementShortName">u2_n_60</obj_property>
+         <obj_property name="ObjectShortName">u2_n_60</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_61" type="logic">
+         <obj_property name="ElementShortName">u2_n_61</obj_property>
+         <obj_property name="ObjectShortName">u2_n_61</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_62" type="logic">
+         <obj_property name="ElementShortName">u2_n_62</obj_property>
+         <obj_property name="ObjectShortName">u2_n_62</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_63" type="logic">
+         <obj_property name="ElementShortName">u2_n_63</obj_property>
+         <obj_property name="ObjectShortName">u2_n_63</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_64" type="logic">
+         <obj_property name="ElementShortName">u2_n_64</obj_property>
+         <obj_property name="ObjectShortName">u2_n_64</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/u2_n_65" type="logic">
+         <obj_property name="ElementShortName">u2_n_65</obj_property>
+         <obj_property name="ObjectShortName">u2_n_65</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vectors[0][dat]\" type="array">
+         <obj_property name="ElementShortName">\vectors[0][dat]\[30:0]</obj_property>
+         <obj_property name="ObjectShortName">\vectors[0][dat]\[30:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_addr_even_line_start" type="array">
+         <obj_property name="ElementShortName">vga_addr_even_line_start[29:0]</obj_property>
+         <obj_property name="ObjectShortName">vga_addr_even_line_start[29:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_control_init_done" type="logic">
+         <obj_property name="ElementShortName">vga_control_init_done</obj_property>
+         <obj_property name="ObjectShortName">vga_control_init_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_controller_ok" type="logic">
+         <obj_property name="ElementShortName">vga_controller_ok</obj_property>
+         <obj_property name="ObjectShortName">vga_controller_ok</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_controller_ok_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">vga_controller_ok_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">vga_controller_ok_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_frame_offset" type="logic">
+         <obj_property name="ElementShortName">vga_frame_offset</obj_property>
+         <obj_property name="ObjectShortName">vga_frame_offset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset[4]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset[4]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset[4]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset[4]_i_4_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset[4]_i_4_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset[4]_i_4_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_frame_offset_reg" type="array">
+         <obj_property name="ElementShortName">vga_frame_offset_reg[14:4]</obj_property>
+         <obj_property name="ObjectShortName">vga_frame_offset_reg[14:4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[12]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[12]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[12]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[12]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[12]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[12]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[12]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[12]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[12]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[12]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[12]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[12]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[12]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[12]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[12]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_1\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_2\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_3\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_4\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_5\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_6\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[4]_i_2_n_7\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[4]_i_2_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[4]_i_2_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_4\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\vga_frame_offset_reg[8]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\vga_frame_offset_reg[8]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\vga_frame_offset_reg[8]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_odd_line" type="logic">
+         <obj_property name="ElementShortName">vga_odd_line</obj_property>
+         <obj_property name="ObjectShortName">vga_odd_line</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_odd_line0" type="logic">
+         <obj_property name="ElementShortName">vga_odd_line0</obj_property>
+         <obj_property name="ObjectShortName">vga_odd_line0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/vga_odd_line_i_1_n_0" type="logic">
+         <obj_property name="ElementShortName">vga_odd_line_i_1_n_0</obj_property>
+         <obj_property name="ObjectShortName">vga_odd_line_i_1_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__0_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__0_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__0_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__0_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__0_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__0_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__0_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__0_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__0_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__0_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__0_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__0_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__2_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__2_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__2_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_dpram_vga_core_addr_l_carry__2_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_dpram_vga_core_addr_l_carry__2_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_dpram_vga_core_addr_l_carry__2_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_dpram_vga_core_addr_l_carry_n_0" type="logic">
+         <obj_property name="ElementShortName">video_dpram_vga_core_addr_l_carry_n_0</obj_property>
+         <obj_property name="ObjectShortName">video_dpram_vga_core_addr_l_carry_n_0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_dpram_vga_core_addr_l_carry_n_1" type="logic">
+         <obj_property name="ElementShortName">video_dpram_vga_core_addr_l_carry_n_1</obj_property>
+         <obj_property name="ObjectShortName">video_dpram_vga_core_addr_l_carry_n_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_dpram_vga_core_addr_l_carry_n_2" type="logic">
+         <obj_property name="ElementShortName">video_dpram_vga_core_addr_l_carry_n_2</obj_property>
+         <obj_property name="ObjectShortName">video_dpram_vga_core_addr_l_carry_n_2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_dpram_vga_core_addr_l_carry_n_3" type="logic">
+         <obj_property name="ElementShortName">video_dpram_vga_core_addr_l_carry_n_3</obj_property>
+         <obj_property name="ObjectShortName">video_dpram_vga_core_addr_l_carry_n_3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman[0]_i_3_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman[0]_i_3_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman[0]_i_3_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_mem_addr_pacman_reg" type="array">
+         <obj_property name="ElementShortName">video_mem_addr_pacman_reg[15:0]</obj_property>
+         <obj_property name="ObjectShortName">video_mem_addr_pacman_reg[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_4\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[0]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[0]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[0]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_4\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[12]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[12]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[12]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_4\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[4]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[4]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[4]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_0\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_0\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_0\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_1\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_1\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_1\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_2\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_2\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_2\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_3\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_3\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_3\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_4\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_4\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_4\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_5\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_5\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_5\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_6\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_6\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_6\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\video_mem_addr_pacman_reg[8]_i_1_n_7\" type="logic">
+         <obj_property name="ElementShortName">\video_mem_addr_pacman_reg[8]_i_1_n_7\</obj_property>
+         <obj_property name="ObjectShortName">\video_mem_addr_pacman_reg[8]_i_1_n_7\</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/video_mem_vga_core_data" type="array">
+         <obj_property name="ElementShortName">video_mem_vga_core_data[15:0]</obj_property>
+         <obj_property name="ObjectShortName">video_mem_vga_core_data[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_icnt_reg[4]_i_1_CO_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_icnt_reg[4]_i_1_CO_UNCONNECTED\[3:0]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_icnt_reg[4]_i_1_CO_UNCONNECTED\[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_icnt_reg[4]_i_1_O_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_icnt_reg[4]_i_1_O_UNCONNECTED\[3:1]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_icnt_reg[4]_i_1_O_UNCONNECTED\[3:1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/NLW_u1_douta_UNCONNECTED" type="array">
+         <obj_property name="ElementShortName">NLW_u1_douta_UNCONNECTED[7:0]</obj_property>
+         <obj_property name="ObjectShortName">NLW_u1_douta_UNCONNECTED[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_vga_frame_offset_reg[12]_i_1_CO_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_vga_frame_offset_reg[12]_i_1_CO_UNCONNECTED\[3:2]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_vga_frame_offset_reg[12]_i_1_CO_UNCONNECTED\[3:2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_vga_frame_offset_reg[12]_i_1_O_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_vga_frame_offset_reg[12]_i_1_O_UNCONNECTED\[3:3]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_vga_frame_offset_reg[12]_i_1_O_UNCONNECTED\[3:3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_video_dpram_vga_core_addr_l_carry__2_CO_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_video_dpram_vga_core_addr_l_carry__2_CO_UNCONNECTED\[3:2]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_video_dpram_vga_core_addr_l_carry__2_CO_UNCONNECTED\[3:2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_video_dpram_vga_core_addr_l_carry__2_O_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_video_dpram_vga_core_addr_l_carry__2_O_UNCONNECTED\[3:3]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_video_dpram_vga_core_addr_l_carry__2_O_UNCONNECTED\[3:3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/u_vga_ctrl/\NLW_video_mem_addr_pacman_reg[12]_i_1_CO_UNCONNECTED\" type="array">
+         <obj_property name="ElementShortName">\NLW_video_mem_addr_pacman_reg[12]_i_1_CO_UNCONNECTED\[3:3]</obj_property>
+         <obj_property name="ObjectShortName">\NLW_video_mem_addr_pacman_reg[12]_i_1_CO_UNCONNECTED\[3:3]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
