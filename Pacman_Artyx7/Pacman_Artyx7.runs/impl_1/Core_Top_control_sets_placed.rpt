@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+<<<<<<< HEAD
 | Date         : Mon Feb 12 20:56:49 2024
+=======
+| Date         : Sat Mar 16 18:14:51 2024
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Host         : DESKTOP-SK95JA6 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Core_Top_control_sets_placed.rpt
 | Design       : Core_Top
@@ -23,11 +27,19 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
+<<<<<<< HEAD
 | Total control sets                                       |   107 |
 |    Minimum number of control sets                        |   107 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |   175 |
+=======
+| Total control sets                                       |    83 |
+|    Minimum number of control sets                        |    83 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   210 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,6 +51,7 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
+<<<<<<< HEAD
 | Total control sets |   107 |
 | >= 0 to < 4        |     3 |
 | >= 4 to < 6        |    12 |
@@ -48,6 +61,17 @@ Table of Contents
 | >= 12 to < 14      |     4 |
 | >= 14 to < 16      |     2 |
 | >= 16              |    40 |
+=======
+| Total control sets |    83 |
+| >= 0 to < 4        |     9 |
+| >= 4 to < 6        |    12 |
+| >= 6 to < 8        |     7 |
+| >= 8 to < 10       |    11 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     4 |
+| >= 14 to < 16      |     2 |
+| >= 16              |    35 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +82,21 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
+<<<<<<< HEAD
 | No           | No                    | No                     |             160 |           94 |
 | No           | No                    | Yes                    |              64 |           37 |
 | No           | Yes                   | No                     |              62 |           25 |
 | Yes          | No                    | No                     |             337 |          114 |
 | Yes          | No                    | Yes                    |             338 |          138 |
 | Yes          | Yes                   | No                     |             104 |           36 |
+=======
+| No           | No                    | No                     |             128 |           53 |
+| No           | No                    | Yes                    |               8 |            7 |
+| No           | Yes                   | No                     |              62 |           26 |
+| Yes          | No                    | No                     |             193 |           51 |
+| Yes          | No                    | Yes                    |             198 |           60 |
+| Yes          | Yes                   | No                     |             137 |           58 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,6 +106,7 @@ Table of Contents
 +------------------------------------+---------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+--------------+
 |            Clock Signal            |                                              Enable Signal                                              |                                Set/Reset Signal                                | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------------------+---------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+--------------+
+<<<<<<< HEAD
 |  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/E[0]                                                           | u_vga_ctrl/u2/wbs/sclr                                                         |                1 |              1 |         1.00 |
 |  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/s_cyc_o                                                                                      | u_vga_ctrl/s_dat_o[25]_i_1_n_0                                                 |                1 |              2 |         2.00 |
 |  clk_gen_0/clk_gen/inst/clk_sys    |                                                                                                         | clk_gen_0/bbstub_locked                                                        |                1 |              2 |         2.00 |
@@ -180,6 +214,91 @@ Table of Contents
 | ~clk_gen_0/sim_6M[1].inst/Q0_BUFG  |                                                                                                         |                                                                                |               22 |             46 |         2.09 |
 |  cpu_clk_BUFG                      |                                                                                                         | u_cpu/MCycle[2]_i_2_n_0                                                        |               32 |             56 |         1.75 |
 |  clk_gen_0/clk_gen/inst/clk_52m    |                                                                                                         |                                                                                |               32 |             59 |         1.84 |
+=======
+|  clk_gen_0/out_BUFG                | u_Core/vblank4_out                                                                                      | u_Core/cpu_int_l_i_1_n_0                                                       |                1 |              1 |         1.00 |
+|  clk_gen_0/out_BUFG                | u_Core/control_reg[1]_i_1_n_0                                                                           | u_Core/control_reg[3]_i_1_n_0                                                  |                1 |              1 |         1.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/E[0]                                                           | u_vga_ctrl/u2/wbs/sclr                                                         |                1 |              1 |         1.00 |
+|  clk_gen_0/out_BUFG                | u_Core/ena[3]                                                                                           | u_Core/control_reg[3]_i_1_n_0                                                  |                1 |              1 |         1.00 |
+|  clk_gen_0/out_BUFG                | u_Core/ena[0]                                                                                           | u_Core/control_reg[3]_i_1_n_0                                                  |                1 |              1 |         1.00 |
+| ~clk_gen_0/out_BUFG                |                                                                                                         |                                                                                |                1 |              1 |         1.00 |
+|  clk_gen_0/clk_gen/inst/clk_sys    |                                                                                                         | clk_gen_0/AS[0]                                                                |                2 |              2 |         1.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/s_cyc_o                                                                                      | u_vga_ctrl/s_dat_o[25]_i_1_n_0                                                 |                1 |              2 |         2.00 |
+|  clk_gen_0/sim_6M[0].inst/Q_0_BUFG |                                                                                                         |                                                                                |                3 |              3 |         1.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/line_fifo/full_reg_0                                                                      | u_vga_ctrl/u2/wbs/sclr                                                         |                1 |              4 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/watchdog_cnt[3]_i_2_n_0                                                                          | u_vga_ctrl/SS[0]                                                               |                1 |              4 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/line_fifo/full_reg_0                                                                      |                                                                                |                1 |              4 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/FSM_onehot_state_reg[3][0]                                                            | clk_gen_0/AS[0]                                                                |                1 |              4 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/rgb_fifo/nword[3]_i_1__0_n_0                                              | u_vga_ctrl/u2/wbs/sclr                                                         |                1 |              4 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/eqOp0_in_0                                                                                       | u_Core/vcnt                                                                    |                1 |              4 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/rgb_fifo_wreq_reg_0                                            |                                                                                |                1 |              4 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/data_fifo/nword[4]_i_1_n_0                                                            |                                                                                |                2 |              4 |         2.00 |
+|  clk_gen_0/clk_gen/inst/clk_vga    | u_vga_ctrl/u2/pixel_generator/vtgen/hor_gen/state                                                       | u_vga_ctrl/u2/pixel_generator/nVen                                             |                3 |              5 |         1.67 |
+|  clk_gen_0/clk_gen/inst/clk_vga    | u_vga_ctrl/u2/pixel_generator/vtgen/ver_gen/state[4]_i_1_n_0                                            | u_vga_ctrl/u2/pixel_generator/nVen                                             |                3 |              5 |         1.67 |
+|  clk_gen_0/out_BUFG                | u_Core/eqOp0_in_0                                                                                       |                                                                                |                2 |              5 |         2.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/sel                                                                                   | clk_gen_0/AS[0]                                                                |                2 |              5 |         2.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    |                                                                                                         | u_vga_ctrl/u2/line_fifo/wrst                                                   |                4 |              6 |         1.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/E[0]                                                           | u_vga_ctrl/u2/line_fifo/wrst                                                   |                1 |              6 |         6.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    |                                                                                                         | clk_gen_0/AS[0]                                                                |                5 |              6 |         1.20 |
+|  clk_gen_0/sim_6M[0].inst/in0      | u_Core/u_audio/u_rom_3M/U0/synth_options.dist_mem_inst/gen_rom.rom_inst/spo[0]                          | u_Core/u_audio/u_rom_3M/U0/synth_options.dist_mem_inst/gen_rom.rom_inst/spo[3] |                1 |              6 |         6.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/rgb_fifo/empty_reg_1[0]                                                   | u_vga_ctrl/u2/line_fifo/wrst                                                   |                4 |              7 |         1.75 |
+|  clk_gen_0/out_BUFG                | u_Core/u_video/hcnt_reg[0]                                                                              |                                                                                |                2 |              7 |         3.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/E[0]                                                                                  | clk_gen_0/AS[0]                                                                |                4 |              7 |         1.75 |
+|  clk_gen_0/sim_6M[0].inst/in0      | u_Core/u_audio/u_rom_3M/U0/synth_options.dist_mem_inst/gen_rom.rom_inst/spo[2]                          | u_Core/u_audio/audio_vol_out[3]_i_1_n_0                                        |                5 |              8 |         1.60 |
+|  u_Core/o_cpu_di_reg[7]_i_2_n_0    |                                                                                                         |                                                                                |                5 |              8 |         1.60 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/RGBbuf_wreq                                                    | u_vga_ctrl/u2/pixel_generator/color_proc/Ba[7]_i_1_n_0                         |                5 |              8 |         1.60 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/vdat_buffer_rreq_reg_0                                         |                                                                                |                2 |              8 |         4.00 |
+|  clk_gen_0/sim_6M[0].inst/Q_0_BUFG | u_Core/cpu_vec_reg0                                                                                     |                                                                                |                2 |              8 |         4.00 |
+|  clk_gen_0/sim_6M[0].inst/Q_0_BUFG | u_Core/sync_bus_reg[7]_i_1_n_0                                                                          |                                                                                |                6 |              8 |         1.33 |
+| ~clk_gen_0/sim_6M[0].inst/Q_0_BUFG | u_Core/u_audio/WE                                                                                       |                                                                                |                1 |              8 |         8.00 |
+| ~clk_gen_0/sim_6M[0].inst/Q_0_BUFG | u_Core/u_audio/u_rom_3M/U0/synth_options.dist_mem_inst/gen_rom.rom_inst/spo[1]                          |                                                                                |                1 |              8 |         8.00 |
+|  clk_gen_0/clk_gen/inst/clk_vga    |                                                                                                         |                                                                                |                5 |              9 |         1.80 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/wbm_cyc_o                                                                             | u_vga_ctrl/u2/wbm/cur_acc                                                      |                3 |              9 |         3.00 |
+|  clk_gen_0/out_BUFG                |                                                                                                         | u_Core/hcnt[8]_i_1_n_0                                                         |                3 |              9 |         3.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/s_cyc_o                                                                                      | clk_gen_0/AS[0]                                                                |                4 |             10 |         2.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    |                                                                                                         | u_vga_ctrl/u2/wbs/sclr                                                         |                5 |             10 |         2.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/vga_frame_offset                                                                      | u_vga_ctrl/u2/wbm/AR[0]                                                        |                3 |             11 |         3.67 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/cursor1_ld0                                                                           | clk_gen_0/AS[0]                                                                |                2 |             13 |         6.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/cursor0_ld0                                                                           | clk_gen_0/AS[0]                                                                |                3 |             13 |         4.33 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/cur_acc                                                                               |                                                                                |                2 |             13 |         6.50 |
+|  clk_gen_0/clk_gen/inst/clk_vga    | u_vga_ctrl/u2/pixel_generator/vtgen/hor_gen/Gate_reg_0[0]                                               | u_vga_ctrl/u2/line_fifo/rrst                                                   |                4 |             13 |         3.25 |
+|  clk_gen_0/out_BUFG                | u_Core/u_video/char_match_reg_i_1_n_0                                                                   |                                                                                |                4 |             14 |         3.50 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/RGBbuf_wreq                                                    | u_vga_ctrl/u2/pixel_generator/color_proc/Ga[7]_i_1_n_0                         |                8 |             15 |         1.88 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/vgate_cnt[15]_i_1_n_0                                                                 |                                                                                |                4 |             16 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_video/sel                                                                                      | u_Core/video_mem_addr_pacman0                                                  |                4 |             16 |         4.00 |
+| ~clk_gen_0/sim_6M[1].inst/Q0       | u_Core/u_video/WE                                                                                       |                                                                                |                2 |             16 |         8.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/s_cyc_o                                                                                      |                                                                                |                3 |             16 |         5.33 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/VBARa[27]_i_1_n_0                                                                     | clk_gen_0/AS[0]                                                                |                5 |             17 |         3.40 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/VBARb[27]_i_1_n_0                                                                     | clk_gen_0/AS[0]                                                                |                4 |             17 |         4.25 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/vtim                                                                                  | clk_gen_0/AS[0]                                                                |                6 |             18 |         3.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/hvlen                                                                                 | clk_gen_0/AS[0]                                                                |                7 |             18 |         2.57 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbs/htim[30]_i_1_n_0                                                                      | clk_gen_0/AS[0]                                                                |                6 |             18 |         3.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/data_fifo/wrst_reg                                                                    |                                                                                |                6 |             24 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/vmemA[2]_i_1_n_0                                                                      |                                                                                |                8 |             30 |         3.75 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/vga_addr_even_line_start[29]_i_6_0[0]                                                 | u_vga_ctrl/u2/wbm/AR[0]                                                        |                9 |             31 |         3.44 |
+|  clk_gen_0/clk_gen/inst/clk_vga    | u_vga_ctrl/u2/pixel_generator/vtgen/hor_gen/eol                                                         | u_vga_ctrl/u2/pixel_generator/nVen                                             |               11 |             32 |         2.91 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/color_proc_wreq                                                |                                                                                |                4 |             32 |         8.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_0_255_0_0_i_1_n_0     |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_2048_2303_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/pixel_generator/color_proc/E[0]                                                           |                                                                                |                6 |             32 |         5.33 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_2304_2559_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_1536_1791_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_1024_1279_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_1792_2047_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_1280_1535_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_2816_3071_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_3584_3839_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_256_511_0_0_i_1_n_0   |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_512_767_0_0_i_1_n_0   |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_2560_2815_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_3072_3327_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_3328_3583_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_768_1023_0_0_i_1_n_0  |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/out_BUFG                | u_Core/u_rams/u_rams/U0/synth_options.dist_mem_inst/gen_sp_ram.spram_inst/ram_reg_3840_4095_0_0_i_1_n_0 |                                                                                |                8 |             32 |         4.00 |
+|  clk_gen_0/clk_gen/inst/clk_vga    |                                                                                                         | u_vga_ctrl/u2/pixel_generator/nVen                                             |               14 |             37 |         2.64 |
+|  clk_gen_0/clk_gen/inst/clk_52m    | u_vga_ctrl/u2/wbm/data_fifo/p_14_in                                                                     |                                                                                |                7 |             46 |         6.57 |
+|  clk_gen_0/out_BUFG                |                                                                                                         |                                                                                |               17 |             48 |         2.82 |
+|  clk_gen_0/clk_gen/inst/clk_52m    |                                                                                                         |                                                                                |               22 |             59 |         2.68 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +------------------------------------+---------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+--------------+
 
 

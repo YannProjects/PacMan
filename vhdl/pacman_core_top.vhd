@@ -168,10 +168,19 @@ begin
       o_clk_6M => clk_6m,
       o_clk_6M_star => clk_6m_star,
       o_clk_6M_star_n => clk_6m_star_n,
+<<<<<<< HEAD
       i_rst => not i_rst_sys_n,
       o_pll_locked => pll_locked
   );
  
+=======
+      -- i_rst => not i_rst_sys_n,
+      i_rst => not pll_locked,
+      o_pll_locked => pll_locked
+  );
+ 
+ -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
  core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
     
   --
@@ -270,12 +279,20 @@ begin
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
+<<<<<<< HEAD
+=======
+     -- i_reset => not i_rst_sys_n,
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
      i_reset => not pll_locked,
      i_clk_52m => i_clk_52m,
      i_vga_clk => vga_clock,
      i_sys_clk => clk_6m,
     
      -- Signaux video core Pacman
+<<<<<<< HEAD
+=======
+     i_hsync => hsync_l,
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
      i_vsync => vsync_l,
      i_blank => blank,
      i_rgb => video_rgb,

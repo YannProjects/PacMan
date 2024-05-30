@@ -48,6 +48,9 @@ architecture Based_on_IP of Clocks_gen is
   signal clk_sys, pll_locked : std_logic;
   signal J, K, Q, Qn : std_logic_vector(1 downto 0);
   
+  attribute keep : string;
+  attribute keep of o_clk_6M, o_clk_6M_star, o_clk_6M_star_n : signal is "true";
+  
   component jkff is
     Port ( J : in STD_LOGIC;
            K : in STD_LOGIC;
@@ -85,8 +88,13 @@ architecture Based_on_IP of Clocks_gen is
          
        clk_gen : entity work.clk_wiz_1
        port map (
+<<<<<<< HEAD
            reset => '0',
            locked => pll_locked,
+=======
+           -- reset => i_rst,
+           locked => o_pll_locked,
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
            clk_main => i_clk_main,
            clk_52m => o_clk_52m,
            clk_vga => o_clk_vga,

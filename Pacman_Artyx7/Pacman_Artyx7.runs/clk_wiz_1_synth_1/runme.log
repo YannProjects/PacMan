@@ -17,12 +17,21 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t
 INFO: [Device 21-403] Loading part xc7a15tcsg324-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+<<<<<<< HEAD
 INFO: [Synth 8-7075] Helper process launched with PID 13816
 ---------------------------------------------------------------------------------
 Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1284.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1' [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v:70]
 INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1_clk_wiz' [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v:70]
+=======
+INFO: [Synth 8-7075] Helper process launched with PID 20384
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1285.922 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v:70]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1_clk_wiz' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v:70]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 INFO: [Synth 8-6157] synthesizing module 'IBUF' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:55203]
 INFO: [Synth 8-6155] done synthesizing module 'IBUF' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:55203]
 INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63509]
@@ -50,27 +59,44 @@ INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2022.1/s
 INFO: [Synth 8-6155] done synthesizing module 'MMCME2_ADV' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63509]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1082]
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1082]
+<<<<<<< HEAD
 INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1_clk_wiz' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v:70]
 INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v:70]
 ---------------------------------------------------------------------------------
 Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1_clk_wiz' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v:70]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1285.922 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1285.922 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
+<<<<<<< HEAD
 Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc] for cell 'inst'
 Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc] for cell 'inst'
 Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc] for cell 'inst'
@@ -92,23 +118,59 @@ Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
 Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc] for cell 'inst'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc] for cell 'inst'
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/clk_wiz_1_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/clk_wiz_1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1285.922 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1285.922 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tcsg324-2
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  C:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
 Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1284.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1285.922 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -131,25 +193,41 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -167,37 +245,61 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -218,6 +320,7 @@ Report Cell Usage:
 |3     |IBUF       |     1|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
 Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
@@ -225,10 +328,20 @@ Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 .
 Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1284.824 ; gain = 0.000
 INFO: [Project 1-571] Translating synthesized netlist
 Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1284.824 ; gain = 0.000
+=======
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1285.922 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1285.922 ; gain = 0.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1285.922 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+<<<<<<< HEAD
 Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1284.824 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
@@ -243,3 +356,19 @@ INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP clk_wiz_1, cach
 INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/clk_wiz_1.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file clk_wiz_1_utilization_synth.rpt -pb clk_wiz_1_utilization_synth.pb
 INFO: [Common 17-206] Exiting Vivado at Sun Jun 25 17:03:37 2023...
+=======
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1285.922 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 7bd9c25
+INFO: [Common 17-83] Releasing license: Synthesis
+29 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1285.922 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/clk_wiz_1.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP clk_wiz_1, cache-ID = 59b9b5c1ed9905ac
+INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/clk_wiz_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file clk_wiz_1_utilization_synth.rpt -pb clk_wiz_1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Feb 10 22:00:45 2024...
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

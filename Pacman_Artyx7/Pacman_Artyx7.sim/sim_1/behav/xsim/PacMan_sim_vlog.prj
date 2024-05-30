@@ -1,5 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../../../VGA_Controller/trunk/rtl/verilog" --include "../../../../Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1" \
+<<<<<<< HEAD
 "../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/sim/rom_pacman_6f_v2.v" \
 "../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/sim/rom_pacman_6h_v2.v" \
 "../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/sim/rom_pacman_6j_v2.v" \
@@ -14,6 +15,22 @@ verilog xil_defaultlib  --include "../../../../../../../VGA_Controller/trunk/rtl
 "../../../../Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/sim/blk_mem_gen_video_ram.v" \
 "../../../../Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/sim/pacman_ram_v2.v" \
 "../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/sim/rom_pacman_6e_v2.v" \
+=======
+"../../../../Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/sim/blk_mem_gen_video_ram.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/sim/rom_pacman_6j_v2.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/sim/rom_pacman_6h_v2.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/sim/rom_pacman_6f_v2.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/sim/rom_pacman_6e_v2.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_1m/sim/rom_pacman_1m.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/sim/rom_pacman_3m.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_7f/sim/rom_pacman_7f.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_4a/sim/rom_pacman_4a.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5f/sim/rom_pacman_5f.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5e/sim/rom_pacman_5e.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/sim/pacman_ram_v2.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v" \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v" \
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 "../../../../../../../VGA_Controller/trunk/rtl/verilog/generic_dpram.v" \
 "../../../../../../../VGA_Controller/trunk/rtl/verilog/generic_spram.v" \
 "../../../../../../../VGA_Controller/trunk/rtl/verilog/vga_clkgen.v" \

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <GenRun Id="rom_pacman_1m_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1704213523">
+=======
+<GenRun Id="rom_pacman_1m_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1704957110">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <File Type="PA-TCL" Name="rom_pacman_1m.tcl"/>
   <File Type="REPORTS-TCL" Name="rom_pacman_1m_reports.tcl"/>
   <File Type="RDS-RDS" Name="rom_pacman_1m.vds"/>
@@ -42,6 +46,7 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
     <File Path="$PPRDIR/../../PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -50,6 +55,8 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

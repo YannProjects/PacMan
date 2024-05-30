@@ -4,7 +4,11 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
+<<<<<<< HEAD
   variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/Core_Top.tcl"
+=======
+  variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/synth_1/Core_Top.tcl"
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   variable category "vivado_synth"
 }
 
@@ -70,9 +74,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+<<<<<<< HEAD
 set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Common 17-41} -limit 10000000
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 set_msg_config  -id {Project 1-19}  -string {{CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/Users/Yann/Documents/Projets_HW/ZX81/ULA_VHDL/ZX81_ULA.srcs/sources_1/new/Timing_logic.vhd'.}}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a15tcsg324-2
@@ -81,6 +88,7 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
+<<<<<<< HEAD
 set_property webtalk.parent_dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.cache/wt [current_project]
 set_property parent.project_path C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
@@ -94,16 +102,37 @@ add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_5e_2.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_5f_2.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s126_4a.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s123_7f.coe
+=======
+set_property webtalk.parent_dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.cache/wt [current_project]
+set_property parent.project_path C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+set_property default_lib xil_defaultlib [current_project]
+set_property target_language VHDL [current_project]
+set_property ip_output_repo c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.cache/ip [current_project]
+set_property ip_cache_permissions {read write} [current_project]
+OPTRACE "Creating in-memory project" END { }
+OPTRACE "Adding files" START { }
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s126.3m.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s126.1m.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_6f_2.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_6h_2.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_6j_2.coe
+<<<<<<< HEAD
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_audio/test_audio.bin.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s1268_AIO.3m.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_lecture_RAM/test_lecture_RAM.bin.coe
 add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_lecture_RAM/Initialisation_RAM.coe
 add_files c:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_IO/pacman_hw_test.0a.coe
+=======
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_5e_2.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/pacman_5f_2.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s126_4a.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/roms/82s123_7f.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_audio/test_audio.bin.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_lecture_RAM/test_lecture_RAM.bin.coe
+add_files C:/Users/yannv/Documents/Projets_HW/PacMan/Testware/Test_lecture_RAM/Initialisation_RAM.coe
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 read_verilog {
   C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/timescale.v
   C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_defines.v
@@ -126,6 +155,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_slave.v
 }
 read_vhdl -library xil_defaultlib {
+<<<<<<< HEAD
   C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/Clocks_gen.vhd
   C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/replay_pack.vhd
   C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/replay_lib_wrap_pack.vhd
@@ -190,6 +220,62 @@ set_property used_in_implementation false [get_files -all c:/Users/yannv/Documen
 
 read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.xci
 set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc]
+=======
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/replay_pack.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/replay_lib_wrap_pack.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_vram_addr.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_rams.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_video.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_audio.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_top.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ROM.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/VGA_control_pack.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/vga_control_top.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/ff.vhd
+  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/pacman_core_top.vhd
+}
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6f_v2/rom_pacman_6f_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/rom_pacman_6f_v2_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6h_v2/rom_pacman_6h_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/rom_pacman_6h_v2_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6j_v2/rom_pacman_6j_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/rom_pacman_6j_v2_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_5e/rom_pacman_5e.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5e/rom_pacman_5e_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_5f/rom_pacman_5f.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5f/rom_pacman_5f_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_4a/rom_pacman_4a.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_4a/rom_pacman_4a_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_7f/rom_pacman_7f.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_7f/rom_pacman_7f_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_3m/rom_pacman_3m.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/rom_pacman_3m_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_1m/rom_pacman_1m.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_1m/rom_pacman_1m_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/blk_mem_gen_video_ram/blk_mem_gen_video_ram.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/blk_mem_gen_video_ram_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/pacman_ram_v2/pacman_ram_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/pacman_ram_v2_ooc.xdc]
+
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -200,11 +286,19 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+<<<<<<< HEAD
 read_xdc C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/constraints/all_constraints.xdc
 set_property used_in_implementation false [get_files C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/constraints/all_constraints.xdc]
 
 read_xdc C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/constraints/pinout.xdc
 set_property used_in_implementation false [get_files C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/constraints/pinout.xdc]
+=======
+read_xdc C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc
+set_property used_in_implementation false [get_files C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/all_constraints.xdc]
+
+read_xdc C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/pinout.xdc
+set_property used_in_implementation false [get_files C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/constraints/pinout.xdc]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 set_param ips.enableIPCacheLiteLoad 1
 

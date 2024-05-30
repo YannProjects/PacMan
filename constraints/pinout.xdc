@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 set_property PACKAGE_PIN V6 [get_ports o_dip_l_cs]
 set_property PACKAGE_PIN T6 [get_ports o_in0_l_cs]
 set_property PACKAGE_PIN V7 [get_ports o_in1_l_cs]
@@ -8,6 +9,33 @@ set_property PACKAGE_PIN U7 [get_ports {i_config_reg[7]}]
 set_property PACKAGE_PIN U6 [get_ports {i_config_reg[6]}]
 set_property PACKAGE_PIN T8 [get_ports {i_config_reg[0]}]
 set_property PACKAGE_PIN R8 [get_ports {i_config_reg[1]}]
+=======
+set_property PACKAGE_PIN A6 [get_ports {i_cpu_a_core[11]}]
+set_property PACKAGE_PIN E5 [get_ports {i_cpu_a_core[4]}]
+set_property PACKAGE_PIN D8 [get_ports {i_cpu_a_core[12]}]
+set_property PACKAGE_PIN B6 [get_ports {i_cpu_a_core[2]}]
+set_property PACKAGE_PIN F6 [get_ports {i_cpu_a_core[14]}]
+set_property PACKAGE_PIN B7 [get_ports {i_cpu_a_core[10]}]
+set_property PACKAGE_PIN C4 [get_ports {i_cpu_a_core[9]}]
+set_property PACKAGE_PIN C6 [get_ports {i_cpu_a_core[8]}]
+set_property PACKAGE_PIN C7 [get_ports {i_cpu_a_core[7]}]
+set_property PACKAGE_PIN G6 [get_ports {i_cpu_a_core[6]}]
+set_property PACKAGE_PIN D7 [get_ports {i_cpu_a_core[5]}]
+set_property PACKAGE_PIN C5 [get_ports {i_cpu_a_core[0]}]
+set_property PACKAGE_PIN A5 [get_ports {i_cpu_a_core[3]}]
+set_property PACKAGE_PIN B4 [get_ports {i_cpu_a_core[1]}]
+set_property PACKAGE_PIN E6 [get_ports {i_cpu_a_core[15]}]
+set_property PACKAGE_PIN E7 [get_ports {i_cpu_a_core[13]}]
+set_property PACKAGE_PIN E3 [get_ports {o_cpu_di_core[7]}]
+set_property PACKAGE_PIN G1 [get_ports i_cpu_rfrsh_l_core]
+set_property PACKAGE_PIN F3 [get_ports i_cpu_iorq_l_core]
+set_property PACKAGE_PIN K1 [get_ports i_cpu_wr_l_core]
+set_property PACKAGE_PIN B3 [get_ports o_cpu_wait_l_core]
+set_property PACKAGE_PIN U3 [get_ports o_in1_l_cs]
+set_property PACKAGE_PIN U6 [get_ports {i_config_reg[7]}]
+set_property PACKAGE_PIN R6 [get_ports {i_config_reg[0]}]
+set_property PACKAGE_PIN V4 [get_ports {i_config_reg[1]}]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 set_property DRIVE 12 [get_ports {o_audio_vol_out[3]}]
 set_property DRIVE 12 [get_ports {o_audio_vol_out[2]}]
@@ -42,6 +70,19 @@ set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[g_vga][0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[r_vga][2]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[r_vga][1]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[r_vga][0]}]
+<<<<<<< HEAD
+=======
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_iorq_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_m1_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_mreq_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_rd_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_rfrsh_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports i_cpu_wr_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports o_cpu_clk_core]
+set_property IOSTANDARD LVCMOS33 [get_ports o_cpu_int_l_core]
+set_property IOSTANDARD LVCMOS33 [get_ports o_cpu_rst_core]
+set_property IOSTANDARD LVCMOS33 [get_ports o_cpu_wait_l_core]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 set_property IOSTANDARD LVCMOS33 [get_ports o_dip_l_cs]
 set_property IOSTANDARD LVCMOS33 [get_ports o_in0_l_cs]
 set_property IOSTANDARD LVCMOS33 [get_ports o_in1_l_cs]
@@ -50,6 +91,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[vsync]}]
 
 
 set_property IOSTANDARD LVCMOS33 [get_ports i_rst_sys_n]
+<<<<<<< HEAD
 set_property PACKAGE_PIN C6 [get_ports i_rst_sys_n]
 set_property PACKAGE_PIN U9 [get_ports {i_config_reg[3]}]
 set_property PACKAGE_PIN M6 [get_ports {i_config_reg[5]}]
@@ -74,5 +116,20 @@ set_property PACKAGE_PIN M4 [get_ports {o_vga[vsync]}]
 
 
 
+=======
+set_property PACKAGE_PIN V9 [get_ports {i_config_reg[5]}]
+set_property PACKAGE_PIN R5 [get_ports {o_audio_vol_out[3]}]
+set_property PACKAGE_PIN M6 [get_ports {o_audio_wav_out[2]}]
+set_property PACKAGE_PIN R8 [get_ports {o_audio_wav_out[0]}]
+set_property PACKAGE_PIN V5 [get_ports {o_audio_vol_out[2]}]
+set_property PACKAGE_PIN R7 [get_ports {o_audio_vol_out[1]}]
+set_property PACKAGE_PIN N5 [get_ports {o_vga[b_vga][1]}]
+set_property PACKAGE_PIN N4 [get_ports {o_vga[g_vga][2]}]
+set_property PACKAGE_PIN M3 [get_ports {o_vga[g_vga][0]}]
+set_property PACKAGE_PIN D3 [get_ports i_cpu_m1_l_core]
+set_property PACKAGE_PIN J3 [get_ports i_cpu_mreq_l_core]
+set_property PACKAGE_PIN G2 [get_ports i_cpu_rd_l_core]
+set_property PACKAGE_PIN C2 [get_ports o_cpu_int_l_core]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 

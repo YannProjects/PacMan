@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+<<<<<<< HEAD
 | Date         : Mon Feb 12 20:37:55 2024
+=======
+| Date         : Sat Apr 27 22:44:48 2024
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Host         : DESKTOP-SK95JA6 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file rom_pacman_6e_v2_utilization_synth.rpt -pb rom_pacman_6e_v2_utilization_synth.pb
 | Design       : rom_pacman_6e_v2
@@ -31,13 +35,22 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
+<<<<<<< HEAD
 | Slice LUTs*             |  154 |     0 |          0 |     10400 |  1.48 |
 |   LUT as Logic          |  154 |     0 |          0 |     10400 |  1.48 |
+=======
+| Slice LUTs*             |  575 |     0 |          0 |     10400 |  5.53 |
+|   LUT as Logic          |  575 |     0 |          0 |     10400 |  5.53 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         |    0 |     0 |          0 |     20800 |  0.00 |
 |   Register as Flip Flop |    0 |     0 |          0 |     20800 |  0.00 |
 |   Register as Latch     |    0 |     0 |          0 |     20800 |  0.00 |
+<<<<<<< HEAD
 | F7 Muxes                |   64 |     0 |          0 |     16300 |  0.39 |
+=======
+| F7 Muxes                |  216 |     0 |          0 |     16300 |  1.33 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -147,9 +160,16 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+<<<<<<< HEAD
 | LUT6     |  153 |                 LUT |
 | MUXF7    |   64 |               MuxFx |
 | LUT5     |    1 |                 LUT |
+=======
+| LUT6     |  568 |                 LUT |
+| MUXF7    |  216 |               MuxFx |
+| LUT5     |    4 |                 LUT |
+| LUT4     |    4 |                 LUT |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +----------+------+---------------------+
 
 

@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+<<<<<<< HEAD
 | Date             : Mon Feb 12 20:57:19 2024
+=======
+| Date             : Sat Mar 16 18:15:36 2024
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Host             : DESKTOP-SK95JA6 running 64-bit major release  (build 9200)
 | Command          : report_power -file Core_Top_power_routed.rpt -pb Core_Top_power_summary_routed.pb -rpx Core_Top_power_routed.rpx
 | Design           : Core_Top
@@ -30,6 +34,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
+<<<<<<< HEAD
 | Total On-Chip Power (W)  | 0.245        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
@@ -38,6 +43,16 @@ Table of Contents
 | Effective TJA (C/W)      | 4.8          |
 | Max Ambient (C)          | 83.8         |
 | Junction Temperature (C) | 26.2         |
+=======
+| Total On-Chip Power (W)  | 0.205        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.132        |
+| Device Static (W)        | 0.073        |
+| Effective TJA (C/W)      | 4.8          |
+| Max Ambient (C)          | 84.0         |
+| Junction Temperature (C) | 26.0         |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,6 +67,7 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
+<<<<<<< HEAD
 | Clocks                   |     0.002 |        9 |       --- |             --- |
 | Slice Logic              |     0.021 |     8867 |       --- |             --- |
 |   LUT as Logic           |     0.019 |     5109 |     10400 |           49.13 |
@@ -67,6 +83,22 @@ Table of Contents
 | I/O                      |     0.003 |       31 |       210 |           14.76 |
 | Static Power             |     0.073 |          |           |                 |
 | Total                    |     0.245 |          |           |                 |
+=======
+| Clocks                   |     0.002 |       14 |       --- |             --- |
+| Slice Logic              |     0.002 |     6520 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     3485 |     10400 |           33.51 |
+|   LUT as Distributed RAM |    <0.001 |      568 |      9600 |            5.92 |
+|   CARRY4                 |    <0.001 |       55 |      8150 |            0.67 |
+|   Register               |    <0.001 |      726 |     20800 |            3.49 |
+|   F7/F8 Muxes            |    <0.001 |     1279 |     32600 |            3.92 |
+|   Others                 |     0.000 |       79 |       --- |             --- |
+| Signals                  |     0.002 |     3709 |       --- |             --- |
+| Block RAM                |     0.002 |     17.5 |        25 |           70.00 |
+| MMCM                     |     0.122 |        1 |         5 |           20.00 |
+| I/O                      |     0.002 |       71 |       210 |           33.81 |
+| Static Power             |     0.073 |          |           |                 |
+| Total                    |     0.205 |          |           |                 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +108,11 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
+<<<<<<< HEAD
 | Vccint    |       1.000 |     0.058 |       0.047 |      0.010 |       NA    | Unspecified | NA         |
+=======
+| Vccint    |       1.000 |     0.019 |       0.008 |      0.010 |       NA    | Unspecified | NA         |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Vccaux    |       1.800 |     0.080 |       0.068 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -95,6 +131,7 @@ Table of Contents
 1.3 Confidence Level
 --------------------
 
+<<<<<<< HEAD
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
@@ -106,6 +143,19 @@ Table of Contents
 |                             |            |                                                        |                                                                                                                    |
 | Overall confidence level    | Low        |                                                        |                                                                                                                    |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+=======
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 
 2. Settings
@@ -132,6 +182,7 @@ Table of Contents
 +--------------------+-------------------------------------------+-----------------+
 | Clock              | Domain                                    | Constraint (ns) |
 +--------------------+-------------------------------------------+-----------------+
+<<<<<<< HEAD
 | clk_52m_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_52m            |            19.2 |
 | clk_52m_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_52m_clk_wiz_1  |            19.2 |
 | clk_sys_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_sys_clk_wiz_1  |            54.6 |
@@ -139,6 +190,20 @@ Table of Contents
 | clkfbout_clk_wiz_1 | clk_gen_0/clk_gen/inst/clkfbout_clk_wiz_1 |            50.0 |
 | i_clk_main         | i_clk_main                                |            10.0 |
 | z80_clk            | u_Core/plusOp[1]                          |           109.2 |
+=======
+| CLK_6M             | clk_gen_0/out_BUFG                        |           163.8 |
+| CLK_6M_STAR        | clk_gen_0/sim_6M[0].inst/Q_0_BUFG         |           163.8 |
+| CLK_6M_STAR_N      | clk_gen_0/sim_6M[0].inst/in0              |           163.8 |
+| CLK_Z80            | o_cpu_clk_core                            |           327.6 |
+| clk_52m_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_52m            |            19.2 |
+| clk_52m_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_52m_clk_wiz_1  |            19.2 |
+| clk_sys_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_sys            |            54.6 |
+| clk_sys_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_sys_clk_wiz_1  |            54.6 |
+| clk_vga_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_vga            |            39.7 |
+| clk_vga_clk_wiz_1  | clk_gen_0/clk_gen/inst/clk_vga_clk_wiz_1  |            39.7 |
+| clkfbout_clk_wiz_1 | clk_gen_0/clk_gen/inst/clkfbout_clk_wiz_1 |            50.0 |
+| i_clk_main         | i_clk_main                                |            10.0 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +--------------------+-------------------------------------------+-----------------+
 
 
@@ -151,6 +216,7 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
+<<<<<<< HEAD
 | Core_Top              |     0.172 |
 |   clk_gen_0           |     0.122 |
 |     clk_gen           |     0.122 |
@@ -178,6 +244,18 @@ Table of Contents
 |       clut_mem        |     0.001 |
 |       pixel_generator |     0.002 |
 |       wbm             |     0.002 |
+=======
+| Core_Top              |     0.132 |
+|   clk_gen_0           |     0.122 |
+|     clk_gen           |     0.122 |
+|       inst            |     0.122 |
+|   u_Core              |     0.002 |
+|   u_vga_ctrl          |     0.006 |
+|     u2                |     0.005 |
+|       clut_mem        |     0.001 |
+|       pixel_generator |     0.001 |
+|       wbm             |     0.001 |
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 +-----------------------+-----------+
 
 

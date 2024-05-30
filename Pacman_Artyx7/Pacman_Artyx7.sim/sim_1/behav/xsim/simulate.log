@@ -12,6 +12,7 @@ WARNING: This core is supplied with a behavioral model. To model cycle-accurate 
 WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
 WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
 Block Memory Generator module PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+<<<<<<< HEAD
 blk_mem_gen_v8_4_5 collision detected at time: 4644553, Instance: PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst , A write address: 0, B  read address: 0
 blk_mem_gen_v8_4_5 collision detected at time: 4663784, Instance: PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst , A write address: 0, B  read address: 0
 blk_mem_gen_v8_4_5 collision detected at time: 4683014, Instance: PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst , A write address: 0, B  read address: 0
@@ -6570,3 +6571,5 @@ blk_mem_gen_v8_4_5 collision detected at time: 18092798399, Instance: PacMan_sim
 blk_mem_gen_v8_4_5 collision detected at time: 18092817630, Instance: PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst , A write address: 59, B  read address: 2c
 blk_mem_gen_v8_4_5 collision detected at time: 18092836860, Instance: PacMan_sim.core_top_0.u_vga_ctrl.u1.inst.\native_mem_module.blk_mem_gen_v8_4_5_inst , A write address: 59, B  read address: 2c
 INFO: xsimkernel Simulation Memory Usage: 20304 KB (Peak: 20304 KB), Simulation CPU Usage: 90640 ms
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

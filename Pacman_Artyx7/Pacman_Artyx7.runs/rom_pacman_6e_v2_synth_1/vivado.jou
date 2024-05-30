@@ -2,12 +2,21 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+<<<<<<< HEAD
 # Start of session at: Mon Feb 12 20:37:04 2024
 # Process ID: 18716
 # Current directory: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1
 # Command line: vivado.exe -log rom_pacman_6e_v2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rom_pacman_6e_v2.tcl
 # Log file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.vds
 # Journal file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1\vivado.jou
+=======
+# Start of session at: Sat Apr 27 22:44:06 2024
+# Process ID: 23972
+# Current directory: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1
+# Command line: vivado.exe -log rom_pacman_6e_v2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source rom_pacman_6e_v2.tcl
+# Log file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.vds
+# Journal file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1\vivado.jou
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 # Running On: DESKTOP-SK95JA6, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 12, Host memory: 17123 MB
 #-----------------------------------------------------------
 source rom_pacman_6e_v2.tcl -notrace

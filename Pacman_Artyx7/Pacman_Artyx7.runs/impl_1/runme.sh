@@ -24,7 +24,11 @@ else
 fi
 export LD_LIBRARY_PATH
 
+<<<<<<< HEAD
 HD_PWD='C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1'
+=======
+HD_PWD='C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1'
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -41,7 +45,11 @@ EAStep()
 }
 
 # pre-commands:
+<<<<<<< HEAD
 /bin/touch .write_bitstream.begin.rst
+=======
+/bin/touch .init_design.begin.rst
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 EAStep vivado -log Core_Top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Core_Top.tcl -notrace
 
 

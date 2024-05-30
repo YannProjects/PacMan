@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <GenRun Id="rom_pacman_6e_v2_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1707766620">
+=======
+<GenRun Id="rom_pacman_6e_v2_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1714250643">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <File Type="PA-TCL" Name="rom_pacman_6e_v2.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="rom_pacman_6e_v2_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="rom_pacman_6e_v2_reports.tcl"/>
@@ -45,6 +49,7 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
     <File Path="$PPRDIR/../../PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -53,14 +58,20 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
+<<<<<<< HEAD
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
       <Desc>Vivado Synthesis Defaults</Desc>
     </StratHandle>
+=======
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

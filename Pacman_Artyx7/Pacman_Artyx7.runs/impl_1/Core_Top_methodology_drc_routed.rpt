@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+<<<<<<< HEAD
 | Date         : Mon Feb 12 20:57:17 2024
+=======
+| Date         : Sat Mar 16 18:15:34 2024
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Host         : DESKTOP-SK95JA6 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Core_Top_methodology_drc_routed.rpt -pb Core_Top_methodology_drc_routed.pb -rpx Core_Top_methodology_drc_routed.rpx
 | Design       : Core_Top
@@ -23,6 +27,7 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
+<<<<<<< HEAD
              Violations found: 1015
 +-----------+------------------+-----------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                               | Violations |
@@ -39,16 +44,51 @@ Table of Contents
 | TIMING-10 | Warning          | Missing property on synchronizer                          | 1          |
 | RTGT-1    | Advisory         | RAM retargeting possibility                               | 1          |
 +-----------+------------------+-----------------------------------------------------------+------------+
+=======
+             Violations found: 55
++-----------+------------------+-------------------------------------------------------------------------------------------------------+------------+
+| Rule      | Severity         | Description                                                                                           | Violations |
++-----------+------------------+-------------------------------------------------------------------------------------------------------+------------+
+| TIMING-2  | Critical Warning | Invalid primary clock source pin                                                                      | 3          |
+| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree                                                    | 3          |
+| TIMING-14 | Critical Warning | LUT on the clock tree                                                                                 | 1          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                                                           | 18         |
+| LUTAR-1   | Warning          | LUT drives async reset alert                                                                          | 2          |
+| SYNTH-16  | Warning          | Address collision                                                                                     | 1          |
+| TIMING-9  | Warning          | Unknown CDC Logic                                                                                     | 1          |
+| TIMING-10 | Warning          | Missing property on synchronizer                                                                      | 1          |
+| TIMING-16 | Warning          | Large setup violation                                                                                 | 10         |
+| TIMING-20 | Warning          | Non-clocked latch                                                                                     | 8          |
+| TIMING-30 | Warning          | Sub-optimal master source pin selection for generated clock                                           | 4          |
+| TIMING-47 | Warning          | False path, asynchronous clock group or max delay datapath only constraint between synchronous clocks | 1          |
+| LATCH-1   | Advisory         | Existing latches in the design                                                                        | 1          |
+| RTGT-1    | Advisory         | RAM retargeting possibility                                                                           | 1          |
++-----------+------------------+-------------------------------------------------------------------------------------------------------+------------+
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 2. REPORT DETAILS
 -----------------
 TIMING-2#1 Critical Warning
 Invalid primary clock source pin  
+<<<<<<< HEAD
+=======
+A primary clock SYS_CLK is created on an inappropriate pin clk_gen_0/clk_gen/clk_sys. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
+Related violations: <none>
+
+TIMING-2#2 Critical Warning
+Invalid primary clock source pin  
+A primary clock VGA_CLK is created on an inappropriate pin clk_gen_0/clk_gen/clk_vga. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
+Related violations: <none>
+
+TIMING-2#3 Critical Warning
+Invalid primary clock source pin  
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 A primary clock clk_52M is created on an inappropriate pin clk_gen_0/clk_52m. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
 Related violations: <none>
 
 TIMING-4#1 Critical Warning
 Invalid primary clock redefinition on a clock tree  
+<<<<<<< HEAD
 Invalid clock redefinition on a clock tree. The primary clock clk_52M is defined downstream of clock clk_52m_clk_wiz_1 and overrides its insertion delay and/or waveform definition
 Related violations: <none>
 
@@ -70,95 +110,182 @@ Related violations: <none>
 TIMING-7#2 Critical Warning
 No common node between related clocks  
 The clocks clk_52m_clk_wiz_1 and clk_52M are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_52m_clk_wiz_1] -to [get_clocks clk_52M]
+=======
+Invalid clock redefinition on a clock tree. The primary clock SYS_CLK is defined downstream of clock clk_sys_clk_wiz_1 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-4#2 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock VGA_CLK is defined downstream of clock clk_vga_clk_wiz_1 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-4#3 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock clk_52M is defined downstream of clock clk_52m_clk_wiz_1 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-14#1 Critical Warning
+LUT on the clock tree  
+The LUT clk_gen_0/sim_6M[0].inst/Qn has been found on the clock tree. Run opt_design to optimize the clock trees, then re-run report_methodology. If LUT(s) are still present in the clock trees, modify the RTL or the synthesis options accordingly to move the clock gating logic to dedicated clock enable resources. Keep in mind that post-opt_design database cannot be used for pin-planning tasks
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#1 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/control_reg_reg[0]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[0].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#2 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/control_reg_reg[1]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[0].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#3 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/control_reg_reg[3]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[1].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#4 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_int_l_reg/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[1].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#5 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[0]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[2].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#6 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[1]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[2].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#7 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[2]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[3].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#8 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[3]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[3].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#9 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[4]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[4].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#10 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[5]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[4].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#11 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[6]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[5].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#12 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/cpu_vec_reg_reg[7]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[5].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#13 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hblank_reg/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[6].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#14 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hcnt_reg[0]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[6].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#15 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hcnt_reg[1]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[7].inst/DP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#16 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hcnt_reg[2]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/sprite_xy_ram[7].inst/SP/CLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#17 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hcnt_reg[3]/C is not reached by a timing clock
+=======
+The clock pin u_Core/u_video/u_sprite_ram/CLKARDCLK is not reached by a timing clock
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 TIMING-17#18 Critical Warning
 Non-clocked sequential cell  
+<<<<<<< HEAD
 The clock pin u_Core/hcnt_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
@@ -5140,6 +5267,182 @@ Related violations: <none>
 TIMING-10#1 Warning
 Missing property on synchronizer  
 One or more logic synchronizer has been detected between 2 clock domains but the synchronizer does not have the property ASYNC_REG defined on one or both registers. It is recommended to run report_cdc for a complete and detailed CDC coverage
+=======
+The clock pin u_Core/u_video/u_sprite_ram/CLKBWRCLK is not reached by a timing clock
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell u_Core/video_mem_addr_pacman[0]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_vga_ctrl/video_mem_addr_pacman_reg[10]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[11]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[12]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[13]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[14]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[15]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[1]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[2]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[3]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[4]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[5]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[6]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[7]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[8]/CLR,
+u_vga_ctrl/video_mem_addr_pacman_reg[9]/CLR (the first 15 of 16 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell u_vga_ctrl/u2/wbm/vga_addr_even_line_start[29]_i_3, with 2 or more inputs, drives asynchronous preset/clear pin(s) u_vga_ctrl/vga_addr_even_line_start_reg[7]/CLR,
+u_vga_ctrl/vga_addr_even_line_start_reg[8]/CLR,
+u_vga_ctrl/vga_addr_even_line_start_reg[9]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[10]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[11]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[12]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[13]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[14]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[4]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[5]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[6]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[7]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[8]/CLR,
+u_vga_ctrl/vga_frame_offset_reg[9]/CLR, u_vga_ctrl/vga_odd_line_reg/CLR
+ (the first 15 of 42 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+SYNTH-16#1 Warning
+Address collision  
+Block RAM u_vga_ctrl/u2/line_fifo/fifo_dc_mem/mem_reg may get memory collision error if read and write address collide. Use of address collision resolution circuitry is recommended.
+Related violations: <none>
+
+TIMING-9#1 Warning
+Unknown CDC Logic  
+One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+Related violations: <none>
+
+TIMING-10#1 Warning
+Missing property on synchronizer  
+One or more logic synchronizer has been detected between 2 clock domains but the synchronizer does not have the property ASYNC_REG defined on one or both registers. It is recommended to run report_cdc for a complete and detailed CDC coverage
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -10.848 ns between i_cpu_a_core[0] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[5]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -10.948 ns between i_cpu_a_core[0] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[6]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -11.024 ns between i_cpu_a_core[0] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[4]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -11.041 ns between i_cpu_a_core[1] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[2]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -11.061 ns between i_cpu_a_core[0] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[1]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -11.130 ns between i_cpu_a_core[3] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[7]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -11.158 ns between i_cpu_a_core[1] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[0]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -11.170 ns between i_cpu_a_core[0] (clocked by CLK_Z80) and u_Core/sync_bus_reg_reg[3]/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -7.162 ns between i_cpu_a_core[14] (clocked by CLK_Z80) and u_Core/sync_bus_r_w_l_reg/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -7.456 ns between i_cpu_a_core[14] (clocked by CLK_Z80) and u_Core/sync_bus_stb_U2_reg/D (clocked by CLK_6M_STAR). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[0] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[1] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[2] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[3] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[4] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[5] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[6] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch u_Core/o_cpu_di_reg[7] cannot be properly analyzed as its control pin u_Core/o_cpu_di_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-30#1 Warning
+Sub-optimal master source pin selection for generated clock  
+The generated clock CLK_6M has a sub-optimal master source pin selection, timing can be pessimistic
+Related violations: <none>
+
+TIMING-30#2 Warning
+Sub-optimal master source pin selection for generated clock  
+The generated clock CLK_6M_STAR has a sub-optimal master source pin selection, timing can be pessimistic
+Related violations: <none>
+
+TIMING-30#3 Warning
+Sub-optimal master source pin selection for generated clock  
+The generated clock CLK_6M_STAR_N has a sub-optimal master source pin selection, timing can be pessimistic
+Related violations: <none>
+
+TIMING-30#4 Warning
+Sub-optimal master source pin selection for generated clock  
+The generated clock CLK_Z80 has a sub-optimal master source pin selection, timing can be pessimistic
+Related violations: <none>
+
+TIMING-47#1 Warning
+False path, asynchronous clock group or max delay datapath only constraint between synchronous clocks  
+A Clock Group timing constraint is set between synchronous clocks CLK_6M_STAR and SYS_CLK (see constraint position 19 in the Timing Constraint window in Vivado IDE). Masking entire synchronous clock domains via  set_false_path, set_clock_groups or set_max_delay -datapath_only may result in failure in hardware.
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 8 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 RTGT-1#1 Advisory
