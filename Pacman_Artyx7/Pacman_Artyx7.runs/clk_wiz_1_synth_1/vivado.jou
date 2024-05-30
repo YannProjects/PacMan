@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sun Jun 25 17:03:02 2023
+# Process ID: 17588
+# Current directory: C:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1
+# Command line: vivado.exe -log clk_wiz_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clk_wiz_1.tcl
+# Log file: C:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1/clk_wiz_1.vds
+# Journal file: C:/Users/yannv/Documents/Projets_HW/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/clk_wiz_1_synth_1\vivado.jou
+# Running On: DESKTOP-SK95JA6, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 12, Host memory: 17123 MB
+#-----------------------------------------------------------
+source clk_wiz_1.tcl -notrace

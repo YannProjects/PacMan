@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/yannv/Documents/Projets_HW/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0"></ZoomStartTime>
+      <ZoomEndTime time="8"></ZoomEndTime>
+      <Cursor1Time time="0"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="325"></NameColumnWidth>
+      <ValueColumnWidth column_width="147"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="5" />
+   <wvobject fp_name="cpu_addr" type="array">
+      <obj_property name="ElementShortName">cpu_addr[13:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_addr[13:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="u_cpu/M1_n_reg" type="logic">
+      <obj_property name="ElementShortName">u_cpu/M1_n_reg</obj_property>
+      <obj_property name="ObjectShortName">M1_n_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="u_cpu/RD_n" type="logic">
+      <obj_property name="ElementShortName">u_cpu/RD_n</obj_property>
+      <obj_property name="ObjectShortName">RD_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="u_cpu/RFSH_n_reg" type="logic">
+      <obj_property name="ElementShortName">u_cpu/RFSH_n_reg</obj_property>
+      <obj_property name="ObjectShortName">RFSH_n_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="u_cpu/u0/MREQ_n_i_2_n_0" type="logic">
+      <obj_property name="ElementShortName">u_cpu/u0/MREQ_n_i_2_n_0</obj_property>
+      <obj_property name="ObjectShortName">MREQ_n_i_2_n_0</obj_property>
+   </wvobject>
+</wave_config>
