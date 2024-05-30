@@ -44,25 +44,25 @@ architecture Behavioral of rom is
 
     begin
     
-      u_rom_6E : entity work.rom_pacman_6e_v2
+      u_rom_6E : entity work.pacman_rom_6e
       port map (
         a => A(11 downto 0),
         spo => rom_data_0
       );    
     
-      u_rom_6F : entity work.rom_pacman_6f_v2
+      u_rom_6F : entity work.pacman_rom_6f
       port map (
         a => A(11 downto 0),
         spo => rom_data_1
       );    
     
-      u_rom_6H : entity work.rom_pacman_6h_v2
+      u_rom_6H : entity work.pacman_rom_6h
       port map (
         a => A(11 downto 0),
         spo => rom_data_2
       );    
     
-      u_rom_6J : entity work.rom_pacman_6j_v2
+      u_rom_6J : entity work.pacman_rom_6j
       port map (
         a => A(11 downto 0),
         spo => rom_data_3

@@ -4,6 +4,7 @@
         "initializer_list": "c",
         "type_traits": "c",
         "limits": "c",
-        "xuartns550.h": "c"
+        "xuartns550.h": "c",
+        "string.h": "c"
     }
 }

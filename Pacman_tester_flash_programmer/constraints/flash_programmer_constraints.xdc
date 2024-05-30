@@ -231,6 +231,10 @@ set_property IOSTANDARD LVCMOS33 [get_ports {o_vga[vsync]}]
 
 
 
+set_property IOSTANDARD LVCMOS33 [get_ports i_freeze]
+set_property PACKAGE_PIN V2 [get_ports i_freeze]
+set_property PULLUP true [get_ports i_freeze]
+
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_clk_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_intn]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_rst_core]
@@ -245,6 +249,3 @@ set_property OFFCHIP_TERM NONE [get_ports o_cpu_di_core[3]]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_di_core[2]]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_di_core[1]]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_di_core[0]]
-set_property IOSTANDARD LVCMOS33 [get_ports i_freeze]
-set_property PACKAGE_PIN V2 [get_ports i_freeze]
-set_property PULLUP true [get_ports i_freeze]

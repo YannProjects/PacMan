@@ -1,4 +1,4 @@
-C:/cygwin64/tmp/zcc000035444D202.asm:
+C:/cygwin64/tmp/zcc00004AB4D5C12.asm:
      1                          MODULE xuartns550_sinit_c
      2                          LINE 0, "uartns550_lite/xuartns550_sinit.c"
 uartns550_lite/xuartns550_sinit.c:
@@ -8,7 +8,7 @@ uartns550_lite/xuartns550_sinit.c:
      3                          ;
      4                          ;	Reconstructed for z80 Module Assembler
      5                          ;
-     6                          ;	Module compile time: Sun May 19 20:04:00 2024
+     6                          ;	Module compile time: Mon May 27 19:49:37 2024
      7                          
      8                          
      9                          	C_LINE	0,"uartns550_lite/xuartns550_sinit.c"

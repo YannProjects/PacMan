@@ -267,8 +267,7 @@ begin
    -- 0x5000 - 0x50FF : Mapped registers.
    --
    -- 0x6000 - 0x6005 : UART
-   -- 0x8000 - 0xBFFF : Memoire flash
-   -- 0xC000 - 0xFFFF : ROM PacMan pour la programmation de la flash
+   -- 0x8000 - 0xFFFF : Memoire flash
    -- Les adresses avec A15 = 0 sont prises en charge par le core PacMan
    p_data_decoder : process(i_cpu_a_core, i_cpu_rd_l_core, pacman_core_data, uart_data)
    begin
@@ -279,10 +278,6 @@ begin
             when "011" => 
                 o_do_core_enable_n <= '0';
                 o_cpu_di_core <= uart_reg;
-            -- PacMan ROMs (0xC)
-            when "110" => 
-                o_do_core_enable_n <= '0';            
-                o_cpu_di_core <= pacman_roms_data;
             -- PacMan core
             when "000"|"001"|"010" => 
                 o_do_core_enable_n <= '0';
@@ -291,18 +286,10 @@ begin
          end case;
       end if;
    end process;
-   
-  u_pacman_roms : entity work.ROM
-  port map (
-     A => i_cpu_a_core(13 downto 0),
-     D => pacman_roms_data,
-     OEn => '0',
-     CSn => '0'
-  );  
     
    -- Address decoder
    uart_cs <= '1' when i_cpu_a_core(15 downto 13) = "011" else '0';
-   o_flash_cs_l_core <= '0' when i_cpu_a_core(15 downto 13) = "100" else '1';
+   o_flash_cs_l_core <= '0' when i_cpu_a_core(15) = '1' else '1';
 
 end Behavioral;
 

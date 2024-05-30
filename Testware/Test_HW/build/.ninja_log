@@ -1,9 +1,7 @@
 # ninja log v5
-14	119	7369827031406086	PacManHwTest.exe	71f21d3c862b8622
+689	800	7386265854081653	PacManHwTest.exe	71f21d3c862b8622
 12	22	0	clean	9c4b4372737ab8da
-12	66	7354220193615114	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550_g.c.obj	766928f82e5809ad
-40	2109	7369825700303527	CMakeFiles/PacManHwTest.dir/uart_stub/uart16550_stub.c.obj	c308c77b3baa95fd
-44	556	7369825684752397	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550_sinit.c.obj	7d94fdd0717cc7a7
-42	560	7369825684752397	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550.c.obj	ad758bf07cec6f1f
-10	667	7369826971898930	CMakeFiles/PacManHwTest.dir/main.c.obj	487b62ef6f6573e1
-31	334	7354213603323399	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550_format.c.obj	1ee9034f06e3d8d9
+19	775	7385441410050939	CMakeFiles/PacManHwTest.dir/uart_stub/uart16550_stub.c.obj	c308c77b3baa95fd
+24	84	7385441403061768	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550_sinit.c.obj	7d94fdd0717cc7a7
+22	85	7385441403061768	CMakeFiles/PacManHwTest.dir/uartns550_lite/xuartns550.c.obj	ad758bf07cec6f1f
+14	689	7386265852909381	CMakeFiles/PacManHwTest.dir/main.c.obj	487b62ef6f6573e1

@@ -1,12 +1,11 @@
 Docs
-PacMan_Spartan7/
+Pacman
+PacMan_v2_AIO
 Pacman.docx
-Ref_FPGA_Arcade/
+Ref/
 roms/
 CircuitMaker/
 Pspice/
-ip/
-wdb/
 *.o
 *.lis
 *.coe

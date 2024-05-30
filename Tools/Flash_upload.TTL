@@ -1,0 +1,30 @@
+flash_container = "C:\Users\yannv\Documents\Projets_HW\PacMan\Testware\Test_HW\PacMan_Hw_test.bin.0a.coe"
+header_offset = 61
+chunk_size = 384
+
+fileopen f_handle flash_container 0
+if f_handle == -1 goto the_end
+
+; Saute l'en-tête du fichier
+fileseek f_handle header_offset 1
+; Lecture de 128 octets utiles dans le fichier (sous la forme f3 31 f0 ...)
+:next_chunk
+fileread f_handle chunk_size flash_data
+; Envoie les donnees
+if result == 1 goto last_chunk
+sendln flash_data
+waitln "OK"
+goto next_chunk
+
+:last_chunk
+; Enleve " ;"
+strtrim flash_data ";"
+strlen flash_data
+if result > 0 then
+    logwrite flash_data
+    sendln flash_data
+endif
+
+:the_end
+sendln "END"
+fileclose f_handle

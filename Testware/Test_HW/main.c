@@ -7,7 +7,7 @@
 #include <xparameters.h>
 
 #define UART_DEVICE_ID			XPAR_UARTNS550_0_DEVICE_ID
-#define RECV_BUFFER_SIZE		16
+#define RECV_BUFFER_SIZE		128*4
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 #define VBLANK_PERIOD 16.602
 
@@ -29,7 +29,10 @@
 #define VOICE_2_VOL_CONFIG_ADDR			0x505A
 #define VOICE_3_VOL_CONFIG_ADDR			0x505F
 
-#define FLASH_MEMORY_BASE				0x8000
+char flash_memory_stub[32*1024];
+
+//#define FLASH_MEMORY_BASE				0x8000
+#define FLASH_MEMORY_BASE				flash_memory_stub
 #define PACMAN_ROM_MEMORY_BASE			0xC000
 
 #define IN0_REG_ADDR					0x5000
@@ -95,6 +98,7 @@ Options disponible;\n\r\
 9. Programmer la memoire flash\n\r\
 10. Memory dump\n\r\
 11. Arret du son\n\r\
+12. Lecture flash product code\n\r\
 \n\r\
 Option ?: ";
 
@@ -465,6 +469,7 @@ void Erase_flash_memory()
 	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0x10;
 
 	/* Wait for end of erasure*/
+	/*
 	erase_done = 0;
 	while (erase_done == 0) {
 		flash_status = *(char *)(FLASH_MEMORY_BASE);
@@ -472,6 +477,7 @@ void Erase_flash_memory()
 			erase_done = 1;
 		}
 	}
+	*/
 
 	sprintf(SendBuffer, "\rEffacement flash termine !\n\r");
 	UartSendBuffer(SendBuffer, strlen(SendBuffer));
@@ -479,38 +485,85 @@ void Erase_flash_memory()
 
 void Initialise_flash_memory()
 {
-	char flash_status, status, pacman_rom_data;
-	unsigned int i;
+	char flash_status, status;
+	int end_of_program, i, num_of_bytes_to_write, pacman_rom_data;
 	char program_done, error_code = 0;
+	char *received_flash_chunk, *pch_hex, hex_value[3];
 
-	for (i = 0; i < 16*1024; i++) {
-		pacman_rom_data = *(char *)(PACMAN_ROM_MEMORY_BASE + i);
+	Erase_flash_memory();
 
-		/* Programmation memoire flash */
-		// Spansion (simulation)
-		/*
-		*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xAA;
-		*(char *)(FLASH_MEMORY_BASE + 0x555) = 0x55;
-		*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xA0;
-		*(char *)(FLASH_MEMORY_BASE + i) = pacman_rom_data;
-		*/
-		// Microchip
-		*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
-		*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
-		*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xA0;
-		*(char *)(FLASH_MEMORY_BASE + i) = pacman_rom_data;
+	sprintf(SendBuffer, "\rPret a recevoir les donnees\n\r");
+	UartSendBuffer(SendBuffer, strlen(SendBuffer));
 
-		/* Wait for end of program */
-		program_done = 0;
-		while (program_done == 0) {
-			flash_status = *(char *)(FLASH_MEMORY_BASE + i);
-			if ((flash_status & 0x80) == (pacman_rom_data & 0x80)) {
-				program_done = 1;
+	// Reception paquet de 128 octets sous la forme "3D "
+	received_flash_chunk = UartReadLn();
+	num_of_bytes_to_write = strlen(received_flash_chunk) / 3;
+	pch_hex = strtok(received_flash_chunk, " ");
+	end_of_program = 0;
+	while (end_of_program == 0) {
+		for (i = 0; (i < num_of_bytes_to_write) && (pch_hex != NULL); i++) {
+			strncpy(hex_value, pch_hex, 2);
+			sscanf((char *)hex_value, "%x", &pacman_rom_data);
+
+			/* Programmation memoire flash */
+			// Spansion (simulation)
+			/*
+			*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xAA;
+			*(char *)(FLASH_MEMORY_BASE + 0x555) = 0x55;
+			*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xA0;
+			*(char *)(FLASH_MEMORY_BASE + i) = pacman_rom_data;
+			*/
+			// Microchip
+			*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
+			*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
+			*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xA0;
+			*(char *)(FLASH_MEMORY_BASE + i) = pacman_rom_data;
+
+			/* Wait for end of program */
+			program_done = 0;
+			while (program_done == 0) {
+				flash_status = *(char *)(FLASH_MEMORY_BASE + i);
+				if ((flash_status & 0x80) == (pacman_rom_data & 0x80)) {
+					program_done = 1;
+				}
 			}
+			// Token suivant
+			pch_hex = strtok(NULL, " ");
 		}
+	
+		sprintf(SendBuffer, "OK\n");
+		UartSendBuffer(SendBuffer, strlen(SendBuffer));
+
+		received_flash_chunk = UartReadLn();
+		if (strstr(received_flash_chunk, "END") != NULL) {
+			end_of_program = 1;
+		};
+		pch_hex = strtok(received_flash_chunk, " ");
 	}
 
 	sprintf(SendBuffer, "\rProgrammation memoire flash terminee\n\r");
+	UartSendBuffer(SendBuffer, strlen(SendBuffer));
+}
+
+void Read_Flash_Ids()
+{
+	char manufacturer_id, device_id;
+
+	// Lecture Microchip product code
+	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
+	*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
+	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0x90;
+	manufacturer_id = *(char *)(FLASH_MEMORY_BASE);
+	device_id = *(char *)(FLASH_MEMORY_BASE + 1);
+
+	// Retour au mode read
+	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
+	*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
+	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xF0;
+
+	sprintf(SendBuffer, "\rManufacturer ID : 0x%X\n\r", manufacturer_id);
+	UartSendBuffer(SendBuffer, strlen(SendBuffer));
+	sprintf(SendBuffer, "\rDevice ID : 0x%X\n\r", device_id);
 	UartSendBuffer(SendBuffer, strlen(SendBuffer));
 }
 
@@ -734,7 +787,12 @@ int main(int a, char **arg) {
 				sprintf(SendBuffer, "\rArret du son\n\r");
 				UartSendBuffer(SendBuffer, strlen(SendBuffer));
 				Stop_Son();
-				break;									
+				break;
+			case 12:
+				sprintf(SendBuffer, "\nLecture product code memoire flash\n\r");
+				UartSendBuffer(SendBuffer, strlen(SendBuffer));
+				Read_Flash_Ids();
+				break;											
 			default:
 				sprintf(SendBuffer, "\rOption inconnue !\n\r");
 				UartSendBuffer(SendBuffer, strlen(SendBuffer));
