@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="PacMan_sim_behav.wdb" id="1">
+      <db_ref path="C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.sim/sim_1/behav/xsim/PacMan_sim_behav.wdb" id="1">
          <top_modules>
             <top_module name="PacMan_sim" />
             <top_module name="core_pack" />
@@ -16,13 +16,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="21,100.867580 us"></ZoomStartTime>
-      <ZoomEndTime time="21,394.867581 us"></ZoomEndTime>
-      <Cursor1Time time="21,191.080980 us"></Cursor1Time>
+      <ZoomStartTime time="15,579,313.007 ns"></ZoomStartTime>
+      <ZoomEndTime time="15,579,959.008 ns"></ZoomEndTime>
+      <Cursor1Time time="15,579,543.188 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="265"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <NameColumnWidth column_width="251"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="30" />
    <wave_markers>
@@ -30,6 +30,16 @@
       <marker time="18365855273" label="" />
       <marker time="21240867580" label="" />
       <marker time="18161304305" label="" />
+      <marker time="21199924652" label="" />
+      <marker time="15672629367" label="" />
+      <marker time="15673939540" label="" />
+      <marker time="240652381228" label="" />
+      <marker time="240653691401" label="" />
+      <marker time="222538574776" label="" />
+      <marker time="222539557406" label="" />
+      <marker time="15578123833" label="" />
+      <marker time="15579597779" label="" />
+      <marker time="15579434007" label="" />
    </wave_markers>
    <wvobject fp_name="/PacMan_sim/main_clk" type="logic">
       <obj_property name="ElementShortName">main_clk</obj_property>
@@ -38,6 +48,10 @@
    <wvobject fp_name="/PacMan_sim/rst_sys_n" type="logic">
       <obj_property name="ElementShortName">rst_sys_n</obj_property>
       <obj_property name="ObjectShortName">rst_sys_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_rst" type="logic">
+      <obj_property name="ElementShortName">z80_rst</obj_property>
+      <obj_property name="ObjectShortName">z80_rst</obj_property>
    </wvobject>
    <wvobject fp_name="/PacMan_sim/z80_clk" type="logic">
       <obj_property name="ElementShortName">z80_clk</obj_property>
@@ -48,6 +62,26 @@
    <wvobject fp_name="/PacMan_sim/z80_a" type="array">
       <obj_property name="ElementShortName">z80_a[15:0]</obj_property>
       <obj_property name="ObjectShortName">z80_a[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_m1_l" type="logic">
+      <obj_property name="ElementShortName">z80_m1_l</obj_property>
+      <obj_property name="ObjectShortName">z80_m1_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_mreq_l" type="logic">
+      <obj_property name="ElementShortName">z80_mreq_l</obj_property>
+      <obj_property name="ObjectShortName">z80_mreq_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_wait_l" type="logic">
+      <obj_property name="ElementShortName">z80_wait_l</obj_property>
+      <obj_property name="ObjectShortName">z80_wait_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_rd_l" type="logic">
+      <obj_property name="ElementShortName">z80_rd_l</obj_property>
+      <obj_property name="ObjectShortName">z80_rd_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/PacMan_sim/z80_wr_l" type="logic">
+      <obj_property name="ElementShortName">z80_wr_l</obj_property>
+      <obj_property name="ObjectShortName">z80_wr_l</obj_property>
    </wvobject>
    <wvobject fp_name="/PacMan_sim/z80_di" type="array">
       <obj_property name="ElementShortName">z80_di[7:0]</obj_property>
@@ -61,14 +95,6 @@
       <obj_property name="ElementShortName">D_bidir[7:0]</obj_property>
       <obj_property name="ObjectShortName">D_bidir[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_rst" type="logic">
-      <obj_property name="ElementShortName">z80_rst</obj_property>
-      <obj_property name="ObjectShortName">z80_rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_wait_l" type="logic">
-      <obj_property name="ElementShortName">z80_wait_l</obj_property>
-      <obj_property name="ObjectShortName">z80_wait_l</obj_property>
-   </wvobject>
    <wvobject fp_name="/PacMan_sim/z80_int_l" type="logic">
       <obj_property name="ElementShortName">z80_int_l</obj_property>
       <obj_property name="ObjectShortName">z80_int_l</obj_property>
@@ -77,25 +103,9 @@
       <obj_property name="ElementShortName">z80_busrq_l</obj_property>
       <obj_property name="ObjectShortName">z80_busrq_l</obj_property>
    </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_m1_l" type="logic">
-      <obj_property name="ElementShortName">z80_m1_l</obj_property>
-      <obj_property name="ObjectShortName">z80_m1_l</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_mreq_l" type="logic">
-      <obj_property name="ElementShortName">z80_mreq_l</obj_property>
-      <obj_property name="ObjectShortName">z80_mreq_l</obj_property>
-   </wvobject>
    <wvobject fp_name="/PacMan_sim/z80_iorq_l" type="logic">
       <obj_property name="ElementShortName">z80_iorq_l</obj_property>
       <obj_property name="ObjectShortName">z80_iorq_l</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_rd_l" type="logic">
-      <obj_property name="ElementShortName">z80_rd_l</obj_property>
-      <obj_property name="ObjectShortName">z80_rd_l</obj_property>
-   </wvobject>
-   <wvobject fp_name="/PacMan_sim/z80_wr_l" type="logic">
-      <obj_property name="ElementShortName">z80_wr_l</obj_property>
-      <obj_property name="ObjectShortName">z80_wr_l</obj_property>
    </wvobject>
    <wvobject fp_name="/PacMan_sim/z80_rfrsh_l" type="logic">
       <obj_property name="ElementShortName">z80_rfrsh_l</obj_property>
@@ -285,13 +295,13 @@
          <obj_property name="ElementShortName">i_clk_52m</obj_property>
          <obj_property name="ObjectShortName">i_clk_52m</obj_property>
       </wvobject>
-      <wvobject fp_name="/PacMan_sim/core_top_0/i_pll_locked" type="logic">
-         <obj_property name="ElementShortName">i_pll_locked</obj_property>
-         <obj_property name="ObjectShortName">i_pll_locked</obj_property>
-      </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/vga_control_init_done" type="logic">
          <obj_property name="ElementShortName">vga_control_init_done</obj_property>
          <obj_property name="ObjectShortName">vga_control_init_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/core_top_0/clk_gen_0/clk_sys" type="logic">
+         <obj_property name="ElementShortName">clk_sys</obj_property>
+         <obj_property name="ObjectShortName">clk_sys</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/core_top_0/clk_6m" type="logic">
          <obj_property name="ElementShortName">clk_6m</obj_property>
@@ -408,7 +418,10 @@
       <wvobject fp_name="group1020" type="group">
          <obj_property name="label">u_Core</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/PacMan_sim/core_top_0/clk_gen_0/clk_sys" type="logic">
+            <obj_property name="ElementShortName">clk_sys</obj_property>
+            <obj_property name="ObjectShortName">clk_sys</obj_property>
+         </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_clk_pacman_core" type="logic">
             <obj_property name="ElementShortName">i_clk_pacman_core</obj_property>
             <obj_property name="ObjectShortName">i_clk_pacman_core</obj_property>
@@ -424,6 +437,10 @@
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/i_core_reset" type="logic">
             <obj_property name="ElementShortName">i_core_reset</obj_property>
             <obj_property name="ObjectShortName">i_core_reset</obj_property>
+         </wvobject>
+         <wvobject fp_name="/PacMan_sim/core_top_0/pll_locked" type="logic">
+            <obj_property name="ElementShortName">pll_locked</obj_property>
+            <obj_property name="ObjectShortName">pll_locked</obj_property>
          </wvobject>
          <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/o_video_rgb" type="array">
             <obj_property name="ElementShortName">o_video_rgb[23:0]</obj_property>
@@ -1006,7 +1023,6 @@
          <wvobject fp_name="group1027" type="group">
             <obj_property name="label">u_video</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/PacMan_sim/core_top_0/u_Core/u_video/i_clk" type="logic">
                <obj_property name="ElementShortName">i_clk</obj_property>
                <obj_property name="ObjectShortName">i_clk</obj_property>
@@ -1494,6 +1510,7 @@
    <wvobject fp_name="group682" type="group">
       <obj_property name="label">u_z80</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/PacMan_sim/u_z80/RESET_n" type="logic">
          <obj_property name="ElementShortName">RESET_n</obj_property>
          <obj_property name="ObjectShortName">RESET_n</obj_property>
@@ -1502,13 +1519,17 @@
          <obj_property name="ElementShortName">CLK_n</obj_property>
          <obj_property name="ObjectShortName">CLK_n</obj_property>
       </wvobject>
-      <wvobject fp_name="/PacMan_sim/u_z80/WAIT_n" type="logic">
-         <obj_property name="ElementShortName">WAIT_n</obj_property>
-         <obj_property name="ObjectShortName">WAIT_n</obj_property>
-      </wvobject>
       <wvobject fp_name="/PacMan_sim/u_z80/INT_n" type="logic">
          <obj_property name="ElementShortName">INT_n</obj_property>
          <obj_property name="ObjectShortName">INT_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/IORQ_n" type="logic">
+         <obj_property name="ElementShortName">IORQ_n</obj_property>
+         <obj_property name="ObjectShortName">IORQ_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/PacMan_sim/u_z80/A" type="array">
+         <obj_property name="ElementShortName">A[15:0]</obj_property>
+         <obj_property name="ObjectShortName">A[15:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/u_z80/M1_n" type="logic">
          <obj_property name="ElementShortName">M1_n</obj_property>
@@ -1518,9 +1539,9 @@
          <obj_property name="ElementShortName">MREQ_n</obj_property>
          <obj_property name="ObjectShortName">MREQ_n</obj_property>
       </wvobject>
-      <wvobject fp_name="/PacMan_sim/u_z80/IORQ_n" type="logic">
-         <obj_property name="ElementShortName">IORQ_n</obj_property>
-         <obj_property name="ObjectShortName">IORQ_n</obj_property>
+      <wvobject fp_name="/PacMan_sim/u_z80/WAIT_n" type="logic">
+         <obj_property name="ElementShortName">WAIT_n</obj_property>
+         <obj_property name="ObjectShortName">WAIT_n</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/u_z80/RD_n" type="logic">
          <obj_property name="ElementShortName">RD_n</obj_property>
@@ -1537,10 +1558,6 @@
       <wvobject fp_name="/PacMan_sim/u_z80/HALT_n" type="logic">
          <obj_property name="ElementShortName">HALT_n</obj_property>
          <obj_property name="ObjectShortName">HALT_n</obj_property>
-      </wvobject>
-      <wvobject fp_name="/PacMan_sim/u_z80/A" type="array">
-         <obj_property name="ElementShortName">A[15:0]</obj_property>
-         <obj_property name="ObjectShortName">A[15:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/u_z80/D" type="array">
          <obj_property name="ElementShortName">D[7:0]</obj_property>
@@ -1613,10 +1630,6 @@
       <wvobject fp_name="/PacMan_sim/u_z80/BUSAK_n_i" type="logic">
          <obj_property name="ElementShortName">BUSAK_n_i</obj_property>
          <obj_property name="ObjectShortName">BUSAK_n_i</obj_property>
-      </wvobject>
-      <wvobject fp_name="/PacMan_sim/u_z80/A_i" type="array">
-         <obj_property name="ElementShortName">A_i[15:0]</obj_property>
-         <obj_property name="ObjectShortName">A_i[15:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/PacMan_sim/u_z80/DO" type="array">
          <obj_property name="ElementShortName">DO[7:0]</obj_property>

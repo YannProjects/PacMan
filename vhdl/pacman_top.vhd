@@ -330,6 +330,14 @@ begin
   p_sync_bus_reg : process
   begin
       wait until rising_edge(i_clk_6M_star);
+      ------------------------------------------------------------
+      -- Modification pour éviter des problème de timing entre le délai des adresse du Z80 (positionné à 57 ns dans les contraintes d'input delay.
+      -- Ce délai est trop important (pessimiste) je pense.
+      -- et le front montant de l'horloge i_clk_6M_star qui est à ~54 ns et arrive trop tôt par rapport au délai des adresses
+      -- => Ca corrige ce problème, mais à vérifier si ça ne casse rien d'autre...
+      -- wait until rising_edge(i_clk_pacman_core);
+      ------------------------------------------------------------
+      
       -- register on sync bus module that is used to store interrupt vector
       -- Implementation du circuit U7 du SYNC BUS. Utilise pour memoriser le vecteur
       -- d'interruption dans un registre (U7)

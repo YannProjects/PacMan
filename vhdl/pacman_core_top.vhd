@@ -111,7 +111,7 @@ end;
 architecture RTL of Core_Top is
 
   signal i_clk_52m, clk_6m, vga_clock                 : bit1;
-  signal i_pll_locked : bit1;
+  signal pll_locked : bit1;
   signal vga_control_init_done : bit1;
   signal clk_6m_star, clk_6m_star_n : bit1;
 
@@ -166,11 +166,13 @@ begin
       o_clk_6M => clk_6m,
       o_clk_6M_star => clk_6m_star,
       o_clk_6M_star_n => clk_6m_star_n,
-      i_rst => not i_rst_sys_n,
-      o_pll_locked => i_pll_locked
+      -- i_rst => not i_rst_sys_n,
+      i_rst => not pll_locked,
+      o_pll_locked => pll_locked
   );
  
- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
+ -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
+ core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
     
   --
   -- The Core
@@ -237,12 +239,13 @@ begin
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
-     i_reset => not i_rst_sys_n,
+     -- i_reset => not i_rst_sys_n,
+     i_reset => not pll_locked,
      i_clk_52m => i_clk_52m,
      i_vga_clk => vga_clock,
      i_sys_clk => clk_6m,
     
-     -- Siganux video core Pacman
+     -- Signaux video core Pacman
      i_hsync => hsync_l,
      i_vsync => vsync_l,
      i_csync => csync_l,
