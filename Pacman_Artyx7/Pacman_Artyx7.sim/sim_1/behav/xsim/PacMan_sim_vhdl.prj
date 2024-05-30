@@ -1,0 +1,27 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../vhdl/Clocks_gen.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80_Pack.vhd" \
+"../../../../../vhdl/replay_pack.vhd" \
+"../../../../../vhdl/replay_lib_wrap_pack.vhd" \
+"../../../../../vhdl/pacman_core_pack.vhd" \
+"../../../../../../Pacman_tester_flash_programmer/vhdl/pacman_core_pack.vhd" \
+"../../../../../vhdl/pacman_vram_addr.vhd" \
+"../../../../../vhdl/pacman_rams.vhd" \
+"../../../../../vhdl/pacman_video.vhd" \
+"../../../../../vhdl/pacman_audio.vhd" \
+"../../../../../vhdl/pacman_top.vhd" \
+"../../../../../vhdl/ROM.vhd" \
+"../../../../../vhdl/VGA_control_pack.vhd" \
+"../../../../../vhdl/vga_control_top.vhd" \
+"../../../../../vhdl/pacman_core_top.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80a.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80_ALU.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80_MCode.vhd" \
+"../../../../../../../t80/t80_github_30122022/t80/T80_Reg.vhd" \
+"../../../../../vhdl/ff.vhd" \
+"../../../../../vhdl/PacMan_sim.vhd" \
+
+# Do not sort compile order
+nosort

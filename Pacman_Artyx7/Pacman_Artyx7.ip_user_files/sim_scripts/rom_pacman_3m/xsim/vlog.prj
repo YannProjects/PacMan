@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../../Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/sim/rom_pacman_3m.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
