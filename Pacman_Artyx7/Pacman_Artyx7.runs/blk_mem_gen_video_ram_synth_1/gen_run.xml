@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<GenRun Id="blk_mem_gen_video_ram_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1703793526">
+=======
 <GenRun Id="blk_mem_gen_video_ram_synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1687634077">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <File Type="PA-TCL" Name="blk_mem_gen_video_ram.tcl"/>
   <File Type="REPORTS-TCL" Name="blk_mem_gen_video_ram_reports.tcl"/>
   <File Type="RDS-RDS" Name="blk_mem_gen_video_ram.vds"/>
@@ -34,6 +38,25 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
     <Filter Type="Utils"/>
+<<<<<<< HEAD
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/Core_Top.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

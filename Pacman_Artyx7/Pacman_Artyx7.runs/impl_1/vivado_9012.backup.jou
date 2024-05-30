@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Mon Feb 12 17:07:54 2024
+# Process ID: 9012
+# Current directory: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1
+# Command line: vivado.exe -log Core_Top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Core_Top.tcl -notrace
+# Log file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1/Core_Top.vdi
+# Journal file: C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1\vivado.jou
+# Running On: DESKTOP-SK95JA6, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 12, Host memory: 17123 MB
+#-----------------------------------------------------------
+source Core_Top.tcl -notrace

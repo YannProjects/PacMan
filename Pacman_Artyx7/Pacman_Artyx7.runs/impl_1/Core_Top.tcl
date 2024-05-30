@@ -17,7 +17,11 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
+<<<<<<< HEAD
+  variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1/Core_Top.tcl"
+=======
   variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1/Core_Top.tcl"
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   variable category "vivado_impl"
 }
 
@@ -115,6 +119,12 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
+<<<<<<< HEAD
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config  -id {Project 1-19}  -string {{CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/Users/Yann/Documents/Projets_HW/ZX81/ULA_VHDL/ZX81_ULA.srcs/sources_1/new/Timing_logic.vhd'.}}  -suppress 
+
+OPTRACE "impl_1" START { ROLLUP_1 }
+=======
 set_msg_config  -id {Project 1-19}  -string {{CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/Users/Yann/Documents/Projets_HW/ZX81/ULA_VHDL/ZX81_ULA.srcs/sources_1/new/Timing_logic.vhd'.}}  -suppress 
 
 OPTRACE "impl_1" START { ROLLUP_1 }
@@ -310,12 +320,21 @@ OPTRACE "route_design write_checkpoint" END { }
 
 OPTRACE "route_design misc" END { }
 OPTRACE "Phase: Route Design" END { }
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
 OPTRACE "write_bitstream setup" START { }
 start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
+<<<<<<< HEAD
+  set_param chipscope.maxJobs 3
+  set_param xicom.use_bs_reader 1
+  open_checkpoint Core_Top_routed.dcp
+  set_property webtalk.parent_dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.cache/wt [current_project]
+set_property TOP Core_Top [current_fileset]
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]

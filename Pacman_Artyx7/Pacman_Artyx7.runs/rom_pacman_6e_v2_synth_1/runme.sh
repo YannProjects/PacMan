@@ -24,7 +24,11 @@ else
 fi
 export LD_LIBRARY_PATH
 
+<<<<<<< HEAD
+HD_PWD='C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1'
+=======
 HD_PWD='C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1'
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 cd "$HD_PWD"
 
 HD_LOG=runme.log

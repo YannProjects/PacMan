@@ -80,6 +80,6 @@ architecture Behavioral of rom is
         end case;
       end process;
     
-      D <= o_data after 70 ns when CSn = '0' else (others => 'Z');
+      D <= o_data;
     
 end Behavioral;

@@ -8,4 +8,8 @@ if { [string length $curr_wave] == 0 } {
   }
 }
 
+<<<<<<< HEAD
+run 200ms
+=======
 run 1000ns
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

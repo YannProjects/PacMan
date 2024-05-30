@@ -1,6 +1,10 @@
 Vivado Simulator v2022.1
 Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+<<<<<<< HEAD
+Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L dist_mem_gen_v8_0_13 -L blk_mem_gen_v8_4_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot PacMan_sim_behav xil_defaultlib.PacMan_sim xil_defaultlib.glbl -log elaborate.log 
+=======
 Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_5 -L dist_mem_gen_v8_0_13 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot PacMan_sim_behav xil_defaultlib.PacMan_sim xil_defaultlib.glbl -log elaborate.log 
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -23,9 +27,15 @@ Compiling package ieee.vital_timing
 Compiling package ieee.vital_primitives
 Compiling package unisim.vpkg
 Compiling package ieee.std_logic_signed
+<<<<<<< HEAD
+Compiling package xil_defaultlib.t80_pack
+Compiling package xil_defaultlib.vga_control_pack
+Compiling package vl.vl_types
+=======
 Compiling package xil_defaultlib.vga_control_pack
 Compiling package vl.vl_types
 Compiling package xil_defaultlib.t80_pack
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Compiling module xil_defaultlib.glbl
 Compiling architecture behavioral of entity xil_defaultlib.jkff [jkff_default]
 Compiling module unisims_ver.IBUF
@@ -58,6 +68,14 @@ Compiling module dist_mem_gen_v8_0_13.dist_mem_gen_v8_0_13(C_FAMILY="a...
 Compiling module xil_defaultlib.rom_pacman_1m
 Compiling architecture rtl of entity xil_defaultlib.Pacman_Audio [pacman_audio_default]
 Compiling architecture rtl of entity xil_defaultlib.Pacman_Top [pacman_top_default]
+<<<<<<< HEAD
+Compiling architecture rtl of entity xil_defaultlib.T80_MCode [t80_mcode_default]
+Compiling architecture rtl of entity xil_defaultlib.T80_ALU [t80_alu_default]
+Compiling architecture rtl of entity xil_defaultlib.T80_Reg [t80_reg_default]
+Compiling architecture rtl of entity xil_defaultlib.T80 [\T80(iowait=1)\]
+Compiling architecture rtl of entity xil_defaultlib.T80se [t80se_default]
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Compiling module dist_mem_gen_v8_0_13.dist_mem_gen_v8_0_13(C_FAMILY="a...
 Compiling module xil_defaultlib.rom_pacman_6e_v2
 Compiling module dist_mem_gen_v8_0_13.dist_mem_gen_v8_0_13(C_FAMILY="a...
@@ -90,10 +108,13 @@ Compiling module xil_defaultlib.vga_fifo_dc(DWIDTH=24)
 Compiling module xil_defaultlib.vga_enh_top(ARST_LVL=1'b0,LINE_F...
 Compiling architecture behavioral of entity xil_defaultlib.vga_control_top [vga_control_top_default]
 Compiling architecture rtl of entity xil_defaultlib.Core_Top [core_top_default]
+<<<<<<< HEAD
+=======
 Compiling architecture rtl of entity xil_defaultlib.T80_MCode [t80_mcode_default]
 Compiling architecture rtl of entity xil_defaultlib.T80_ALU [t80_alu_default]
 Compiling architecture rtl of entity xil_defaultlib.T80_Reg [t80_reg_default]
 Compiling architecture rtl of entity xil_defaultlib.T80 [\T80(iowait=1)\]
 Compiling architecture rtl of entity xil_defaultlib.T80a [t80a_default]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Compiling architecture behavioral of entity xil_defaultlib.pacman_sim
 Built simulation snapshot PacMan_sim_behav

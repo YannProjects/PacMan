@@ -41,22 +41,30 @@ library ieee;
   use work.Replay_Pack.all;
 
 Package Core_Pack is  
+  -- DB0/DB1 (SW1 et SW2)
   constant c_free_play            : word(7 downto 0) := b"00000000";
   constant c_1_coin_1_credit      : word(7 downto 0) := b"00000010";
   constant c_1_coin_2_credits     : word(7 downto 0) := b"00000001";
   constant c_2_coins_1_credit     : word(7 downto 0) := b"00000011";
+  -- DB1/DB2 (SW3 et SW4)
   constant c_1_pacman             : word(7 downto 0) := b"00000000";
   constant c_2_pacman             : word(7 downto 0) := b"00001000";
   constant c_3_pacman             : word(7 downto 0) := b"00000100";
-  constant c_5_pacman             : word(7 downto 0) := b"00001100";
+  constant c_5_pacman             : word(7 downto 0) := b"00001100";  
+  -- DB4/DB5 (SW5 et SW6)
   constant c_bonus_10000          : word(7 downto 0) := b"00000000";
   constant c_bonus_15000          : word(7 downto 0) := b"00100000";
   constant c_bonus_20000          : word(7 downto 0) := b"00010000";
   constant c_no_bonus             : word(7 downto 0) := b"00110000";
+  -- DB6 (SW7)
   constant c_free_game            : word(7 downto 0) := b"00000000";
+  -- DB7 (SW8)
   constant c_free_life            : word(7 downto 0) := b"00100000";
+  
+  -- Deux dernier DIP switches non lus par DIPSWn (freeze + Rack advance) 
   constant c_auto_rack_advance    : word(7 downto 0) := b"00000000";
   constant c_normal_rack          : word(7 downto 0) := b"01000000";
+  
   constant c_freeze_video         : word(7 downto 0) := b"00000000";
   constant c_normal_video         : word(7 downto 0) := b"10000000";
   

@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6f_v2/sim/rom_pacman_6f_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_6f_v2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6h_v2/sim/rom_pacman_6h_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_6h_v2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/sim/rom_pacman_6j_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_6j_v2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_1_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_wiz_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5e/sim/rom_pacman_5e.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_5e
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_5f/sim/rom_pacman_5f.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_5f
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_4a/sim/rom_pacman_4a.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_4a
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_7f/sim/rom_pacman_7f.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_7f
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_3m/sim/rom_pacman_3m.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_3m
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_1m/sim/rom_pacman_1m.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_1m
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/sim/blk_mem_gen_video_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_video_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/pacman_ram_v2/sim/pacman_ram_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pacman_ram_v2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/sim/rom_pacman_6e_v2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rom_pacman_6e_v2
+=======
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/blk_mem_gen_video_ram/sim/blk_mem_gen_video_ram.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module blk_mem_gen_video_ram
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6j_v2/sim/rom_pacman_6j_v2.v" into library xil_defaultlib
@@ -26,6 +56,7 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW
 INFO: [VRFC 10-311] analyzing module clk_wiz_1_clk_wiz
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/clk_wiz_1/clk_wiz_1.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module clk_wiz_1
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_dpram.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module generic_dpram
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/generic_spram.v" into library xil_defaultlib
@@ -52,6 +83,56 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW
 INFO: [VRFC 10-311] analyzing module vga_wb_master
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/VGA_Controller/trunk/rtl/verilog/vga_wb_slave.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module vga_wb_slave
+<<<<<<< HEAD
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/Clocks_gen.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Clocks_gen'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/replay_pack.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/replay_lib_wrap_pack.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/VGA_control_pack.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_core_pack.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80_Pack.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80_MCode.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'T80_MCode'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/GBse.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'GBse'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80_Reg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'T80_Reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80_ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'T80_ALU'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'T80'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/t80/t80_github_24122023/T80se.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'T80se'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_vram_addr.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_VRAM_Addr'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_rams.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_RAMs'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_video.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_Video'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_audio.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_Audio'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_Top'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'rom'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/vga_control_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'vga_control_top'
+WARNING: [VRFC 10-3093] actual for formal port 'clkb' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/vga_control_top.vhd:311]
+WARNING: [VRFC 10-3093] actual for formal port 'rst_i' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/vga_control_top.vhd:386]
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_core_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Core_Top'
+WARNING: [VRFC 10-3093] actual for formal port 'i_rst' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_core_top.vhd:171]
+WARNING: [VRFC 10-3093] actual for formal port 'i_reset' is neither a static name nor a globally static expression [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_core_top.vhd:273]
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/PacMan_sim.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'PacMan_sim'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/ff.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'jkff'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/vhdl/pacman_mul4.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_Mul_Partial'
+INFO: [VRFC 10-3107] analyzing entity 'Pacman_Mul4'
+=======
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/Clocks_gen.vhd" into library xil_defaultlib
@@ -97,3 +178,4 @@ INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/Pac
 INFO: [VRFC 10-3107] analyzing entity 'jkff'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/vhdl/PacMan_sim.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'PacMan_sim'
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

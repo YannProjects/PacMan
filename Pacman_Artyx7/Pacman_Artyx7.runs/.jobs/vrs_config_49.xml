@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
+<<<<<<< HEAD
+	<Run Id="blk_mem_gen_video_ram_synth_1" LaunchDir="C:/Users/yannv/Documents/Projets_HW/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/blk_mem_gen_video_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+=======
 	<Run Id="impl_1" LaunchDir="C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="write_bitstream" ToStepId="write_bitstream"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>

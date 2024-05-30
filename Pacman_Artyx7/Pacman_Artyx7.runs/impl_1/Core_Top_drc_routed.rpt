@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+<<<<<<< HEAD
+| Date         : Mon Feb 12 20:57:16 2024
+=======
 | Date         : Sat Mar 16 18:15:32 2024
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 | Host         : DESKTOP-SK95JA6 running 64-bit major release  (build 9200)
 | Command      : report_drc -file Core_Top_drc_routed.rpt -pb Core_Top_drc_routed.pb -rpx Core_Top_drc_routed.rpx
 | Design       : Core_Top
@@ -24,6 +28,16 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
+<<<<<<< HEAD
+             Violations found: 42
++-----------+----------+----------------------------+------------+
+| Rule      | Severity | Description                | Violations |
++-----------+----------+----------------------------+------------+
+| CHECK-3   | Warning  | Report rule limit reached  | 2          |
+| REQP-1839 | Warning  | RAMB36 async control check | 20         |
+| REQP-1840 | Warning  | RAMB18 async control check | 20         |
++-----------+----------+----------------------------+------------+
+=======
              Violations found: 45
 +-------------+----------+-------------------------------------------------------------+------------+
 | Rule        | Severity | Description                                                 | Violations |
@@ -34,6 +48,7 @@ Table of Contents
 | REQP-1839   | Warning  | RAMB36 async control check                                  | 20         |
 | REQP-1840   | Warning  | RAMB18 async control check                                  | 20         |
 +-------------+----------+-------------------------------------------------------------+------------+
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 2. REPORT DETAILS
 -----------------
@@ -47,6 +62,8 @@ Report rule limit reached
 REQP-1840 rule limit reached: 20 violations have been found.
 Related violations: <none>
 
+<<<<<<< HEAD
+=======
 PDRC-153#1 Warning
 Gated clock check  
 Net clk_gen_0/sim_6M[0].inst/in0 is a gated clock net sourced by a combinational pin clk_gen_0/sim_6M[0].inst/Qn/O, cell clk_gen_0/sim_6M[0].inst/Qn. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
@@ -69,6 +86,7 @@ u_Core/u_audio/audio_wav_out_reg[0], u_Core/u_audio/audio_wav_out_reg[1],
 u_Core/u_audio/audio_wav_out_reg[2], u_Core/u_audio/audio_wav_out_reg[3]
 Related violations: <none>
 
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 REQP-1839#1 Warning
 RAMB36 async control check  
 The RAMB36E1 u_vga_ctrl/u1/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram has an input control pin u_vga_ctrl/u1/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram/ADDRARDADDR[10] (net: u_vga_ctrl/u1/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/addra[7]) which is driven by a register (u_vga_ctrl/video_mem_addr_pacman_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
@@ -261,12 +279,20 @@ Related violations: <none>
 
 REQP-1840#19 Warning
 RAMB18 async control check  
+<<<<<<< HEAD
+The RAMB18E1 u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg has an input control pin u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg/WEA[1] (net: u_vga_ctrl/u2/clut_mem/clut_mem/mem_we) which is driven by a register (u_vga_ctrl/s_adr_o_reg[11]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+=======
 The RAMB18E1 u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg has an input control pin u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg/WEA[1] (net: u_vga_ctrl/u2/clut_mem/clut_mem/WEA[0]) which is driven by a register (u_vga_ctrl/s_adr_o_reg[11]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 REQP-1840#20 Warning
 RAMB18 async control check  
+<<<<<<< HEAD
+The RAMB18E1 u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg has an input control pin u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg/WEA[1] (net: u_vga_ctrl/u2/clut_mem/clut_mem/mem_we) which is driven by a register (u_vga_ctrl/s_cyc_o_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+=======
 The RAMB18E1 u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg has an input control pin u_vga_ctrl/u2/clut_mem/clut_mem/mem_reg/WEA[1] (net: u_vga_ctrl/u2/clut_mem/clut_mem/WEA[0]) which is driven by a register (u_vga_ctrl/s_cyc_o_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 Related violations: <none>
 
 

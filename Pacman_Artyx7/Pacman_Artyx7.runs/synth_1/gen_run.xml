@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<GenRun Id="synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1707767690" LaunchIncrCheckpoint="$PPRDIR/../../PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp">
+  <File Type="PA-TCL" Name="Core_Top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="Core_Top_drc_synth.rpt"/>
+=======
 <GenRun Id="synth_1" LaunchPart="xc7a15tcsg324-2" LaunchTime="1710609180" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Core_Top.dcp">
   <File Type="PA-TCL" Name="Core_Top.tcl"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <File Type="REPORTS-TCL" Name="Core_Top_reports.tcl"/>
   <File Type="RDS-RDS" Name="Core_Top.vds"/>
   <File Type="RDS-UTIL" Name="Core_Top_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Core_Top_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="Core_Top.dcp"/>
+<<<<<<< HEAD
+  <File Type="VDS-TIMINGSUMMARY" Name="Core_Top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="Core_Top_timing_summary_synth.pb"/>
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../../VGA_Controller/trunk/rtl/verilog/timescale.v">
@@ -131,157 +142,264 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/VGA_control_pack.vhd">
+=======
     <File Path="$PPRDIR/../vhdl/pacman_vram_addr.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_core_pack.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/pacman_rams.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80_Pack.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/pacman_video.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80_MCode.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/pacman_audio.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/GBse.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/pacman_top.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80_Reg.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/ROM.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80_ALU.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/VGA_control_pack.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/vga_control_top.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../../t80/t80_github_24122023/T80se.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/ff.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_vram_addr.vhd">
+=======
+    <File Path="$PPRDIR/../vhdl/pacman_core_top.vhd">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+<<<<<<< HEAD
     <File Path="$PPRDIR/../vhdl/pacman_rams.vhd">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/pacman_video.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/pacman_audio.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/pacman_top.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/ROM.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/VGA_control_pack.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/vga_control_top.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/ff.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../vhdl/pacman_core_top.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80_Pack.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_video.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../vhdl/pacman_core_pack.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_audio.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80a.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_top.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/ROM.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80_ALU.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/vga_control_top.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80_MCode.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_core_top.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80_Reg.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../vhdl/PacMan_sim.vhd">
       <FileInfo>
+<<<<<<< HEAD
+=======
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/ff.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../vhdl/pacman_mul4.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../vhdl/pacman_mul4.vhd">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/GBse.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../roms/pacman_5e_2.coe">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../vhdl/RAM.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../roms/pacman_5f_2.coe">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T8080se.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../roms/82s126_4a.coe">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80as.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../roms/82s123_7f.coe">
+      <FileInfo>
+=======
     <File Path="$PPRDIR/../../../t80/t80_github_30122022/t80/T80pa.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -320,10 +438,13 @@
     <File Path="$PPRDIR/../vhdl/pacman_rom_descrambler.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+=======
     <File Path="$PPRDIR/../../../VGA_Controller/trunk/rtl/verilog/vga_curproc.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -340,6 +461,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <File Path="$PPRDIR/../../roms/82s126.3m.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -370,30 +492,49 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../Testware/Test_audio/test_audio.bin.coe">
+=======
     <File Path="$PPRDIR/../../roms/pacman_5e_2.coe">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../roms/82s1268_AIO.3m.coe">
+=======
     <File Path="$PPRDIR/../../roms/pacman_5f_2.coe">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../Testware/Test_lecture_RAM/test_lecture_RAM.bin.coe">
+=======
     <File Path="$PPRDIR/../../roms/82s126_4a.coe">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../Testware/Test_lecture_RAM/Initialisation_RAM.coe">
+=======
     <File Path="$PPRDIR/../../roms/82s123_7f.coe">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../Testware/Test_IO/pacman_hw_test.0a.coe">
+=======
     <File Path="$PPRDIR/../../Testware/Test_audio/test_audio.bin.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -407,6 +548,7 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../../Testware/Test_lecture_RAM/Initialisation_RAM.coe">
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -446,6 +588,17 @@
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
+<<<<<<< HEAD
+    <File Path="$PPRDIR/../../PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/utils_1/imports/synth_1/Core_Top.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
@@ -456,12 +609,21 @@
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_video_ram"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_6f_v2"/>
+<<<<<<< HEAD
+  <BlockFileSet Type="BlockSrcs" Name="rom_pacman_5f"/>
+  <BlockFileSet Type="BlockSrcs" Name="rom_pacman_6h_v2"/>
+  <BlockFileSet Type="BlockSrcs" Name="rom_pacman_7f"/>
+  <BlockFileSet Type="BlockSrcs" Name="rom_pacman_6j_v2"/>
+  <BlockFileSet Type="BlockSrcs" Name="rom_pacman_4a"/>
+  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_1"/>
+=======
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_6h_v2"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_5f"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_6j_v2"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_7f"/>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_1"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_4a"/>
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_5e"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_3m"/>
   <BlockFileSet Type="BlockSrcs" Name="rom_pacman_1m"/>

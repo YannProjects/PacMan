@@ -17,11 +17,19 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t
 INFO: [Device 21-403] Loading part xc7a15tcsg324-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+<<<<<<< HEAD
+INFO: [Synth 8-7075] Helper process launched with PID 20288
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1284.617 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'rom_pacman_6e_v2' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:66]
+=======
 INFO: [Synth 8-7075] Helper process launched with PID 14304
 ---------------------------------------------------------------------------------
 Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1283.906 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'rom_pacman_6e_v2' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:66]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_ADDR_WIDTH bound to: 12 - type: integer 
 	Parameter C_DEFAULT_DATA bound to: 0 - type: string 
@@ -54,8 +62,13 @@ INFO: [Synth 8-638] synthesizing module 'rom_pacman_6e_v2' [c:/Users/yannv/Docum
 	Parameter C_SYNC_ENABLE bound to: 1 - type: integer 
 	Parameter C_WIDTH bound to: 8 - type: integer 
 	Parameter C_PARSER_TYPE bound to: 1 - type: integer 
+<<<<<<< HEAD
+INFO: [Synth 8-3491] module 'dist_mem_gen_v8_0_13' declared at 'c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/hdl/dist_mem_gen_v8_0_vhsyn_rfs.vhd:3237' bound to instance 'U0' of component 'dist_mem_gen_v8_0_13' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:132]
+INFO: [Synth 8-256] done synthesizing module 'rom_pacman_6e_v2' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:66]
+=======
 INFO: [Synth 8-3491] module 'dist_mem_gen_v8_0_13' declared at 'c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/hdl/dist_mem_gen_v8_0_vhsyn_rfs.vhd:3237' bound to instance 'U0' of component 'dist_mem_gen_v8_0_13' [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:132]
 INFO: [Synth 8-256] done synthesizing module 'rom_pacman_6e_v2' (0#1) [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/synth/rom_pacman_6e_v2.vhd:66]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 WARNING: [Synth 8-7129] Port qspo[7] in module rom is either unconnected or has no load
 WARNING: [Synth 8-7129] Port qspo[6] in module rom is either unconnected or has no load
 WARNING: [Synth 8-7129] Port qspo[5] in module rom is either unconnected or has no load
@@ -141,22 +154,51 @@ WARNING: [Synth 8-7129] Port qdpo_rst in module dist_mem_gen_v8_0_13 is either u
 WARNING: [Synth 8-7129] Port qspo_srst in module dist_mem_gen_v8_0_13 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port qdpo_srst in module dist_mem_gen_v8_0_13 is either unconnected or has no load
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1341.824 ; gain = 57.207
+=======
 Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1342.734 ; gain = 58.828
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1341.824 ; gain = 57.207
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1341.824 ; gain = 57.207
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1341.824 ; gain = 0.000
+=======
 Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1342.734 ; gain = 58.828
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1342.734 ; gain = 58.828
 ---------------------------------------------------------------------------------
 Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1342.734 ; gain = 0.000
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
+<<<<<<< HEAD
+Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc] for cell 'U0'
+Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1343.738 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1344.738 ; gain = 1.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc] for cell 'U0'
 Finished Parsing XDC File [c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc] for cell 'U0'
 Parsing XDC File [C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/dont_touch.xdc]
@@ -171,23 +213,37 @@ Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
 Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1343.863 ; gain = 59.957
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a15tcsg324-2
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1343.863 ; gain = 59.957
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1344.738 ; gain = 60.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
 Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1343.863 ; gain = 59.957
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1343.863 ; gain = 59.957
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -227,7 +283,11 @@ WARNING: [Synth 8-7129] Port qspo[1] in module dist_mem_gen_v8_0_13 is either un
 WARNING: [Synth 8-7129] Port qspo[0] in module dist_mem_gen_v8_0_13 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -248,19 +308,31 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1344.738 ; gain = 60.121
+=======
 Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1344.941 ; gain = 60.324
+=======
 Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -278,37 +350,61 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+<<<<<<< HEAD
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+=======
 Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1388.590 ; gain = 104.684
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -324,6 +420,39 @@ Report Cell Usage:
 +------+------+------+
 |      |Cell  |Count |
 +------+------+------+
+<<<<<<< HEAD
+|1     |LUT5  |     1|
+|2     |LUT6  |   153|
+|3     |MUXF7 |    64|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 55 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:32 . Memory (MB): peak = 1359.703 ; gain = 72.172
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1359.703 ; gain = 75.086
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1367.422 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 64 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1375.266 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 4d7b724a
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:41 . Memory (MB): peak = 1375.266 ; gain = 90.648
+INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP rom_pacman_6e_v2, cache-ID = 889b10959c6e3fe5
+INFO: [Coretcl 2-1174] Renamed 3 cell refs.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file rom_pacman_6e_v2_utilization_synth.rpt -pb rom_pacman_6e_v2_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 12 20:37:55 2024...
+=======
 |1     |LUT4  |     4|
 |2     |LUT5  |     4|
 |3     |LUT6  |   568|
@@ -354,3 +483,4 @@ INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMa
 INFO: [Common 17-1381] The checkpoint 'C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file rom_pacman_6e_v2_utilization_synth.rpt -pb rom_pacman_6e_v2_utilization_synth.pb
 INFO: [Common 17-206] Exiting Vivado at Sat Apr 27 22:44:48 2024...
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

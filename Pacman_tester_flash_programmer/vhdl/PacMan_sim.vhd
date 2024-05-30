@@ -41,22 +41,11 @@ signal pacman_rom_data : word(7 downto 0);
 
 constant clk_period : time := 10000 ps; -- component MHz
 
-signal z80_a : word(15 downto 0);
-signal z80_di, z80_do, D_bidir : word(7 downto 0);
-signal z80_rst, z80_clk, z80_wait_l, z80_int_l : bit1;
-signal z80_busrq_l, z80_m1_l : bit1;
-signal z80_mreq_l, z80_iorq_l, z80_rd_l, z80_wr_l: bit1;
-signal z80_rfrsh_l, crom_cs : bit1;
-signal in0_cs, in1_cs, dip_sw_cs : bit1;
-
-signal z80_mreq_delay_l, z80_iorq_delay_l, z80_rd_delay_l, z80_wr_delay_l: bit1;
-signal z80_rfrsh_delay_l, z80_m1_delay_l: bit1;
-
 signal cfg_dip_sw, in0_reg, in1_reg, config_reg : word(7 downto 0);
 
 signal joy_a, joy_b : word(3 downto 0);
 signal coins, buttons : word(1 downto 0);
-signal credit, table, test : bit1;
+signal credit, table, test, in0_cs, in1_cs, dip_sw_cs : bit1;
 
 begin
    -- A implémenter avec des switch sur la carte ou avec les joysticks / boutons
@@ -94,23 +83,7 @@ begin
     
         -- Audio/Video
         -- o_av                  : out   r_AV_fm_core
-        
-        -- z80    
-        i_cpu_a_core        => z80_a, -- Asynchrone ???
-        o_cpu_di_core       => z80_di, -- Relative à la virtual clock CPU (z80_clk) *
-        i_cpu_do_core       => z80_do, -- sync i_clk_sys *
-    
-        o_cpu_rst_core      => z80_rst, -- 3 MHz generated clock
-        o_cpu_clk_core      => z80_clk,
-        o_cpu_wait_l_core   => z80_wait_l, -- Relative à la virtual clock CPU (z80_clk). Mais sur front descendant... *
-        o_cpu_int_l_core    => z80_int_l, -- Relative à la virtual clock CPU (z80_clk) *
-        i_cpu_m1_l_core     => z80_m1_delay_l, -- sync i_clk_sys *
-        i_cpu_mreq_l_core   => z80_mreq_delay_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_iorq_l_core   => z80_iorq_delay_l, -- sync i_clk_sys *
-        i_cpu_rd_l_core     => z80_rd_delay_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_wr_l_core     => z80_wr_delay_l, -- Asynchrone ??? => i_clk_sys ? *
-        i_cpu_rfrsh_l_core  => z80_rfrsh_delay_l, -- Asynchrone ??? => i_clk_sys ? *
-        
+                
         -- Registres de configuration (IN0, IN1, DIP SW)
         i_config_reg        => config_reg,
     
@@ -119,41 +92,11 @@ begin
         o_in1_l_cs          => in1_cs, -- Asynchrone ???
         o_dip_l_cs          => dip_sw_cs -- Asynchrone ???
     );
-    
-    u_z80 : entity work.T80a
-    port map (
-		RESET_n	=> z80_rst,
-		R800_mode => '0',
-		CLK_n => z80_clk,
-		WAIT_n => z80_wait_l,
-		INT_n => z80_int_l,
-		NMI_n => '1',
-		BUSRQ_n => '1',
-		M1_n => z80_m1_l,
-		MREQ_n => z80_mreq_l,
-		IORQ_n => z80_iorq_l,
-		RD_n => z80_rd_l,
-		WR_n => z80_wr_l,
-		RFSH_n => z80_rfrsh_l,
-		A => z80_a,
-		D => D_bidir
-	);    
-    
-    D_bidir <= z80_di;
-    z80_m1_delay_l  <= z80_m1_l;
-    z80_mreq_delay_l <= z80_mreq_l;
-    z80_iorq_delay_l <= z80_iorq_l;    
-    z80_rd_delay_l <= z80_rd_l;
-    
-    z80_wr_delay_l <= z80_wr_l;
-    z80_rfrsh_delay_l <= z80_rfrsh_l;
-    
+        
     config_reg <= in0_reg when in0_cs = '0' else (others => 'Z');
     config_reg <= in1_reg when in1_cs = '0' else (others => 'Z');
     config_reg <= cfg_dip_sw when dip_sw_cs = '0' else (others => 'Z');
-    
-    z80_do <= D_bidir;
-    
+        
     --
     -- DIP switch 1 (ON = 0, OFF = 1) (https://www.arcade-museum.com/manuals-videogames/S/SuperABC.pdf)
     --                         SW1   SW2   SW3   SW4   SW5   SW6   SW7   SW8

@@ -4,7 +4,11 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
+<<<<<<< HEAD
+  variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.tcl"
+=======
   variable script "C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.tcl"
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   variable category "vivado_synth"
 }
 
@@ -70,6 +74,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "rom_pacman_6e_v2_synth_1" START { ROLLUP_AUTO }
+<<<<<<< HEAD
+set_param chipscope.maxJobs 3
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
+=======
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 set_msg_config  -id {Project 1-19}  -string {{CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/Users/Yann/Documents/Projets_HW/ZX81/ULA_VHDL/ZX81_ULA.srcs/sources_1/new/Timing_logic.vhd'.}}  -suppress 
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
@@ -80,6 +90,19 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
+<<<<<<< HEAD
+set_property webtalk.parent_dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.cache/wt [current_project]
+set_property parent.project_path C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+set_property default_lib xil_defaultlib [current_project]
+set_property target_language VHDL [current_project]
+set_property ip_output_repo c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.cache/ip [current_project]
+set_property ip_cache_permissions {read write} [current_project]
+OPTRACE "Creating in-memory project" END { }
+OPTRACE "Adding files" START { }
+read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.xci
+set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc]
+=======
 set_property webtalk.parent_dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.cache/wt [current_project]
 set_property parent.project_path C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
@@ -91,6 +114,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_ip -quiet C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.srcs/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.xci
 set_property used_in_implementation false [get_files -all c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_ooc.xdc]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -106,7 +130,11 @@ set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 OPTRACE "Configure IP Cache" START { }
 
+<<<<<<< HEAD
+set cacheID [config_ip_cache -export -no_bom  -dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1 -new_name rom_pacman_6e_v2 -ip [get_ips rom_pacman_6e_v2]]
+=======
 set cacheID [config_ip_cache -export -no_bom  -dir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1 -new_name rom_pacman_6e_v2 -ip [get_ips rom_pacman_6e_v2]]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 OPTRACE "Configure IP Cache" END { }
 if { $cacheID == "" } {
@@ -161,32 +189,52 @@ create_report "rom_pacman_6e_v2_synth_1_synth_report_utilization_0" "report_util
 OPTRACE "synth reports" END { }
 
 if { [catch {
+<<<<<<< HEAD
+  file copy -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.dcp
+=======
   file copy -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.dcp
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
+<<<<<<< HEAD
+  write_verilog -force -mode synth_stub c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v
+=======
   write_verilog -force -mode synth_stub c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  write_vhdl -force -mode synth_stub c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl
+=======
   write_vhdl -force -mode synth_stub c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  write_verilog -force -mode funcsim c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.v
+=======
   write_verilog -force -mode funcsim c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.v
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  write_vhdl -force -mode funcsim c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.vhdl
+=======
   write_vhdl -force -mode funcsim c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.vhdl
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -196,38 +244,69 @@ if { [catch {
 
 
 if { [catch {
+<<<<<<< HEAD
+  file copy -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.dcp
+=======
   file copy -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2.dcp c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2.dcp
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
+<<<<<<< HEAD
+  file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_stub.v c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v
+=======
   file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_stub.v c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_stub.vhdl c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl
+=======
   file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_stub.vhdl c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_sim_netlist.v c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.v
+=======
   file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_sim_netlist.v c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.v
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
+<<<<<<< HEAD
+  file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_sim_netlist.vhdl c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.vhdl
+=======
   file rename -force C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.runs/rom_pacman_6e_v2_synth_1/rom_pacman_6e_v2_sim_netlist.vhdl c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_sim_netlist.vhdl
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 }; # end if cacheID 
 
+<<<<<<< HEAD
+if {[file isdir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2]} {
+  catch { 
+    file copy -force c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2
+  }
+}
+
+if {[file isdir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2]} {
+  catch { 
+    file copy -force c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2_AIO/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2
+=======
 if {[file isdir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2]} {
   catch { 
     file copy -force c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.v C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2
@@ -237,6 +316,7 @@ if {[file isdir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Arty
 if {[file isdir C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2]} {
   catch { 
     file copy -force c:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.gen/sources_1/ip/rom_pacman_6e_v2/rom_pacman_6e_v2_stub.vhdl C:/Users/yannv/Documents/Projets_HW/PacMan/PacMan_v2/Pacman_Artyx7/Pacman_Artyx7.ip_user_files/ip/rom_pacman_6e_v2
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
   }
 }
 file delete __synthesis_is_running__

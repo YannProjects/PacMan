@@ -18,7 +18,13 @@ create_clock -period 19.231 -name clk_52M -waveform {0.000 9.616} [get_pins clk_
 #create_clock -period 39.702 -name clk_vga -waveform {0.000 19.851} [get_pins clk_gen_0/clk_gen/clk_vga]
 
 
+<<<<<<< HEAD
+set_clock_groups -name VGA -asynchronous -group [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT1]]
+set_clock_groups -name 52M -asynchronous -group [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT1]] -group [get_clocks [list clk_52M [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT0]]]]
+set_clock_groups -name SYSCLK -asynchronous -group [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT1]] -group [get_clocks [list clk_52M [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT0]]]] -group [get_clocks [list i_clk_sys z80_clk [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT2]] [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKFBOUT]]]]
+=======
 set_clock_groups -name 52M -asynchronous -group [get_clocks clk_52M]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
 
 
 
@@ -29,6 +35,27 @@ set_false_path -to [get_ports *o_in*]
 
 
 
+<<<<<<< HEAD
+set_property PACKAGE_PIN P17 [get_ports i_clk_main]
+set_property IOSTANDARD LVCMOS33 [get_ports i_clk_main]
+
+
+
+
+
+set_property PULLDOWN true [get_ports {i_config_reg[7]}]
+set_property PULLDOWN true [get_ports {i_config_reg[6]}]
+set_property PULLDOWN true [get_ports {i_config_reg[5]}]
+set_property PULLDOWN true [get_ports {i_config_reg[4]}]
+set_property PULLDOWN true [get_ports {i_config_reg[3]}]
+set_property PULLDOWN true [get_ports {i_config_reg[2]}]
+set_property PULLDOWN true [get_ports {i_config_reg[1]}]
+set_property PULLDOWN true [get_ports {i_config_reg[0]}]
+
+
+set_property PACKAGE_PIN V9 [get_ports {i_config_reg[2]}]
+
+=======
 set_property IOSTANDARD LVCMOS33 [get_ports i_clk_main]
 
 set_property PACKAGE_PIN P17 [get_ports i_clk_main]
@@ -97,3 +124,4 @@ set_property PULLUP true [get_ports {i_config_reg[3]}]
 set_property PULLUP true [get_ports {i_config_reg[2]}]
 set_property PULLUP true [get_ports {i_config_reg[1]}]
 set_property PULLUP true [get_ports {i_config_reg[0]}]
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8

@@ -52,7 +52,7 @@ use UNISIM.Vcomponents.all;
 
 use work.replay_pack.all;
 use work.replay_lib_wrap_pack.all;
--- use work.pacman_core_pack.all;
+use work.core_pack.all;
 
 use std.textio.all;
 
@@ -77,21 +77,6 @@ entity Core_Top is
     -- o_av                  : out   r_AV_fm_core;
     
     o_vga                 : out r_VGA_to_core;
-    
-    i_cpu_a_core          : in word(15 downto 0);
-    o_cpu_di_core         : out word(7 downto 0);
-    i_cpu_do_core         : in word(7 downto 0);
-    
-    o_cpu_rst_core        : out bit1;
-    o_cpu_clk_core        : out bit1;
-    o_cpu_wait_l_core     : out bit1;
-    o_cpu_int_l_core      : out bit1;
-    i_cpu_m1_l_core       : in bit1;
-    i_cpu_mreq_l_core     : in bit1;
-    i_cpu_iorq_l_core     : in bit1;
-    i_cpu_rd_l_core       : in bit1;
-    i_cpu_wr_l_core       : in bit1;
-    i_cpu_rfrsh_l_core    : in bit1;
     
     -- Registres I/O
     i_config_reg          : in word(7 downto 0);
@@ -145,11 +130,28 @@ architecture RTL of Core_Top is
   
   signal blank_vga : std_logic;
   signal o_r, o_g, o_b : word(2 downto 0);
-  signal regs_data, cpu_data, rom_data : word(7 downto 0);
+  signal regs_data, rom_data : word(7 downto 0);
+  signal config_reg : word(7 downto 0);
+  signal dip_l_cs : bit1;
   
-  signal rom_cs_l, cpu_rd_regs : bit1;
+  signal rom_cs_l : bit1;
   
   signal core_rst : bit1;
+  
+  signal cpu_addr          : word(15 downto 0);
+  signal cpu_data_in       : word(7 downto 0);
+  signal cpu_data_out      : word(7 downto 0);
+
+  signal cpu_rst_core   : bit1;
+  signal cpu_clk_core   : bit1;
+  signal cpu_wait_l     : bit1;
+  signal cpu_int_l      : bit1;
+  signal cpu_m1_l       : bit1;
+  signal cpu_mreq_l     : bit1;
+  signal cpu_iorq_l     : bit1;
+  signal cpu_rd_l       : bit1;
+  signal cpu_wr_l       : bit1;
+  signal cpu_rfrsh_l, watchdog_reset_l, cpu_clk    : bit1;  
 
 begin
 
@@ -166,12 +168,19 @@ begin
       o_clk_6M => clk_6m,
       o_clk_6M_star => clk_6m_star,
       o_clk_6M_star_n => clk_6m_star_n,
+<<<<<<< HEAD
+      i_rst => not i_rst_sys_n,
+      o_pll_locked => pll_locked
+  );
+ 
+=======
       -- i_rst => not i_rst_sys_n,
       i_rst => not pll_locked,
       o_pll_locked => pll_locked
   );
  
  -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
  core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
     
   --
@@ -195,60 +204,96 @@ begin
     -- Audio
     o_audio_vol_out       => o_audio_vol_out,
     o_audio_wav_out       => o_audio_wav_out,
-    
-    i_cpu_a               => i_cpu_a_core,
-    
-    o_cpu_di              => regs_data,
-    i_cpu_do              => i_cpu_do_core,  
-    
-    o_cpu_rst             => o_cpu_rst_core,
-    o_cpu_clk             => o_cpu_clk_core,
-    o_cpu_wait_l          => o_cpu_wait_l_core,
-    o_cpu_int_l           => o_cpu_int_l_core,
-    i_cpu_m1_l            => i_cpu_m1_l_core,
-    i_cpu_mreq_l          => i_cpu_mreq_l_core,
-    i_cpu_iorq_l          => i_cpu_iorq_l_core,
-    i_cpu_rd_l            => i_cpu_rd_l_core,
-    i_cpu_rfsh_l          => i_cpu_rfrsh_l_core,
-    i_halt                => '0',
-    
+        
     -- Registres de configuration (INO, IN1, DIP SW)
     i_config_reg          => i_config_reg,
     
     -- Z80 code ROM
-    o_rom_cs_l            => rom_cs_l,
-    o_rd_regs_l           => cpu_rd_regs,
+    i_cpu_a               => cpu_addr,
+    o_cpu_di              => regs_data,
+    i_cpu_do              => cpu_data_out,
+    
+    o_cpu_rst             => watchdog_reset_l,
+    o_cpu_clk             => cpu_clk,
+    o_cpu_wait_l          => cpu_wait_l,
+    o_cpu_int_l           => cpu_int_l,
+    i_cpu_m1_l            => cpu_m1_l,
+    i_cpu_mreq_l          => cpu_mreq_l,
+    i_cpu_iorq_l          => cpu_iorq_l,
+    i_cpu_rd_l            => cpu_rd_l,
+    i_cpu_rfsh_l          => cpu_rfrsh_l,
     
     o_in0_cs_l            => o_in0_l_cs,
     o_in1_cs_l            => o_in1_l_cs,
-    o_dip_sw_cs_l         => o_dip_l_cs
+    o_dip_sw_cs_l         => dip_l_cs,
+
+    -- Z80 code ROM
+    o_rom_cs_l            => rom_cs_l
   );
   
+  -- Les Timings du T80se ne sont pas les mêmes que ceux du T80a.
+  u_cpu : entity work.T80se
+  port map (
+       RESET_n => watchdog_reset_l,
+       CLK_n   => cpu_clk,
+       CLKEN   => '1',
+       WAIT_n  => cpu_wait_l,
+       INT_n   => cpu_int_l,
+       NMI_n   => '1',
+       BUSRQ_n => '1',
+       M1_n    => cpu_m1_l,
+       MREQ_n  => cpu_mreq_l,
+       IORQ_n  => cpu_iorq_l,
+       RD_n    => cpu_rd_l,
+       WR_n    => cpu_wr_l,
+       RFSH_n  => cpu_rfrsh_l,
+       A       => cpu_addr,
+       DI      => cpu_data_in,
+       DO      => cpu_data_out
+  );
+   
   u_crom : entity work.ROM
   port map (
-     A => i_cpu_a_core(13 downto 0),
+     A => cpu_addr(13 downto 0),
      D => rom_data,
      OEn => '0',
      CSn => rom_cs_l
   );  
   
+  -- En attendant le PCB final car les pistes du DIP switch ont été coupées sur le PCB.
+  -- p_mux_in0_in1_dip : process(dip_l_cs, i_config_reg)
+  -- begin
+    -- config_reg <= (i_config_reg or X"10");
+  --   config_reg <= X"40";
+  --   if dip_l_cs = '0' then
+  --       config_reg <= X"40";
+  --   end if;
+  -- end process;
+  -- config_reg <= X"FF";
+  
+  o_dip_l_cs <= dip_l_cs;
+  
   -- Lecture par le CPU du registre tampon ou registre d'interruption
-  cpu_data <= regs_data when cpu_rd_regs = '0' else rom_data;
-  o_cpu_di_core <= cpu_data when (cpu_rd_regs = '0' or rom_cs_l = '0') else (others => 'Z');
+  cpu_data_in <= rom_data when rom_cs_l = '0' else regs_data;
  
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
+<<<<<<< HEAD
+=======
      -- i_reset => not i_rst_sys_n,
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
      i_reset => not pll_locked,
      i_clk_52m => i_clk_52m,
      i_vga_clk => vga_clock,
      i_sys_clk => clk_6m,
     
      -- Signaux video core Pacman
+<<<<<<< HEAD
+=======
      i_hsync => hsync_l,
+>>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8
      i_vsync => vsync_l,
-     i_csync => csync_l,
      i_blank => blank,
      i_rgb => video_rgb,
         
