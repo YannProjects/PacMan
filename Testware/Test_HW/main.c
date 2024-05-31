@@ -7,7 +7,7 @@
 #include <xparameters.h>
 
 #define UART_DEVICE_ID			XPAR_UARTNS550_0_DEVICE_ID
-#define RECV_BUFFER_SIZE		128*4
+#define RECV_BUFFER_SIZE		126
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 #define VBLANK_PERIOD 16.602
 
@@ -29,10 +29,13 @@
 #define VOICE_2_VOL_CONFIG_ADDR			0x505A
 #define VOICE_3_VOL_CONFIG_ADDR			0x505F
 
+#ifdef UART_STUB
 char flash_memory_stub[32*1024];
-
-//#define FLASH_MEMORY_BASE				0x8000
 #define FLASH_MEMORY_BASE				flash_memory_stub
+#else
+#define FLASH_MEMORY_BASE				0x8000
+#endif
+
 #define PACMAN_ROM_MEMORY_BASE			0xC000
 
 #define IN0_REG_ADDR					0x5000
@@ -451,7 +454,7 @@ void Erase_flash_memory()
 	char erase_done;
 	
 	/* Commande de chip erase */
-	// Spansion (simulation)
+	// Spansion (simulation RTL)
 	/*
 	*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xAA;
 	*(char *)(FLASH_MEMORY_BASE + 0x555) = 0x55;
@@ -469,7 +472,7 @@ void Erase_flash_memory()
 	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0x10;
 
 	/* Wait for end of erasure*/
-	/*
+#ifndef UART_STUB	
 	erase_done = 0;
 	while (erase_done == 0) {
 		flash_status = *(char *)(FLASH_MEMORY_BASE);
@@ -477,7 +480,7 @@ void Erase_flash_memory()
 			erase_done = 1;
 		}
 	}
-	*/
+#endif
 
 	sprintf(SendBuffer, "\rEffacement flash termine !\n\r");
 	UartSendBuffer(SendBuffer, strlen(SendBuffer));
@@ -486,7 +489,8 @@ void Erase_flash_memory()
 void Initialise_flash_memory()
 {
 	char flash_status, status;
-	int end_of_program, i, num_of_bytes_to_write, pacman_rom_data;
+	int end_of_program, i, num_of_bytes_to_write;
+	int offset, pacman_rom_data;
 	char program_done, error_code = 0;
 	char *received_flash_chunk, *pch_hex, hex_value[3];
 
@@ -495,18 +499,19 @@ void Initialise_flash_memory()
 	sprintf(SendBuffer, "\rPret a recevoir les donnees\n\r");
 	UartSendBuffer(SendBuffer, strlen(SendBuffer));
 
-	// Reception paquet de 128 octets sous la forme "3D "
+	// Reception paquet d'octets sous la forme "3D 23 ..."
 	received_flash_chunk = UartReadLn();
 	num_of_bytes_to_write = strlen(received_flash_chunk) / 3;
 	pch_hex = strtok(received_flash_chunk, " ");
 	end_of_program = 0;
+	offset = 0;
 	while (end_of_program == 0) {
 		for (i = 0; (i < num_of_bytes_to_write) && (pch_hex != NULL); i++) {
 			strncpy(hex_value, pch_hex, 2);
 			sscanf((char *)hex_value, "%x", &pacman_rom_data);
 
 			/* Programmation memoire flash */
-			// Spansion (simulation)
+			// Spansion (simulation RTL)
 			/*
 			*(char *)(FLASH_MEMORY_BASE + 0xAAA) = 0xAA;
 			*(char *)(FLASH_MEMORY_BASE + 0x555) = 0x55;
@@ -517,18 +522,19 @@ void Initialise_flash_memory()
 			*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
 			*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
 			*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xA0;
-			*(char *)(FLASH_MEMORY_BASE + i) = pacman_rom_data;
+			*(char *)(FLASH_MEMORY_BASE + offset) = pacman_rom_data;
 
 			/* Wait for end of program */
 			program_done = 0;
 			while (program_done == 0) {
-				flash_status = *(char *)(FLASH_MEMORY_BASE + i);
+				flash_status = *(char *)(FLASH_MEMORY_BASE + offset);
 				if ((flash_status & 0x80) == (pacman_rom_data & 0x80)) {
 					program_done = 1;
 				}
 			}
 			// Token suivant
 			pch_hex = strtok(NULL, " ");
+			offset += 1;
 		}
 	
 		sprintf(SendBuffer, "OK\n");
@@ -547,14 +553,19 @@ void Initialise_flash_memory()
 
 void Read_Flash_Ids()
 {
-	char manufacturer_id, device_id;
+	unsigned char manufacturer_id, device_id;
 
 	// Lecture Microchip product code
+#ifdef UART_STUB
+	manufacturer_id = 0xB7;
+	device_id = 0xBF;
+#else
 	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
 	*(char *)(FLASH_MEMORY_BASE + 0x2AAA) = 0x55;
 	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0x90;
 	manufacturer_id = *(char *)(FLASH_MEMORY_BASE);
 	device_id = *(char *)(FLASH_MEMORY_BASE + 1);
+#endif
 
 	// Retour au mode read
 	*(char *)(FLASH_MEMORY_BASE + 0x5555) = 0xAA;
@@ -572,21 +583,21 @@ void Read_Flash_Ids()
 void MemoryDump()
 {
 	unsigned int i, j, memory_address;
-	char *memory_ptr, hexbuffer[90], valeur, *hex_mem_addr;
+	unsigned char *memory_ptr, hexbuffer[90], valeur, *hex_mem_addr;
 
 	sprintf(SendBuffer, "Addresse memoire a dumper ? : 0x");
 	UartSendBuffer(SendBuffer, strlen(SendBuffer));
 
-	hex_mem_addr = UartReadLn();
+	hex_mem_addr = (unsigned char *)UartReadLn();
 	sprintf(hexbuffer, "0x");
 	strcat(hexbuffer, (const char *)hex_mem_addr);
 	sscanf(hexbuffer, "%x", &memory_address);
-	memory_ptr = (char *)memory_address;
+	memory_ptr = (unsigned char *)memory_address;
 	for (i = 0; i < DUMP_LINES_NB; i++) {
-		sprintf(SendBuffer, "0x%04X : ", (int)memory_ptr);
+		sprintf(SendBuffer, "0x%X : ", memory_ptr);
 		for (j=0; j < 16; j++) {
 			valeur = memory_ptr[j];
-			sprintf(hexbuffer, "%02X ", (int)valeur);
+			sprintf(hexbuffer, "%2X ", valeur);
 			strcat(SendBuffer, hexbuffer);
 		}
 		strcat(SendBuffer, "\n\r");

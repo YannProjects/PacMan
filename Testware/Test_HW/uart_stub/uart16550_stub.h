@@ -1,7 +1,7 @@
 #ifndef __UART16550_STUB
 #define __UART16550_STUB
 
-#define UART_STUB
+//#define UART_STUB
 
 void uart_stub_init();
 void uart_stub_write_reg(unsigned int RegOffset, unsigned char RegValue);

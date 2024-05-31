@@ -1,6 +1,6 @@
 flash_container = "C:\Users\yannv\Documents\Projets_HW\PacMan\Testware\Test_HW\PacMan_Hw_test.bin.0a.coe"
 header_offset = 61
-chunk_size = 384
+chunk_size = 126
 
 fileopen f_handle flash_container 0
 if f_handle == -1 goto the_end
@@ -14,6 +14,7 @@ fileread f_handle chunk_size flash_data
 if result == 1 goto last_chunk
 sendln flash_data
 waitln "OK"
+mpause 500
 goto next_chunk
 
 :last_chunk
@@ -26,5 +27,6 @@ if result > 0 then
 endif
 
 :the_end
+mpause 500
 sendln "END"
 fileclose f_handle

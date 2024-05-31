@@ -19,6 +19,7 @@ Pspice/
 *.map
 *.lis
 *.coe
+*.asm
 PCB
 Ref
 Testware/.vscode/tasks.json

@@ -280,6 +280,7 @@ begin
                 o_cpu_di_core <= uart_reg;
             -- PacMan core
             when "000"|"001"|"010" => 
+            -- when "001"|"010" => 
                 o_do_core_enable_n <= '0';
                 o_cpu_di_core <= pacman_core_data;
             when others => 

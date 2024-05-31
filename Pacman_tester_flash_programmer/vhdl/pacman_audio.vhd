@@ -195,18 +195,12 @@ begin
     spo => rom3m_data
   );
 
-<<<<<<< HEAD:vhdl/pacman_audio.vhd
-  rom3m_addr( 6 ) <= i_wr0_l;
-  rom3m_addr( 5 downto 0) <= i_hcnt(5 downto 0) when i_wr0_l = '1' else i_hcnt(5 downto 0) + 1;
-  rom3m <= rom3m_data;
-=======
   -- rom3m_addr( 6 ) <= i_wr0_l;
   -- rom3m_addr( 5 downto 0) <= i_hcnt(5 downto 0) when i_wr0_l = '1' else i_hcnt(5 downto 0) + 1;
   -- rom3m <= rom3m_data;
   -- rom3m <= rom3m_data when i_clk = '0' else (others => '1');
   rom3m_addr( 6 downto 0) <= i_wr0_l & i_hcnt(5 downto 0);
   rom3m <= rom3m_data when i_clk = '0' else (others => '1');
->>>>>>> 8d8951fe53392006346f0a5ba26bbcbabd6294a8:Pacman_tester_flash_programmer/vhdl/pacman_audio.vhd
 
   -- 74LS283 1K
   p_adder : process(vol_ram_dout, frq_ram_dout, accum_reg)

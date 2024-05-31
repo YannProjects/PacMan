@@ -256,9 +256,7 @@ begin
      i_sys_clk => clk_6m,
     
      -- Signaux video core Pacman
-     i_hsync => hsync_l,
      i_vsync => vsync_l,
-     i_csync => csync_l,
      i_blank => blank,
      i_rgb => video_rgb,
         
