@@ -8,6 +8,15 @@ roms/
 CircuitMaker/
 Pspice/
 *.o
+*.0a
+*.0b
+*.0c
+*.0d
+*.bin
+*.exe
+*.sym
+*.rom
+*.map
 *.lis
 *.coe
 PCB
