@@ -46,3 +46,5 @@ Pacman_tester_flash_programmer/S29al008j.exe
 Pacman_tester_flash_programmer/Pacman_flash_programmer.srcs/utils_1/imports/synth_1/flash_programmer.dcp
 Pacman_tester_flash_programmer/S29al008j
 Pacman_tester_flash_programmer/Pacman_flash_programmer.xpr
+Testware/Test_HW/uartns550_lite/xuartns550_sinit.c.lis
+Testware/Test_HW/uartns550_lite/xuartns550.c.lis
