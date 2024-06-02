@@ -280,7 +280,7 @@ begin
                 o_cpu_di_core <= uart_reg;
             -- PacMan core
             -- when "000"|"001"|"010" => 
-            when "001"|"010" => 
+            when "000"|"001"|"010" => 
                 o_do_core_enable_n <= '0';
                 o_cpu_di_core <= pacman_core_data;
             when others => 
@@ -290,7 +290,8 @@ begin
     
    -- Address decoder
    uart_cs <= '1' when i_cpu_a_core(15 downto 13) = "011" else '0';
-   o_flash_cs_l_core <= '0' when i_cpu_a_core(15 downto 13) = "000" else '1';
+   -- o_flash_cs_l_core <= '0' when i_cpu_a_core(15 downto 13) = "000" else '1';
+   o_flash_cs_l_core <= '0' when i_cpu_a_core(15) = '1' else '1';
 
 end Behavioral;
 
