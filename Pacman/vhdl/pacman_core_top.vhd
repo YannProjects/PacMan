@@ -39,6 +39,8 @@
 --
 -- Email support@fpgaarcade.com
 --
+-- 18 Juin 2023         |         Ajout de la ROM dans le FPGA pour simplifier dans un premier temps
+--                      |         et eviter d'avoir  a faire le programmateur de flash
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
@@ -56,18 +58,11 @@ use std.textio.all;
 
 entity Core_Top is
   port (
-    ------------------------------------------------------
-    -- To Lib
-    ------------------------------------------------------
 
-    -- Clocks
-    -- o_ctrl                : out   r_Ctrl_fm_core;
-    -- Paramètres de gestion du core:
-    -- garder ena_sys, rst_sys, halt => A configurer dans la partie simulation
-    -- l'horloge sera configurée à part
-    i_ctrl                : in    r_Ctrl_to_core;
-    -- Config
-    -- i_cfg                 : in    r_Cfg_to_core;
+    -- System clock
+    i_clk_main               : in  bit1;
+    -- Core reset
+    i_rst_sys_n              : in  bit1; -- actif niveau bas
 
     -- Keyboard, Mouse and Joystick
     -- o_kb_ms_joy           : out   r_KbMsJoy_fm_core;
@@ -81,20 +76,49 @@ entity Core_Top is
     -- Audio/Video
     -- o_av                  : out   r_AV_fm_core;
     
-    o_hsync               : out std_logic;
-    o_vsync               : out std_logic;
-    o_r_vga               : out std_logic_vector (2 downto 0);
-    o_g_vga               : out std_logic_vector (2 downto 0);
-    o_b_vga               : out std_logic_vector (2 downto 0)
-    );
+    o_vga                 : out r_VGA_to_core;
+    
+    i_cpu_a_core          : in word(15 downto 0);
+    o_cpu_di_core         : out word(7 downto 0);
+    i_cpu_do_core         : in word(7 downto 0);
+    
+    o_cpu_rst_core        : out bit1;
+    o_cpu_clk_core        : out bit1;
+    o_cpu_wait_l_core     : out bit1;
+    o_cpu_int_l_core      : out bit1;
+    i_cpu_m1_l_core       : in bit1;
+    i_cpu_mreq_l_core     : in bit1;
+    i_cpu_iorq_l_core     : in bit1;
+    i_cpu_rd_l_core       : in bit1;
+    i_cpu_wr_l_core       : in bit1;
+    i_cpu_rfrsh_l_core    : in bit1;
+    
+    -- Registres I/O
+    i_config_reg          : in word(7 downto 0);
+    
+    -- Dip switch, crédits, joystick
+    o_in0_l_cs       : out bit1; -- Read IN1
+    o_in1_l_cs       : out bit1; -- Read IN2
+    o_dip_l_cs       : out bit1; -- Read DIP switches
+    
+    -- ROM
+    o_rom_cs              : out bit1;
+    o_rd_bus_ctrl_regs    : out bit1;
+    
+    -- Audio right/left
+    o_audio_vol_out  : out word(3 downto 0);
+    o_audio_wav_out  : out word(3 downto 0);
+    
+    i_freeze         : in bit1 -- CPU freeze
+  );
 end;
 
 architecture RTL of Core_Top is
 
-  signal i_clk_52m, i_clk_6m, i_vga_clock                 : bit1;
-  signal i_pll_locked : bit1;
-  signal i_rst_sys                : bit1;
-  signal vga_control_init_done    : bit1;
+  signal i_clk_52m, clk_6m, vga_clock                 : bit1;
+  signal pll_locked : bit1;
+  signal vga_control_init_done : bit1;
+  signal clk_6m_star, clk_6m_star_n : bit1;
 
   signal cfg_dblscan            : bit1;
 
@@ -122,57 +146,15 @@ architecture RTL of Core_Top is
 
   signal i_kb_ms_joy_stub : r_KbMsJoy_to_core;
   
-  -- Stubs en attendant le HW final
-  signal i_kbut, i_kcoins: word( 2 downto 0);
-  signal i_cfg : r_Cfg_to_core;
-  signal o_av_stub : r_AV_fm_core;
+  signal o_audio : r_AV_fm_core;
   
   signal blank_vga : std_logic;
-  signal o_r, o_g, o_b : std_logic_vector(2 downto 0);
+  signal o_r, o_g, o_b : word(2 downto 0);
+  signal regs_data, cpu_data, rom_data : word(7 downto 0);
+    
+  signal core_rst : bit1;
 
 begin
-
-  i_cfg.cfg_static <= B"00000000000000000000000000000000";
-  -- cfg_dynamic:
-  -- cfg_dynamic(7..0): DIP switch 1 (ON = 0, OFF = 1) (https://www.arcade-museum.com/manuals-videogames/S/SuperABC.pdf)
-  --                         SW1   SW2   SW3   SW4   SW5   SW6   SW7   SW8
-  -- Free Play               ON    ON
-  -- 1 Coin 1 Credit *       OFF   ON
-  -- 1 Coin 2 Credits        ON    OFF
-  -- 2 Coins 1 Credit        OFF   OFF
-  ------------------------------------------------------------------------
-  -- 1 Pacman Per Game                   ON    ON
-  -- 2 Pacman Per Game                   OFF   ON
-  -- 3 Pacman Per Game *                 ON    OFF
-  -- 5 Pacman Per Game                   OFF   OFF
-  ------------------------------------------------------------------------
-  -- Bonus Player @ 10000 Pts *                      ON    ON
-  -- Bonus Player @ 15000 Pts                        OFF   ON
-  -- Bonus Player @ 20000 Pts                        ON    OFF
-  -- No Bonus Players                                OFF   OFF
-  ------------------------------------------------------------------------
-  -- Free Game in ULTRA PAC / Buy-in ON *                  ON
-  -- Free Life in ULTRA PAC / Buy-in OFF                   OFF
-  ------------------------------------------------------------------------
-  -- Auto. Rack Advance (Skip)                                   ON
-  -- Normal- Must be off for game play *                         OFF
-  ------------------------------------------------------------------------
-  -- Freeze Video (Pause)                                              ON
-  -- Normal- Must be off for game play *                               OFF
-  ------------------------------------------------------------------------
-  -- cfg_dynamic(11): Mode "service", seulement utilise dans le cas de Pengo
-  -- cfg_dynamic(10) : Utilise pour lire un switch (le 7) qui doit être lu à 1 (OFF)
-  -- cfg_dynamic(9) : Mode cocktail (0 = ON)
-  -- cfg_dynamic(8) : Mode test (0 = ON)
-  i_cfg.cfg_dynamic <= B"00000000000000000000111111111111";
-  -- i_cfg.cfg_dynamic <= c_2_coins_1_credit | c_5_pacman | c_no_bonus | c_normal_rack | c_normal_video;
- 
-  
-  -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
-  i_kb_ms_joy_stub.joy_a_l <= (others => '1');
-  i_kb_ms_joy_stub.joy_b_l <= (others => '1');
-  i_kbut <= (others => '1');
-  i_kcoins <= (others => '1');
 
   --
   -- Single clock domain used for system / video and audio
@@ -180,15 +162,19 @@ begin
   clk_gen_0 : entity work.Clocks_gen
   port map (
       -- 12 MHz CMOD S7
-      i_clk_main => i_ctrl.clk_sys,
+      i_clk_main => i_clk_main,
       o_clk_52m => i_clk_52m,
-      o_clk_sys => i_clk_6m,
-      o_clk_vga => i_vga_clock,
-      i_rst => i_ctrl.rst_sys,
-      o_pll_locked => i_pll_locked
+      o_clk_vga => vga_clock,
+      o_clk_6M => clk_6m,
+      o_clk_6M_star => clk_6m_star,
+      o_clk_6M_star_n => clk_6m_star_n,
+      -- i_rst => not i_rst_sys_n,
+      i_rst => not pll_locked,
+      o_pll_locked => pll_locked
   );
  
- i_rst_sys <= '0' when i_ctrl.rst_sys = '0' and  vga_control_init_done = '1' else '1';
+ -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
+ core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
     
   --
   -- The Core
@@ -196,27 +182,10 @@ begin
   u_Core : entity work.Pacman_Top
   port map (
     --
-    i_clk_sys             => i_clk_6m,
-    i_rst_sys             => i_rst_sys,
-
-    --
-    i_cfg_static          => i_cfg.cfg_static,
-    i_cfg_dynamic         => i_cfg.cfg_dynamic,
-
-    -- i_halt                => i_ctrl.halt,
-    i_halt                => '0',
-
-    --
-    i_joy_a               => i_kb_ms_joy_stub.joy_a_l,
-    i_joy_b               => i_kb_ms_joy_stub.joy_b_l,
-
-    --
-    i_button              => i_kbut,
-    i_coins               => i_kcoins,
-
-    --
-    o_rom_addr            => ddr_addr,
-    i_rom_data            => ddr_data,
+    i_clk_pacman_core     => clk_6m,
+    i_clk_6M_star         => clk_6m_star,
+    i_clk_6M_star_n       => clk_6m_star_n,
+    i_core_reset          => core_rst,  
 
     -- Signaux video PacMan core
     o_video_rgb           => video_rgb,
@@ -225,37 +194,57 @@ begin
     o_csync_l             => csync_l,
     o_blank               => blank,
 
-    --
-    o_audio_l             => o_av_stub.audio_l,
-    o_audio_r             => o_av_stub.audio_r
-    );
-  
-  u_prom_pacman : entity work.Pacman_Program_ROM
-  port map (
-    -- Taille ROM = 4096 octets. Il y a 4 ROM propgrammes (6e, 6f, 6h, -J) => 14 bits
-    i_addr => ddr_addr(13 downto 0),
-    o_data => ddr_data
+    -- Audio
+    o_audio_vol_out       => o_audio_vol_out,
+    o_audio_wav_out       => o_audio_wav_out,
+    
+    i_cpu_a               => i_cpu_a_core,
+    
+    o_cpu_di              => o_cpu_di_core,
+    i_cpu_do              => i_cpu_do_core,  
+    
+    o_cpu_rst             => o_cpu_rst_core,
+    o_cpu_clk             => o_cpu_clk_core,
+    o_cpu_wait_l          => o_cpu_wait_l_core,
+    o_cpu_int_l           => o_cpu_int_l_core,
+    i_cpu_m1_l            => i_cpu_m1_l_core,
+    i_cpu_mreq_l          => i_cpu_mreq_l_core,
+    i_cpu_iorq_l          => i_cpu_iorq_l_core,
+    i_cpu_rd_l            => i_cpu_rd_l_core,
+    i_cpu_rfsh_l          => i_cpu_rfrsh_l_core,
+    i_halt                => '0',
+    
+    -- Registres de configuration (INO, IN1, DIP SW)
+    i_config_reg          => i_config_reg,
+    
+    -- Z80 code ROM
+    o_rom_cs_l            => o_rom_cs,
+    o_rd_regs_l           => o_rd_bus_ctrl_regs,
+    
+    o_in0_cs_l            => o_in0_l_cs,
+    o_in1_cs_l            => o_in1_l_cs,
+    o_dip_sw_cs_l         => o_dip_l_cs,
+    
+    i_freeze              => i_freeze
   );
-  
-  
+ 
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
-     i_reset => i_ctrl.rst_sys,
+     -- i_reset => not i_rst_sys_n,
+     i_reset => not pll_locked,
      i_clk_52m => i_clk_52m,
-     i_vga_clk => i_vga_clock,
-     i_sys_clk => i_clk_6m,
+     i_vga_clk => vga_clock,
+     i_sys_clk => clk_6m,
     
-     -- Siganux video core Pacman
-     i_hsync => hsync_l,
+     -- Signaux video core Pacman
      i_vsync => vsync_l,
-     i_csync => csync_l,
      i_blank => blank,
      i_rgb => video_rgb,
         
      -- Signaux video VGA
-     o_hsync => o_hsync,
-     o_vsync => o_vsync,
+     o_hsync => o_vga.hsync,
+     o_vsync => o_vga.vsync,
      o_blank => blank_vga,
      o_r => o_r,
      o_g => o_g,
@@ -264,8 +253,8 @@ begin
      o_vga_control_init_done => vga_control_init_done
   );
     
-  o_r_vga <= o_r when blank_vga = '0' else "000";
-  o_g_vga <= o_g when blank_vga = '0' else "000";
-  o_b_vga <= o_b when blank_vga = '0' else "000";
+  o_vga.r_vga <= o_r when blank_vga = '0' else "000";
+  o_vga.g_vga <= o_g when blank_vga = '0' else "000";
+  o_vga.b_vga <= o_b when blank_vga = '0' else "000";
 
 end RTL;

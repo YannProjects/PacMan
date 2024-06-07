@@ -120,27 +120,6 @@ Package Replay_Lib_Wrap_Pack is
   --
   -- configuration / status
   --
-  type r_Cfg_to_core is record
-    --
-    cfg_static              : word(31 downto 0);
-    cfg_dynamic             : word(31 downto 0);
-  end record;
-
-  constant z_Cfg_to_core : r_Cfg_to_core := (
-    (others => '0'),
-    (others => '0')
-    );
-
-  type r_Cfg_fm_core is record
-    --
-    cfg_status              : word(15 downto 0); -- status feedback to ARM
-  end record;
-
-  constant z_Cfg_fm_core : r_Cfg_fm_core := (
-    cfg_status => (others => '0')
-    );
-  --
-  -- Keyboard, Mouse and Joystick
   --
   type r_KbMsJoy_to_core is record
     --
@@ -260,12 +239,44 @@ Package Replay_Lib_Wrap_Pack is
     );
 
   type r_AV_fm_core is record
-    -- Video (clk_vid / ena_vid)
-    vid_rgb                 : word(23 downto 0); -- 23..16 RED 15..8 GREEN 7..0 BLUE
     -- Audio (clk_aud / ena_aud)
     audio_l                 : word(23 downto 0); -- left  sample
     audio_r                 : word(23 downto 0); -- right sample
   end record;
+  
+  type r_VGA_to_core is record
+        hsync : bit1;
+        vsync : bit1;
+        r_vga : word(2 downto 0);
+        g_vga : word(2 downto 0);
+        b_vga : word(2 downto 0);
+  end record;
+  
+  --
+  -- Inputs / outputs
+  --
+  type r_IN1_to_core is record
+    table : bit1;
+    start1 : bit1;
+    start2 : bit1;
+    test : bit1;
+    down : bit1;
+    right : bit1;
+    left : bit1;
+    up : bit1;
+  end record;  
+
+  type r_IN0_to_core is record
+    credit : bit1;
+    coin2 : bit1;
+    coin1 : bit1;
+    auto_rack_adv : bit1;
+    down : bit1;
+    right : bit1;
+    left : bit1;
+    up : bit1;
+  end record;  
+
 
 end;
 

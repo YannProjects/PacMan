@@ -50,62 +50,26 @@ entity Pacman_Program_ROM is
   port (
     -- Core interface
     i_addr                      : in  word(13 downto 0);
-    o_data                      : out word( 7 downto 0)
+    o_data                      : out word( 7 downto 0);
+    i_csn                       : in bit1
     );
 end;
 
 architecture RTL of Pacman_Program_ROM is
 
-  signal memio_ram_0            : r_Memio_fm_core;
-  signal memio_ram_1            : r_Memio_fm_core;
-  signal memio_ram_2            : r_Memio_fm_core;
-  signal memio_ram_3            : r_Memio_fm_core;
-  --
-  signal rom_data_0             : word(7 downto 0);
-  signal rom_data_1             : word(7 downto 0);
-  signal rom_data_2             : word(7 downto 0);
-  signal rom_data_3             : word(7 downto 0);
   signal rom_data               : word(7 downto 0);
-
+  signal rom_cs_n               : bit1;
 
 begin
   -- note, the config space address does not need to match the core address space
 
-  u_rom_6E : entity work.rom_pacman_6e
+  u_crom : entity work.ROM
   port map (
-    a => i_addr(11 downto 0),
-    spo => rom_data_0
+    A => i_addr(13 downto 0),
+    D => rom_data,
+    OEn => '0',
+    CSn => i_csn
   );    
-
-  u_rom_6F : entity work.rom_pacman_6f
-  port map (
-    a => i_addr(11 downto 0),
-    spo => rom_data_1
-  );    
-
-  u_rom_6H : entity work.rom_pacman_6h
-  port map (
-    a => i_addr(11 downto 0),
-    spo => rom_data_2
-  );    
-
-  u_rom_6J : entity work.rom_pacman_6j
-  port map (
-    a => i_addr(11 downto 0),
-    spo => rom_data_3
-  );
-  
-  p_rom_data : process(i_addr, rom_data_0, rom_data_1, rom_data_2, rom_data_3)
-  begin
-    o_data <= rom_data_0;
-    case i_addr(13 downto 12) is
-      when "00" => o_data <= rom_data_0;
-      when "01" => o_data <= rom_data_1;
-      when "10" => o_data <= rom_data_2;
-      when "11" => o_data <= rom_data_3;
-      when others => null;
-    end case;
-  end process;
 
 end RTL;
 

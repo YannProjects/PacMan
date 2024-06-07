@@ -53,9 +53,7 @@ use UNISIM.Vcomponents.all;
 
 entity Pacman_Video is
   port (
-    i_clk_sys                   : in  bit1 := '0';
-    --
-    i_hw_type_is_mrtnt          : in  bit1;
+    i_clk                       : in  bit1;
     --
     i_hcnt                      : in  word(8 downto 0);
     i_vcnt                      : in  word(8 downto 0);
@@ -66,26 +64,16 @@ entity Pacman_Video is
     i_hblank                    : in  bit1;
     i_vblank                    : in  bit1;
     i_flip                      : in  bit1;
-    i_ps                        : in  worD( 2 downto 0); -- Pengo only
     i_wr2_l                     : in  bit1;
     --
     o_red                       : out word( 2 downto 0);
     o_green                     : out word( 2 downto 0);
     o_blue                      : out word( 1 downto 0);
-    o_blank                     : out bit1;
-    --
-    i_clk                       : in  bit1
+    o_blank                     : out bit1
     );
 end;
 
 architecture RTL of PACMAN_VIDEO is
-
-  signal memio_ram_0        : r_Memio_fm_core;
-  signal memio_ram_1        : r_Memio_fm_core;
-  signal memio_ram_2        : r_Memio_fm_core;
-  signal memio_ram_3        : r_Memio_fm_core;
-  signal memio_ram_4        : r_Memio_fm_core;
-  signal memio_ram_5        : r_Memio_fm_core;
 
   signal sprite_xy_ram_wen  : bit1;
   signal sprite_xy_ram_do   : word( 7 downto 0);
@@ -94,7 +82,6 @@ architecture RTL of PACMAN_VIDEO is
   signal char_sum_reg       : word( 3 downto 0);
   signal char_match_reg     : bit1;
   signal char_hblank_reg    : bit1;
-  signal char_hblank_reg_t1 : bit1;
   signal db_reg             : word( 7 downto 0);
 
   signal xflip              : bit1;
@@ -104,9 +91,6 @@ architecture RTL of PACMAN_VIDEO is
   signal ca                 : word(11 downto 0);
   signal char_rom_5e_0_dout : word( 7 downto 0);
   signal char_rom_5f_0_dout : word( 7 downto 0);
-  signal char_rom_5e_1_dout : word( 7 downto 0);
-  signal char_rom_5f_1_dout : word( 7 downto 0);
-  signal cd_dout            : word( 7 downto 0);
   signal cd                 : word( 7 downto 0);
 
   signal shift_regl         : word( 3 downto 0);
@@ -224,7 +208,7 @@ begin
     variable match : std_logic;
   begin
       wait until rising_edge(i_clk);
-      -- Tous les 4 pixels (4 pixels = 8 bits avec 2 bits par pixel)
+      -- Tous les 8 pixels il faut changer de tile
       -- Composants 1H 74LS174, 1F et 2F (74LS283), la somme est latchée
       -- sur le front montant 4H 
       if (i_hcnt(2 downto 0) = "011") then -- rising 4h
@@ -235,12 +219,14 @@ begin
         -- +
         --  111111111
         --  ---------
-        --  xxxxxxxx => on aura toujours char_match_reg = '0' si i_hblank = '0'
+        --  xxxxxxxx => i_vcnt(7 downto 0) & '0'
+        -- Quand hblank passe à 1 on a i_vcnt = 0x1F0. Si dr=0 (valeur par défaut), char_match_reg=1 mais pendant le VBLANK => rien n'est affiche.
         inc := (not i_hblank);
         -- 1f, 2f
         -- Dans ce cas (i_hcnt(2 downto 0) = "011"), la valeur positionnée sur le bus AB
         -- correspond aux adresses paires des registres de sprites (X-location)
         -- mais l'image est orientée horizontalement et coordonnée X = n° de ligne sur l'ecran ?
+        -- char_match_reg est a priori valide pour 16 lignes pour afficher les 16 lignes du sprite
         sum := (i_vcnt(7 downto 0) & '1') + (dr & inc);
         -- 3e
         match := '0';
@@ -252,6 +238,8 @@ begin
         char_match_reg   <= match;
         char_hblank_reg  <= i_hblank;
         -- 4d 74LS373
+        -- Contient 8 bits avec 2 couleurs par bits => 2 pixels
+        -- Le registre est mis à jours tous les 4 pixels (i_hcnt(2 downto 0) = "011")
         db_reg <= i_db; -- character reg
       end if;
   end process;
@@ -273,9 +261,11 @@ begin
 
   p_char_addr_comb : process(db_reg, i_hcnt,
                              char_match_reg, char_sum_reg, char_hblank_reg,
-                             xflip, yflip, i_hw_type_is_mrtnt)
+                             xflip, yflip)
   begin
     -- 2h, 4e
+    -- Sert a controler le début et la fin de l'affichage des caracteres
+    -- (affichage = toute la ligne - les 4 caracteres en bordure de ligne (ex.: 0x3C8, 0x3E8, 0x008, 0x028) 
     obj_on <= char_match_reg or i_hcnt(8); -- 256h not 256h_l
 
     ca(11 downto 6) <= db_reg(7 downto 2);
@@ -293,13 +283,8 @@ begin
     ca(1) <= char_sum_reg(1) xor xflip;
     ca(0) <= char_sum_reg(0) xor xflip;
 
-    -- swap address lines 0/2 for Mr TNT
-    if (i_hw_type_is_mrtnt = '1') then
-      ca(2) <= char_sum_reg(0) xor xflip;
-      ca(0) <= char_sum_reg(2) xor xflip;
-    end if;
   end process;
-
+  
   -- Tile (= char) roms
   u_rom_5E : entity work.rom_pacman_5e
   port map (
@@ -314,33 +299,21 @@ begin
     spo => char_rom_5f_0_dout
   );
 
-  p_char_data_mux : process(char_hblank_reg, i_ps, char_rom_5e_0_dout, char_rom_5f_0_dout, char_rom_5e_1_dout, char_rom_5f_1_dout)
+  p_char_data_mux : process(char_hblank_reg, char_rom_5e_0_dout, char_rom_5f_0_dout)
   begin
     -- 5l
     -- 5e 1
     -- 5f 3
 
-    -- ps(2) = 1 est seulement utilisé dans le cas de Pengo
-    if (i_ps(2) = '1') then
-      if (char_hblank_reg = '0') then
-        cd_dout <= char_rom_5e_1_dout;
-      else
-        cd_dout <= char_rom_5f_1_dout;
-      end if;
+    -- pacman.5e Tile ROM (256 8x8 pixel tile image)
+    -- pacman.5f Sprite ROM (64 16x16 sprite images)
+    if (char_hblank_reg = '0') then
+      cd <= char_rom_5e_0_dout;
     else
-      -- pacman.5e Tile ROM (256 8x8 pixel tile image)
-      -- pacman.5f Sprite ROM (64 16x16 sprite images)
-      if (char_hblank_reg = '0') then
-        cd_dout <= char_rom_5e_0_dout;
-      else
-        -- hblank = 1 => On lit la ROM des sprites
-        cd_dout <= char_rom_5f_0_dout;
-      end if;
+      -- hblank = 1 => On lit la ROM des sprites
+      cd <= char_rom_5f_0_dout;
     end if;
   end process;
-
-  -- swap D4 and D6 for Mr TNT
-  cd <= cd_dout(7) & cd_dout(4) & cd_dout(5) & cd_dout(6) & cd_dout(3 downto 0) when (i_hw_type_is_mrtnt = '1') else cd_dout;
 
   -- 5B/5C 74LS194
   p_char_shift : process
@@ -394,14 +367,13 @@ begin
   end process;
 
   -- LUT de conversion permettant de retrouver l'index de couleurs 
-  p_lut_4a_comb : process(i_ps, vout_db, shift_op)
+  p_lut_4a_comb : process(vout_db, shift_op)
   begin
-    col_rom_addr(10 downto 9) <= (others => '0'); --
-    col_rom_addr(          8) <= i_ps(1);
+    col_rom_addr(10 downto 8) <= (others => '0'); --
     col_rom_addr(          7) <= '0';  -- Pengo PCB option
     col_rom_addr( 6 downto 0) <= vout_db(4 downto 0) & shift_op(1 downto 0);
   end process;
-
+  
   -- 0x80 Pacman, 0x400 Pengo
   u_rom_4a : entity work.rom_pacman_4a
   port map (
@@ -415,6 +387,16 @@ begin
   begin
     ena := '0';
     -- 8H
+    -- Pendant le hblank, la valeur sur i_ab correspond aux adresses impaires
+    -- des registres de sprites: c'est l'adresse en horizontal.
+    -- Cette valeur est chargée dans le registre ra pendant le hblank et la RAM de sprite est remplie
+    -- avec le contenu du sprite.
+    -- Chaque registre de sprite est lu un par un (0x3, 0x5, 0x7, 0x9, 0xB, 0xD) et on rempli la RAM en rechargeant
+    -- le registre ra. Si plusieurs sprites on la même adresses, c'est le dernier qui apparaitra en premier.
+    -- Le plus prioritaire (celui qui est affiché en dernier) est a priori le sprite 6.
+    -- Je ne vois pas que les sprite 0 et 7 sont adressés. 
+    -- La mémoire des sprites contient une ligne complète d'affichage à partie du pixel 16 jusqu'au 272
+    -- Les 16 premiers et 16 derniers pixel ne peuvent pas afficher de sprite. 
     if (i_hcnt(3 downto 0) = "0111") then
       ena := '1';
     end if;
@@ -488,7 +470,7 @@ begin
       -- Cette partie permet soit de lire la donnée contenue dans le latch sprite (sprite_ram_ip <= sprite_ram_reg) pour l'affichage du sprite
       -- soit d'écrire la valeur de la couleur dans la RAM des sprites (sprite_ram_ip <= lut_4a_t1(3 downto 0))
       -- Mais, je ne comprends pas à quel moment les données de sprites sont écrites dans la RAM sprite (par le CPU ???)
-      -- A priori, le sonnées sont écrite durant top line avec hsync = 1, elles sont effacées juste après la lecture
+      -- A priori, les données sont écrite durant top line avec hsync = 1, elles sont effacées juste après la lecture
       -- grâce au décalage d'un cyle entre la lecture (en premier) et l'ecriture (en second via vout_hblank_t1). A confirmer quand même.
       if (video_op_sel = '1') then
         sprite_ram_ip <= sprite_ram_reg;
@@ -500,23 +482,21 @@ begin
 
   -- Multiplexeur sélectionnant soit les données de la ROM couleur, soit du latch de sprite (3C)
   -- qui contient les valeurs de couleurs du sprite
-  p_video_op_comb : process(i_ps, vout_hblank, i_vblank, video_op_sel, sprite_ram_reg, lut_4a)
+  p_video_op_comb : process(vout_hblank, i_vblank, video_op_sel, sprite_ram_reg, lut_4a)
   begin
       -- 3b
-    final_col(4) <= i_ps(0);
+    final_col(4) <= '0';
     if (vout_hblank = '1') or (i_vblank = '1') then
       final_col(3 downto 0) <= (others => '0');
     else
       if (video_op_sel = '1') then
         final_col(3 downto 0) <= sprite_ram_reg; -- sprite
       else
-        final_col(3 downto 0) <= lut_4a(3 downto 0);
+        final_col(3 downto 0) <= lut_4a(3 downto 0); -- tile
       end if;
     end if;
   end process;
 
-  -- 0x10 Pacman, 0x20 Pengo
-  -- ROM de conversion index couleur (16 valeurs) vers valeurs RGB (8 bits)
   u_rom_7f : entity work.rom_pacman_7f
   port map (
     a => final_col,
