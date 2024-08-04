@@ -86,7 +86,9 @@ entity Pacman_Top is
     
     -- Z80 code ROM
     o_rom_cs_l           : out bit1; -- ROM CS
-    o_rd_regs_l          : out bit1; -- CPU read interrupt reg or hold register
+    
+    o_core_to_cpu_en_l   : out bit1; -- CPU read interrupt reg or hold register (RAM, IN0, IN1,...)
+    o_cpu_to_core_en_l   : out bit1; -- Validation buffer CPU vers core (ecriture RAM,registres,...)
     
     -- IN0, IN1, DPI switches
     o_in0_cs_l           : out bit1;
@@ -157,8 +159,6 @@ architecture RTL of Pacman_Top is
   signal video_r                : word( 2 downto 0);
   signal video_g                : word( 2 downto 0);
   signal video_b                : word( 1 downto 0);
-
-  signal audio                  : word(15 downto 0);
   
   signal sync_bus_stb_U0        : bit1;
   signal sync_bus_r_w_U0_l      : bit1; 
@@ -429,12 +429,12 @@ begin
         sync_bus_db <= rams_data_out;
         if (iodec_in0_l = '0') or (iodec_in1_l = '0') then
             -- Rack adv force à 1 pour le moment car il manque une pull-up.
-            sync_bus_db <= (i_config_reg(7), i_config_reg(6), i_config_reg(5), '1', i_config_reg(0), i_config_reg(1), i_config_reg(2), i_config_reg(3));
+            sync_bus_db <= (i_config_reg(7), i_config_reg(6), i_config_reg(5), i_config_reg(4), i_config_reg(0), i_config_reg(1), i_config_reg(2), i_config_reg(3));
         elsif (iodec_in1_l = '0') then
             sync_bus_db <= (i_config_reg(7), i_config_reg(6), i_config_reg(5), i_config_reg(4), i_config_reg(0), i_config_reg(1), i_config_reg(2), i_config_reg(3));
         elsif (iodec_dipsw1_l = '0') then
             -- '11' pour le moment sur les bits 0 et 1 car il manque des pull-up sur les straps.
-            sync_bus_db <= ('1', '1', i_config_reg(1), i_config_reg(0), i_config_reg(4), i_config_reg(5), i_config_reg(6), i_config_reg(7));
+            sync_bus_db <= (i_config_reg(3), i_config_reg(2), i_config_reg(1), i_config_reg(0), i_config_reg(4), i_config_reg(5), i_config_reg(6), i_config_reg(7));
         end if;
     end if;
   end process;
@@ -462,7 +462,9 @@ begin
   ---------------------------------------------------------------
 
   -- Lecture registre synchro bus ou vect_reg du sync bus controller
-  o_rd_regs_l <= '0' when (sync_bus_wreq_l = '0') or (i_cpu_iorq_l = '0' and i_cpu_m1_l = '0') else '1';
+  o_core_to_cpu_en_l <= '0' when (sync_bus_wreq_l = '0') or (i_cpu_iorq_l = '0' and i_cpu_m1_l = '0') else '1';
+  -- Validation buffer data CPU vers core dans le cas d'une ecriture vers le core.
+  o_cpu_to_core_en_l <= '0' when ((sync_bus_r_w_l = '0') or ((i_cpu_iorq_l = '0') and (i_cpu_m1_l = '1'))) else '1';
   
   --
   -- vram addr custom ic

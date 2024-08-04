@@ -49,8 +49,9 @@ signal z80_rst, z80_clk : std_logic;
 signal z80_m1_l, z80_mreq_l, z80_iorq_l, z80_rd_l : std_logic;
 signal z80_wr_l, z80_rfrsh_l, z80_waitn, z80_intn : std_logic;
 signal z80_a : std_logic_vector(15 downto 0);
-signal enable_cpu_core_data_l, in0_cs, in1_cs, dip_sw_cs : std_logic;
-signal D_bidir, z80_do, pacman_core_data_output, D_rom : std_logic_vector(7 downto 0);
+signal buffer_enable, buffer_dir : std_logic;
+signal in0_cs, in1_cs, dip_sw_cs : std_logic;
+signal D_bidir, core_data_bidir : std_logic_vector(7 downto 0);
 signal cfg_dip_sw, in0_reg, in1_reg, config_reg, core_data_output : std_logic_vector(7 downto 0);
 
 signal joy_a, joy_b : word(3 downto 0);
@@ -92,15 +93,35 @@ begin
 		RFSH_n => z80_rfrsh_l,
 		A => z80_a,
 		D => D_bidir
-	);    
+	);
         
-    D_bidir <= D_rom;
-    D_bidir <= core_data_output;
-    z80_do <= D_bidir;
-    
-    -- Simulation 74HC244 U1 sur le schema
-    core_data_output <= pacman_core_data_output when enable_cpu_core_data_l = '0' else (others => 'Z');
-  
+    -- Simulation 74HC245 (Octal Bus Transceiver With 3-State Outputs) U14
+    u1 : entity work.SN74LS245N
+    port map (
+        -- A(0..7)
+        X_2 => D_bidir(0),
+        X_3 => D_bidir(1),
+        X_4 => D_bidir(2),
+        X_5 => D_bidir(3),
+        X_6 => D_bidir(4),
+        X_7 => D_bidir(5),
+        X_8 => D_bidir(6),
+        X_9 => D_bidir(7),
+        
+        -- B(0..7)
+        X_18 => core_data_bidir(0),
+        X_17 => core_data_bidir(1),
+        X_16 => core_data_bidir(2),
+        X_15 => core_data_bidir(3),
+        X_14 => core_data_bidir(4),
+        X_13 => core_data_bidir(5),
+        X_12 => core_data_bidir(6),
+        X_11 => core_data_bidir(7),
+        
+        X_19 => buffer_enable,
+        X_1 => buffer_dir
+    );
+
    ---------------------
    -- PacMan core top --
    ---------------------
@@ -124,8 +145,8 @@ begin
         
         -- z80    
         i_cpu_a_core        => z80_a,
-        o_cpu_di_core       => pacman_core_data_output,
-        i_cpu_do_core       => z80_do,
+        
+        io_cpu_data_bidir   => core_data_bidir,
     
         o_cpu_rst_core      => z80_rst,
         o_cpu_clk_core      => z80_clk,
@@ -147,9 +168,9 @@ begin
         o_dip_l_cs          => dip_sw_cs,
         
         o_rom_cs            => flash_csn,
-        o_rd_bus_ctrl_regs  => enable_cpu_core_data_l,
+        o_buffer_enable     => buffer_enable,
+        o_buffer_dir        => buffer_dir,
 
-        
         -- CPU freeze
         i_freeze => '1'
     );  
@@ -181,14 +202,14 @@ begin
       DQ15 => z80_a(0),
       A0 => z80_a(1),
 
-      DQ7 => D_rom(7),
-      DQ6 => D_rom(6),
-      DQ5 => D_rom(5),
-      DQ4 => D_rom(4),
-      DQ3 => D_rom(3),
-      DQ2 => D_rom(2),
-      DQ1 => D_rom(1),
-      DQ0 => D_rom(0),
+      DQ7 => D_bidir(7),
+      DQ6 => D_bidir(6),
+      DQ5 => D_bidir(5),
+      DQ4 => D_bidir(4),
+      DQ3 => D_bidir(3),
+      DQ2 => D_bidir(2),
+      DQ1 => D_bidir(1),
+      DQ0 => D_bidir(0),
 
       CENeg => flash_csn,
       OENeg => z80_rd_l,

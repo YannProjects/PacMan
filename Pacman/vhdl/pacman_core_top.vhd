@@ -76,22 +76,28 @@ entity Core_Top is
     -- Audio/Video
     -- o_av                  : out   r_AV_fm_core;
     
-    o_vga                 : out r_VGA_to_core;
+    o_vga                    : out r_VGA_to_core;
     
-    i_cpu_a_core          : in word(15 downto 0);
-    o_cpu_di_core         : out word(7 downto 0);
-    i_cpu_do_core         : in word(7 downto 0);
+    i_cpu_a_core             : in word(15 downto 0);
     
-    o_cpu_rst_core        : out bit1;
-    o_cpu_clk_core        : out bit1;
-    o_cpu_wait_l_core     : out bit1;
-    o_cpu_int_l_core      : out bit1;
-    i_cpu_m1_l_core       : in bit1;
-    i_cpu_mreq_l_core     : in bit1;
-    i_cpu_iorq_l_core     : in bit1;
-    i_cpu_rd_l_core       : in bit1;
-    i_cpu_wr_l_core       : in bit1;
-    i_cpu_rfrsh_l_core    : in bit1;
+    -- CPU data
+    -- Port bidirectionnel sur DI_Core et DO_Core
+    io_cpu_data_bidir        : inout word(7 downto 0);
+    -- Data dir
+    o_buffer_dir             : out bit1;
+    -- Tri-state buffer enable
+    o_buffer_enable          : out bit1;
+    
+    o_cpu_rst_core           : out bit1;
+    o_cpu_clk_core           : out bit1;
+    o_cpu_wait_l_core        : out bit1;
+    o_cpu_int_l_core         : out bit1;
+    i_cpu_m1_l_core          : in bit1;
+    i_cpu_mreq_l_core        : in bit1;
+    i_cpu_iorq_l_core        : in bit1;
+    i_cpu_rd_l_core          : in bit1;
+    i_cpu_wr_l_core          : in bit1;
+    i_cpu_rfrsh_l_core       : in bit1;
     
     -- Registres I/O
     i_config_reg          : in word(7 downto 0);
@@ -103,7 +109,6 @@ entity Core_Top is
     
     -- ROM
     o_rom_cs              : out bit1;
-    o_rd_bus_ctrl_regs    : out bit1;
     
     -- Audio right/left
     o_audio_vol_out  : out word(3 downto 0);
@@ -150,9 +155,11 @@ architecture RTL of Core_Top is
   
   signal blank_vga : std_logic;
   signal o_r, o_g, o_b : word(2 downto 0);
-  signal regs_data, cpu_data, rom_data : word(7 downto 0);
+  signal regs_data, cpu_data, rom_data, cpu_to_core_data, core_to_cpu_data : word(7 downto 0);
     
   signal core_rst : bit1;
+  
+  signal core_to_cpu_buffer_l, cpu_to_core_buffer_l : bit1;
 
 begin
 
@@ -173,8 +180,7 @@ begin
       o_pll_locked => pll_locked
   );
  
- -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
- core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
+  core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
     
   --
   -- The Core
@@ -200,8 +206,8 @@ begin
     
     i_cpu_a               => i_cpu_a_core,
     
-    o_cpu_di              => o_cpu_di_core,
-    i_cpu_do              => i_cpu_do_core,  
+    o_cpu_di              => core_to_cpu_data,
+    i_cpu_do              => cpu_to_core_data,  
     
     o_cpu_rst             => o_cpu_rst_core,
     o_cpu_clk             => o_cpu_clk_core,
@@ -219,7 +225,8 @@ begin
     
     -- Z80 code ROM
     o_rom_cs_l            => o_rom_cs,
-    o_rd_regs_l           => o_rd_bus_ctrl_regs,
+    o_core_to_cpu_en_l    => core_to_cpu_buffer_l,
+    o_cpu_to_core_en_l    => cpu_to_core_buffer_l,
     
     o_in0_cs_l            => o_in0_l_cs,
     o_in1_cs_l            => o_in1_l_cs,
@@ -227,12 +234,16 @@ begin
     
     i_freeze              => i_freeze
   );
+  
+  io_cpu_data_bidir <= core_to_cpu_data when core_to_cpu_buffer_l = '0' else (others => 'Z');  
+  cpu_to_core_data <= io_cpu_data_bidir when cpu_to_core_buffer_l = '0' else (others => 'Z');
+  o_buffer_enable <= core_to_cpu_buffer_l and cpu_to_core_buffer_l;
+  o_buffer_dir <= '1' when cpu_to_core_buffer_l = '0' else '0';  
  
   -- Controlleur VGA
   u_vga_ctrl : entity work.vga_control_top
   port map ( 
-     -- i_reset => not i_rst_sys_n,
-     i_reset => not pll_locked,
+     i_reset => not i_rst_sys_n,
      i_clk_52m => i_clk_52m,
      i_vga_clk => vga_clock,
      i_sys_clk => clk_6m,
