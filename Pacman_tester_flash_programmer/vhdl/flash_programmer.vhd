@@ -45,8 +45,14 @@ entity PacMan_HW_Tester is
     i_rst_sysn            : in  std_logic;
     
     i_cpu_a_core          : in std_logic_vector(15 downto 0);
-    o_cpu_di_core         : out std_logic_vector(7 downto 0);
-    i_cpu_do_core         : in std_logic_vector(7 downto 0);
+    
+    -- CPU data
+    -- Port bidirectionnel sur DI_Core et DO_Core
+    io_cpu_data_bidir        : inout word(7 downto 0);
+    -- Data dir
+    o_buffer_dir             : out bit1;
+    -- Tri-state buffer enable
+    o_buffer_enable_n        : out bit1;
     
     o_cpu_rst_core        : out std_logic;
     o_cpu_clk_core        : out std_logic;
@@ -61,8 +67,6 @@ entity PacMan_HW_Tester is
         
     -- Z80 pacman code en memoire flash
     o_flash_cs_l_core       : out std_logic; -- Flash CS
-    -- Buffer enable data core vers CPU/
-    o_do_core_enable_n       : out std_logic; -- Flash CS
     
     -- VGA
     o_vga                 : out r_VGA_to_core;
@@ -90,105 +94,189 @@ end PacMan_HW_Tester;
 
 architecture Behavioral of PacMan_HW_Tester is
 
-signal z80_clk, z80_rst, z80_wait_n, z80_int_n, z80_m1_n, z80_mreq_n, z80_iorq_n : std_logic;
-signal z80_rd_n, z80_wr_n, z80_rfrsh_n, main_clk, rst_sys_n : std_logic;
-signal in0_cs, in1_cs, dip_sw_cs, uart_cs, uart_clk : std_logic;
-signal pacman_core_data, z80_data, uart_data, uart_reg, pacman_roms_data : std_logic_vector(7 downto 0);
-signal pacman_core_vol, pacman_core_wav : std_logic_vector(3 downto 0);
-signal cpu_mreq_0 : std_logic;
-
-signal z80_a : std_logic_vector(15 downto 0);
+signal in0_cs, in1_cs, dip_sw_cs, uart_cs, uart_clk : bit1;
+signal uart_data, uart_reg : word(7 downto 0);
+signal pacman_core_vol, pacman_core_wav : word(3 downto 0);
+signal cpu_mreq_0, z80_rst_n : bit1;
 
 type wb_state is (wb_idle, wb_wait_for_ack, wb_wait_for_rd_or_wr_cycle);
-signal uart_wb_we, uart_wb_stb, uart_wb_cyc, uart_wb_ack : std_logic;
+signal uart_wb_we, uart_wb_stb, uart_wb_cyc, uart_wb_ack : bit1;
 signal wb_bus_state : wb_state;
+
+signal cpu_to_core_data, core_to_cpu_data, regs_data, rom_data : word(7 downto 0);
+
+signal i_clk_52m, vga_clock, clk_6m, clk_6m_star, clk_6m_star_n : bit1;
+signal pll_locked, flash_cs_l, uart_cs_l, rom_cs_l, sync_bus_cs_l : bit1;
+signal core_to_cpu_en_l, cpu_to_core_en_l, core_to_cpu_n, cpu_to_core_n : bit1;
+signal core_rst, hsync_l, vsync_l, csync_l, blank, blank_vga : bit1;
+signal video_rgb : word(23 downto 0);
+signal o_audio_vol_out, o_audio_wav_out : word(3 downto 0);
+signal o_r, o_g, o_b : word(2 downto 0);
+signal vga_control_init_done : bit1;
 
 begin
 
-   ---------------------
-   -- PacMan core top --
-   ---------------------
-   core_top_0 : entity work.Core_Top
-   port map (
-        -- Paramètres de gestion du core:
-        -- garder ena_sys, rst_sys_n, halt, sys_clk => A configurer dans la partie simulation
-        i_clk_main          =>    main_clk,
-        i_rst_sys_n         =>    rst_sys_n,
-        -- i_cfg         =>    sim_config,
-        -- Keyboard, Mouse and Joystick
-        -- Conserver les entrées joy_a et joy_b:
-        -- BOT 5-Fire2, 4-Fire1, 3-Right 2-Left, 1-Back, 0-Forward (active low)
-        -- i_kb_ms_joy   =>    sim_joystick,
+  --
+  -- Single clock domain used for system / video and audio
+  --
+  clk_gen_0 : entity work.Clocks_gen
+  port map (
+      -- 12 MHz CMOD S7
+      i_clk_main => i_clk_sys,
+      o_clk_52m => i_clk_52m,
+      o_clk_vga => vga_clock,
+      o_clk_6M => clk_6m,
+      o_clk_18M => uart_clk,
+      o_clk_6M_star => clk_6m_star,
+      o_clk_6M_star_n => clk_6m_star_n,
+      i_rst => not pll_locked,
+      o_pll_locked => pll_locked
+  );
+  
+  --
+  -- primary addr decode
+  --
+  -- Memory mapping:
+  -- Gere par le core PacMan
+  -- 0x0000 - 0x3FFF : Code programme du programmeur de flash (execute par le Z80) (16 K).
+  -- 0x4000 - 0x43FF : RAM video tile (via pacman core et sync_bus_cs_l)
+  -- 0x4400 - 0x47FF : RAM video palette (via pacman core et sync_bus_cs_l)
+  -- 0x4800 - 0x4FEF : RAM Z80 (via pacman core et sync_bus_cs_l)
+  -- 0x4FF0 - 0x4FFF : Registres de sprites (via pacman core et sync_bus_cs_l)
+  -- 0x5000 - 0x50FF : Mapped registers (via pacman core et sync_bus_cs_l)
+  --
+  -- 0x6000 - 0x6005 : UART
+  -- 0x8000 - 0xFFFF : Memoire flash
+  -- Les adresses avec A15 = 0 sont prises en charge par le core PacMan
+   p_data_decoder : process(i_cpu_a_core, i_cpu_mreq_l_core, i_cpu_rfrsh_l_core, regs_data, uart_reg, rom_data)
+   begin
+      flash_cs_l <= '1';
+      uart_cs_l <= '1';
+      rom_cs_l <= '1';
+      sync_bus_cs_l <= '1';
+      if ((i_cpu_mreq_l_core = '0') and (i_cpu_rfrsh_l_core = '1')) then
+         case i_cpu_a_core(15 downto 13) is
+            -- UART (0x6)
+            when "011" =>
+                uart_cs_l <= '0';
+                core_to_cpu_data <= uart_reg;
+            -- Test rom
+            when "000" =>
+                rom_cs_l <= '0';
+                core_to_cpu_data <= rom_data;
+            -- PacMan core
+            when "001"|"010" =>
+                sync_bus_cs_l <= '0';
+                core_to_cpu_data <= regs_data;
+            -- Flash memory
+            when "100" => flash_cs_l <= '0';
+            when others => core_to_cpu_data <= (others => 'X');
+         end case;
+      end if;
+   end process;
+   
+   
+  -- Gestion buffer bidir
+  core_to_cpu_en_l <= '0' when ((core_to_cpu_n = '0') or (((uart_cs_l = '0') or (rom_cs_l = '0')) and (i_cpu_rd_l_core = '0'))) else '1';
+  cpu_to_core_en_l <= '0' when ((cpu_to_core_n = '0') or (uart_cs_l = '0' and i_cpu_wr_l_core = '0')) else '1';
+  
+  io_cpu_data_bidir <= core_to_cpu_data when core_to_cpu_en_l = '0' else (others => 'Z');
+  cpu_to_core_data <= io_cpu_data_bidir when cpu_to_core_en_l = '0' else (others => 'Z');
+  
+  o_buffer_enable_n <= core_to_cpu_en_l and cpu_to_core_en_l;
+  o_buffer_dir <= '1' when cpu_to_core_en_l = '0' else '0';  
+    
+  ---------------------
+  -- PacMan core --
+  ---------------------
+  u_Core : entity work.Pacman_Top
+  port map (
+    --
+    i_clk_pacman_core     => clk_6m,
+    i_clk_6M_star         => clk_6m_star,
+    i_clk_6M_star_n       => clk_6m_star_n,
+    i_core_reset          => core_rst,  
+
+    -- Signaux video PacMan core
+    o_video_rgb           => video_rgb,
+    o_hsync_l             => hsync_l,
+    o_vsync_l             => vsync_l,
+    o_csync_l             => csync_l,
+    o_blank               => blank,
+
+    -- Audio
+    o_audio_vol_out       => o_audio_vol_out,
+    o_audio_wav_out       => o_audio_wav_out,
+    
+    i_cpu_a               => i_cpu_a_core,
+    
+    o_cpu_di              => regs_data,
+    i_cpu_do              => cpu_to_core_data,  
+    
+    o_cpu_rst             => z80_rst_n,
+    o_cpu_clk             => o_cpu_clk_core,
+    o_cpu_wait_l          => o_cpu_waitn,
+    o_cpu_int_l           => o_cpu_intn,
+    i_cpu_m1_l            => i_cpu_m1_l_core,
+    i_cpu_mreq_l          => i_cpu_mreq_l_core,
+    i_cpu_iorq_l          => i_cpu_iorq_l,
+    i_cpu_rd_l            => i_cpu_rd_l_core,
+    i_cpu_rfsh_l          => i_cpu_rfrsh_l_core,
+    i_halt                => '0',
+    
+    -- Registres de configuration (INO, IN1, DIP SW)
+    i_config_reg          => i_config_reg,
+    
+    -- Sync bus
+    i_sync_bus_cs_l       => sync_bus_cs_l,
+    
+    -- Z80 code ROM
+    o_core_to_cpu_en_l    => core_to_cpu_n,
+    o_cpu_to_core_en_l    => cpu_to_core_n,
+    
+    o_in0_cs_l            => o_in0_l_cs,
+    o_in1_cs_l            => o_in1_l_cs,
+    o_dip_sw_cs_l         => o_dip_l_cs,
+    
+    i_freeze              => i_freeze
+  );
+  
+ 
+  -- Controlleur VGA
+  u_vga_ctrl : entity work.vga_control_top
+  port map ( 
+     -- i_reset => not i_rst_sys_n,
+     i_reset => not pll_locked,
+     i_clk_52m => i_clk_52m,
+     i_vga_clk => vga_clock,
+     i_sys_clk => clk_6m,
+    
+     -- Signaux video core Pacman
+     i_vsync => vsync_l,
+     i_blank => blank,
+     i_rgb => video_rgb,
         
-        -- Boutons start1 / start2 / credit (active low)
-        -- i_kbut        =>    sim_start_credit_buttons
+     -- Signaux video VGA
+     o_hsync => o_vga.hsync,
+     o_vsync => o_vga.vsync,
+     o_blank => blank_vga,
+     o_r => o_r,
+     o_g => o_g,
+     o_b => o_b,             
     
-        -- Audio/Video
-        -- o_av                  : out   r_AV_fm_core
-        
-        -- z80    
-        i_cpu_a_core        => z80_a,
-        o_cpu_di_core       => pacman_core_data,
-        i_cpu_do_core       => z80_data,
+     o_vga_control_init_done => vga_control_init_done
+  );
+
     
-        o_cpu_rst_core      => z80_rst,
-        o_cpu_clk_core      => z80_clk,
-        o_uart_clk_core     => uart_clk, -- 18 MHz
-        o_cpu_wait_l_core   => z80_wait_n,
-        o_cpu_int_l_core    => z80_int_n,
-        i_cpu_m1_l_core     => z80_m1_n,
-        i_cpu_mreq_l_core   => z80_mreq_n,
-        i_cpu_iorq_l_core   => z80_iorq_n,
-        i_cpu_rd_l_core     => z80_rd_n,
-        i_cpu_wr_l_core     => z80_wr_n,
-        i_cpu_rfrsh_l_core  => z80_rfrsh_n,
-        
-        -- Registres de configuration (IN0, IN1, DIP SW)
-        i_config_reg        => i_config_reg,
+  u_pacman_tester_rom : entity work.hw_tester_rom
+  port map (
+    a => i_cpu_a_core(13 downto 0),
+    spo => rom_data
+  );  
     
-        -- DIPs
-        o_in0_l_cs          => in0_cs,
-        o_in1_l_cs          => in1_cs,
-        o_dip_l_cs          => dip_sw_cs,
-        
-        -- Audio right/left
-        o_audio_vol_out     => pacman_core_vol,
-        o_audio_wav_out     => pacman_core_wav,  
-        
-        -- Video
-        o_vga => o_vga,
-        
-        -- CPU freeze
-        i_freeze => i_freeze
-    );
-    
-    main_clk <= i_clk_sys;
-    rst_sys_n <= i_clk_sys;
-    
-    o_cpu_waitn <= z80_wait_n;
-    o_cpu_intn <= z80_int_n;
-    o_cpu_clk_core <= z80_clk;
-    o_cpu_rst_core <= z80_rst;
-    
-    z80_m1_n <= i_cpu_m1_l_core;
-    z80_mreq_n <= i_cpu_mreq_l_core;
-    z80_iorq_n <= i_cpu_iorq_l;
-    z80_rd_n <= i_cpu_rd_l_core;
-    z80_wr_n <= i_cpu_wr_l_core;
-    z80_rfrsh_n <= i_cpu_rfrsh_l_core;
-    z80_a <= i_cpu_a_core;
-    z80_data <= i_cpu_do_core;
-    
-    o_vol <= pacman_core_vol;
-    o_wav <= pacman_core_wav;
-    
-    o_in0_l_cs <= in0_cs;
-    o_in1_l_cs <= in1_cs;
-    o_dip_l_cs <= dip_sw_cs;
-    
-	 p_wb_manager : process(uart_clk, z80_rst)
-	 begin
-	   if (z80_rst = '0') then
+  p_wb_manager : process(uart_clk, z80_rst_n)
+  begin
+	   if (z80_rst_n = '0') then
 	       wb_bus_state <= wb_idle;
             uart_wb_we <= '0';
             uart_wb_stb <= '0';
@@ -197,7 +285,7 @@ begin
 	       cpu_mreq_0 <= i_cpu_mreq_l_core;
            if (wb_bus_state = wb_idle) then
                 -- Declenchement d'un cycle WB sur validation MREQn
-                if (uart_cs = '1' and cpu_mreq_0 = '1' and i_cpu_mreq_l_core = '0' and i_cpu_m1_l_core = '1') then
+                if (uart_cs_l = '0' and cpu_mreq_0 = '1' and i_cpu_mreq_l_core = '0' and i_cpu_m1_l_core = '1') then
                     wb_bus_state <= wb_wait_for_rd_or_wr_cycle;
                 end if;
            elsif (wb_bus_state = wb_wait_for_rd_or_wr_cycle) then
@@ -232,9 +320,9 @@ begin
    port map (
        wb_clk_i =>  uart_clk,
 	   -- Wishbone signals
-	   wb_rst_i => not z80_rst,
+	   wb_rst_i => not z80_rst_n,
 	   wb_adr_i => i_cpu_a_core(2 downto 0),
-	   wb_dat_i => i_cpu_do_core,
+	   wb_dat_i => cpu_to_core_data,
 	   wb_dat_o => uart_data,
 	   wb_we_i => uart_wb_we,
 	   wb_stb_i => uart_wb_stb, 
@@ -256,42 +344,23 @@ begin
 	   ri_pad_i => '0',
 	   dcd_pad_i => '0'
 	);
-                     
-   -- Memory mapping:
-   -- Gere par le core PacMan
-   -- 0x0000 - 0x3FFF : Code programme du programmeur de flash (execute par le Z80) (16 K).
-   -- 0x4000 - 0x43FF : RAM video tile.
-   -- 0x4400 - 0x47FF : RAM video palette.
-   -- 0x4800 - 0x4FEF : RAM Z80.
-   -- 0x4FF0 - 0x4FFF : Registres de sprites.
-   -- 0x5000 - 0x50FF : Mapped registers.
-   --
-   -- 0x6000 - 0x6005 : UART
-   -- 0x8000 - 0xFFFF : Memoire flash
-   -- Les adresses avec A15 = 0 sont prises en charge par le core PacMan
-   p_data_decoder : process(i_cpu_a_core, i_cpu_rd_l_core, pacman_core_data, uart_data)
-   begin
-       o_do_core_enable_n <= '1'; 
-       if i_cpu_rd_l_core = '0' then
-         case i_cpu_a_core(15 downto 13) is
-            -- UART (0x6)
-            when "011" => 
-                o_do_core_enable_n <= '0';
-                o_cpu_di_core <= uart_reg;
-            -- PacMan core
-            -- when "000"|"001"|"010" => 
-            when "000"|"001"|"010" => 
-                o_do_core_enable_n <= '0';
-                o_cpu_di_core <= pacman_core_data;
-            when others => 
-         end case;
-      end if;
-   end process;
     
-   -- Address decoder
-   uart_cs <= '1' when i_cpu_a_core(15 downto 13) = "011" else '0';
-   -- o_flash_cs_l_core <= '0' when i_cpu_a_core(15 downto 13) = "000" else '1';
-   o_flash_cs_l_core <= '0' when i_cpu_a_core(15) = '1' else '1';
+    o_vga.r_vga <= o_r when blank_vga = '0' else "000";
+    o_vga.g_vga <= o_g when blank_vga = '0' else "000";
+    o_vga.b_vga <= o_b when blank_vga = '0' else "000";
+        
+    o_vol <= pacman_core_vol;
+    o_wav <= pacman_core_wav;
+    
+    o_in0_l_cs <= in0_cs;
+    o_in1_l_cs <= in1_cs;
+    o_dip_l_cs <= dip_sw_cs;
+    
+    o_flash_cs_l_core <= flash_cs_l;
+    
+    o_cpu_rst_core <= z80_rst_n;
+
+    core_rst <= '1' when i_rst_sysn = '0' or  vga_control_init_done = '0' else '0';
 
 end Behavioral;
 

@@ -203,8 +203,12 @@ set_property PACKAGE_PIN M1 [get_ports {o_vga[vsync]}]
 
 set_property PACKAGE_PIN R6 [get_ports {i_config_reg[0]}]
 
+
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_clk_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_int_l_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_rst_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_wait_l_core]
+set_property OFFCHIP_TERM NONE [get_ports o_hb]
 set_property OFFCHIP_TERM NONE [get_ports o_rom_cs]
+set_property IOSTANDARD LVCMOS33 [get_ports o_hb]
+set_property PACKAGE_PIN U4 [get_ports o_hb]

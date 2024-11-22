@@ -50,10 +50,10 @@ signal z80_rst, z80_clk : std_logic;
 signal z80_busrq_l, z80_m1_l, z80_mreq_l, z80_iorq_l, z80_rd_l : std_logic;
 signal z80_wr_l, z80_rfrsh_l, z80_waitn, z80_intn : std_logic;
 signal z80_a : std_logic_vector(15 downto 0);
-signal enable_cpu_core_data_l, in0_cs, in1_cs, dip_sw_cs : std_logic;
-signal D_bidir, z80_di, z80_do, tester_data_output : std_logic_vector(7 downto 0);
+signal in0_cs, in1_cs, dip_sw_cs : std_logic;
+signal D_bidir, core_data_bidir : std_logic_vector(7 downto 0);
 signal cfg_dip_sw, in0_reg, in1_reg, config_reg : std_logic_vector(7 downto 0);
-signal uart_rx_sim : std_logic;
+signal uart_rx_sim, buffer_enable, buffer_dir : std_logic;
 
 signal joy_a, joy_b : word(3 downto 0);
 signal coins, buttons : word(1 downto 0);
@@ -96,14 +96,37 @@ begin
 		D => D_bidir
 	);    
         
-    D_bidir <= z80_di;
-    z80_do <= D_bidir;
-    z80_di <= tester_data_output when enable_cpu_core_data_l = '0' else (others => 'Z');
+    -- Simulation 74HC245 (Octal Bus Transceiver With 3-State Outputs) U14
+    u1 : entity work.SN74LS245N
+    port map (
+        -- A(0..7)
+        X_2 => D_bidir(0),
+        X_3 => D_bidir(1),
+        X_4 => D_bidir(2),
+        X_5 => D_bidir(3),
+        X_6 => D_bidir(4),
+        X_7 => D_bidir(5),
+        X_8 => D_bidir(6),
+        X_9 => D_bidir(7),
+        
+        -- B(0..7)
+        X_18 => core_data_bidir(0),
+        X_17 => core_data_bidir(1),
+        X_16 => core_data_bidir(2),
+        X_15 => core_data_bidir(3),
+        X_14 => core_data_bidir(4),
+        X_13 => core_data_bidir(5),
+        X_12 => core_data_bidir(6),
+        X_11 => core_data_bidir(7),
+        
+        X_19 => buffer_enable,
+        X_1 => buffer_dir
+    );        
         
   --
-  -- The Core
+  -- The Core (incluant le core Pacman, l'UART et la ROM de test)
   --
-  u_Core : entity work.PacMan_HW_Tester
+  u_CoreHWTester : entity work.PacMan_HW_Tester
   port map (
 
     -- System clock
@@ -112,8 +135,7 @@ begin
     i_rst_sysn => rst_sys,
     
     i_cpu_a_core => z80_a,
-    o_cpu_di_core => tester_data_output,
-    i_cpu_do_core => z80_do,
+    io_cpu_data_bidir => core_data_bidir,
     
     o_cpu_rst_core => z80_rst,
     o_cpu_clk_core => z80_clk,
@@ -127,10 +149,10 @@ begin
     o_cpu_intn => z80_intn,
         
     -- Z80 pacman code en memoire flash
-    o_flash_cs_l_core => flash_csn,
-    -- Buffer enable data core vers CPU
-    o_do_core_enable_n => enable_cpu_core_data_l,
-    
+    o_flash_cs_l_core   => flash_csn,
+    o_buffer_enable_n   => buffer_enable,
+    o_buffer_dir        => buffer_dir,
+
     i_uart_rx => uart_rx_sim,
     
     -- Registres I/O

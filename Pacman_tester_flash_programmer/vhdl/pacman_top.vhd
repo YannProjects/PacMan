@@ -84,9 +84,11 @@ entity Pacman_Top is
     -- Registres de configuration (IN0, IN1, DIP SW)
     i_config_reg          : in word(7 downto 0);
     
-    -- Z80 code ROM
-    o_rom_cs_l           : out bit1; -- ROM CS
-    o_rd_regs_l          : out bit1; -- CPU read interrupt reg or hold register
+    -- Sync bus
+    i_sync_bus_cs_l      : in bit1;
+    
+    o_core_to_cpu_en_l   : out bit1; -- CPU read interrupt reg or hold register (RAM, IN0, IN1,...)
+    o_cpu_to_core_en_l   : out bit1; -- Validation buffer CPU vers core (ecriture RAM,registres,...)
     
     -- IN0, IN1, DPI switches
     o_in0_cs_l           : out bit1;
@@ -119,9 +121,6 @@ architecture RTL of Pacman_Top is
   -- cpu
   signal cpu_wait_l             : bit1;
   signal cpu_int_l              : bit1;
-
-  signal program_rom_cs_l       : bit1;
-  signal sync_bus_cs_l          : bit1;
 
   signal control_reg            : word( 7 downto 0);
   --
@@ -288,36 +287,6 @@ begin
   o_in0_cs_l <= iodec_in0_l;
   o_in1_cs_l <= iodec_in1_l;
   o_dip_sw_cs_l <= iodec_dipsw1_l;
-  o_rom_cs_l <= program_rom_cs_l;
-  
-  --
-  -- primary addr decode
-  --
-  p_mem_decode_comb : process(i_cpu_rfsh_l, i_cpu_mreq_l, i_cpu_a)
-  begin
-    --Normally the Pac-Man ROMs reside at address 0x0000-0x3fff and are mirrored at 0x8000-0xbfff (Z-80 A15 is not used in Pac-Man).
-    --The aux board logic modifies the address map and enables the aux board ROMs for addresses 0x3000-0x3fff and 0x8000-0x97ff.
-
-    -- 7M
-    -- 7N
-    sync_bus_cs_l <= '1';
-    --
-    if (i_cpu_mreq_l = '0') and (i_cpu_rfsh_l = '1') then
-      -- Pacman
-      -- syncbus 0x4000 - 0x7FFF (RAM + vidéo +  I/Os)
-      if (i_cpu_a(14) = '1') then
-        sync_bus_cs_l <= '0';
-      end if;
-    end if;
-
-    program_rom_cs_l  <= '1';
-    --
-    -- Pacman
-    -- ROM     0x0000 - 0x3FFF
-    if (i_cpu_a(14) = '0') and (i_cpu_rd_l = '0') then
-      program_rom_cs_l <= '0';
-    end if;
-  end process;
   
   ---------------------------------------------------------------
   ---------------------------------------------------------------
@@ -359,7 +328,7 @@ begin
   -- 74LS139 (U0) SYNC BUS controller
   -- A => hcnt(1)
   -- B => RDn
-  p_sync_bus_comb : process(i_cpu_rd_l, sync_bus_cs_l, hcnt)
+  p_sync_bus_comb : process(i_cpu_rd_l, i_sync_bus_cs_l, hcnt)
   begin
     -- sync_bus_stb is now an active low clock enable signal (= 5D pin 12 "CLK")
     sync_bus_stb_U0 <= '1';
@@ -367,7 +336,7 @@ begin
     sync_bus_wreq_l <= '1';
 
     -- Le CPU à l'accès au bus "ab" si hcnt(1) = '0'
-    if (sync_bus_cs_l = '0') then
+    if (i_sync_bus_cs_l = '0') then
       if (i_cpu_rd_l = '0') and (hcnt(1) = '0') then
         sync_bus_stb_U0 <= '0'; -- Pin 12 74LS139
       elsif (i_cpu_rd_l = '0') and (hcnt(1) = '1') then
@@ -439,15 +408,18 @@ begin
     end if;
   end process;
 
-  p_cpu_data_in_mux_comb : process(program_rom_cs_l, i_cpu_iorq_l, i_cpu_m1_l, cpu_vec_reg,
+  p_cpu_data_in_mux_comb : process(i_cpu_iorq_l, i_cpu_m1_l, cpu_vec_reg,
                                    sync_bus_wreq_l, sync_bus_reg,
                                    rams_data_out,
                                    iodec_in0_l, iodec_in1_l, iodec_dipsw1_l, iodec_dipsw2_l)
   begin
-    -- simplified again
+    -- Lecture registre synchro bus ou vect_reg du sync bus controller
+    o_core_to_cpu_en_l <= '1';
     if (i_cpu_iorq_l = '0') and (i_cpu_m1_l = '0') then
+      o_core_to_cpu_en_l <= '0';
       o_cpu_di <= cpu_vec_reg;
     elsif (sync_bus_wreq_l = '0') then
+      o_core_to_cpu_en_l <= '0';
       -- Cas de la lecture du registre de sync_bus_req.
       o_cpu_di <= sync_bus_reg;
     end if;
@@ -460,11 +432,9 @@ begin
   -- END
   ---------------------------------------------------------------
   ---------------------------------------------------------------
-
-  -- Lecture registre synchro bus ou
-  -- vect_reg ou
-  -- IN0, IN1, DIP switch
-  o_rd_regs_l <= '0' when (sync_bus_wreq_l = '0') or (i_cpu_iorq_l = '0' and i_cpu_m1_l = '0') else '1';
+ 
+  -- Validation buffer data CPU vers core dans le cas d'une ecriture (bus interne ou registre interruption) vers le core.
+  o_cpu_to_core_en_l <= '0' when ((sync_bus_r_w_l = '0') or ((i_cpu_iorq_l = '0') and (i_cpu_m1_l = '1'))) else '1';  
   
   --
   -- vram addr custom ic

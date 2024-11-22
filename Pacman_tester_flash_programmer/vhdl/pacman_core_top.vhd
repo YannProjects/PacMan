@@ -97,6 +97,9 @@ entity Core_Top is
     -- Registres I/O
     i_config_reg          : in word(7 downto 0);
     
+    o_buffer_enable_n     : out bit1;     -- Validation buffer CPU vers core (ecriture RAM,registres,...)
+    o_buffer_dir          : out bit1;     
+    
     -- Dip switch, crédits, joystick
     o_in0_l_cs       : out bit1; -- Read IN1
     o_in1_l_cs       : out bit1; -- Read IN2
@@ -149,130 +152,11 @@ architecture RTL of Core_Top is
   signal o_r, o_g, o_b : word(2 downto 0);
   signal regs_data, cpu_data, rom_data : word(7 downto 0);
   
-  signal rom_cs_l, cpu_rd_regs : bit1;
+  signal rom_cs_l, rd_regs_core_n : bit1;
   
   signal core_rst : bit1;
 
 begin
 
-  --
-  -- Single clock domain used for system / video and audio
-  --
-  clk_gen_0 : entity work.Clocks_gen
-  port map (
-      -- 12 MHz CMOD S7
-      i_clk_main => i_clk_main,
-      o_clk_52m => i_clk_52m,
-      o_clk_vga => vga_clock,
-      o_clk_6M => clk_6m,
-      o_clk_18M => o_uart_clk_core,
-      o_clk_6M_star => clk_6m_star,
-      o_clk_6M_star_n => clk_6m_star_n,
-      -- i_rst => not i_rst_sys_n,
-      i_rst => not pll_locked,
-      o_pll_locked => pll_locked
-  );
- 
- -- core_rst <= '1' when i_rst_sys_n = '0' or  vga_control_init_done = '0' else '0';
- core_rst <= '1' when pll_locked = '0' or  vga_control_init_done = '0' else '0';
-    
-  --
-  -- The Core
-  --
-  u_Core : entity work.Pacman_Top
-  port map (
-    --
-    i_clk_pacman_core     => clk_6m,
-    i_clk_6M_star         => clk_6m_star,
-    i_clk_6M_star_n       => clk_6m_star_n,
-    i_core_reset          => core_rst,  
-
-    -- Signaux video PacMan core
-    o_video_rgb           => video_rgb,
-    o_hsync_l             => hsync_l,
-    o_vsync_l             => vsync_l,
-    o_csync_l             => csync_l,
-    o_blank               => blank,
-
-    -- Audio
-    o_audio_vol_out       => o_audio_vol_out,
-    o_audio_wav_out       => o_audio_wav_out,
-    
-    i_cpu_a               => i_cpu_a_core,
-    
-    o_cpu_di              => regs_data,
-    i_cpu_do              => i_cpu_do_core,  
-    
-    o_cpu_rst             => o_cpu_rst_core,
-    o_cpu_clk             => o_cpu_clk_core,
-    o_cpu_wait_l          => o_cpu_wait_l_core,
-    o_cpu_int_l           => o_cpu_int_l_core,
-    i_cpu_m1_l            => i_cpu_m1_l_core,
-    i_cpu_mreq_l          => i_cpu_mreq_l_core,
-    i_cpu_iorq_l          => i_cpu_iorq_l_core,
-    i_cpu_rd_l            => i_cpu_rd_l_core,
-    i_cpu_rfsh_l          => i_cpu_rfrsh_l_core,
-    i_halt                => '0',
-    
-    -- Registres de configuration (INO, IN1, DIP SW)
-    i_config_reg          => i_config_reg,
-    
-    -- Z80 code ROM
-    o_rom_cs_l            => rom_cs_l,
-    o_rd_regs_l           => cpu_rd_regs,
-    
-    o_in0_cs_l            => o_in0_l_cs,
-    o_in1_cs_l            => o_in1_l_cs,
-    o_dip_sw_cs_l         => o_dip_l_cs,
-    
-    i_freeze              => i_freeze
-  );
-  
-  u_pacman_tester_rom : entity work.hw_tester_rom
-  port map (
-    a => i_cpu_a_core(13 downto 0),
-    spo => rom_data
-  );
-  
-  -- u_crom : entity work.ROM
-  -- port map (
-  --   A => i_cpu_a_core(13 downto 0),
-  --   D => rom_data,
-  --   OEn => '0',
-  --   CSn => rom_cs_l
-  --);  
-  
-  -- Lecture par le CPU du registre tampon ou registre d'interruption
-  cpu_data <= regs_data when cpu_rd_regs = '0' else rom_data;
-  o_cpu_di_core <= cpu_data when (cpu_rd_regs = '0' or rom_cs_l = '0') else (others => 'Z');
- 
-  -- Controlleur VGA
-  u_vga_ctrl : entity work.vga_control_top
-  port map ( 
-     -- i_reset => not i_rst_sys_n,
-     i_reset => not pll_locked,
-     i_clk_52m => i_clk_52m,
-     i_vga_clk => vga_clock,
-     i_sys_clk => clk_6m,
-    
-     -- Signaux video core Pacman
-     i_vsync => vsync_l,
-     i_blank => blank,
-     i_rgb => video_rgb,
-        
-     -- Signaux video VGA
-     o_hsync => o_vga.hsync,
-     o_vsync => o_vga.vsync,
-     o_blank => blank_vga,
-     o_r => o_r,
-     o_g => o_g,
-     o_b => o_b,             
-    
-     o_vga_control_init_done => vga_control_init_done
-  );
-    
-  o_vga.r_vga <= o_r when blank_vga = '0' else "000";
-  o_vga.g_vga <= o_g when blank_vga = '0' else "000";
-  o_vga.b_vga <= o_b when blank_vga = '0' else "000";
 
 end RTL;
