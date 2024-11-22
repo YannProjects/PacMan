@@ -114,7 +114,10 @@ entity Core_Top is
     o_audio_vol_out  : out word(3 downto 0);
     o_audio_wav_out  : out word(3 downto 0);
     
-    i_freeze         : in bit1 -- CPU freeze
+    i_freeze         : in bit1; -- CPU freeze
+    
+    -- LED hear beat
+    o_hb            : out bit1 -- CPU freeze
   );
 end;
 
@@ -232,7 +235,8 @@ begin
     o_in1_cs_l            => o_in1_l_cs,
     o_dip_sw_cs_l         => o_dip_l_cs,
     
-    i_freeze              => i_freeze
+    i_freeze              => i_freeze,
+    o_heartbeat           => o_hb
   );
   
   io_cpu_data_bidir <= core_to_cpu_data when core_to_cpu_buffer_l = '0' else (others => 'Z');  

@@ -96,7 +96,10 @@ entity Pacman_Top is
     o_dip_sw_cs_l        : out bit1;
     
     -- CPU freeze
-    i_freeze             : in bit1
+    i_freeze             : in bit1;
+    
+    -- Heart beat
+    o_heartbeat          : out bit1
     );
 end;
 
@@ -106,6 +109,7 @@ architecture RTL of Pacman_Top is
   -- ref clock  98.304
 
   constant c_Type_mr_tnt        : word( 2 downto 0) := "001";
+  constant led_hb_period        : unsigned(7 downto 0) := X"E0";
   -- timing
   signal hcnt                   : word( 8 downto 0) := "010000000"; -- 80
   signal vcnt                   : word( 8 downto 0) := "011111000"; -- 0F8
@@ -145,7 +149,7 @@ architecture RTL of Pacman_Top is
   signal wr1_l                  : bit1;
   signal wr2_l                  : bit1;
   signal iodec_out_l            : bit1;
-  signal iodec_wdr_l            : bit1;
+  signal iodec_wdr_l, iodec_wdr_0, iodec_wdr_1            : bit1;
   signal iodec_in0_l            : bit1;
   signal iodec_in1_l            : bit1;
   signal iodec_dipsw1_l         : bit1;
@@ -167,6 +171,8 @@ architecture RTL of Pacman_Top is
   signal sync_bus_wp_U4_1    : bit1;
   signal sync_bus_rp_l          : bit1;
   signal sync_bus_wp_l          : bit1;
+  signal hb_led_status          : bit1;
+  signal hb_cnt                 : unsigned(7 downto 0);
 
 begin
   --
@@ -274,6 +280,31 @@ begin
       -- watchdog_reset_l <= not i_core_reset; -- watchdog disable
       
   end process;
+  
+  p_heart_beat : process
+    variable hb_end : boolean;
+  begin
+      wait until rising_edge(i_clk_pacman_core);
+      -- Front descendant iodec_wdr_l
+      iodec_wdr_0 <= iodec_wdr_l;
+      iodec_wdr_1 <= iodec_wdr_0;
+      
+      if (i_core_reset = '1') or (i_freeze = '0') then
+        hb_led_status <= '0';
+        hb_cnt <= led_hb_period;
+      elsif (iodec_wdr_0 = '0' and iodec_wdr_1 = '1') then
+        hb_end := (hb_cnt = X"FF");
+        if hb_end then
+          hb_cnt <= led_hb_period;
+          hb_led_status <= not hb_led_status;
+        else
+          hb_cnt <= hb_cnt + "1";
+        end if;
+      end if;    
+      
+  end process;
+  
+  o_heartbeat <= hb_led_status;
 
   -- other cpu signals
   h1_inv      <= not hcnt(0);
