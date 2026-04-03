@@ -136,15 +136,11 @@ set_property PACKAGE_PIN U1 [get_ports o_in0_l_cs]
 set_property PACKAGE_PIN U2 [get_ports o_in1_l_cs]
 set_property IOSTANDARD LVCMOS33 [get_ports o_in1_l_cs]
 
-create_clock -period 19.231 -name clk_52M -waveform {0.000 9.616} [get_pins clk_gen_0/clk_52m]
+create_clock -period 19.231 -name CLK_52M -waveform {0.000 9.616} [get_pins clk_gen_0/clk_gen/inst/clkout1_buf/O]
 set_clock_groups -name VGA -asynchronous -group [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT1]]
-set_clock_groups -name 52M -asynchronous -group [get_clocks clk_52M]
 set_clock_groups -name SYSCLK -asynchronous -group [get_clocks -of_objects [get_pins clk_gen_0/clk_gen/inst/mmcm_adv_inst/CLKOUT2]]
 
-create_clock -period 39.700 -name VGA_CLK -waveform {0.000 19.850} [get_nets clk_gen_0/clk_gen/clk_vga]
-create_generated_clock -name CLK_6M -source [get_pins clk_gen_0/clk_gen/clk_sys] -edges {1 5 7} -edge_shift {0.000 0.000 0.000} [get_pins o_clk_6M_inferred_i_1/O]
-create_generated_clock -name CLK_6M_STAR -source [get_pins clk_gen_0/clk_gen/clk_sys] -edges {3 5 9} -edge_shift {0.000 0.000 0.000} [get_pins o_clk_6M_star_n_inferred_i_1/O]
-create_generated_clock -name CLK_Z80 -source [get_pins clk_gen_0/clk_gen/clk_sys] -edges {1 7 13} -edge_shift {0.000 0.000 0.000} [get_pins o_cpu_clk_core_OBUF_inst/O]
+create_clock -period 39.700 -name VGA_CLK -waveform {0.000 19.850} [get_pins clk_gen_0/clk_gen/inst/clkout2_buf/O]
 
 set_property PACKAGE_PIN N1 [get_ports {o_vga[b_vga][2]}]
 set_property PACKAGE_PIN R2 [get_ports {o_vga[b_vga][1]}]
@@ -204,11 +200,28 @@ set_property PACKAGE_PIN M1 [get_ports {o_vga[vsync]}]
 set_property PACKAGE_PIN R6 [get_ports {i_config_reg[0]}]
 
 
+set_property IOSTANDARD LVCMOS33 [get_ports o_hb]
+set_property PACKAGE_PIN U4 [get_ports o_hb]
+
+set_property PACKAGE_PIN L18 [get_ports o_uart_tx]
+set_property IOSTANDARD LVCMOS33 [get_ports o_uart_tx]
+set_property PACKAGE_PIN M18 [get_ports i_uart_rx]
+set_property IOSTANDARD LVCMOS33 [get_ports i_uart_rx]
+
+create_clock -period 55.500 -name CLK_SYS -waveform {0.000 27.750} [get_pins clk_gen_0/clk_gen/inst/clkout3_buf/O]
+create_generated_clock -name CLK_6M -source [get_pins clk_gen_0/clk_gen/inst/clkout3_buf/O] -edges {1 5 7} -edge_shift {0.000 0.000 0.000} [get_nets clk_gen_0/clk_6m]
+create_generated_clock -name CLK_6M_STAR -source [get_pins clk_gen_0/clk_gen/inst/clkout3_buf/O] -edges {3 5 9} -edge_shift {0.000 0.000 0.000} [get_nets clk_6m_star]
+create_generated_clock -name CLK_6M_STAR_N -source [get_pins clk_gen_0/clk_gen/inst/clkout3_buf/O] -edges {5 9 11} -edge_shift {0.000 0.000 0.000} [get_nets clk_6m_star_n]
+
+
+
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_clk_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_int_l_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_rst_core]
 set_property OFFCHIP_TERM NONE [get_ports o_cpu_wait_l_core]
 set_property OFFCHIP_TERM NONE [get_ports o_hb]
 set_property OFFCHIP_TERM NONE [get_ports o_rom_cs]
-set_property IOSTANDARD LVCMOS33 [get_ports o_hb]
-set_property PACKAGE_PIN U4 [get_ports o_hb]
+set_false_path -from [get_clocks CLK_52M] -to [get_clocks CLK_6M]
+set_false_path -from [get_clocks VGA_CLK] -to [get_clocks CLK_52M]
+set_false_path -from [get_clocks CLK_52M] -to [get_clocks CLK_SYS]
+set_false_path -from [get_clocks CLK_52M] -to [get_clocks VGA_CLK]
